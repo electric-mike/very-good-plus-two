@@ -1,0 +1,78 @@
+<div class="product-list-wrapper center-text">
+  <div class="max-width">
+    <h1>Collections</h1>
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' or collection.products.size == 0 %}
+        <br>
+        {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+        <div class="product-list-wrapper featured-collection" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+          <h2 class="title">{{ collection_title }}</h2>
+          <div class="product-list row">
+            {% for prod in collection.products limit: 4 %}
+              <div class="product column-6-tablet-vert-3">
+                <a class="product-image-wrapper" href="{{ prod.url | within: collection }}">
+                  {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    class="product-image lazyload blur-up"
+                    src="{{ settings.placeholder_image | img_url }}"
+                    alt="{{ prod.title | escape }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540, 720, 900, 1080, 1600]"
+                    data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+                    data-sizes="auto"
+                  />
+                  <noscript>
+                    <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+                  </noscript>
+                </a>
+                <div class="product-info">
+                  <h5 class="vendor">{{ product.vendor }}</h5>
+                  <a href="{{ prod.url | within: collection }}">
+                    <h5>{{ prod.title }}</h5>
+                  </a>
+                  {% if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
+                  <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="product-list-collection-link center-text">
+            <a href="{{ collection.url }}" class="button secondary mobile-featured-collection-link">View All</a>
+          </div>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function addMinHeights(elements) {
+    var elementHeights = Array.prototype.map.call(elements, function(el)  {
+      return el.clientHeight;
+    });
+
+    var maxHeight = Math.max.apply(null, elementHeights);
+    Array.prototype.forEach.call(elements, function(el) {
+      el.style.height = maxHeight + 'px';
+    });
+  }
+
+  function removeMinHeights(elements) {
+    Array.prototype.forEach.call(elements, function(el) {
+      el.style.height = '';
+    });
+  }
+
+  function resizeEventHandler(thisSelector) {
+    removeMinHeights(thisSelector.querySelectorAll('.product-image-wrapper'));
+    removeMinHeights(thisSelector.querySelectorAll('.product-info'));
+    addMinHeights(thisSelector.querySelectorAll('.product-image-wrapper'));
+    addMinHeights(thisSelector.querySelectorAll('.product-info'));
+  }
+
+  window.addEventListener('resize', resizeEventHandler.bind(null, document.querySelector('.product-list-wrapper')));
+  window.dispatchEvent(new Event('resize'));
+});
+</script>

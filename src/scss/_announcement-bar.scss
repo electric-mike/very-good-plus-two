@@ -1,0 +1,13 @@
+.announcement-bar {
+  padding: 0.5em 1.25em;
+  background: $primary-color;
+  color: $white;
+  text-align: center;
+  font-size: 0.9em;
+
+  > a {
+    text-decoration: underline;
+    margin-left: 0.5em;
+    color: $white;
+  }
+}

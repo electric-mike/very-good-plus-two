@@ -1,0 +1,35 @@
+<script>
+  window.additionalFilterOptions = []
+  {% for block in section.blocks %}
+    window.additionalFilterOptions.push({
+      name: '{{ block.settings.name }}',
+      strings: '{{ block.settings.tags | strip_newlines }}'.split(', '),
+      options: []
+    })
+  {% endfor %}
+</script>
+
+{% schema %}
+  {
+    "name": "Collection Filter Groups",
+    "blocks": [
+      {
+        "type": "group",
+        "name": "Filter Group",
+        "settings": [
+          {
+            "id": "name",
+            "type": "text",
+            "label": "Group Name"
+          },
+          {
+            "id": "tags",
+            "type": "textarea",
+            "label": "filter type strings",
+            "info": "Comma separated"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

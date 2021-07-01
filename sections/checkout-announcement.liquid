@@ -1,0 +1,81 @@
+
+{% if section.settings.text != '' %}
+  <section data-section-id="{{ section.id }}" class="info-bar">
+    <div class="info-bar-wrapper">
+      <div class="info-bar-content">
+        <div class="info-bar-item">
+          {{ section.settings.text }}
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* custom font */
+      @import url('https://use.typekit.net/axa2zac.css');
+
+      .info-bar-wrapper {
+        font-family: 'neue-haas-grotesk-text', Helvetica, sans-serif;
+        text-align: center;
+        background: {{ section.settings.info_background }};
+        {% if section.settings.border_top %}border-top: 1px solid {{ settings.dotted_color }};{% endif %}
+        {% if section.settings.border_bottom %}border-bottom: 1px solid {{ settings.dotted_color }};{% endif %}
+      }
+
+      .info-bar-item, .info-bar-item p, .info-bar-item a {
+        color: {{ section.settings.info_text }};
+        font-size: {{ section.settings.text_size }}px;
+        margin-bottom: 0! important;
+      }
+
+      .info-bar-content {
+        padding: .5em 1.25em;
+      }
+    </style>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Checkout Announcement",
+  "settings": [
+    {
+      "id": "text",
+      "type": "richtext",
+      "label": "Text",
+      "default": "<p>Add content to a sliding text message bar</p>"
+    },
+    {
+      "type": "color",
+      "id": "info_text",
+      "label": "Info bar text",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "info_background",
+      "label": "Info bar background",
+      "default": "#ccc"
+    },
+    {
+      "type":"checkbox",
+      "id":"border_top",
+      "label":"Border top"
+    },
+    {
+      "type":"checkbox",
+      "id":"border_bottom",
+      "label":"Border bottom"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Text size",
+      "default": 16
+    }
+  ]
+}
+{% endschema %}

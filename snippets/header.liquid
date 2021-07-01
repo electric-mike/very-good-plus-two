@@ -1,0 +1,130 @@
+<header>
+  <nav class="{% if settings.max_width_nav %}max-width-nav{% endif %}">
+    {% render 'mobile-nav' %}
+
+    <div class="links left-links">
+      <div id="desktop-top-level-links" class="top-level-links">
+        {% for link in linklists[settings.header_linklist].links | limit: 5 %}
+          {% assign child_list_handle = link.title | handleize %}
+          {% if linklists[child_list_handle].links != blank %}
+            <div class="parent-links-wrapper layered-nav">
+              <a
+                href="{{ link.url }}"
+                class="link top-level-link"
+                {% if link.title contains 'Sale' %}data-sale="true"{% endif %}
+              >{{ link.title }}</a>
+              <div class="children-links-wrapper layered-nav">
+                <div class="children-links-wrapper-inner layered-nav">
+                  <div class="children-links layered-nav">
+                    {% for childlink in linklists[child_list_handle].links %}
+                      <div class="child-wrapper">
+                        <h6><a class="child-link" href="{{ childlink.url }}">{{ childlink.title | escape }}</a></h6>
+                        <div class="grandchild-wrapper">
+                          {% for grandchild in childlink.links %}
+                            <a class="grandchild-link" href="{{ grandchild.url }}">{{ grandchild.title | escape }}</a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+
+                  <!-- Fill rest of nav with products -->
+                  {% assign childLinkSize = link.links.size %}
+                  {% if link.type == 'collection_link' and childLinkSize < 5 %}
+                    {% assign childLinkProducts = link.object.products %}
+                    {% assign topLevelSize = 5 | minus: childLinkSize %}
+                    {% for product in childLinkProducts | limit: topLevelSize %}
+                      <div class="product parent-link-product">
+                        <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}">
+                          {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                          <img
+                            class="product-image lazyload blur-up"
+                            src="{{ settings.placeholder_image | img_url }}"
+                            alt="{{ prod.title | escape }}"
+                            data-src="{{ img_url }}"
+                            data-widths="[360, 540, 720, 900, 1080, 1600]"
+                            data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                            data-sizes="auto"
+                          />
+                          <noscript>
+                            <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+                          </noscript>
+                        </a>
+                        <div class="product-info">
+                          {% if product.vendor %}<h5>{{ product.vendor }}</h5>{% endif %}
+                          <a href="{{ product.url | within: collection }}">
+                            <h5>{{ product.title }}</h5>
+                          </a>
+                          {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}
+                          <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <a
+              href="{{ link.url }}"
+              class="link top-level-link"
+              {% if link.title contains 'Sale' %}data-sale="true"{% endif %}
+            >{{ link.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="logo-link">
+      {% if settings.logo %}
+        <a href="/" class="logo desktop-logo">
+          <img src="{{ settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" />
+        </a>
+      {% endif %}
+      {% if settings.logo_mobile %}
+        <a href="/" class="logo mobile-logo">
+          <img src="{{ settings.logo_mobile | img_url: 'master' }}" alt="{{ shop.name }}" />
+        </a>
+      {% endif %}
+    </div>
+
+    <div id="search-input-wrapper" class="search-input-wrapper">
+      <div class="search-input-and-close">
+        <search-input v-on:close="escapeClose"></search-input>
+        <div id="search-close" class="hamburger open"><span class="lines"></span></div>
+      </div>
+      <search-results v-on:close="escapeClose"></search-results>
+    </div>
+
+    <div class="links action-links">
+      {% if shop.customer_accounts_enabled %}
+        <a class="link account-link-wrapper right-link" href="/account">
+          <span>
+            {% if customer and customer.first_name != blank %}
+              {{ 'layout.customer.account' | t }}
+            {% else %}
+              {{ 'layout.customer.log_in' | t }}
+            {% endif %}
+          </span>
+        </a>
+      {% endif %}
+
+      <!-- <div class="link favorite-link">
+        <div class="favorite"></div>
+      </div> -->
+
+      {% if settings.show_search %}
+        <a id="search-wrapper" class="link search-link right-link">Search</a>
+      {% endif %}
+
+      <div id="cart">
+        <div class="cart" v-on:click="openCart()" v-bind:class="{ 'active': isCartPage }">
+          <div class="cart-icon"></div>
+          <a class="cart-text link search-link right-link">Cart <span class="v-hide" v-cloak v-if="cartSize > 0">&nbsp;(${ cartSize })</span></a>
+        </div>
+        <side-cart v-bind:show-side-cart="showSideCart"></side-cart>
+      </div>
+
+    </div>
+  </nav>
+</header>

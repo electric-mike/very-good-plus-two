@@ -1,0 +1,30 @@
+<section id="cart-page" class="page cart-page max-width">
+  <h1>Your Cart <span v-if="cartData.item_count" v-cloak>(${ cartData.item_count })</span></h1>
+  <div class="row hide-tablet">
+    <div class="column-12">
+      <a class="secondary-featured blue back-to-shopping top-back-to-shopping" href="/">Back To Shopping</a>
+    </div>
+    <div class="column-12">
+      <cart-button class="top-cart-button full-width"></cart-button>
+    </div>
+  </div>
+  <br>
+  <div class="row cart-details">
+    <cart v-bind:is-cart="true" class="column-12-tablet-vert-7"></cart>
+    <subtotal-checkout v-bind:is-cart="true" class="column-12-tablet-vert-5"></subtotal-checkout>
+  </div>
+</section>
+
+
+{% assign has_subscriptions = false %}
+{% for i in cart.items %}
+	{% for p in i.properties %}
+		{% if p.first == 'shipping_interval_frequency' %}
+			{% assign has_subscriptions = true %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+{% if has_subscriptions %}
+  <input style="display: none" type="submit" class="action_button" id="checkout" name="checkout"
+  value="{{ 'cart.general.checkout' | t }}" />
+{% endif %}

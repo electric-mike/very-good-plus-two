@@ -1,0 +1,123 @@
+{% comment %} Max amount of products visible {% endcomment %}
+{% assign limit = section.settings.product_limit %}
+
+{% comment %} Shopify generated dynamic recommendations, falling back to default related products (based on parent collection) {% endcomment %}
+{% assign products = recommendations.products %}
+
+<div class="product-list-wrapper product-recommendations" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+  <div class="max-width">
+    <div class="title center-text">
+      <h3>{{ section.settings.header_text }}</h3>
+      <br>
+    </div>
+    <div id="recommendations" class="recommendations product-list row">
+      {% assign count = 0 %}
+      {%- for prod in products -%}
+        {%- if prod.vendor != 'Route' and count < 4 -%}
+          {%- assign count = count | plus: 1 -%}
+          <div class="product column-6-tablet-vert-{{ 12 | divided_by: limit }}">
+            <a class="product-image-wrapper image-wrap" href="{{ prod.url | within: collection }}">
+              {% include 'flair-product-badges', product: prod %}
+              {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img
+                class="product-image lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                alt="{{ prod.title | escape }}"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080, 1600]"
+                data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+                data-sizes="auto"
+              />
+              <noscript>
+                <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+              </noscript>
+            </a>
+            <div class="product-info">
+              <a href="{{ prod.url | within: collection }}">
+                <h5>{{ prod.title }}</h5>
+              </a>
+              {%- if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{%- endif -%}
+              <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% assign bestSellers = collections['all'].products | sort: 'best-sellers' %}
+
+<script>
+  function loadProductRecommendations() {
+    var productRecommendationsWrapper = document.querySelector('.product-recommendations-wrapper');
+    var dynamicProductRecommendationSection = document.querySelector('.product-recommendations');
+    var productId = dynamicProductRecommendationSection.dataset.productId || "{{ bestSellers.first.id }}"; //@todo make an option in section
+    var limit = dynamicProductRecommendationSection.dataset.limit;
+
+    var request = new XMLHttpRequest();
+    request.open('GET', '/recommendations/products?section_id=product-recommendations&limit='+(limit+1)+'&product_id='+productId, true);
+
+    request.onload = function() {
+      if (this.status >= 200 && this.status < 400) {
+        var dataHTML = document.createElement('div');
+        dataHTML.innerHTML = this.response.trim();
+        var recommendedProductsResponseInner = dataHTML.querySelector('.product-recommendations .recommendations');
+
+        if(recommendedProductsResponseInner.querySelectorAll('.product').length > 0) {
+          dynamicProductRecommendationSection.querySelector('.recommendations').innerHTML = recommendedProductsResponseInner.innerHTML;
+
+          {% if section.settings.enable_scrollbar %}
+            new SimpleBar(document.getElementById('recommendations'), {
+              autoHide: true,
+              forceVisible: false
+            });
+          {% endif %}
+        } else {
+          productRecommendationsWrapper.style.display = 'none';
+        }
+
+      } else {
+        productRecommendationsWrapper.style.display = 'none';
+      }
+    };
+
+    request.onerror = function() {
+      productRecommendationsWrapper.style.display = 'none';
+    };
+
+    request.send();
+  }
+
+  loadProductRecommendations();
+</script>
+
+{% schema %}
+{
+  "name": "Product Recommendations",
+  "class": "product-recommendations-wrapper",
+  "settings": [
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Product Limit",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "header_text",
+      "label": "Header Text",
+      "default": "Related Products"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_scrollbar",
+      "label": "Enable Scrollbar",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

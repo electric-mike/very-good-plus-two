@@ -1,0 +1,174 @@
+<div data-section-id="{{ section.id }}" data-section-type="page-section">
+  <div class="image-callout-sections image-callout-sections-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="image-callout-wrapper" style="background-color: {{ block.settings.background_color }};">
+        {% if block.type == 'left-image-callout' %}
+          <div class="row row-middle max-width">
+            <div class="column-12-tablet-vert-6 image-row">
+              {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img
+                class="lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080, 1600]"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+              />
+              <noscript>
+                <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
+              </noscript>
+            </div>
+            <div class="column-12-tablet-vert-6 callout-text">
+              {{ block.settings.textarea }}
+              {% if block.settings.button_text.size > 0 %}
+                <a
+                  class="button {% if block.settings.invert_text %}secondary{% endif %}"
+                  href="{{ block.settings.button_link }}"
+                >{{ block.settings.button_text }}</a>
+              {% endif %}
+            </div>
+          </div>
+        {% elsif block.type == 'right-image-callout' %}
+          <div class="row row-middle max-width" style="background-color: {{ block.settings.background_color }};">
+            <div class="column-12-tablet-vert-6 callout-text">
+              {{ block.settings.textarea }}
+              {% if block.settings.button_text.size > 0 %}
+                <a
+                  class="button {% if block.settings.invert_text %}secondary{% endif %}"
+                  href="{{ block.settings.button_link }}"
+                >{{ block.settings.button_text }}</a>
+              {% endif %}
+            </div>
+            <div class="column-12-tablet-vert-6 image-row">
+              {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img
+                class="lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080, 1600]"
+                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                data-sizes="auto"
+                data-variantid="{{ block.settings.image.id }}"
+              />
+              <noscript>
+                <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
+              </noscript>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.image-callout-sections-{{ section.id }} .row > div {
+  padding-bottom: 0;
+}
+
+.image-callout-sections-{{ section.id }} .row .callout-text {
+  padding: 1em 2em;
+}
+
+.image-callout-sections-{{ section.id }} .row img {
+  display: block;
+  width: 100%;
+}
+
+@media(max-width: 767px) {
+  .image-callout-sections-{{ section.id }} .row,
+  .image-callout-sections-{{ section.id }} .row .image-row
+  {
+    padding: 0;
+    margin: 0;
+  }
+
+  .image-callout-sections-{{ section.id }} .row .callout-text {
+    padding: 2em 1em;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Image Callout",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "left-image-callout",
+      "name": "Left Image Callout",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Text",
+          "default": "<h2>Lorem Ipsum</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "right-image-callout",
+      "name": "Right Image Callout",
+      "settings": [
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Text",
+          "default": "<h2>Lorem Ipsum</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Callout",
+      "category": "Grid"
+    }
+  ]
+}
+{% endschema %}

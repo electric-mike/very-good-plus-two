@@ -1,0 +1,60 @@
+<div id="faq" class="faq-section">
+  {% for block in section.blocks %}
+    {% if block.type == 'question' %}
+      <div class="accordion">
+        <p
+          class="question"
+          v-on:click="toggleQuestion({{ forloop.index }})"
+          v-bind:class="[ toggles[{{ forloop.index }}] && toggles[{{ forloop.index }}] === true ? 'active' : '' ]"
+        >{{ block.settings.question }}</p>
+        <transition name="list">
+          <p
+            v-cloak
+            v-if="toggles[{{ forloop.index }}] && toggles[{{ forloop.index }}] === true"
+            class="answer"
+          >{{ block.settings.answer }}</p>
+        </transition>
+      </div>
+    {% elsif block.type == 'header' %}
+      {% if forloop.index > 1 %}<br><br>{% endif %}
+      <h1>{{ block.settings.header_text }}</h1>
+      {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question/Answer",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Frequently asked question"
+        },
+        {
+          "type": "text",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Use this text to answer questions in as much detail as possible for your customers."
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "name": "Header",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header_text",
+          "label": "Header Text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

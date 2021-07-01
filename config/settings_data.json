@@ -1,0 +1,751 @@
+{
+  "current": {
+    "show_search": true,
+    "max_width_nav": false,
+    "header_linklist": "main-menu",
+    "logo": "shopify:\/\/shop_images\/VERY_GOOD_PLUS_cd811fec-ded1-4666-8e28-bfc8d05ce131.png",
+    "favicon": "shopify:\/\/shop_images\/Group_86_cd859df6-43ff-4b35-8c12-456cad97094f.png",
+    "header_search_terms": "Kendrick Lamar, Black Sabbath, Jimi Hendrix, Deftones",
+    "mobile_nav_type": "paginate",
+    "announcement_show_the_bar": true,
+    "announcement_headline": "Free shipping over $100",
+    "announcement_color": "#000000",
+    "side_cart_empty_message": "Let’s fill this thing up!",
+    "side_cart_link_text": "Shop Vinyl",
+    "side_cart_link_collection": "lps",
+    "upsell_product": "very-good-plus-slipmat",
+    "side_cart_announcement_show_the_bar": true,
+    "side_cart_announcement_headline": "Free shipping over $100",
+    "side_cart_announcement_color": "#9b9b9b",
+    "enable_promo_code": true,
+    "facebook_link": "#",
+    "instagram_link": "#",
+    "twitter_link": "#",
+    "pinterest_link": "#",
+    "youtube_link": "",
+    "snapchat_link": "",
+    "email_link": "",
+    "pagination_limit": 20,
+    "collection_image": "shopify:\/\/shop_images\/base-header-image.jpg",
+    "placeholder_image": "shopify:\/\/shop_images\/placeholder-image.png",
+    "placeholder_aspect_ratio": "4:5",
+    "product_colors": "black: #000000,\nblue: #0000FF,\nBright Blue: #87ceeb,\nbrown: #7B3F00,\nCarolina Blue: #7BAFD4,\nCharcoal: #616A6B,\ncoat: #ff0000,\nDark Grey: #707B7C,\nDark Gray: #707B7C,\ndark-turquoise: #23cddc,\nDeep Heather: #C0C0C0,\nDynamic Yellow: #FFFF33,\nEagle White: #fcfcfc,\nGloss Black: #000000,\nGloss Red: #ff0000,\nGloss White: #fafafa,\nGold: #FFD700,\nGray: #C0C0C0,\ngreen: #58D68D,\ngrey: #808080,\nHeather blue: #0000FF,\nHeather blue: #0000FF,\nHeather green: #58D68D,\nHeather Red: #ff0000,\nHeather Slate: #34495E,\nHeather Gray: #9c9ca6,\nHeather Grey: #9c9ca6,\nLeaf Green: #2d572c,\nlight blue: #add8e6,\nlight-brown: #feb035,\nMaroon: #800000,\nMint Green: #98ff98,\nNavy Blue: #000080,\nOlive Drab: #6b8e23,\nOlive: #6b8e23,\norange: #fe9001,\npink: #FFC0CB,\npurple: #800080,\nRed: #ff0000,\nRiver Red: #FF0000,\nRoyal Blue: #3498DB,\nSandstone: #FDEBD0,\nSignal Orange: #ff6700,\nSignal Yellow: #e5be01,\nsilver: #c0c0c0,\ntan: #eacea7,\nviolet: #EE82EE,\nwhite: #ffffff,\nYellow Green: #9acd32,\nyellow: #ffff00,\nKhaki: #c3b091,\nFatigue Green: #7c8a6f,\nRed\/Grey\/Black: #CC3300,\nBlack\/Grey: #0d0d0d,\nCamouflage: #78866B,\nOlive Drab Green: #6B8E23,\nBlack Camo: #000000,\nSlate:  #34495E",
+    "footer_linklist": "footer",
+    "footer_logo": "shopify:\/\/shop_images\/Group_86_cd859df6-43ff-4b35-8c12-456cad97094f.png",
+    "klaviyo_desktop_form_id": "NtLWcq",
+    "klaviyo_mobile_form_id": "JrenzQ",
+    "blog_show_tag_filter": true,
+    "password_image": "shopify:\/\/shop_images\/404.jpg",
+    "four_oh_four_image": "shopify:\/\/shop_images\/404.jpg",
+    "404_header": "404 Page Not Found",
+    "404_subtext": "Uh Oh! We can't find the page.",
+    "404_left_link": "shopify:\/\/collections\/all",
+    "404_left_link_text": "Shop New Arrivals",
+    "404_right_link": "shopify:\/\/collections\/lps",
+    "404_right_link_text": "Shop Vinyl",
+    "klaviyo_api_key": "LD5U78",
+    "klaviyo_bis_list": "Mw4q5X",
+    "style_guide_logo": "shopify:\/\/shop_images\/Very_Good_Plus.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/VERY_GOOD_PLUS_3.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "small",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#f0efee",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#000000",
+    "checkout_error_color": "#e32c2b",
+    "klaviyo_form_id": "NtLWcq",
+    "vimeo_link": "",
+    "tumblr_link": "",
+    "houzz_link": "",
+    "linkedin_link": "",
+    "og_image_fallback": "",
+    "logo_home": "",
+    "share_image": "",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "sections": {
+      "hero-section": {
+        "type": "hero-section",
+        "blocks": {
+          "cf3fecc9-2e3b-4983-8e47-1c7216e681f8": {
+            "type": "preheader",
+            "settings": {
+              "preheader_text": "A LEGACY OF",
+              "preheader_color": "#ffffff",
+              "preheader_desktop_size": 24,
+              "preheader_tablet_size": 16,
+              "preheader_desktop_weight": "400",
+              "preheader_mobile_size": 16,
+              "preheader_mobile_weight": "400"
+            }
+          },
+          "1581713333347": {
+            "type": "header",
+            "settings": {
+              "header_desktop_text": "KNOWLEDGE<br>& POWER",
+              "header_color": "#ffffff",
+              "header_desktop_size": 80,
+              "header_tablet_size": 64,
+              "header_desktop_weight": "900",
+              "header_mobile_text": "KNOWLEDGE<br>& POWER",
+              "header_mobile_size": 32,
+              "header_mobile_weight": "900"
+            }
+          },
+          "3157ae16-bd4f-44c3-93c2-3b964224cea7": {
+            "type": "subheader",
+            "settings": {
+              "subheader_text": "the culture of westside barbell",
+              "subheader_color": "#2a95fa",
+              "subheader_desktop_size": 24,
+              "subheader_tablet_size": 20,
+              "subheader_desktop_weight": "400",
+              "subheader_mobile_size": 20,
+              "subheader_mobile_weight": "400"
+            }
+          }
+        },
+        "block_order": [
+          "cf3fecc9-2e3b-4983-8e47-1c7216e681f8",
+          "1581713333347",
+          "3157ae16-bd4f-44c3-93c2-3b964224cea7"
+        ],
+        "settings": {
+          "background_color": "",
+          "hero_image_desktop": "shopify:\/\/shop_images\/Hero_BG-squat_1_1_1.png",
+          "desktop_height": 74,
+          "hero_image_mobile": "shopify:\/\/shop_images\/Hero_BG-squat_1_1_1.png",
+          "mobile_height": 136,
+          "desktop_image_position": "top",
+          "desktop_text_align": "center",
+          "mobile_image_position": "top",
+          "mobile_text_align": "center",
+          "desktop_text_position": "center center",
+          "mobile_text_position": "flex-end",
+          "max_width": 832
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "product_limit": 4,
+          "header_text": "You might also like",
+          "enable_scrollbar": true
+        }
+      },
+      "collection-filter-settings": {
+        "type": "collection-filter-settings",
+        "blocks": {
+          "e8ee8c35-f997-405b-9a19-59bd73fcb430": {
+            "type": "group",
+            "settings": {
+              "name": "Color",
+              "tags": "Black, \nRed, \nBlue, \nBrown, \nCharcoal, \nGrey, \nTurquoise, \nYellow, \nWhite, \nGold, \nGray, \nGreen, \nSlate, \nMaroon, \nMint Green, \nNavy, \nOlive Drab, \nOrange, \nPink, \nPurple, \nSandstone, \nYellow, \nSilver, \nTan, \nCamouflage, \nKhaki"
+            }
+          }
+        },
+        "block_order": [
+          "e8ee8c35-f997-405b-9a19-59bd73fcb430"
+        ],
+        "settings": {}
+      },
+      "product-rhpa": {
+        "type": "product-rhpa",
+        "settings": {
+          "rhpa_type": "swatch",
+          "rhpa_color_swatch_type": "image",
+          "show_quantity_selector": false
+        }
+      },
+      "product-description": {
+        "type": "product-description",
+        "settings": {}
+      },
+      "email-signup": {
+        "type": "email-signup",
+        "settings": {
+          "heading_text": "We don’t accept new members but this is close.",
+          "subheading_text": "Make your morning email scroll and <span>coffee<\/span> stronger.",
+          "klaviyo_desktop_form_id": "",
+          "klaviyo_mobile_form_id": ""
+        }
+      },
+      "featured-collections-template": {
+        "type": "featured-collections-template",
+        "blocks": {
+          "985e2ab7-5fac-45a6-8dea-1b334370e9e8": {
+            "type": "collection",
+            "settings": {
+              "collection": "apparel",
+              "collection_image": "shopify:\/\/shop_images\/DSC7288_1.png",
+              "collection_description": "Where it all started. An absolute classic for any Westside Barbell fanatic. Now on sale for a limited time during Black Friday Weekend. (3 Line max.)"
+            }
+          },
+          "2cafa142-2022-4785-a440-817d6065cd38": {
+            "type": "collection",
+            "settings": {
+              "collection": "books",
+              "collection_image": "shopify:\/\/shop_images\/Rectangle_16.png",
+              "collection_description": "Where it all started. An absolute classic for any Westside Barbell fanatic. Now on sale for a limited time during Black Friday Weekend. (3 Line max.)"
+            }
+          },
+          "f5ef30c7-7536-4cff-b057-20e1284d2822": {
+            "type": "collection",
+            "settings": {
+              "collection": "special-offers",
+              "collection_image": "shopify:\/\/shop_images\/Rectangle_10.png",
+              "collection_description": "Where it all started. An absolute classic for any Westside Barbell fanatic. Now on sale for a limited time during Black Friday Weekend. (3 Line max.)"
+            }
+          }
+        },
+        "block_order": [
+          "985e2ab7-5fac-45a6-8dea-1b334370e9e8",
+          "2cafa142-2022-4785-a440-817d6065cd38",
+          "f5ef30c7-7536-4cff-b057-20e1284d2822"
+        ],
+        "settings": {
+          "header_image": "shopify:\/\/shop_images\/DSC7800_1.jpg"
+        }
+      },
+      "collection-settings": {
+        "type": "collection-settings",
+        "settings": {
+          "enable_product_image_hover": true,
+          "enable_vendor_filter": true
+        }
+      },
+      "page-contact-settings": {
+        "type": "page-contact-settings",
+        "settings": {
+          "page_image_enable": true,
+          "page_image_url": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b7.jpg"
+        }
+      },
+      "page-faq": {
+        "type": "page-faq",
+        "blocks": {
+          "b91c54ef-270b-40bc-9d28-db769b315cb5": {
+            "type": "header",
+            "settings": {
+              "header_text": "General Questions"
+            }
+          },
+          "d45b92b6-ca63-4365-bed8-68ba6fff45b3": {
+            "type": "question",
+            "settings": {
+              "question": "Frequently asked question",
+              "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            }
+          },
+          "2df0dd17-5130-460c-8888-0844e0c956fd": {
+            "type": "question",
+            "settings": {
+              "question": "Frequently asked question",
+              "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            }
+          },
+          "7a21ace2-6ad9-4256-9c98-0ef62d540dd2": {
+            "type": "header",
+            "settings": {
+              "header_text": "Vinyl"
+            }
+          },
+          "d4486a11-8bf4-4e90-adb4-2e843d0a5fdf": {
+            "type": "question",
+            "settings": {
+              "question": "Frequently asked question",
+              "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            }
+          },
+          "2e886005-ce29-40f5-9d6e-d77d4f72022a": {
+            "type": "question",
+            "settings": {
+              "question": "Frequently asked question",
+              "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            }
+          },
+          "00166199-4b52-4b39-8019-dde2f03049c2": {
+            "type": "question",
+            "settings": {
+              "question": "Frequently asked question",
+              "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            }
+          }
+        },
+        "block_order": [
+          "b91c54ef-270b-40bc-9d28-db769b315cb5",
+          "d45b92b6-ca63-4365-bed8-68ba6fff45b3",
+          "2df0dd17-5130-460c-8888-0844e0c956fd",
+          "7a21ace2-6ad9-4256-9c98-0ef62d540dd2",
+          "d4486a11-8bf4-4e90-adb4-2e843d0a5fdf",
+          "2e886005-ce29-40f5-9d6e-d77d4f72022a",
+          "00166199-4b52-4b39-8019-dde2f03049c2"
+        ],
+        "settings": {}
+      },
+      "staff-settings": {
+        "type": "staff-settings",
+        "blocks": {
+          "efc90978-3e87-44f4-b999-4f2ad5fd4523": {
+            "type": "person",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/9f16dac8db22ad6b5613319f68639bfe.jpg",
+              "description": "<h1>Ronald McDonald<\/h1>\n<h4>Media Manger <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+            }
+          },
+          "bf09f097-bf30-4fe0-95d0-001115724997": {
+            "type": "person",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/number-of-the-beast-black-vinyl_720x_0df1e966-42c5-4bd8-8488-ad3174545d97.jpg",
+              "description": "<h1>John Q Public<\/h1>\n<h4>Vinyl Curator <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+            }
+          },
+          "068cace2-f1dc-4b77-8f6e-83d62567eb76": {
+            "type": "person",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b7.jpg",
+              "description": "<h1>Mike Weaver<\/h1>\n<h4>Overall Good Guy <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "efc90978-3e87-44f4-b999-4f2ad5fd4523",
+          "bf09f097-bf30-4fe0-95d0-001115724997",
+          "068cace2-f1dc-4b77-8f6e-83d62567eb76"
+        ],
+        "settings": {}
+      },
+      "custom-html-grid": {
+        "type": "custom-html-grid",
+        "blocks": {
+          "8ca962ea-30ac-494f-835e-47340497a9fd": {
+            "type": "block",
+            "settings": {
+              "background_color": "rgba(0,0,0,0)",
+              "overlay": false,
+              "invert_text": true,
+              "no_side_padding": true,
+              "desktop_html": "<div class=\"row -o-bottom custom-constrain-items center-text\">\n<div class=\"column-12\">\n<p><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/1096\/7360\/files\/Group.png?v=1608428741\" style=\"width: 100%; max-width: 200px; display: block; margin: 0 auto;\"><\/p>\n<br>\n<p>Westside Barbell is an invitation only training laboratory where only the strongest of mind and body survive. Our goal is simple. To become the best and push every boundary known to man in doing so.<\/p>\n<p>The lineage and achievements of all Westside Barbell athletes who have walked through our chalky doors is of legends. Our gym has broke over 140 world records, won olympic gold, heavyweight world championships, to name but a few of our achievements.<\/p>\n<p>Our education is based on theoretical research and is backed by practical application. We only write about what works, not what might work or what doesn't work. We believe that training information should filter down from the athletes at the the top rather than spew out from the keyboard hero's at the bottom.<\/p>\n<br>\n<h2 class=\"light-blue no-margin\">Often Imitated<br>Always Irritated<\/h2>\n<\/div>\n<\/div>",
+              "mobile_html": "<div class=\"row-no-bottom custom-constrain-items center-text\">\n<div class=\"column-12\">\n<p><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/1096\/7360\/files\/Group.png?v=1608428741\" style=\"width: 100%; max-width: 200px; display: block; margin: 0 auto;\"><\/p>\n<br>\n<p>Westside Barbell is an invitation only training laboratory where only the strongest of mind and body survive. Our goal is simple. To become the best and push every boundary known to man in doing so.<\/p>\n<p>The lineage and achievements of all Westside Barbell athletes who have walked through our chalky doors is of legends. Our gym has broke over 140 world records, won olympic gold, heavyweight world championships, to name but a few of our achievements.<\/p>\n<p>Our education is based on theoretical research and is backed by practical application. We only write about what works, not what might work or what doesn't work. We believe that training information should filter down from the athletes at the the top rather than spew out from the keyboard hero's at the bottom.<\/p>\n<br>\n<h2 class=\"light-blue no-margin\">Often Imitated<br>Always Irritated<\/h2>\n<\/div>\n<\/div>"
+            }
+          }
+        },
+        "block_order": [
+          "8ca962ea-30ac-494f-835e-47340497a9fd"
+        ],
+        "settings": {
+          "max_width": false,
+          "constrain_items": false,
+          "tablet_constrain_items": true,
+          "background_color": "#212121"
+        }
+      },
+      "featured-blog": {
+        "type": "featured-blog",
+        "settings": {
+          "heading": "Knowledge",
+          "blog": "2020-articles",
+          "post_limit": 6
+        }
+      },
+      "page-settings": {
+        "type": "page-settings",
+        "settings": {
+          "page_image_enable": false
+        }
+      },
+      "instagram": {
+        "type": "instagram",
+        "settings": {
+          "heading": "Follow us on Instagram",
+          "instagram_access_token": "8fc98ad200e51e8e9a88dc3cb09670bd",
+          "item_limit": 6,
+          "per_row": 6,
+          "instagram_heading_color": "#000",
+          "instagram_background_color": "#fff"
+        }
+      },
+      "1611863947c36eb840": {
+        "type": "hero-section",
+        "blocks": {
+          "5095c67b-d51d-45a3-bca3-b4b5da389960": {
+            "type": "header",
+            "settings": {
+              "header_desktop_text": "Vinyl Never Sounded So Good",
+              "header_color": "#131313",
+              "header_desktop_size": 64,
+              "header_tablet_size": 48,
+              "header_desktop_weight": "900",
+              "header_mobile_text": "",
+              "header_mobile_size": 32,
+              "header_mobile_weight": "900"
+            }
+          },
+          "849fdd1e-cf79-4829-882e-dda73f3edf6c": {
+            "type": "subheader",
+            "settings": {
+              "subheader_text": "We dig the crates to bring you the best hand-picked records",
+              "subheader_color": "#131313",
+              "subheader_desktop_size": 20,
+              "subheader_tablet_size": 16,
+              "subheader_desktop_weight": "400",
+              "subheader_mobile_size": 12,
+              "subheader_mobile_weight": "400"
+            }
+          },
+          "728ea668-9f7d-41f1-89a6-3d8db9d28b16": {
+            "type": "button",
+            "settings": {
+              "button_text": "SHOP NOW",
+              "button_link": "shopify:\/\/collections\/lps",
+              "button_desktop_weight": "400",
+              "button_mobile_weight": "400",
+              "button_color": "",
+              "button_background_color": "",
+              "is_button": true,
+              "secondary_button": false,
+              "button_top_margin": 10,
+              "button_side_margin": 0,
+              "button_top_padding": 14,
+              "button_side_padding": 50
+            }
+          }
+        },
+        "block_order": [
+          "5095c67b-d51d-45a3-bca3-b4b5da389960",
+          "849fdd1e-cf79-4829-882e-dda73f3edf6c",
+          "728ea668-9f7d-41f1-89a6-3d8db9d28b16"
+        ],
+        "settings": {
+          "background_color": "#ffffff",
+          "hero_image_desktop": "shopify:\/\/shop_images\/Group_92.jpg",
+          "desktop_height": 72,
+          "hero_image_mobile": "shopify:\/\/shop_images\/mobile-hero.jpg",
+          "mobile_height": 150,
+          "desktop_image_position": "center",
+          "desktop_text_align": "left",
+          "mobile_image_position": "center",
+          "mobile_text_align": "center",
+          "desktop_text_position": "center flex-start",
+          "mobile_text_position": "flex-end",
+          "max_width": 592
+        }
+      },
+      "product-images": {
+        "type": "product-images",
+        "settings": {
+          "desktop_images_type": "tiles"
+        }
+      },
+      "1612322319f0f75c13": {
+        "type": "featured-collection",
+        "settings": {
+          "title": "Featured Products",
+          "collection": "lps",
+          "product_limit": 4,
+          "shop_link_text": "View All",
+          "enable_scrollbar": true,
+          "background_color": "rgba(0,0,0,0)",
+          "text_color": "rgba(0,0,0,0)"
+        }
+      },
+      "page-about-settings": {
+        "type": "page-about-settings",
+        "settings": {
+          "page_image_enable": true,
+          "page_image_url": "shopify:\/\/shop_images\/9f16dac8db22ad6b5613319f68639bfe.jpg"
+        }
+      },
+      "1612452886d26689e4": {
+        "type": "logo-list",
+        "blocks": {
+          "1612452886d26689e4-0": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/spin_30601bde-43ee-4e50-b68f-4e622c615dd4.png"
+            }
+          },
+          "1612452886d26689e4-1": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/1280px-Fast_Company_logo_1.png"
+            }
+          },
+          "1612452886d26689e4-2": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/logo_3_dc95bdbf-3ae8-4eee-bab4-0e9387eb4e12.png"
+            }
+          },
+          "e1db021c-a4cb-4f94-8ef3-6d5de639431c": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/5852df80394e280271f3b492_1.png"
+            }
+          },
+          "84fcc79b-f5ea-46d4-b0d6-ff6d93a4d579": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/GQ_Logo.svg_e33aab95-97ab-4b30-b9e9-a3ce241f98b7.png"
+            }
+          },
+          "36b0efb9-0f32-461f-a332-e65686f3603d": {
+            "type": "logo_image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/the-new-york-times-logo_1.png"
+            }
+          }
+        },
+        "block_order": [
+          "1612452886d26689e4-0",
+          "1612452886d26689e4-1",
+          "1612452886d26689e4-2",
+          "e1db021c-a4cb-4f94-8ef3-6d5de639431c",
+          "84fcc79b-f5ea-46d4-b0d6-ff6d93a4d579",
+          "36b0efb9-0f32-461f-a332-e65686f3603d"
+        ],
+        "settings": {
+          "title": "As Seen On",
+          "logo_opacity": 70,
+          "background_color": "rgba(0,0,0,0)",
+          "text_color": "#000000"
+        }
+      },
+      "1612465187131f5a0e": {
+        "type": "featured-blog",
+        "settings": {
+          "heading": "Featured Articles",
+          "blog": "news",
+          "post_limit": 4,
+          "enable_scrollbar": true,
+          "background_color": "rgba(0,0,0,0)",
+          "text_color": "rgba(0,0,0,0)"
+        }
+      },
+      "1612472196a617884f": {
+        "type": "hero-section",
+        "blocks": {
+          "911d32ab-7cb2-49a1-8305-0db86162642c": {
+            "type": "header",
+            "settings": {
+              "header_desktop_text": "New Arrival Stacks",
+              "header_color": "#ffffff",
+              "header_desktop_size": 64,
+              "header_tablet_size": 48,
+              "header_desktop_weight": "900",
+              "header_mobile_text": "",
+              "header_mobile_size": 40,
+              "header_mobile_weight": "900"
+            }
+          },
+          "a4838007-db8e-4f17-852b-092739159ab9": {
+            "type": "button",
+            "settings": {
+              "button_text": "Shop New",
+              "button_link": "shopify:\/\/collections\/new-arrivals",
+              "button_desktop_weight": "400",
+              "button_mobile_weight": "400",
+              "button_color": "#121212",
+              "button_background_color": "#ffffff",
+              "is_button": true,
+              "secondary_button": false,
+              "button_top_margin": 20,
+              "button_side_margin": 18,
+              "button_top_padding": 16,
+              "button_side_padding": 32
+            }
+          }
+        },
+        "block_order": [
+          "911d32ab-7cb2-49a1-8305-0db86162642c",
+          "a4838007-db8e-4f17-852b-092739159ab9"
+        ],
+        "settings": {
+          "background_color": "rgba(0,0,0,0)",
+          "hero_image_desktop": "shopify:\/\/shop_images\/clay-banks-fEVaiLwWvlU-unsplash_1_1.png",
+          "desktop_height": 50,
+          "hero_image_mobile": "shopify:\/\/shop_images\/clay-banks-fEVaiLwWvlU-unsplash_1_1.png",
+          "mobile_height": 90,
+          "desktop_image_position": "center",
+          "desktop_text_align": "center",
+          "mobile_image_position": "center",
+          "mobile_text_align": "center",
+          "desktop_text_position": "center center",
+          "mobile_text_position": "center",
+          "max_width": 0
+        }
+      },
+      "1612578922ba940b0a": {
+        "type": "featured-collections",
+        "blocks": {
+          "5685c0a4-e249-42d8-ae61-958257c241eb": {
+            "type": "collection",
+            "settings": {
+              "collection": "best-sellers",
+              "image": "shopify:\/\/shop_images\/tame-impala-front_1600x_5b019a7f-5c80-4e49-bb28-f866e562879d.jpg"
+            }
+          },
+          "745639e1-215a-416a-86bc-8fd9b83259a2": {
+            "type": "collection",
+            "settings": {
+              "collection": "new-arrivals",
+              "image": "shopify:\/\/shop_images\/iron-maiden-number-of-the-beast-vinyl-1_900x_a48bfed0-4248-47cf-9324-ccb437efd9f8.jpg"
+            }
+          },
+          "36fab80f-e262-4797-afec-cdb7fa297a31": {
+            "type": "collection",
+            "settings": {
+              "collection": "lps",
+              "image": "shopify:\/\/shop_images\/gangstarr-hard-to-earn_1600x_0642bd54-a4f9-4bad-b337-97014ef3348c.jpg"
+            }
+          }
+        },
+        "block_order": [
+          "5685c0a4-e249-42d8-ae61-958257c241eb",
+          "745639e1-215a-416a-86bc-8fd9b83259a2",
+          "36fab80f-e262-4797-afec-cdb7fa297a31"
+        ],
+        "settings": {
+          "heading": "Featured Collections",
+          "enable_scrollbar": true,
+          "background_color": "rgba(0,0,0,0)",
+          "text_color": "#000000"
+        }
+      },
+      "1612625240eef06b80": {
+        "type": "custom-html-grid",
+        "blocks": {
+          "a009698c-3352-429e-914f-f108a1054c87": {
+            "type": "block",
+            "settings": {
+              "background_color": "#ffffff",
+              "mobile_background_image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
+              "desktop_background_image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
+              "overlay": false,
+              "invert_text": false,
+              "no_side_padding": true,
+              "desktop_html": "",
+              "desktop_styles": "",
+              "mobile_html": "",
+              "mobile_styles": ""
+            }
+          },
+          "38177150-aafd-4dc8-99e1-a8cdeee5d521": {
+            "type": "block",
+            "settings": {
+              "background_color": "#f8f7f1",
+              "overlay": false,
+              "invert_text": false,
+              "no_side_padding": false,
+              "desktop_html": "<h1>About Us<\/h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar venenatis quam, in sodales lectus pellentesque tristique. Curabitur viverra tellus eget arcu feugiat porttitor non sed magna. Vivamus scelerisque a est quis sodales. Praesent vitae finibus quam. In turpis neque, feugiat sit amet enim eu, sollicitudin lobortis tortor. Fusce porta ac purus et mattis. <\/p>\n<br>\n<a href=\"#\" class=\"button\">Read More<\/a>",
+              "desktop_styles": "",
+              "mobile_html": "<h1>About Us<\/h1>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar venenatis quam, in sodales lectus pellentesque tristique. Curabitur viverra tellus eget arcu feugiat porttitor non sed magna. Vivamus scelerisque a est quis sodales. Praesent vitae finibus quam. In turpis neque, feugiat sit amet enim eu, sollicitudin lobortis tortor. Fusce porta ac purus et mattis. <\/p>\n<br>\n<a href=\"#\" class=\"button\">Read More<\/a>",
+              "mobile_styles": ""
+            }
+          }
+        },
+        "block_order": [
+          "a009698c-3352-429e-914f-f108a1054c87",
+          "38177150-aafd-4dc8-99e1-a8cdeee5d521"
+        ],
+        "settings": {
+          "max_width": false,
+          "min_height": false,
+          "constrain_items": false,
+          "tablet_constrain_items": false,
+          "reverse_mobile_order": false,
+          "background_color": "#f8f7f1"
+        }
+      },
+      "1613017069d6e84d90": {
+        "type": "featured-quotes",
+        "blocks": {
+          "b97a6f65-c4f0-4e23-bdbd-e5f470a1aeec": {
+            "type": "block",
+            "settings": {
+              "background_color": "rgba(0,0,0,0)",
+              "align_text": "left",
+              "testimonial": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar venenatis quam, in sodales lectus pellentesque tristique. Curabitur viverra tellus eget arcu feugiat porttitor non sed magna. Vivamus scelerisque a est quis sodales. Praesent vitae finibus quam. In turpis neque, feugiat sit amet enim eu, sollicitudin lobortis tortor. Fusce porta ac purus et mattis.",
+              "author": "Shawn K"
+            }
+          },
+          "f9f8c74c-3987-4afe-a487-a33ab00ceb13": {
+            "type": "block",
+            "settings": {
+              "background_color": "rgba(0,0,0,0)",
+              "align_text": "left",
+              "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+              "author": "Chase C."
+            }
+          },
+          "fa43f61f-8747-4423-9a09-ab69c2e5b4a8": {
+            "type": "block",
+            "settings": {
+              "background_color": "rgba(0,0,0,0)",
+              "align_text": "left",
+              "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+              "author": "Dominique S."
+            }
+          }
+        },
+        "block_order": [
+          "b97a6f65-c4f0-4e23-bdbd-e5f470a1aeec",
+          "f9f8c74c-3987-4afe-a487-a33ab00ceb13",
+          "fa43f61f-8747-4423-9a09-ab69c2e5b4a8"
+        ],
+        "settings": {
+          "enable_scrollbar": true,
+          "background_color": "rgba(0,0,0,0)",
+          "text_color": "rgba(0,0,0,0)"
+        }
+      },
+      "checkout-announcement": {
+        "type": "checkout-announcement",
+        "settings": {
+          "text": "<p>Free shipping over $100<\/p>",
+          "info_text": "#ffffff",
+          "info_background": "#000000",
+          "border_top": false,
+          "border_bottom": false,
+          "text_size": 14
+        }
+      },
+      "checkout-upsell": {
+        "type": "checkout-upsell",
+        "settings": {
+          "block_title": "Don't miss out",
+          "title_prefix": "Add a&nbsp;",
+          "upsell_product": "very-good-plus-slipmat",
+          "title_suffix": "&nbsp;to get the most out of your turntable"
+        }
+      }
+    },
+    "content_for_index": [
+      "1611863947c36eb840",
+      "1612578922ba940b0a",
+      "1612452886d26689e4",
+      "1612322319f0f75c13",
+      "1612472196a617884f",
+      "1612465187131f5a0e",
+      "1612625240eef06b80",
+      "1613017069d6e84d90"
+    ]
+  }
+}

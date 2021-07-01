@@ -1,0 +1,348 @@
+//------------------
+// SCSS VARS
+//------------------
+@import './variables.scss';
+
+//------------------
+// CUSTOMER GLOBAL SPACING
+//------------------
+.login,
+.create,
+.activate,
+.account,
+.addresses,
+.order,
+#ReCharge
+{
+  padding-top: 3em;
+  padding-bottom: 3em;
+  background: $light-gray;
+  border-bottom: 1px solid $white;
+}
+
+// shared left side nav styles
+.account,
+.addresses,
+.order {
+  .customer-detail {
+    @media(min-width: $tablet) {
+      margin-right: 3em;
+    }
+
+    .account-links {
+      .account-link {
+        display: block;
+        position: relative;
+        padding: .25em 0.5rem;
+        margin: .25em -0.5em;
+        font-weight: normal;
+        appearance: none;
+        text-decoration: none;
+        z-index: 1;
+        max-width: 150px;
+
+        &:last-of-type {
+          margin-bottom: 2em;
+        }
+
+        &.active {
+          color: $black;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .contact-area {
+      margin-top: 2em;
+      padding-top: 2em;
+      border-top: 1px solid $dark-gray;
+
+      .contact-header {
+        color: $primary-color;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .no-orders, .no-addresses {
+    margin-bottom: 0;
+  }
+
+  .right-area {
+    padding: 2em;
+    margin-top: 1em;
+    background: $white;
+
+    @media(min-width: $tablet) {
+      margin-top: 0;
+      padding: 4em;
+    }
+  }
+}
+
+//------------------
+// CUSTOMER LOGIN / CREATE / ACTIVATE
+//------------------
+.login, .create, .activate {
+  &-inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-top-text {
+    margin-bottom: 2em;
+    text-align: center;
+  }
+
+  .form-wrapper {
+    width: 100%;
+    max-width: 500px;
+    margin: 1em 0;
+    background: $white;
+    padding: 2em;
+
+    .button {
+      width: 100%;
+    }
+  }
+
+  .errors {
+    margin-bottom: 0.5em;
+
+    ul {
+      list-style-type: none;
+
+      li {
+        color: $red;
+        margin-left: 0;
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  .form-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    text-align: center;
+
+    a {
+      flex-basis: 40%;
+      margin-top: 1em;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+//------------------
+// CHALLENGE
+//------------------
+.shopify-challenge__container {
+  margin: 7em auto;
+  max-width: 310px;
+}
+
+//------------------
+// ACCOUNT
+//------------------
+.account {
+  table {
+    width: 100%;
+  }
+
+  tr {
+    text-align: left;
+  }
+}
+
+//------------------
+// ADDRESSES
+//------------------
+.addresses {
+  .add-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .add-actions + .vue-form {
+    margin-top: 2em;
+  }
+
+  .right-area {
+    margin-bottom: 2em;
+  }
+
+  .action-cancel-wrapper {
+    text-align: center;
+    margin: 3em auto 0;
+  }
+}
+
+//------------------
+// ORDER TABLES
+//------------------
+.order {
+  .order-number {
+    margin-bottom: 0;
+  }
+}
+
+//------------------
+// ORDER TABLES
+//------------------
+table.order-history {
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      th {
+        border-bottom: 1px solid $dark-gray;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+        color: $primary-color;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  tr {
+    th:not(:last-of-type),
+    td:not(:last-of-type) {
+      padding-right: 0.5em;
+    }
+
+    th:not(:first-of-type),
+    td:not(:first-of-type) {
+      text-align: center;
+    }
+
+    td {
+      padding-top: 1em;
+      padding-bottom: 1em;
+    }
+
+    .fulfillment_status {
+      display: none;
+
+      @media(min-width: $mobile) {
+        display: table-cell;
+      }
+    }
+  }
+}
+
+table.order-table, table.rc_table {
+  width: 100%;
+
+  tr {
+    vertical-align: top;
+
+    th:not(:last-of-type),
+    td:not(:last-of-type) {
+      padding-right: 0.5em;
+    }
+  }
+
+  .sku {
+    display: table-column;
+
+    @media(min-width: $mobile) {
+      display: table-cell;
+    }
+  }
+
+  tfoot {
+    .spacing-row {
+      padding-top: 20px;
+    }
+
+    th {
+      text-align: left;
+
+      @media(min-width: $mobile) {
+        padding-right: 2em;
+        text-align: right;
+      }
+    }
+  }
+}
+
+//------------------
+// ADD/EDIT FORMS
+//------------------
+// .customer_address_table {
+// }
+
+.action_bottom {
+  .button, button {
+    width: 100%;
+  }
+}
+
+//------------------
+// RECHARGE PAGES SPECIFIC STYLES
+//------------------
+.rc_text {
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}
+
+.rc_schedule__order__address {
+  margin-bottom: 1em;
+}
+
+.rc_schedule__order {
+  border-bottom: 1px solid $light-gray;
+  margin-bottom: 2em;
+}
+
+.rc_layout {
+  fieldset {
+    border: none;
+    margin-bottom: 1em;
+  }
+
+  [class*=row] {
+    margin: 0;
+  }
+
+  .rc_form__group {
+    margin-bottom: 1em;
+  }
+
+  .input-row {
+    display: block !important;
+
+    input[type="checkbox"] {
+      display: inline-block;
+      appearance: checkbox;
+      width: auto;
+
+      ~ label {
+        display: inline-block;
+      }
+    }
+  }
+}

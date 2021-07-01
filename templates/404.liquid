@@ -1,0 +1,15 @@
+<div
+  class="page four-oh-four lazyload"
+  style="background-image: url('{{ settings.four_oh_four_image | img_url: 'medium' }}');"
+  data-bg="{{ settings.four_oh_four_image | img_url: 'master' }}"
+>
+  <div class="overlay"></div>
+  <div class="four-oh-four-inner max-width">
+    <h1>{{ settings.404_header }}</h1>
+    <p>{{ settings.404_subtext }}</p>
+    <div class="links-wrapper">
+      <a class="button" href="{{ settings.404_left_link }}">{{ settings.404_left_link_text }}</a>
+      <a class="button secondary" href="{{ settings.404_right_link }}">{{ settings.404_right_link_text }}</a>
+    </div>
+  </div>
+</div>

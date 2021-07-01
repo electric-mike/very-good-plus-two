@@ -1,0 +1,2 @@
+/*! For license information please see assets.js.LICENSE */
+(window.webpackJsonp=window.webpackJsonp||[]).push([["assets"],{"./assets/favicon.png":function(module,exports){eval("throw new Error(\"Module build failed (from ../node_modules/imagemin-webpack/src/imagemin-loader.js):\\nError: ENOENT: no such file or directory, open '/Users/michaelweaver/Websites/westside-barbell/src/assets/favicon.png'\");\n\n//# sourceURL=webpack:///./assets/favicon.png?")}}]);

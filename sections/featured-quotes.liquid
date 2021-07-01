@@ -1,0 +1,182 @@
+<style>
+  {% if section.settings.background_color != 'rgba(0,0,0,0)' %}
+  #shopify-section-{{ section.id }} {
+    display: inline-block;
+    width: 100%;
+    background-color: {{ section.settings.background_color }};
+  }
+  {% endif %}
+
+  {% if section.settings.text_color != 'rgba(0,0,0,0)' %}
+  #shopify-section-{{ section.id }} * {
+    color: {{ section.settings.text_color }};
+  }
+  {% endif %}
+</style>
+
+<div
+  class="{{ section.settings.align_text }}-text testimonial-{{ section.id }} max-width custom-constrain-items"
+  data-section-id="{{ section.id }}"
+  data-section-type="testimonial"
+>
+  <div id="simplebar-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div
+        class="testimonial-wrapper"
+        style="background-color: {{ block.settings.background_color }}; {% if block.settings.background_image %}background-image: url('{{ block.settings.background_image | img_url: 'master' }}');{% endif %}"
+      >
+        {% if block.settings.testimonial != blank %}
+          <h3>{{ block.settings.testimonial }}</h3>
+        {% endif %}
+        {% if block.settings.author != blank %}
+          <p class="small">{{ block.settings.author | escape }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.testimonial-{{ section.id }} {
+  padding: 3em 1.25em;
+}
+
+@media(max-width: 767px) {
+  .testimonial-{{ section.id }} {
+    padding: 2em 1.25em;
+  }
+}
+
+.testimonial-{{ section.id }} .testimonial-wrapper {
+  padding: 3em 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media(max-width: 550px) {
+  .testimonial-{{ section.id }} .testimonial-wrapper {
+    padding: 0;
+  }
+}
+
+.testimonial-{{ section.id }} .testimonial-wrapper p {
+  margin-bottom: 0;
+}
+</style>
+
+
+{% if section.settings.enable_scrollbar %}
+<script>
+  new SimpleBar(document.getElementById('simplebar-{{ section.id }}'), {
+    autoHide: true,
+    forceVisible: false
+  });
+</script>
+
+<style>
+#simplebar-{{ section.id }}[data-simplebar="init"] {
+  margin: 3em 0;
+}
+
+#simplebar-{{ section.id }}[data-simplebar="init"] .simplebar-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+#simplebar-{{ section.id }}[data-simplebar="init"] .simplebar-content  .testimonial-wrapper {
+  min-width: 100%;
+  padding: 0 4em 2.5em 0;
+}
+
+#simplebar-{{ section.id }}[data-simplebar="init"] .simplebar-content  .testimonial-wrapper:last-of-type {
+  padding-right: 0;
+}
+
+@media(max-width: 767px) {
+  #simplebar-{{ section.id }}[data-simplebar="init"] .simplebar-content  .testimonial-wrapper,
+  #simplebar-{{ section.id }}[data-simplebar="init"] .simplebar-content  .testimonial-wrapper:last-of-type {
+    padding: 0 1.25em 2.5em 1.25em;
+  }
+}
+</style>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Featured Quotes",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_scrollbar",
+        "label": "Enable Scrollbar",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Quote",
+        "settings": [
+          {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background Color",
+            "default": "#ffffff"
+          },
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Desktop Background Image"
+          },
+          {
+            "type": "select",
+            "id": "align_text",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              }
+            ]
+          },
+          {
+            "type": "textarea",
+            "id": "testimonial",
+            "label": "Text",
+            "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+          },
+          {
+            "type": "text",
+            "id": "author",
+            "label": "Author",
+            "default": "Author's name"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Quotes",
+        "category": "Text"
+      }
+    ]
+  }
+{% endschema %}

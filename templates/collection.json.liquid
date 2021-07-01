@@ -1,0 +1,50 @@
+{% comment %}
+--
+ELECTRIC EYE
+Mike Weaver
+--
+
+Collection JSON template
+Please do not edit
+
+{% endcomment %}
+
+{% layout none %}
+{% assign loopIndex = 0 %}
+{
+  {% paginate collection.products by 9999 %}
+    "page": {{ paginate.current_page }},
+    "totalPages": {{ paginate.pages }},
+    "products": [
+      {% for product in collection.products %}
+        {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {% if loopIndex != 0 %},{% endif %}
+        {
+          "title": "{{ product.title | escape }}",
+          "handle": "{{ product.handle | escape }}",
+          "price": {{ product.price }},
+          {% if product.compare_at_price %}"compare_at_price": {{ product.compare_at_price }},{% endif %}
+          "featured_image": "{{ img_url }}",
+          "featured_image_aspectratio": "{{ product.featured_image.aspect_ratio }}",
+          "secondary_image": "{{ secondary_img_url }}",
+          "secondary_image_aspectratio": "{{ product.images[1].aspect_ratio }}",
+          {% if product.variants.size > 1 %}
+          {%- capture swatches = -%}{% include 'color-swatches' %}{%- endcapture -%}
+          "swatches": {{ swatches | strip | json }},
+          {%- capture sizes = -%}{% include 'variant-sizes' %}{%- endcapture -%}
+          "sizes": {{ sizes | strip | strip_newlines | replace: ' ,', ',' | json }},
+          {% endif %}
+          "images": {{ product.images | json }},
+          "reviews": {{ product.metafields.judgeme["badge"] | json }},
+          "tags": "{{ product.tags | join: ',' }}",
+          "vendor": "{{ product.vendor | escape }}",
+          "type": "{{ product.type | escape }}",
+          "id": {{ product.id }},
+          "position": {{ forloop.index }}
+        }
+        {% assign loopIndex = loopIndex | plus: 1 %}
+      {% endfor %}
+    ]
+  {% endpaginate %}
+}

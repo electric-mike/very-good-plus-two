@@ -1,0 +1,98 @@
+{% if section.settings.page_image_enable %}
+  <section class="max-width split-page">
+    <h1 class="hero-text mobile-page-header">{{ page_title }}</h1>
+    <div class="page-image-content-wrapper row-align-middle">
+      <div class="page-image column-12-tablet-vert-6">
+        <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: section.settings.page_image_url.aspect_ratio }}%;">
+          {%- assign img_url = section.settings.page_image_url.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          <img
+            class="lazyload blur-up full-width"
+            src="{{ settings.placeholder_image | img_url }}"
+            alt="{{ section.settings.page_image_url.alt | escape }}"
+            data-src="{{ img_url }}"
+            data-widths="[360, 540, 720, 900, 1080, 1600]"
+            data-sizes="auto"
+            data-aspectratio="{{ section.settings.page_image_url.aspect_ratio }}"
+          />
+          <noscript>
+            <img class="lazyloaded" src="{{ section.settings.page_image_url.src | img_url: '800x' }}" alt="{{section.settings.page_image_url.alt }}">
+          </noscript>
+        </div>
+      </div>
+      <div class="page-content column-12-tablet-vert-6">
+        <h1 class="hero-text tablet-vert-page-header">{{ page_title }}</h1>
+        {{ page.content }}
+
+        {% form 'contact' %}
+          {% if form.posted_successfully? %}
+            <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+          {% endif %}
+
+          {% if form.errors %}
+            <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+           {% assign message = 'contact.form.message' | t %}
+            <ul class="center">
+              {% for field in form.errors %}
+                {% if field == 'form' %}
+                  <li>
+                    {{ form.errors.messages[field] }}
+                  </li>
+                {% else %}
+                  <li>
+                    {% assign field_name = field | replace: 'body', message %}
+                    {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+                  </li>
+                {% endif %}
+              {% endfor %}
+             </ul>
+          {% endif %}
+          <br>
+          <div class="row">
+            <div class="required column-12-tablet-vert-6">
+              {% assign name_attr = 'contact.form.name' | handle %}
+              <label for="contactFormName">{{ 'contact.form.name' | t }}</label>
+              <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+              <br>
+            </div>
+            <div class="required column-12-tablet-vert-6">
+              <label for="contactFormEmail">{{ 'contact.form.email' | t }}</label>
+              <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+              <br>
+            </div>
+            <br>
+            <div class="required column-12">
+              <label for="contactFormMessage">{{ 'contact.form.message' | t }}</label>
+              <textarea rows="5" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+          </div>
+          <br>
+          <input type="submit" class="button" value="{{ 'contact.form.send' | t }}" />
+        {% endform %}
+      </div>
+    </div>
+  </section>
+{% else %}
+  {% include 'hero' %}
+  <section class="custom-constrain-items">
+    {{ page.content }}
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Contact Page Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "page_image_enable",
+        "label": "Enable Image?"
+      },
+      {
+        "type": "image_picker",
+        "id": "page_image_url",
+        "label": "Image URL"
+      }
+    ]
+  }
+{% endschema %}

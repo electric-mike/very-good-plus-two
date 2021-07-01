@@ -1,0 +1,12 @@
+/* FONTS */
+/* CUSTOM FONTS GO HERE */
+
+/* SWATCHES / COLOR HELPER CLASSES */
+{%- assign colors = settings.product_colors | strip_newlines | downcase | split: ',' -%}
+{% for color in colors %}
+.color-swatch .{{ color | split: ': ' | first | handleize | strip }},
+.color-swatches .{{ color | split: ': ' | first | handleize | strip }} {
+  background: {{ color | split: ': ' | last | strip }};
+  color: {{ color | split: ': ' | last | strip }};
+}
+{% endfor %}

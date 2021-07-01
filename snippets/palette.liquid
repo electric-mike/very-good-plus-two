@@ -1,0 +1,62 @@
+<section class="pallette max-width">
+  <h2 class="section-heading">Pallette</h2>
+  <p class="bold uppercase">Primary Brand Colors</p>
+  <div class="colors" v-if="variables.global['$primary-color'] || variables.global['$secondary-color']">
+    <div class="color" v-if="variables.global['$primary-color']">
+      <div :style="{ 'background-color': variables.global['$primary-color'].value.hex }" class="swatch"></div>
+      <p>
+        <span class="capitalize">Primary Color</span>
+        <br>
+        <span class="uppercase">${ variables.global['$primary-color'].value.hex }</span>
+      </p>
+    </div>
+    <div class="color" v-if="variables.global['$secondary-color']">
+      <div :style="{ 'background-color': variables.global['$secondary-color'].value.hex }" class="swatch"></div>
+      <p>
+        <span class="capitalize">Secondary Color</span>
+        <br>
+        <span class="uppercase">${ variables.global['$secondary-color'].value.hex }</span>
+      </p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <p class="bold uppercase">Colors</p>
+  <p>
+    Color is used sparingly to draw attention to interface elements and to deliver positive,
+    negative, or warning feedback to the user.
+  </p>
+  <div class="colors" v-if="variables.global">
+    <div
+      class="color"
+      v-for="(sassVar, key) in variables.global"
+      v-if="showColor(sassVar, key)"
+    >
+      <div :style="{ 'background-color': sassVar.value.hex }" class="swatch"></div>
+      <p>
+        <span class="capitalize">${ key.replace('$', '').replace(/-/g, ' ') }</span>
+        <br>
+        <span class="uppercase">${ sassVar.value.hex }</span>
+      </p>
+    </div>
+  </div>
+  <br>
+  <div class="colors">
+    <div
+      class="color"
+      v-for="(sassVar, key) in variables.global"
+      v-if="key.includes('shadow')"
+    >
+      <div :class="key.replace('$', '')" class="swatch"></div>
+      <p>
+        <span class="capitalize">Shadow</span>
+        <br>
+        <span
+          v-for="val in sassVar.value"
+          v-html="val.type === 'SassNumber' ? val.value + val.unit + ' ' : val.value.hex + '<br>' + 'Opacity: ' + val.value.a"
+        >
+        </span>
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+{% assign limit = 2 %}
+{% assign found_products = 0 %}
+{% assign collection = collections['special-strengths-certificate'] %}
+
+<div
+  class="light-gray product-list-wrapper featured-collection"
+  data-limit="{{ limit }}"
+>
+  <h2 class="title">check out our other certificates</h2>
+  <div class="row max-width product-list">
+    {% for prod in collection.products %}
+      {% if prod.handle != product.handle %}
+        {% assign found_products = found_products | plus: 1 %}
+        <div class="product column-12-tablet-vert-6">
+          <a class="product-image-wrapper certificate-related-product" href="{{ prod.url | within: collection }}">
+            {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img
+              class="product-image lazyload blur-up"
+              src="{{ settings.placeholder_image | img_url }}"
+              alt="{{ prod.title | escape }}"
+              data-src="{{ img_url }}"
+              data-widths="[360, 540, 720, 900, 1080, 1600]"
+              data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+              data-sizes="auto"
+            />
+            <noscript>
+              <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+            </noscript>
+          </a>
+        </div>
+      {% endif %}
+      {% if found_products == limit %}{% break %}{% endif %}
+    {% endfor %}
+  </div>
+</div>

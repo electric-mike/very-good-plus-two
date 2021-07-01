@@ -1,0 +1,29 @@
+// On Collection
+.color-swatches {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 0;
+  margin-top: 0.5em;
+
+  .swatch {
+    width: 19px;
+    height: 19px;
+    background-size: 175%;
+    background-position: center !important;
+    border-radius: 50%;
+    margin: 0.25em 0.25em 0 0;
+    cursor: pointer;
+    border: 1px solid $white;
+
+    &.active {
+      border: 1px solid $black;
+    }
+
+    @media (hover) {
+      &:hover {
+        border: 1px solid $gray;
+      }
+    }
+  }
+}

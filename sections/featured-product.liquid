@@ -1,0 +1,305 @@
+<div data-section-id="{{ section.id }}" data-section-type="page-section">
+  <div class="product-callout-sections product-callout-sections-{{ section.id }}">
+    {% for block in section.blocks %}
+      {%- assign product = all_products[block.settings.product] -%}
+      <div class="image-callout-wrapper" style="background-color: {{ block.settings.background_color }};">
+        {% if block.type == 'left-product-callout' %}
+          <div class="row row-middle max-width">
+            <div class="column-12-tablet-vert-6 image-row">
+              {% if block.settings.image %}
+                {%- assign block_image = block.settings.image -%}
+              {% else %}
+                {%- assign block_image =  product.featured_image -%}
+              {% endif %}
+              {%- assign img_url = block_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img
+                class="lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                alt="{{ prod.title | escape }}"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080, 1600]"
+                data-sizes="auto"
+                data-aspectratio="{{ block_image.aspect_ratio }}"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+              <noscript>
+                <img class="lazyloaded" src="{{ block_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+              </noscript>
+            </div>
+            <div class="column-12-tablet-vert-6 callout-text">
+              {% if block.settings.preheader != '' %}<h4 class="gray">{{ block.settings.preheader }}</h4>{% endif %}
+
+              {% if block.settings.header != '' %}
+                <h2>{{ block.settings.header }}</h2>
+              {% elsif product %}
+                <h2>{{ product.title }}</h2>
+              {% endif %}
+
+              {% if block.settings.subheader != '' %}<h5>{{ block.settings.subheader }}</h5>{% endif %}
+
+              {% if block.settings.textarea != '' %}
+                <p>{{ block.settings.textarea }}</p>
+              {% elsif product %}
+                <p>{{ product.description }}</p>
+              {% endif %}
+
+              <div class="row-middle-no-bottom">
+                <div class="column-6-desktop-sm-4">
+                  <a
+                    {% if block.settings.button_link %}
+                      href="{{ block.settings.button_link }}"
+                    {% elsif block.settings.product %}
+                      href="{{ product.url }}"
+                    {% endif %}
+                    class="button full-width"
+                  >
+                    {% if block.settings.button_text != '' %}
+                      {{ block.settings.button_text }}
+                    {% else %}
+                      Buy Now
+                    {% endif %}
+                  </a>
+                </div>
+                <div class="column-6-desktop-max-8"><p class="no-margin green">{{ product.price | money_without_trailing_zeros }}</p></div>
+              </div>
+            </div>
+          </div>
+        {% elsif block.type == 'right-product-callout' %}
+          <div class="row row-middle" style="background-color: {{ block.settings.background_color }};">
+            <div class="column-12-tablet-vert-6 callout-text">
+              {% if block.settings.preheader != '' %}<h4 class="gray">{{ block.settings.preheader }}</h4>{% endif %}
+
+              {% if block.settings.header != '' %}
+                <h2>{{ block.settings.header }}</h2>
+              {% elsif product %}
+                <h2>{{ product.title }}</h2>
+              {% endif %}
+
+              {% if block.settings.subheader != '' %}<h5>{{ block.settings.subheader }}</h5>{% endif %}
+
+              {% if block.settings.textarea != '' %}
+                <p>{{ block.settings.textarea }}</p>
+              {% elsif product %}
+                <p>{{ product.description }}</p>
+              {% endif %}
+
+              <div class="row-middle-no-bottom">
+                <div class="column-6-desktop-max-4">
+                  <a
+                    {% if block.settings.button_link %}
+                      href="{{ block.settings.button_link }}"
+                    {% elsif block.settings.product %}
+                      href="{{ product.url }}"
+                    {% endif %}
+                    class="button full-width"
+                  >
+                    {% if block.settings.button_text != '' %}
+                      {{ block.settings.button_text }}
+                    {% else %}
+                      Buy Now
+                    {% endif %}
+                  </a>
+                </div>
+                <div class="column-6-desktop-max-8"><p class="no-margin green">{{ product.price | money_without_trailing_zeros }}</p></div>
+              </div>
+            </div>
+            <div class="column-12-tablet-vert-6 image-row">
+              {% if block.settings.image %}
+              {%- assign block_image = block.settings.image -%}
+              {% else %}
+                {%- assign block_image =  product.featured_image -%}
+              {% endif %}
+              {%- assign img_url = block_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img
+                class="lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                alt="{{ prod.title | escape }}"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080, 1600]"
+                data-sizes="auto"
+                data-aspectratio="{{ block_image.aspect_ratio }}"
+                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+              />
+              <noscript>
+                <img class="lazyloaded" src="{{ block_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+              </noscript>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.product-callout-sections-{{ section.id }} .row > div {
+  padding-bottom: 0;
+}
+
+.product-callout-sections-{{ section.id }} .row .callout-text {
+  padding: 2em;
+}
+
+.product-callout-sections-{{ section.id }} .row .callout-text .button {
+  padding-left: 0;
+  padding-right: 0;
+  white-space: nowrap;
+}
+
+.product-callout-sections-{{ section.id }} .row .image-row {
+  height: 100vw;
+  max-height: 600px;
+  margin: 0;
+  padding: 0;
+}
+
+.product-callout-sections-{{ section.id }} .row img {
+  display: block;
+  width: 100%;
+}
+
+@media(max-width: 767px) {
+  .product-callout-sections-{{ section.id }} .row,
+  .product-callout-sections-{{ section.id }} .row .image-row
+  {
+    padding: 0;
+    margin: 0;
+  }
+
+  .product-callout-sections-{{ section.id }} .row .callout-text {
+    padding: 2em 1em;
+  }
+}
+
+@media(min-width: 1025px) {
+  .product-callout-sections-{{ section.id }} .row .callout-text {
+    padding: 2em 5em;
+  }
+}
+
+@media(min-width: 1281px) {
+  .product-callout-sections-{{ section.id }} .row .callout-text {
+    padding: 2em 7em;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Featured Products Callout",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "left-product-callout",
+      "name": "Left Product Callout",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "preheader",
+          "label": "Preheader"
+        },
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Header"
+        },
+        {
+          "type": "text",
+          "id": "subheader",
+          "label": "Subheader"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Description"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    },
+    {
+      "type": "right-product-callout",
+      "name": "Right Product Callout",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product Select"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "preheader",
+          "label": "Preheader Text"
+        },
+        {
+          "type": "text",
+          "id": "header",
+          "label": "Header Text"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "subheader",
+          "label": "Subheader Text"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products Callout",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}

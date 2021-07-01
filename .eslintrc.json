@@ -1,0 +1,80 @@
+{
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "extends": [
+      "airbnb-base",
+      "plugin:vue/recommended"
+    ],
+    "plugins": [
+      "import",
+      "compat",
+      "html",
+      "vue"
+    ],
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "globals": {
+      "Src": true
+    },
+    "settings": {
+      "import/resolver": {
+        "webpack": { "config": "./webpack.config.js" }
+      }
+    },
+    "rules": {
+      "class-methods-use-this": "off",
+      "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "never"
+      }],
+      "func-names": ["error", "as-needed"],
+      "import/extensions": ["error", "never", { "svg": "always" }],
+      "import/no-extraneous-dependencies": ["error"],
+      "import/prefer-default-export": ["warn"],
+      "indent": ["error", 2, {
+        "VariableDeclarator": { "var": 2, "let": 2, "const": 3 },
+        "SwitchCase": 1
+      }],
+      "key-spacing": ["error", {
+        "align": {
+          "beforeColon": true,
+          "afterColon": true,
+          "on": "colon"
+        }
+      }],
+      "max-len": ["error", 120, {
+        "ignoreComments": true,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }],
+      "newline-before-return": ["error"],
+      "no-console": ["warn", {
+        "allow": ["warn", "error"]
+      }],
+      "no-multi-spaces": ["error", {
+        "exceptions": {
+          "VariableDeclarator": true,
+          "ImportDeclaration": true,
+          "Property": true
+        }
+      }],
+      "no-new": "off",
+      "no-param-reassign": "off",
+      "no-return-assign": "off",
+      "no-underscore-dangle": "off",
+      "semi": ["error", "never"],
+      "spaced-comment": ["error", "always", { "markers": ["/"] }]
+    }
+  }
+  

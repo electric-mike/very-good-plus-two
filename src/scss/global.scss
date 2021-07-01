@@ -1,0 +1,605 @@
+//------------------
+// SCSS VARS
+//------------------
+@import './variables.scss';
+
+//------------------
+// ANIMATIONS
+//------------------
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 1;
+    transform: translateY(100%)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%)
+  }
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(359deg)
+  }
+}
+
+//------------------
+// GRID
+//------------------
+@import './grid.scss';
+
+//------------------
+// GLOBAL ELEMENTS
+//------------------
+@import './elements.scss';
+
+//------------------
+// HELPER CLASSES
+//------------------
+@import './helpers.scss';
+
+//------------------
+// ANNOUNCEMENT BAR
+//------------------
+@import './announcement-bar.scss';
+
+//------------------
+// HEADER AND FOOTER
+//------------------
+@import './header.scss';
+@import './footer.scss';
+
+//------------------
+// DRAWER
+//------------------
+@import './drawer.scss';
+
+//------------------
+// CART
+//------------------
+@import './cart-icon.scss';
+
+//------------------
+// FORMS
+//------------------
+@import './forms.scss';
+
+//------------------
+// GLOBAL PARTIALS
+//------------------
+@import './product-list.scss';
+@import './swatches.scss';
+
+//------------------
+// GLOBAL FONTS
+//------------------
+@import url('https://use.typekit.net/axa2zac.css');
+// NOTE: Custom import fonts located in assets/styles.scss.css
+
+//------------------
+// GLOBAL OVERRIDES
+//------------------
+* {
+  box-sizing: border-box;
+  font-display: swap;
+  font-family: $font-family;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: $black;
+}
+
+//global body overflow hide
+body {
+  overflow-x: hidden;
+}
+
+//global vue hide until mounted
+[v-cloak] {
+  visibility: hidden !important;
+
+  //class helper for display none until mounted
+  &.v-hide {
+    display: none !important;
+  }
+}
+
+//------------------
+// GLOBAL STYLES
+//------------------
+
+//siema dots
+.dots {
+  text-align: center;
+
+  &.absolute-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+  }
+
+  .dot {
+    display: inline-block;
+    width: .75em;
+    height: .75em;
+    margin: 1em .25em 0.5em;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    cursor: pointer;
+    transition: background .1s;
+
+    &.active, &:hover {
+      background: $primary-color;
+    }
+
+    &.invert {
+      border-color: $gray;
+      background: transparent;
+
+      &.active, &:hover {
+        border-color: $gray;
+        background: $gray;
+      }
+    }
+  }
+}
+
+
+// shared simplebar styles
+[data-simplebar="init"] {
+  margin: 0;
+
+  @media(max-width: $tablet - 1) {
+    margin-left: -1.25em !important;
+    margin-right: -1.25em !important;
+
+    .simplebar-track.simplebar-horizontal {
+      left: 1.25em;
+      right: 1.25em;
+    }
+
+    .product {
+      margin: 0 0 2.5em 1.25em !important;
+
+      &:last-of-type {
+        flex-basis: calc(65% + 1.25em) !important;
+        padding-right: 1.25em !important;
+      }
+    }
+  }
+
+  .simplebar-content-wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .simplebar-scrollbar {
+    right: auto !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    height: auto !important;
+
+    &:before {
+      opacity: 1 !important;
+      background-color: $black;
+      border-radius: 0;
+      top: 0 !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+    }
+  }
+
+  .simplebar-track {
+    background: $gray;
+    border-radius: 0;
+
+    &.simplebar-horizontal {
+      height: 6px;
+    }
+  }
+
+  .simplebar-content {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+
+    .product {
+      flex-basis: 65%;
+      margin-bottom: 1em;
+      align-self: flex-start;
+      padding: 0;
+      margin: 0 1.25em 2.5em 0;
+
+      @media(min-width: $tablet) {
+        flex-basis: calc(25% - 0.95em);
+        flex-grow: 1;
+      }
+
+      @media(max-width: $tablet - 1) {
+        &:first-of-type {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+
+// prev/next arrows
+.previous-arrow, .next-arrow {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  left: 0.5em;
+  width: 35px;
+  height: 35px;
+  background: url('~Src/assets/featured-arrow.svg') no-repeat;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+  transition: all 0.1s;
+  opacity: 0;
+
+  @media(min-width: $tablet) {
+    opacity: 1;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.next-arrow {
+  left: unset;
+  right: 0.5em;
+  transform: translateY(50%) rotate(180deg);
+}
+
+
+//accordion global styles
+.accordion {
+  border-bottom: 1px solid $light-gray;
+
+  &:first-of-type {
+    border-top: 1px solid $light-gray;
+  }
+
+  .question {
+    position: relative;
+    vertical-align: middle;
+    padding: 1em 1.5em 1em 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    user-select: none;
+
+    &:after, &:before {
+      content: '';
+      width: 8px;
+      height: 2px;
+      background: $black;
+      position: absolute;
+      top: 50%;
+      right: 0.5em;
+      transform: translate3d(0,110%,0) rotate(135deg);
+    }
+
+    &:after {
+      transform: translate3d(0,-110%,0) rotate(-135deg);
+    }
+
+    &.active {
+      &:before {
+        transform: translate3d(-55%,-55%,0) rotate(45deg);
+      }
+
+      &:after {
+        transform: translate3d(0,-55%,0) rotate(135deg);
+      }
+    }
+  }
+
+  .answer {
+    padding: 0;
+    color: $dark-gray;
+
+    &[v-cloak] {
+      display: none;
+    }
+  }
+
+  .list-enter-active, .list-leave-active {
+    transition: all 0.25s;
+  }
+
+  .list-enter, .list-leave-to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+// border override for FAQ page when headers present
+h1 + .accordion {
+  border-top: 1px solid $light-gray;
+}
+
+//category hero
+//shared on category, blog, and pages
+.category, .blog-post, .blog, .page {
+  .category-hero {
+    position: relative;
+    background-size: cover !important;
+    background-position: center !important;
+    height: 100%;
+
+    > div {
+      padding: 1em 0;
+    }
+
+    &:not(.category-hero-image) h1 {
+      margin-top: 0.5em;
+    }
+
+    h1 {
+      text-transform: capitalize;
+
+      span {
+        color: $white;
+      }
+    }
+
+    .category-hero-image, .category-hero-no-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      min-height: 250px;
+      text-align: center;
+
+      .tab-buttons {
+        margin-top: 2em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1em;
+
+        @media(min-width: $tablet) {
+          margin-top: 1em;
+        }
+      }
+    }
+
+    .category-hero-image {
+      h1 {
+        margin-bottom: 0;
+      }
+
+      @media(min-width: $tablet) {
+        min-height: 300px;
+      }
+
+      @media(min-width: $desktop) {
+        min-height: 400px;
+      }
+    }
+
+    .category-hero-no-image {
+      justify-content: center;
+
+      p, h1 {
+        margin: 0;
+      }
+
+      h1 span {
+        color: $black;
+      }
+    }
+  }
+}
+
+//hero
+.hero-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 33vw;
+  min-height: 200px;
+  max-height: 350px;
+  overflow: hidden;
+  background: $light-gray;
+  background-size: cover !important;
+  background-position: center !important;
+
+  &.style-guide-hero {
+    height: 50vw;
+    min-height: 250px;
+    max-height: 600px;
+
+    .hero-text {
+      color: $black;
+      text-transform: uppercase;
+      animation: slide-up 0.8s cubic-bezier(0.26, 0.54, 0.32, 1) 0.3s forwards;
+      opacity: 0;
+      animation-delay: 0.9s;
+    }
+  }
+
+  .hero-logo {
+    width: 50vw;
+    max-width: 500px;
+    opacity: 0;
+    animation: slide-right 0.5s cubic-bezier(0.26, 0.54, 0.32, 1) 0.3s forwards;
+    animation-delay: 0.3s;
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto 2.5em;
+    }
+  }
+
+  .hero-text {
+    text-align: center;
+    margin: 0;
+    padding: 1em 1rem;
+  }
+}
+
+//color palette
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 2em -0.5em 0;
+
+  @media(min-width: $tablet) {
+    justify-content: flex-start;
+  }
+
+  .color {
+    width: 150px;
+    margin: 0.5em;
+    text-align: center;
+
+    .swatch {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 0.25em;
+      transition: box-shadow 0.2s;
+
+      &.shadow {
+        box-shadow: $shadow;
+      }
+    }
+
+    @media (hover) {
+      &:hover {
+        .swatch {
+          box-shadow: $shadow;
+        }
+      }
+    }
+  }
+}
+
+//grid
+.box {
+  height: 100px;
+  background: $primary-color;
+  border-radius: 5px;
+}
+
+//smile & gorgias z-index
+#smile-ui-container, #gorgias-web-messenger-container {
+  z-index: 2 !important;
+}
+
+//pagination
+.pagination-wrapper {
+  margin: 2em 1em 1em;
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pagination-button,
+  .page a,
+  span.page,
+  .next a,
+  .prev a {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25em;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &, * {
+      &, &:hover {
+        color: $black;
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      background-color: $primary-color;
+      color: $white;
+
+      .prev-button, .next-button {
+        fill: $white;
+      }
+    }
+
+    &.current, &.active {
+      background-color: transparent;
+      color: $black;
+      border: 1px solid $black;
+
+      .prev-button, .next-button {
+        fill: $black;
+      }
+    }
+
+    &:active {
+      background-color: $secondary-color;
+      color: $white;
+    }
+  }
+
+  .prev-button, .next-button {
+    width: 7px;
+    fill: $dark-gray;
+  }
+}
+
+// RISE widget z-index
+.Rise__widget {
+  z-index: 99 !important;
+
+  .Rise__widget-panel {
+    height: calc(100vh - 195px) !important;
+
+    @media (max-width: 460px) {
+      height: calc(100vh - 59px) !important;
+      min-height: calc(100vh - 59px) !important;
+      top: 59px !important;
+    }
+  }
+}

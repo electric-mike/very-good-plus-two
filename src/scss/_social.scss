@@ -1,0 +1,41 @@
+.social {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: filter 0.1s;
+
+  &:hover {
+    filter: $gray-filter;
+  }
+
+  &-facebook {
+    background-image: url('~Src/assets/social/facebook.png');
+  }
+
+  &-instagram {
+    background-image: url('~Src/assets/social/instagram.png');
+  }
+
+  &-twitter {
+    background-image: url('~Src/assets/social/twitter.png');
+  }
+
+  &-pinterest {
+    background-image: url('~Src/assets/social/pinterest.png');
+  }
+
+  &-youtube {
+    background-image: url('~Src/assets/social/youtube.png');
+  }
+
+  &-snapchat {
+    background-image: url('~Src/assets/social/snapchat.png');
+  }
+
+  &-email {
+    background-image: url('~Src/assets/social/email.png');
+  }
+}

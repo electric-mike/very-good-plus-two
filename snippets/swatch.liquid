@@ -1,0 +1,59 @@
+{% comment %}
+  Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
+{% endcomment %}
+
+{% assign file_extension = 'png' %}
+
+{% if swatch != blank %}
+  {% assign found_option = false %}
+  {% assign is_color = false %}
+  {% assign option_index = 0 %}
+
+  {% for option in product.options %}
+    {% if option == swatch %}
+      {% assign found_option = true %}
+      {% assign option_index = forloop.index0 %}
+      {% assign downcased_option = swatch | downcase %}
+      {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+        {% assign is_color = true %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {% if found_option %}
+    <div class="swatches-wrapper" data-option-index="{{ option_index }}">
+      <div class="header">{{ swatch }}</div>
+      {% assign values = '' %}
+      <div class="swatches">
+        {% for variant in product.variants %}
+          {% assign value = variant.options[option_index] %}
+          {% assign values = values | join: ',' %}
+          {% assign values = values | append: ',' | append: value %}
+          {% assign values = values | split: ',' %}
+          <div
+            data-value="{{ value | escape }}"
+            class="swatch {% if is_color %}color {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}"
+          >
+            <input
+              type="radio"
+              value="{{ variant.id }}"
+              v-model="formData.config"
+              data-image-id="{{ variant.featured_image.id }}"
+              data-price="{{ variant.price | money }}"
+              id="swatch-{{ option_index }}-{{ value | handle }}"
+              name="swatch-{{ option_index }}-{{ value | handle }}"
+              {% if forloop.first %}checked="checked"{% endif %}
+              {% unless variant.available %}disabled="disabled"{% endunless %}
+            />
+            <label
+              for="swatch-{{ option_index }}-{{ value | handle }}"
+              {% if is_color %}style="background-color: {{ value | split: ' ' | last | handle }}"{% endif %}
+            >
+              {{ value }}
+            </label>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+{% endif %}

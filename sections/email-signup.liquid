@@ -1,0 +1,30 @@
+<div class="klaviyo-form-{{ settings.klaviyo_desktop_form_id }}"></div>
+<div class="klaviyo-form-{{ settings.klaviyo_mobile_form_id }}"></div>
+
+{% schema %}
+{
+  "name": "Email Signup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text"
+    },
+    {
+      "type": "text",
+      "id": "subheading_text",
+      "label": "Subheading Text"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_desktop_form_id",
+      "label": "Klaviyo Desktop Form ID"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_mobile_form_id",
+      "label": "Klaviyo Mobile Form ID"
+    }
+  ]
+}
+{% endschema %}

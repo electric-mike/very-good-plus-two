@@ -1,0 +1,55 @@
+<div class="blog">
+  {% include 'hero' %}
+
+  {% paginate blog.articles by 5 %}
+    <div class="max-width">
+      {% if settings.blog_show_tag_filter and blog.tags.size > 0 %}
+      <div class="blog-tag-filter" id="BlogTagFilter">
+        <select>
+          <option value="/blogs/{{ blog.handle }}">All Articles</option>
+          {% for tag in blog.all_tags %}
+            {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+            <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="posts max-width">
+      {% for article in blog.articles %}
+        <div class="post">
+          <a href="{{ article.url }}">
+            {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img
+              class="post-hero lazyload blur-up"
+              src="{{ settings.placeholder_image | img_url }}"
+              alt="{{ article.title | escape }}"
+              data-src="{{ base_url }}"
+              data-widths="[360, 540, 720, 900, 1080, 1600]"
+              data-aspectratio="{{ collection.image.aspect_ratio }}"
+              data-sizes="auto"
+            />
+            <noscript>
+              <img class="lazyloaded" src="{{ article.image| img_url: '800x' }}" alt="{{ article.title | escape }}">
+            </noscript>
+          </a>
+          <div class="post-text">
+            <a href="{{ article.url }}">
+              <h5 class="post-title no-margin">{{ article.title }}</h5>
+            </a>
+            <h5 class="author">
+              <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
+            </h5>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="blog-pagination constrain-items">
+        {% render 'pagination', paginate: paginate %}
+      </div>
+    {% endif %}
+  {% endpaginate %}
+</div>

@@ -1,0 +1,128 @@
+{% comment %} Max amount of products visible {% endcomment %}
+{% assign limit = section.settings.product_limit %}
+
+{% comment %} Shopify generated dynamic recommendations, falling back to default related products (based on parent collection) {% endcomment %}
+{% assign collection = collections[section.settings.collection] %}
+
+<style>
+  {% if section.settings.background_color != 'rgba(0,0,0,0)' %}
+  #shopify-section-{{ section.id }} {
+    display: inline-block;
+    width: 100%;
+    background-color: {{ section.settings.background_color }};
+  }
+  {% endif %}
+
+  {% if section.settings.text_color != 'rgba(0,0,0,0)' %}
+  #shopify-section-{{ section.id }} * {
+    color: {{ section.settings.text_color }};
+  }
+  {% endif %}
+</style>
+
+<div class="product-list-wrapper featured-collection" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+  <div class="max-width">
+    <div class="title center-text">
+      <h3>{{ section.settings.title }}</h3>
+      <br>
+    </div>
+    <div id="simplebar-{{ section.id }}" class="product-list row">
+      {% for prod in collection.products limit: limit %}
+        <div class="product column-6-tablet-vert-{{ 12 | divided_by: limit }}">
+          <a class="product-image-wrapper image-wrap" href="{{ prod.url | within: collection }}">
+            {% include 'flair-product-badges', product: prod %}
+            {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img
+              class="product-image lazyload blur-up"
+              src="{{ settings.placeholder_image | img_url }}"
+              alt="{{ prod.title | escape }}"
+              data-src="{{ img_url }}"
+              data-widths="[360, 540, 720, 900, 1080, 1600]"
+              data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+              data-sizes="auto"
+            />
+            <noscript>
+              <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+            </noscript>
+          </a>
+          <div class="product-info">
+            <h5 class="vendor">{{ prod.vendor }}</h5>
+            <a href="{{ prod.url | within: collection }}">
+              <h5>{{ prod.title }}</h5>
+            </a>
+            {% if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
+            <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="product-list-collection-link">
+      <a href="{{ collection.url }}" class="button">{{ section.settings.shop_link_text }}</a>
+    </div>
+  </div>
+</div>
+
+{% if section.settings.enable_scrollbar %}
+<script>
+  new SimpleBar(document.getElementById('simplebar-{{ section.id }}'), {
+    autoHide: true,
+    forceVisible: false
+  });
+</script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "product_limit",
+        "label": "Product Limit",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "default": 4
+      },
+      {
+        "type": "text",
+        "id": "shop_link_text",
+        "label": "Shop Link Text",
+        "default": "Shop All Products"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_scrollbar",
+        "label": "Enable Scrollbar",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Featured Collection",
+        "category": "Products"
+      }
+    ]
+  }
+{% endschema %}

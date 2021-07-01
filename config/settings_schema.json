@@ -1,0 +1,367 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Very Good Plus",
+    "theme_version": "1.0.0",
+    "theme_author": "Mike Weaver",
+    "theme_documentation_url": "https:\/\/dev.electriceye.io",
+    "theme_support_url": "https:\/\/bitbucket.org\/electriceyeagency\/vg-plus\/src\/master"
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show Search",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "max_width_nav",
+        "label": "Max Width Navigation",
+        "default": false
+      },
+      {
+        "type": "link_list",
+        "id": "header_linklist",
+        "label": "Header Navigation Linklist"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info": "400 x 100px recommended"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_mobile",
+        "label": "Mobile logo",
+        "info": "100 x 50px recommended"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Image favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      },
+      {
+        "type": "textarea",
+        "id": "header_search_terms",
+        "label": "Search Terms",
+        "info": "Comma separated 'recommended' search terms",
+        "default": "Avani, Acne, Makeup, Serum"
+      },
+      {
+        "type": "select",
+        "id": "mobile_nav_type",
+        "label": "Mobile Nav Type",
+        "options": [
+          {
+            "value": "accordion",
+            "label": "Accordion"
+          },
+          {
+            "value": "paginate",
+            "label": "Paginate"
+          }
+        ],
+        "default": "accordion"
+      }
+    ]
+  },
+  {
+    "name": "Announcement Bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "announcement_show_the_bar",
+        "label": "Show the bar",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "announcement_headline",
+        "label": "Text",
+        "default": "Free shippings and returns on orders over $50!"
+      },
+      {
+        "type": "color",
+        "id": "announcement_color",
+        "label": "Background Color"
+      }
+    ]
+  },
+  {
+    "name": "Side Cart",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "side_cart_empty_message",
+        "label": "Empty message",
+        "default": "Let’s fill this thing up!"
+      },
+      {
+        "type": "text",
+        "id": "side_cart_link_text",
+        "label": "Link text",
+        "default": "Shop New Arrivals"
+      },
+      {
+        "type": "collection",
+        "id": "side_cart_link_collection",
+        "label": "Link collection"
+      },
+      {
+        "type": "product",
+        "id": "upsell_product",
+        "label": "Upsell Product"
+      },
+      {
+        "type": "checkbox",
+        "id": "side_cart_announcement_show_the_bar",
+        "label": "Enable Announcement",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "side_cart_announcement_headline",
+        "label": "Announcement Text",
+        "default": "Free shippings and returns on orders over $50"
+      },
+      {
+        "type": "color",
+        "id": "side_cart_announcement_color",
+        "label": "Announcement Background Color"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_promo_code",
+        "label": "Enable Promo Code Input",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "facebook_link",
+        "label": "Facebook link",
+        "info": "https:\/\/facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "instagram_link",
+        "label": "Instagram link",
+        "info": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "twitter_link",
+        "label": "Twitter link",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "pinterest_link",
+        "label": "Pinterest link",
+        "info": "https:\/\/pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "youtube_link",
+        "label": "YouTube link",
+        "info": "https:\/\/youtube.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "snapchat_link",
+        "label": "Snapchat link",
+        "info": "https:\/\/snapchat.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "email_link",
+        "label": "Email address"
+      }
+    ]
+  },
+  {
+    "name": "Collection\/Search",
+    "settings": [
+      {
+        "type": "range",
+        "id": "pagination_limit",
+        "label": "Pagination Limit",
+        "min": 6,
+        "max": 200,
+        "step": 2,
+        "default": 40
+      },
+      {
+        "type": "image_picker",
+        "id": "collection_image",
+        "label": "Collection Header Image"
+      }
+    ]
+  },
+  {
+    "name": "Placeholder",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "placeholder_image",
+        "label": "Placeholder Image"
+      },
+      {
+        "type": "select",
+        "id": "placeholder_aspect_ratio",
+        "label": "Placeholder Aspect Ratio",
+        "options": [
+          {
+            "value": "1:1",
+            "label": "1:1"
+          },
+          {
+            "value": "4:5",
+            "label": "4:5"
+          }
+        ],
+        "default": "1:1"
+      }
+    ]
+  },
+  {
+    "name": "Product Swatch Colors",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "product_colors",
+        "label": "Product Color",
+        "default": "red: #ff0000,\r\nyellow: #ffff00,\r\nblack: #000000,\r\nblue: #0000FF,\r\ngreen: #00ff00,\r\npurple: #800080,\r\nsilver: #c0c0c0,\r\nwhite: #ffffff,\r\nbrown: #7B3F00,\r\nlight-brown: #feb035,\r\ndark-turquoise: #23cddc,\r\norange: #fe9001,\r\ntan: #eacea7,\r\nviolet: #EE82EE,\r\npink: #FFC0CB,\r\ngrey: #808080",
+        "info": "Items separate with comma. Write color name from product option and separate option with color HEX value. All texts in lowercase."
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "footer_linklist",
+        "label": "Footer Navigation Linklist"
+      },
+      {
+        "type": "image_picker",
+        "id": "footer_logo",
+        "label": "Logo",
+        "info": "400 x 400px recommended"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_desktop_form_id",
+        "label": "Klaviyo Desktop Form ID"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_mobile_form_id",
+        "label": "Klaviyo Mobile Form ID"
+      }
+    ]
+  },
+  {
+    "name": "Blog",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_tag_filter",
+        "label": "Show tag filter"
+      }
+    ]
+  },
+  {
+    "name": "Password",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "password_image",
+        "label": "Password Background Image"
+      }
+    ]
+  },
+  {
+    "name": "404",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "four_oh_four_image",
+        "label": "404 Background Image"
+      },
+      {
+        "type": "text",
+        "id": "404_header",
+        "label": "404 Header",
+        "default": "404 - Not Found"
+      },
+      {
+        "type": "text",
+        "id": "404_subtext",
+        "label": "404 Subtext",
+        "default": "Uh Oh! We can't find the page. Try clicking a link in the nav!"
+      },
+      {
+        "type": "url",
+        "id": "404_left_link",
+        "label": "Left Link"
+      },
+      {
+        "type": "text",
+        "id": "404_left_link_text",
+        "label": "Left Link Text"
+      },
+      {
+        "type": "url",
+        "id": "404_right_link",
+        "label": "Right Link"
+      },
+      {
+        "type": "text",
+        "id": "404_right_link_text",
+        "label": "Right Link Text"
+      }
+    ]
+  },
+  {
+    "name": "Klaviyo",
+    "settings": [
+      {
+        "type": "text",
+        "id": "klaviyo_api_key",
+        "label": "Klaviyo API Key"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_bis_list",
+        "label": "Klaviyo BIS List"
+      }
+    ]
+  },
+  {
+    "name": "Style Guide",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "style_guide_background",
+        "label": "Background"
+      },
+      {
+        "type": "image_picker",
+        "id": "style_guide_logo",
+        "label": "Logo",
+        "info": "400 x 100px recommended"
+      }
+    ]
+  }
+]

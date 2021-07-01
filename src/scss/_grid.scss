@@ -1,0 +1,488 @@
+//------------------
+// GRID SYSTEM
+//------------------
+@import './variables.scss';
+
+
+//------------------
+// (RE)SET GLOBAL VARIABLES
+//------------------
+$max-width: $max-width;
+
+// 0 to 480 covers all phones portrait through iphone 4 landscape
+$mobile-size-land: $mobile;  // after iphone 4 landscape - for iphone 5 and up landscape
+$tablet-size-vert: $tablet;  // after iphone 6+ landscape - for ipad portrait
+$tablet-size-horz: $desktop; // start ipad landscape
+$desktop-size-sm: $desktop + 1;
+$mobile-land: 'min-width: #{$mobile-size-land}';
+$tablet-vert: 'min-width: #{$tablet-size-vert}';
+$tablet-horz: 'min-width: #{$tablet-size-horz}';
+$desktop-sm: 'min-width: #{$desktop-size-sm}';
+$desktop-max: 'min-width: #{$max-width}';
+
+
+//------------------
+// GRID VARIABLES
+//------------------
+$gl-gutter: 1.25rem;
+$gl-column-bottom: $gl-gutter;
+$glp-column-1: (100% / 12);
+$glp-column-2: ($glp-column-1 * 2);
+$glp-column-3: ($glp-column-1 * 3);
+$glp-column-4: ($glp-column-1 * 4);
+$glp-column-5: ($glp-column-1 * 5);
+$glp-column-6: ($glp-column-1 * 6);
+$glp-column-7: ($glp-column-1 * 7);
+$glp-column-8: ($glp-column-1 * 8);
+$glp-column-9: ($glp-column-1 * 9);
+$glp-column-10: ($glp-column-1 * 10);
+$glp-column-11: ($glp-column-1 * 11);
+$glp-column-12: 100%;
+$glp-column-5-12: (100% / 5);
+$glp-column-7-12: (100% / 7);
+$glp-column-8-12: (100% / 8);
+$glp-column-9-12: (100% / 9);
+$glp-column-10-12: (100% / 10);
+$glp-column-11-12: (100% / 11);
+
+@mixin make-grid-by-number($grid) {
+  [class*='#{$grid}-1'] > [class^='column'], [class*='#{$grid}-1'] > [class^='column-'] {
+    flex-basis: $glp-column-12;
+    max-width: $glp-column-12;
+  }
+
+  [class*='#{$grid}-2'] > [class^='column'], [class*='#{$grid}-2'] > [class^='column-'] {
+    flex-basis: $glp-column-6;
+    max-width: $glp-column-6;
+  }
+
+  [class*='#{$grid}-3'] > [class^='column'], [class*='#{$grid}-3'] > [class^='column-'] {
+    flex-basis: $glp-column-4;
+    max-width: $glp-column-4;
+  }
+
+  [class*='#{$grid}-4'] > [class^='column'], [class*='#{$grid}-4'] > [class^='column-'] {
+    flex-basis: $glp-column-3;
+    max-width: $glp-column-3;
+  }
+
+  [class*='#{$grid}-5'] > [class^='column'], [class*='#{$grid}-5'] > [class^='column-'] {
+    flex-basis: $glp-column-5-12;
+    max-width: $glp-column-5-12;
+  }
+
+  [class*='#{$grid}-6'] > [class^='column'], [class*='#{$grid}-6'] > [class^='column-'] {
+    flex-basis: $glp-column-2;
+    max-width: $glp-column-2;
+  }
+
+  [class*='#{$grid}-7'] > [class^='column'], [class*='#{$grid}-7'] > [class^='column-'] {
+    flex-basis: $glp-column-7-12;
+    max-width: $glp-column-7-12;
+  }
+
+  [class*='#{$grid}-8'] > [class^='column'], [class*='#{$grid}-8'] > [class^='column-'] {
+    flex-basis: $glp-column-8-12;
+    max-width: $glp-column-8-12;
+  }
+
+  [class*='#{$grid}-9'] > [class^='column'], [class*='#{$grid}-9'] > [class^='column-'] {
+    flex-basis: $glp-column-9-12;
+    max-width: $glp-column-9-12;
+  }
+
+  [class*='#{$grid}-10'] > [class^='column'], [class*='#{$grid}-10'] > [class^='column-'] {
+    flex-basis: $glp-column-10-12;
+    max-width: $glp-column-10-12;
+  }
+
+  [class*='#{$grid}-11'] > [class^='column'], [class*='#{$grid}-11'] > [class^='column-'] {
+    flex-basis: $glp-column-11-12;
+    max-width: $glp-column-11-12;
+  }
+
+  [class*='#{$grid}-12'] > [class^='column'], [class*='#{$grid}-12'] > [class^='column-'] {
+    flex-basis: $glp-column-1;
+    max-width: $glp-column-1;
+  }
+}
+
+@mixin make-columns($column) {
+  [class*='row'] {
+    > [class*='#{$column}-1'] {
+      flex-basis: $glp-column-1;
+      max-width: $glp-column-1;
+    }
+
+    > [class*='#{$column}-2'] {
+      flex-basis: $glp-column-2;
+      max-width: $glp-column-2;
+    }
+
+    > [class*='#{$column}-3'] {
+      flex-basis: $glp-column-3;
+      max-width: $glp-column-3;
+    }
+
+    > [class*='#{$column}-4'] {
+      flex-basis: $glp-column-4;
+      max-width: $glp-column-4;
+    }
+
+    > [class*='#{$column}-5'] {
+      flex-basis: $glp-column-5;
+      max-width: $glp-column-5;
+    }
+
+    > [class*='#{$column}-6'] {
+      flex-basis: $glp-column-6;
+      max-width: $glp-column-6;
+    }
+
+    > [class*='#{$column}-7'] {
+      flex-basis: $glp-column-7;
+      max-width: $glp-column-7;
+    }
+
+    > [class*='#{$column}-8'] {
+      flex-basis: $glp-column-8;
+      max-width: $glp-column-8;
+    }
+
+    > [class*='#{$column}-9'] {
+      flex-basis: $glp-column-9;
+      max-width: $glp-column-9;
+    }
+
+    > [class*='#{$column}-10'] {
+      flex-basis: $glp-column-10;
+      max-width: $glp-column-10;
+    }
+
+    > [class*='#{$column}-11'] {
+      flex-basis: $glp-column-11;
+      max-width: $glp-column-11;
+    }
+
+    > [class*='#{$column}-12'] {
+      flex-basis: $glp-column-12;
+      max-width: $glp-column-12;
+    }
+  }
+}
+
+@mixin make-offsets($offset) {
+  [class*='row'] {
+    > [class*='-push-left#{$offset}-0'] {
+      margin-left: 0;
+    }
+
+    > [class*='-push-left#{$offset}-1'] {
+      margin-left: $glp-column-1;
+    }
+
+    > [class*='-push-left#{$offset}-2'] {
+      margin-left: $glp-column-2;
+    }
+
+    > [class*='-push-left#{$offset}-3'] {
+      margin-left: $glp-column-3;
+    }
+
+    > [class*='-push-left#{$offset}-4'] {
+      margin-left: $glp-column-4;
+    }
+
+    > [class*='-push-left#{$offset}-5'] {
+      margin-left: $glp-column-5;
+    }
+
+    > [class*='-push-left#{$offset}-6'] {
+      margin-left: $glp-column-6;
+    }
+
+    > [class*='-push-left#{$offset}-7'] {
+      margin-left: $glp-column-7;
+    }
+
+    > [class*='-push-left#{$offset}-8'] {
+      margin-left: $glp-column-8;
+    }
+
+    > [class*='-push-left#{$offset}-9'] {
+      margin-left: $glp-column-9;
+    }
+
+    > [class*='-push-left#{$offset}-10'] {
+      margin-left: $glp-column-10;
+    }
+
+    > [class*='-push-left#{$offset}-11'] {
+      margin-left: $glp-column-11;
+    }
+
+    > [class*='-push-right#{$offset}-0'] {
+      margin-right: 0;
+    }
+
+    > [class*='-push-right#{$offset}-1'] {
+      margin-right: $glp-column-1;
+    }
+
+    > [class*='-push-right#{$offset}-2'] {
+      margin-right: $glp-column-2;
+    }
+
+    > [class*='-push-right#{$offset}-3'] {
+      margin-right: $glp-column-3;
+    }
+
+    > [class*='-push-right#{$offset}-4'] {
+      margin-right: $glp-column-4;
+    }
+
+    > [class*='-push-right#{$offset}-5'] {
+      margin-right: $glp-column-5;
+    }
+
+    > [class*='-push-right#{$offset}-6'] {
+      margin-right: $glp-column-6;
+    }
+
+    > [class*='-push-right#{$offset}-7'] {
+      margin-right: $glp-column-7;
+    }
+
+    > [class*='-push-right#{$offset}-8'] {
+      margin-right: $glp-column-8;
+    }
+
+    > [class*='-push-right#{$offset}-9'] {
+      margin-right: $glp-column-9;
+    }
+
+    > [class*='-push-right#{$offset}-10'] {
+      margin-right: $glp-column-10;
+    }
+
+    > [class*='-push-right#{$offset}-11'] {
+      margin-right: $glp-column-11;
+    }
+  }
+}
+
+[class*='row'] {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 (-$gl-gutter / 2);
+
+  flex-flow: row wrap;
+}
+
+.column, [class*='column-'] {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  padding: 0 ($gl-gutter / 2) $gl-column-bottom;
+}
+
+[class^='column'] {
+  flex: 1 1 0;
+}
+
+[class^='row'][class^='column'], [class^='row'][class*='column-'] {
+  margin: 0;
+  padding: 0;
+}
+
+@include make-grid-by-number(row);
+
+@media (#{$tablet-vert}) {
+  @include make-grid-by-number('-tablet-vert');
+}
+
+@media (#{$tablet-horz}) {
+  @include make-grid-by-number('-tablet-horz');
+}
+
+@media (#{$desktop-sm}) {
+  @include make-grid-by-number('-desktop-sm');
+}
+
+@media (#{$desktop-max}) {
+  @include make-grid-by-number('-desktop-max');
+}
+
+@include make-columns('column');
+
+@media (#{$tablet-vert}) {
+  @include make-columns('-tablet-vert');
+}
+
+@media (#{$tablet-horz}) {
+  @include make-columns('-tablet-horz');
+}
+
+@media (#{$desktop-sm}) {
+  @include make-columns('-desktop-sm');
+}
+
+@media (#{$desktop-max}) {
+  @include make-columns('-desktop-max');
+}
+
+@include make-offsets('');
+
+@media (#{$tablet-vert}) {
+  @include make-offsets('-tablet-vert');
+}
+
+@media (#{$tablet-horz}) {
+  @include make-offsets('-tablet-horz');
+}
+
+@media (#{$desktop-sm}) {
+  @include make-offsets('-desktop-sm');
+}
+
+@media (#{$desktop-max}) {
+  @include make-offsets('-desktop-max');
+}
+
+[class*='row-'][class*='-no-gutter'] {
+  margin: 0;
+
+  > [class*='column'] {
+    padding: 0;
+  }
+}
+
+[class*='row-'][class*='-no-wrap'] {
+  flex-wrap: nowrap;
+}
+
+[class*='row-'] {
+  &[class*='-center'] {
+    justify-content: center;
+  }
+
+  &[class*='-right'] {
+    justify-content: flex-end;
+    margin-left: auto;
+
+    align-self: flex-end;
+  }
+}
+
+[class*='row-'] {
+  &[class*='-top'] {
+    align-items: flex-start;
+  }
+
+  &[class*='-middle'] {
+    align-items: center;
+  }
+
+  &[class*='-bottom']:not([class*='-no-bottom']) {
+    align-items: flex-end;
+  }
+
+  &[class*='-stretch'] {
+    align-items: stretch;
+  }
+}
+
+[class*='row-'][class*='-reverse'] {
+  flex-direction: row-reverse;
+}
+
+[class*='row-'] {
+  &[class*='-column'] {
+    flex-direction: column;
+
+    > [class*='column-'] {
+      flex-basis: auto;
+    }
+  }
+
+  &[class*='-column-reverse'] {
+    flex-direction: column-reverse;
+  }
+}
+
+[class*='row-'] {
+  &[class*='-space-between'] {
+    justify-content: space-between;
+  }
+
+  &[class*='-space-around'] {
+    justify-content: space-around;
+  }
+}
+
+[class*='row-'] {
+  // Equal heights columns
+  &[class*='-equal-height'] > [class*='column'] {
+    display: flex;
+    flex-wrap: wrap;
+
+    > * {
+      flex: 1 0 100%;
+    }
+  }
+}
+
+[class*='row-'] {
+  &[class*='-no-bottom'] > [class*='column'] {
+    padding-bottom: 0;
+  }
+}
+
+[class*='column-'] {
+  &[class*='-top'] {
+    align-self: flex-start;
+  }
+
+  &[class*='-middle'] {
+    align-self: center;
+  }
+
+  &[class*='-bottom'] {
+    align-self: flex-end;
+  }
+}
+
+[class*='column-'] {
+  &[class*='-first'] {
+    order: -1;
+  }
+
+  &[class*='-last'] {
+    order: 1;
+  }
+}
+
+[class*='column-']:not([class*='-column-0']) {
+  display: block;
+}
+
+[class*='row'][class*='column-']:not([class*='-column-0']) {
+  display: flex;
+}
+
+[class*='column-'][class*='-column-0'] {
+  display: none;
+}
+
+[class*='max-width'] {
+  width: 100%;
+  max-width: $max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $gl-gutter;
+  padding-left: $gl-gutter;
+
+  &[class*='-no-padding'] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

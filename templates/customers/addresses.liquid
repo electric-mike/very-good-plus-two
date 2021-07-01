@@ -1,0 +1,295 @@
+<div class="addresses">
+
+  <div class="addresses-inner max-width">
+    <div class="row">
+      {% render 'account-navigation' %}
+      <div class="column-12-tablet-vert-8">
+        <div class="addresses-list-inner column-12">
+          <div class="row">
+            {% paginate customer.addresses by 12 %}
+              {% for address in customer.addresses %}
+                <div
+                  class="edit-address column-12 right-area"
+                  data-firstname="{{address.first_name}}"
+                  data-lastname="{{address.last_name}}"
+                  data-company="{{address.company}}"
+                  data-address1="{{address.address1}}"
+                  data-address2="{{address.address2}}"
+                  data-city="{{address.city}}"
+                  data-country="{{address.country}}"
+                  data-province="{{address.province}}"
+                  data-postalcode="{{address.zip}}"
+                  data-phone="{{address.phone}}"
+                  v-cloak
+                >
+                  <div class="add-actions">
+                    <h4>
+                      {{ address.street }}
+                      {% if address == customer.default_address %}<span class="default-address note">({{ 'customer.addresses.default' | t }})</span>{% endif %}
+                    </h4>
+                    <span class="right-text">
+                      <a class="featured action-edit" href="#" v-show="!showForm" v-on:click.prevent="showForm = true">{{ 'customer.addresses.edit' | t }}</a>
+                      <a class="featured action-cancel" href="#" v-show="showForm" v-on:click.prevent="showForm = false" v-cloak>{{ 'customer.addresses.cancel' | t }}</a>
+                      <br>
+                      <a class="featured action-delete" href="#" v-show="!showForm" onclick="Shopify.CustomerAddress.destroy({{ address.id }}, 'Are you sure you want to delete this address?'); return false;">{{ 'customer.addresses.delete' | t }}</a>
+                    </span>
+                  </div>
+                  <div class="customer_address" v-if="!showForm">
+                    <div class="view_address">
+                      <p>
+                        {{ address.first_name }} {{address.last_name }}<br>
+                        {% if address.company != blank %}{{ address.company }}<br>{% endif %}
+                        {{ address.street }}<br>
+                        {{ address.city }},
+                        {% if address.province_code %}
+                          {{ address.province_code }}
+                        {% else %}
+                          {{ address.province }}
+                        {% endif %}
+                        {{ address.zip }}<br>
+                        {{ address.country }}<br>
+                        {{ address.phone }}
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Edit Address Form -->
+                  <vue-form
+                    class="vue-form"
+                    method="post"
+                    action="/account/addresses/{{ address.id }}"
+                    v-on:submit.prevent="submitForm"
+                    v-bind:state="formState"
+                    v-if="showForm"
+                  >
+                    <input type="hidden" name="form_type" value="customer_address">
+                    <input type="hidden" name="_method" value="put">
+                    <div class="customer_address_table row">
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="required">
+                          <label for="address_first_name_{{ address.id }}">{{ 'customer.addresses.first_name' | t }}</label>
+                          <input required type="text" id="address_first_name_{{ address.id }}" class="address_form" name="address[first_name]" v-model= "formData.firstname" size="40" />
+                          <field-messages name="address[first_name]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.first_name_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="required">
+                          <label for="address_last_name_{{ address.id }}">{{ 'customer.addresses.last_name' | t }}</label>
+                          <input required type="text" id="address_last_name_{{ address.id }}" class="address_form" name="address[last_name]" v-model="formData.lastname" size="40" />
+                          <field-messages name="address[last_name]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.last_name_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <label for="address_company_{{ address.id }}">{{ 'customer.addresses.company' | t }}</label>
+                        <input type="text" for="address_company_{{ address.id }}" class="address_form" name="address[company]" v-model="formData.company" size="40" />
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="required">
+                          <label for="address_address1_{{ address.id }}">{{ 'customer.addresses.address1' | t }}</label>
+                          <input required type="text" id="address_address1_{{ address.id }}" class="address_form" name="address[address1]" v-model="formData.address1" size="40" />
+                          <field-messages name="address[address1]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.address1_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <label for="address_address2_{{ address.id }}">{{ 'customer.addresses.address2' | t }}</label>
+                        <input type="text" id="address_address2_{{ address.id }}" class="address_form" name="address[address2]" v-model="formData.address2" size="40" />
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="province required">
+                          <label for="address_city_{{ address.id }}">{{ 'customer.addresses.city' | t }}</label>
+                          <input required type="text" id="address_city_{{ address.id }}" class="address_form" name="address[city]" v-model="formData.city" size="40" />
+                          <field-messages name="address[city]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.city_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="required">
+                          <label for="address_country_{{ address.id }}">{{ 'customer.addresses.country' | t }}</label>
+                          <select required id="address_country_{{ address.id }}" name="address[country]" v-model="formData.country">
+                            <option selected disabled value="">{{ 'customer.addresses.country_required' | t }}</option>
+                            {{ country_option_tags }}
+                          </select>
+                          <field-messages name="address[country]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.country_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div id="address_province_container_{{ address.id }}" style="display:none" class="column-12-tablet-vert-6">
+                        <label for="address_province_{{ address.id }}">{{ 'customer.addresses.province' | t }}</label>
+                        <select id="address_province_{{ address.id }}" class="address_form" name="address[province]" v-model="formData.province">
+                          <option selected disabled value="">{{ 'customer.addresses.province_required' | t }}</option>
+                        </select>
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="required">
+                          <label for="address_zip_{{ address.id }}">{{ 'customer.addresses.zip' | t }}</label>
+                          <input required type="text" id="address_zip_{{ address.id }}" class="address_form" name="address[zip]" v-model="formData.postalcode" size="40" />
+                          <field-messages name="address[zip]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.zip_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div class="column-12-tablet-vert-6">
+                        <validate class="required">
+                          <label for="address_phone_{{ address.id }}">{{ 'customer.addresses.phone' | t }}</label>
+                          <input required type="text" id="address_phone_{{ address.id }}" class="address_form" name="address[phone]" v-model="formData.phone" size="40" />
+                          <field-messages name="address[phone]" show="$touched && $invalid">
+                            <div class="field-message" slot="required">{{ 'customer.addresses.phone_required' | t }}</div>
+                          </field-messages>
+                        </validate>
+                      </div>
+                      <div class="checkbox column-12">
+                        <input type="checkbox" id="address_default_address_{{ address.id }}" name="address[default]" v-model="formData.isdefault">
+                        <label for="address_default_address_{{ address.id }}">{{ 'customer.addresses.set_default' | t }}</label>
+                      </div>
+                    </div>
+                    <div class="action_bottom">
+                      <button v-bind:class="{ 'loading': loading }" type="submit">{{ 'customer.addresses.update' | t }}</button>
+                    </div>
+                    <div class="action-cancel-wrapper">
+                      <a class="featured action-cancel" href="#" v-show="showForm" v-on:click.prevent="showForm = false" v-cloak>{{ 'customer.addresses.cancel' | t }}</a>
+                    </div>
+                  </vue-form>
+                </div>
+              {% endfor %}
+
+              <div id="address_pagination">{{ paginate | default_pagination }}</div>
+            {% endpaginate %}
+
+            <!-- Add Address Form -->
+            <div id="add_address" class="right-area column-12" v-cloak>
+              <div class="add-actions">
+                <div>
+                  {% if customer.addresses.size == 0 %}
+                  <span v-show="!showForm">{{ 'customer.addresses.none' | t }}</span>
+                  {% endif %}
+                  <a class="featured" href="#" v-show="!showForm" v-on:click.prevent="showForm = true">{{ 'customer.addresses.add_new' | t }}</a>
+                  <h4 id="add_address_title" v-show="showForm">{{ 'customer.addresses.add_new' | t }}</h4>
+                </div>
+                <a class="featured" href="#" v-show="showForm" v-on:click.prevent="showForm = false">{{ 'customer.addresses.cancel' | t }}</a>
+              </div>
+              <vue-form
+                class="vue-form"
+                method="post"
+                action="/account/addresses"
+                v-bind:state="formState"
+                v-on:submit.prevent="submitForm"
+                v-show="showForm"
+              >
+                <div class="customer_address_table row">
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="required">
+                      <label for="address_first_name_new">{{ 'customer.addresses.first_name' | t }}</label>
+                      <input required type="text" id="address_first_name_new" class="address_form" name="address[first_name]" v-model="formData.firstname" size="40" />
+                      <field-messages name="address[first_name]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.first_name_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="required">
+                      <label for="address_last_name_new">{{ 'customer.addresses.last_name' | t }}</label>
+                      <input required type="text" id="address_last_name_new" class="address_form" name="address[last_name]" v-model="formData.lastname" size="40" />
+                      <field-messages name="address[last_name]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.last_name_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <label for="address_company_new">{{ 'customer.addresses.company' | t }}</label>
+                    <input type="text" for="address_company_new" class="address_form" name="address[company]" v-model="formData.company" size="40" />
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="required">
+                      <label for="address_address1_new">{{ 'customer.addresses.address1' | t }}</label>
+                      <input required type="text" id="address_address1_new" class="address_form" name="address[address1]" v-model="formData.address1" size="40" />
+                      <field-messages name="address[address1]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.address1_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <label for="address_address2_new">{{ 'customer.addresses.address2' | t }}</label>
+                    <input type="text" id="address_address2_new" class="address_form" name="address[address2]" v-model="formData.address2" size="40" />
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="province required">
+                      <label for="address_city_new">{{ 'customer.addresses.city' | t }}</label>
+                      <input required type="text" id="address_city_new" class="address_form" name="address[city]" v-model="formData.city" size="40" />
+                      <field-messages name="address[city]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.city_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="required">
+                      <label for="address_country_new">{{ 'customer.addresses.country' | t }}</label>
+                      <select required id="address_country_new" name="address[country]" v-model="formData.country">
+                        <option selected disabled value="">{{ 'customer.addresses.country_required' | t }}</option>
+                        {{ country_option_tags }}
+                      </select>
+                      <field-messages name="address[country]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.country_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div id="address_province_container_new" style="display:none" class="column-12-tablet-vert-6">
+                    <label for="address_province_new">{{ 'customer.addresses.province' | t }}</label>
+                    <select id="address_province_new" class="address_form" name="address[province]" v-model="formData.province">
+                      <option selected disabled value="">{{ 'customer.addresses.province_required' | t }}</option>
+                    </select>
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="required">
+                      <label for="address_zip_new">{{ 'customer.addresses.zip' | t }}</label>
+                      <input required type="text" id="address_zip_new" class="address_form" name="address[zip]" v-model="formData.postalcode" size="40" />
+                      <field-messages name="address[zip]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.zip_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div class="column-12-tablet-vert-6">
+                    <validate class="required">
+                      <label for="address_phone_new">{{ 'customer.addresses.phone' | t }}</label>
+                      <input required type="text" id="address_phone_new" class="address_form" name="address[phone]" v-model="formData.phone" size="40" />
+                      <field-messages name="address[phone]" show="$touched && $invalid">
+                        <div class="field-message" slot="required">{{ 'customer.addresses.phone_required' | t }}</div>
+                      </field-messages>
+                    </validate>
+                  </div>
+                  <div class="checkbox column-12">
+                    <input type="checkbox" id="address_default_address_new" name="address[default]" v-model="formData.isdefault">
+                    <label for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
+                  </div>
+                </div>
+                <div class="action_bottom">
+                  <button v-bind:class="{ 'loading': loading }" type="submit">{{ 'customer.addresses.add' | t }}</button>
+                </div>
+                <div class="action-cancel-wrapper">
+                  <a class="featured action-cancel" href="#" v-show="showForm" v-on:click="showForm = false" v-cloak>{{ 'customer.addresses.cancel' | t }}</a>
+                </div>
+              </vue-form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// initialize observers on address selectors
+// new Shopify.CountryProvinceSelector('address_country_new', 'address_province_new', {hideElement: 'address_province_container_new'});
+
+// {% for address in customer.addresses %}
+//   new Shopify.CountryProvinceSelector('address_country_{{address.id}}', 'address_province_{{address.id}}', {hideElement: 'address_province_container_{{address.id}}'});
+// {% endfor %}
+</script>

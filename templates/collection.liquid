@@ -1,0 +1,347 @@
+{% section 'collection-settings' %}
+{% section 'collection-filter-settings' %}
+
+<div id="category" class="category">
+  <section>
+    {% if collection.image %}
+      <div class="category-hero category-hero-image">
+        {%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          id="hero-image-desktop"
+          class="lazyload blur-up"
+          src="{{ collection.image.src | img_url: '200x' }}"
+          alt="{{ collection.title | escape }}"
+          data-src="{{ img_url }}"
+          data-widths="[360, 540, 720, 900, 1080, 1600]"
+          data-aspectratio="{{ collection.image.aspect_ratio }}"
+          data-sizes="auto"
+          style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
+        />
+        <noscript>
+          <img class="lazyloaded" src="{{ collection.image.src | img_url: '800x' }}" alt="{{ collection.title | escape }}">
+        </noscript>
+
+        <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
+          <h1 class="hero"><span>{{ collection.title }}</span></h1>
+          {% if collection.description != '' %}<p>{{ collection.description }}</p>{% endif %}
+        </div>
+      </div>
+    {% else %}
+      <div class="category-hero category-hero-image">
+        {%- assign base_url = settings.collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          id="hero-image-desktop"
+          class="lazyload blur-up"
+          src="{{ settings.collection_image | img_url: '200x' }}"
+          alt="{{ collection.title | escape }}"
+          data-src="{{ base_url }}"
+          data-widths="[360, 540, 720, 900, 1080, 1600]"
+          data-aspectratio="{{ collection.image.aspect_ratio }}"
+          data-sizes="auto"
+          style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
+        />
+        <noscript>
+          <img class="lazyloaded" src="{{ settings.collection_image | img_url: '800x' }}" alt="{{ collection.title | escape }}">
+        </noscript>
+
+        <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
+          <h1 class="hero"><span>{{ collection.title }}</span></h1>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="filters-products-wrapper row max-width">
+      <div class="overlay filters-overlay v-hide" v-if="showMobileNav" v-on:click="toggleMobileCollectionNav(false)" v-cloak></div>
+      <div class="filters column-12-tablet-vert-3" v-cloak v-bind:class="{ 'active': showMobileNav, 'was-opened': wasOpened, 'toggled-off': !showFilters || filterOptionsAvailable.length <= 0 }">
+
+        <div class="mobile-filter-header">
+          <h4>Filter & Sort</h4>
+          <span v-on:click="toggleMobileCollectionNav(false)" class="hamburger open"><span class="lines"></span></span>
+        </div>
+
+        <div class="filters-inner">
+          <div class="checked-options" v-if="actualCheckedOptionsArray.length > 0">
+            <span
+              class="checked-option capitalize"
+              v-for="(option, index) in actualCheckedOptionsArray"
+              v-on:click="uncheckOption(option)"
+              v-bind:key="index"
+            >
+              <span class="remove hamburger open hover"><span class="lines"></span></span>
+              <span v-html="option.name"></span>
+            </span>
+          </div>
+
+          <p class="product-count left-padding hide-tablet" v-if="!loading" v-cloak>
+            <span v-if="paginatedProductsPages > 1">
+              ${ pageRangeStart + 1 }-${ pageRangeEnd }
+              <span v-if="paginatedProducts.length < filteredProducts.length">
+              of ${ filteredProducts.length } Product<span v-if="filteredProducts.length === 0 || filteredProducts.length > 1">s</span>
+              </span>
+            </span>
+            <span v-else>
+              ${ paginatedProducts.length } Product<span v-if="paginatedProducts.length === 0 || paginatedProducts.length > 1">s</span>
+            </span>
+          </p>
+
+          <div v-if="loading">
+            <div class="filter" v-for="index in 4" v-bind:class="index">
+              <h5 class="filter-name">&nbsp</h5>
+            </div>
+          </div>
+
+          <div id="filters" v-else>
+            <div class="filter">
+              <h5
+                class="filter-name"
+                v-bind:class="{ 'active' : filterToggles['sort'] }"
+                v-on:click.prevent="toggleFilter('sort')"
+              >Sort</h5>
+              <ul v-show="filterToggles['sort']" v-bind:class="{ 'swatches': isSwatch('sort') }">
+                <li>
+                  <div class="radio">
+                    <input id="sort-featured" type="radio" v-model="sort" value="" name="sort">
+                    <label for="sort-featured">Featured</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-pricea" type="radio" v-model="sort" value="pricea" name="sort">
+                    <label for="sort-pricea">Highest Price</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-priced" type="radio" v-model="sort" value="priced" name="sort">
+                    <label for="sort-priced">Lowest Price</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-atoz" type="radio" v-model="sort" value="atoz" name="sort">
+                    <label for="sort-atoz">A to Z</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-ztoa" type="radio" v-model="sort" value="ztoa" name="sort">
+                    <label for="sort-ztoa">Z to A</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-vendor" type="radio" v-model="sort" value="vendor" name="sort">
+                    <label for="sort-vendor">Product Brand</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="filter"
+              v-for="filter in filterOptions"
+              v-if="filter.options.length > 1"
+            >
+              <h5
+                class="filter-name"
+                v-bind:class="{ 'active' : filterToggles[filter.name] }"
+                v-on:click.prevent="toggleFilter(filter.name)"
+                v-html="changeVendorToBrand(filter.name)"
+              ></h5>
+              <ul v-show="filterToggles[filter.name]" v-bind:class="{ 'swatches': isSwatch(filter.name) }">
+                <li v-for="option in filter.options" v-bind:class="{ 'color-swatch': filter.name.toLowerCase() === 'color', 'size-swatch': filter.name.toLowerCase() === 'size' }">
+                  <div v-bind:class="{ 'checkbox': !isSwatch(filter.name) }">
+                    <input v-bind:id="option.name + '-' + filter.name" type="checkbox" v-model="checkedOptions[filter.name]" v-bind:value="option">
+                    <label v-bind:for="option.name + '-' + filter.name" v-html="option.name" v-bind:class="[ option.name.replace(/ /g, '-').toLowerCase() ]"></label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="filter clear-line" v-if="actualCheckedOptionsArray.length > 0">
+              <a href="#" v-on:click.prevent="clearCheckedOptions()">Clear All</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        v-cloak
+        class="column-12 column-12-tablet-vert-9 max-width-no-padding collection-right"
+        v-bind:class="{ 'full-width-grid-override': !showFilters || filterOptionsAvailable.length <= 0, 'filters-hidden': !showFilters || filterOptionsAvailable.length <= 0 }"
+      >
+        <div class="header-wrapper row-top max-width-no-padding">
+          <div class="column-12 row-top-space-between-no-padding collection-info">
+            <a
+              href="#"
+              class="toggle-filters show-tablet"
+              v-on:click.prevent="toggleFilters()"
+            ><span class="v-cloak" v-cloak>${ showFilters ? 'Hide' : 'Show' }</span> Filters</a>
+            <span class="product-count left-padding" v-if="!loading">
+              <span v-if="paginatedProductsPages > 1">
+                ${ pageRangeStart + 1 }-${ pageRangeEnd }
+                <span v-if="paginatedProducts.length < filteredProducts.length">
+                of ${ filteredProducts.length } Product<span v-if="filteredProducts.length === 0 || filteredProducts.length > 1">s</span>
+                </span>
+              </span>
+              <span v-else>
+                ${ paginatedProducts.length } Product<span v-if="paginatedProducts.length === 0 || paginatedProducts.length > 1">s</span>
+              </span>
+            </span>
+          </div>
+          <div class="column-12 mobile-collection-options">
+            <a
+              href="#"
+              class="small"
+              v-if="filterOptionsAvailable.length > 0"
+              v-on:click.prevent="toggleMobileCollectionNav()"
+            >Filter & Sort</a>
+            <div class="mobile-grid-swatches">
+              <div><span class="small">View</span></div>
+              <div class="grid-swatch" v-for="i in 2">
+                <input v-bind:id="i + '-grid-size'" type="radio" v-model="mobileGridSize" v-bind:value="i">
+                <label v-bind:for="i + '-grid-size'">${i}</label>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="show-tablet column-4">
+            <label class="sort-by">Sort By</label>
+            <select v-model="sort" v-on:change="currentPage = 1">
+              <option value="">Featured</option>
+              <option value="pricea">Highest Price</option>
+              <option value="priced">Lowest Price</option>
+              <option value="atoz">A to Z</option>
+              <option value="ztoa">Z to A</option>
+              <option value="type">Product Type</option>
+              <option value="vendor">Product Brand</option>
+            </select>
+          </div> -->
+        </div>
+
+        <div class="products-wrapper product-list-wrapper">
+          <div class="products" v-show="!showVueProducts" v-bind:class="[computedMobileGridSize, { 'filters-hidden': !showFilters || filterOptionsAvailable.length <= 0 }]">
+            {% assign pagination_limit = settings.pagination_limit | default: 40 %}
+            {% paginate collection.products by pagination_limit %}
+            {% for product in collection.products %}
+              {% assign product_tags = product.tags | join: ',' %}
+              {% assign product_price = product.price | money %}
+              <div
+                class="product product-{{ product.id }}"
+                data-tags="{{ product_tags }}"
+                data-price="{{ product_price }}"
+                key="{{ forloop.index }}"
+              >
+                <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+                  <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
+                    {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img
+                      class="product-image lazyload blur-up"
+                      src="{{ settings.placeholder_image | img_url }}"
+                      alt="{{ product.title | escape }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080, 1600]"
+                      data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                      data-secondary-aspectratio="{{ product.images[1].aspect_ratio }}"
+                      data-sizes="auto"
+                      data-first-src="{{ img_url }}"
+                      data-additional-image="{{ secondary_img_url }}"
+                      v-on:mouseover="changeImage('in', $event)"
+                      v-on:mouseleave="changeImage('out', $event)"
+                    />
+                    <noscript>
+                      <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
+                    </noscript>
+                  </div>
+                </a>
+                <div class="product-info">
+                  <h5 class="vendor">{{ product.vendor }}</h5>
+                  <a href="{{ product.url | within: collection }}">
+                    <h5>{{ product.title }}</h5>
+                  </a>
+                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+                  {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
+                  <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+                  {% include 'color-swatches' %}
+                </div>
+              </div>
+            {% endfor %}
+            {% endpaginate %}
+          </div>
+
+          <div class="products" v-bind:class="[computedMobileGridSize, { 'filters-hidden': !showFilters || filterOptionsAvailable.length <= 0 }]" v-show="showVueProducts" v-cloak>
+            <div
+              class="product"
+              v-for="product in paginatedProducts"
+              v-bind:class="'product-' + product.id"
+              v-bind:key="product.id"
+            >
+              <a class="product-image-wrapper" v-bind:href="generateProductUrl(product.handle)">
+                <div class="image-wrap" style="height: 0;" v-bind:style="{ 'padding-bottom': (100 / product.featured_image_aspectratio) + '%' }">
+                  <img
+                    class="product-image lazyload"
+                    data-sizes="auto"
+                    data-widths="[360, 540, 720, 900, 1080, 1600]"
+                    src="{{ settings.placeholder_image | img_url }}"
+                    v-bind:data-src="product.featured_image"
+                    v-bind:data-first-src="product.featured_image"
+                    v-bind:data-aspectratio="product.featured_image_aspectratio"
+                    v-bind:data-secondary-aspectratio="product.secondary_image_aspectratio"
+                    v-bind:alt="product.title"
+                    v-bind:data-additional-image="product.secondary_image"
+                    v-on:mouseover="changeImage('in', $event)"
+                    v-on:mouseleave="changeImage('out', $event)"
+                  />
+                </div>
+              </a>
+              <div class="product-info">
+                <h5 class="vendor">${ product.vendor }</h5>
+                <a v-bind:href="generateProductUrl(product.handle)">
+                  <h5 v-html="product.title"></h5>
+                </a>
+                <div
+                v-bind:data-id='product.id'
+                class="jdgm-widget jdgm-preview-badge"
+                v-html="product.reviews"
+                ></div>
+                <h5 class="original-price" v-if="product.compare_at_price > product.price">${ product.compare_at_price | currency }</h5>
+                <h5 class="price">${ product.price | currency }</h5>
+                <v-runtime-template v-if="product.swatches" :template="product.swatches"></v-runtime-template>
+              </div>
+            </div>
+
+            <div v-if="paginatedProducts.length === 0" v-cloak>
+              <div class="no-results">
+                <h2>No results</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="pagination-wrapper" v-cloak>
+            <div class="pagination" v-show="paginatedProductsPages > 1">
+              <div
+                class="pagination-button"
+                v-if="currentPage > 1"
+                v-on:click="currentPage -= 1"
+              >
+                {% render 'prev-button' %}
+              </div>
+              <div
+                class="pagination-button"
+                v-for="i in paginatedProductsPages"
+                v-on:click="currentPage = i"
+                v-bind:class="{ 'active': currentPage === i }"
+              >${ i }</div>
+              <div
+                class="pagination-button"
+                v-on:click="currentPage += 1"
+                v-if="currentPage === 1 || (currentPage > 0 && currentPage !== paginatedProductsPages)"
+              >
+                {% render 'next-button' %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

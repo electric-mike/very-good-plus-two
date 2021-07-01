@@ -1,0 +1,30 @@
+//------------------
+// DRAWER ELEMENT (SIDE CART AND MOBILE MENU)
+//------------------
+.drawer-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  min-width: 300px;
+  max-width: $mobile - 100;
+  z-index: 99999999;
+  background: $white;
+  -webkit-overflow-scrolling: touch;
+  transform: translateX(101%);
+
+  &.left-drawer {
+    right: unset;
+    left: 0;
+    transform: translateX(-101%);
+  }
+
+  &.open, &.was-opened {
+    transition: transform .25s;
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+}

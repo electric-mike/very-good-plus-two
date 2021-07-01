@@ -1,0 +1,38 @@
+<div class="account">
+  <div class="account-inner max-width">
+    <div class="row">
+      {% render 'account-navigation' %}
+      <div id="customer-orders" class="customer-orders column-12-tablet-vert-8">
+        <div class="customer-orders-inner right-area">
+          {% if customer.orders.size != 0 %}
+            <table class="order-history">
+              <thead>
+                <tr>
+                  <th class="order_number featured">{{ 'customer.orders.order_number' | t }}</th>
+                  <th class="date">{{ 'customer.orders.date' | t }}</th>
+                  <th class="status payment_status">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th class="status fulfillment_status">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th class="total">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+                  <td><a class="featured" href="{{ order.customer_url }}">{{ order.name }}</a></td>
+                  <td class="note">{{ order.created_at | date: "%b %d, %Y" }}</td>
+                  <td class="status payment_status {{ order.financial_status }}">{{ order.financial_status }}</td>
+                  <td class="status fulfillment_status {{ order.fulfillment_status }}">{{ order.fulfillment_status }}</td>
+                  <td class="total money">{{ order.total_price | money }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            <h5 class="no-orders">{{ 'customer.orders.none' | t }}</h5>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

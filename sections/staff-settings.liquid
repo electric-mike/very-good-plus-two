@@ -1,0 +1,57 @@
+{% include 'hero' %}
+<section class="constrain-items">
+  <!-- {{ page.content }} -->
+  <div class="people">
+    {% for block in section.blocks %}
+      <div class="person row {% cycle '', 'row-reverse' %}">
+        <div class="column-12-tablet-vert-6">
+          <div class="person-image">
+            {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img
+              class="lazyload blur-up"
+              src="{{ block.settings.image.src | img_url: '200x' }}"
+              alt="{{ block.settings.description | escape }}"
+              data-src="{{ img_url }}"
+              data-widths="[360, 540, 720, 900, 1080, 1600]"
+              data-sizes="auto"
+              data-aspectratio="{{ block_image.aspect_ratio }}"
+              style="width: 100%;"
+            />
+            <noscript>
+              <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.description | escape }}">
+            </noscript>
+          </div>
+        </div>
+        <div class="column-12-tablet-vert-6">
+          <div class="person-description">
+            {{ block.settings.description }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Staff Settings",
+    "blocks": [
+      {
+        "type": "person",
+        "name": "Person",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

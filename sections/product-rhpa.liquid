@@ -1,0 +1,201 @@
+<div
+  class="swatches-wrapper v-hide"
+  v-for="(options, i) in [option1Options, option2Options, option3Options]"
+  v-if="options.length > 1"
+  v-cloak
+>
+  {% if section.settings.rhpa_type == 'swatch' %}
+    <div v-bind:class="{ 'swatch-size-link-wrapper': productVariantOptions[i].toLowerCase() ==='size' }">
+      <span class="swatch-title">
+        <span>${ productVariantOptions[i] }: </span>${ optionSelections[i + 1] || 'Select ' + productVariantOptions[i] }
+      </span>
+      <div class="size-chart-link-wrapper" v-if="productVariantOptions[i].toLowerCase() ==='size'">
+        <a class="size-chart-link" href="#" v-on:click.prevent="toggleSizeChart()">Size Chart</a>
+        <modal class="size-chart-wrapper" v-if="showSizeChart" v-on:close="toggleSizeChart()">
+          {% include 'size-chart' %}
+        </modal>
+      </div>
+    </div>
+    {% if section.settings.rhpa_color_swatch_type == 'image' %}
+      <div class="swatches image-swatches" v-if="productVariantOptions[i] === 'Color'">
+        <div
+          class="swatch color-image-swatch" v-for="(option, j) in options"
+          v-bind:class="{ 'oos': outOfStock(option, i + 1) }"
+        >
+          <input
+            v-bind:id="option"
+            v-bind:value="option" type="radio"
+            v-model="optionSelections[i + 1]"
+            v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
+            autocomplete="off"
+          />
+          <label v-bind:class="[ option.replace(/ /g, '-').toLowerCase() ]" v-bind:for="option">
+            <img
+              class="lazyload"
+              src="{{ settings.placeholder_image | img_url }}"
+              v-bind:data-src="productVariants[j].featured_image.src"
+              v-bind:data-variantid="productVariants[j].id"
+            />
+          </label>
+        </div>
+      </div>
+      <div class="swatches" v-else>
+        <div
+          class="swatch" v-for="option in options"
+          v-bind:class="{ 'oos': outOfStock(option, i + 1) }"
+        >
+          <input
+            v-bind:id="option"
+            v-bind:value="option" type="radio"
+            v-model="optionSelections[i + 1]"
+            v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
+            autocomplete="off"
+          />
+          <label v-bind:class="[ option.replace(/ /g, '-').toLowerCase() ]" v-bind:for="option">${ option }</label>
+        </div>
+      </div>
+    {% else %}
+      <div class="swatches" v-bind:class="{ 'color-swatches': productVariantOptions[i] === 'Color' }">
+        <div
+          class="swatch" v-for="option in options"
+          v-bind:class="{ 'color-swatch': productVariantOptions[i] === 'Color', 'oos': outOfStock(option, i + 1) }"
+        >
+          <input
+            v-bind:id="option"
+            v-bind:value="option" type="radio"
+            v-model="optionSelections[i + 1]"
+            v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
+            autocomplete="off"
+          />
+          <label v-bind:class="[ option.replace(/ /g, '-').toLowerCase() ]" v-bind:for="option">${ option }</label>
+        </div>
+      </div>
+    {% endif %}
+  {% elsif section.settings.rhpa_type == 'radio' %}
+    <h6 class="radio-title"><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
+    <div class="radio-wrapper">
+      <div class="radio" v-for="option in options" v-bind:class="{ 'half-width': options.length > 10 }">
+        <input
+          type="radio"
+          v-bind:id="option"
+          v-bind:value="option" type="radio"
+          v-model="optionSelections[i + 1]"
+          v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
+          v-bind:disabled="outOfStock(option, i + 1)"
+          autocomplete="off"
+        />
+        <label v-bind:for="option">${ option }</label>
+      </div>
+    </div>
+  {% elsif section.settings.rhpa_type == 'select' %}
+    <div class="select-wrapper">
+      <h6 class="select-title"><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
+      <select v-model="optionSelections[i + 1]">
+        <option
+          v-for="option in options"
+          v-bind:id="option"
+          v-bind:value="option" type="radio"
+          v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
+          v-bind:disabled="outOfStock(option, i + 1)"
+        >${ option }</option>
+      </select>
+    </div>
+  {% endif %}
+</div>
+
+<!-- Recharge Hidden Input -->
+{% if product.available %}
+  <input type="hidden" name="id" data-productid="{{ product.id }}" v-bind:value="selectedOptionVariant ? selectedOptionVariant.id : ''" />
+{% endif %}
+
+<div class="quantity-atc-wrapper">
+  {% if section.settings.show_quantity_selector %}
+    <div class="quantity-input-wrapper required">
+      <quantity-input v-bind:is-cart="false" v-model.number="formQuantity"></quantity-input>
+    </div>
+  {% endif %}
+  <div class="add-to-cart-wrapper required">
+    <link itemprop="availability" href="http://schema.org/OutOfStock" v-if="!selectedOptionVariant && selectedOptionVariant && !selectedOptionVariant.available">
+    <link itemprop="availability" href="http://schema.org/InStock" v-else>
+
+    <button
+      v-if="selectedOptionVariant && selectedOptionVariant.available"
+      v-bind:class="{ 'loading': addingToCart, 'active': selectedOptionVariant && !selectedOptionVariant.available }"
+      v-bind:disabled="selectedOptionVariant && !selectedOptionVariant.available"
+      type="submit"
+      name="add"
+      id="AddToCart"
+    >Add to cart<span class="hide-tablet white"> - ${ productPrice.replace('.00', '') }</span></button>
+    <button
+      class="active"
+      disabled
+      v-else-if="InvalidVariantSelections"
+    >${ InvalidVariantSelections }</button>
+    {% if settings.klaviyo_bis_list.size > 0 %}
+      <button
+        v-else
+        class="secondary klaviyo-bis-trigger"
+        id="AddToCart"
+      >Notify Me When Available</button>
+    {% else %}
+      <button
+        v-else
+        class="secondary"
+        id="AddToCart"
+      >Out Of Stock</button>
+    {% endif %}
+    <div v-if="PdpError" class="pdp-error invalid">
+      <p class="field-message">${ PdpError.description }</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "RHPA Settings",
+    "settings": [
+      {
+        "type": "select",
+        "id": "rhpa_type",
+        "label": "Variant Display Type",
+        "options": [
+          {
+            "value": "swatch",
+            "label": "Swatch"
+          },
+          {
+            "value": "radio",
+            "label": "Radio"
+          },
+          {
+            "value": "select",
+            "label": "Select"
+          }
+        ],
+        "default": "swatch"
+      },
+      {
+        "type": "select",
+        "id": "rhpa_color_swatch_type",
+        "label": "Color Swatch Type",
+        "options": [
+          {
+            "value": "swatch",
+            "label": "Swatch"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "swatch"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show Quantity Selector",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

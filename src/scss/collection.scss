@@ -1,0 +1,54 @@
+//------------------
+// SCSS VARS
+//------------------
+@import './variables.scss';
+
+//------------------
+// COLLECTION PAGE
+// NOTE: This is for the "BC Filter & Search" templates
+// "Category" class is for non-PF&S sites
+//------------------
+.collection {
+  margin: 0 auto;
+  padding: 1em 0;
+
+  #shopify-section-collection-template-bc-sf-filter,
+  #shopify-section-search-template-bc-sf-filter {
+    .page-width {
+      padding: 0;
+
+      .bc-sf-filter-default-toolbar-inner {
+        padding: 0 5px;
+      }
+
+      @media (max-width: 1199px) and (min-width: 768px) {
+        .bc-al-exist .bc-addtocart-btn {
+          letter-spacing: 0 !important;
+        }
+      }
+
+      .bc-sf-filter-custom-sorting label > span:after {
+        top: 3px !important;
+      }
+
+      #bc-sf-filter-wrapper {
+        float: none;
+      }
+
+      .bc-action-list-wrapper.bc-action-extend {
+        z-index: 2 !important;
+      }
+
+      .bc-sf-search-btn {
+        &:hover {
+          background: $white;
+          border-color: $white;
+        }
+      }
+
+      .bc-sf-filter-bottom-pagination-default {
+        text-align: center;
+      }
+    }
+  }
+}

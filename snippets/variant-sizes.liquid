@@ -1,0 +1,39 @@
+{% assign option_name = 'Size' -%}
+{% assign variant_size = product.options_by_name[option_name].values.size -%}
+{%- if variant_size == nil -%}
+  {%- assign variant_size = 0 -%}
+{%- endif -%}
+{%- for product_option in product.options_with_values -%}
+  {%- if product_option.name == option_name -%}
+    {%- assign option_index = product_option.position -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign how_many_options = 0 -%}
+{%- assign current_options = '' -%}
+{%- assign swatches_size = 0 -%}
+
+{%- if product.options_by_name[option_name] -%}
+  {%- for option in product.options -%}
+    {%- if option == option_name -%}
+      {%- assign option_index = forloop.index0 -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if variant_size > 1 -%}
+      {%- for variant in product.variants -%}
+        {%- if variant.available -%}
+          {%- assign current_option = variant.options[option_index] -%}
+          {%- unless current_options contains current_option -%}
+            {%- if how_many_options > 0 -%}
+              {%- assign current_options = current_options | join: '|' | append: '|' -%}
+            {%- endif -%}
+            {%- assign current_options = current_options | append: current_option -%}
+            {%- assign current_options = current_options | split: '|' | sort -%}
+            {%- assign how_many_options = current_options | size -%}
+            {%- if forloop.index > 1 -%},{%- endif -%}{{ current_option }}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}

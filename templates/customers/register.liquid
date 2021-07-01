@@ -1,0 +1,67 @@
+<div class="activate">
+  <div class="activate-inner max-width">
+    {% form 'create_customer', class: 'form-wrapper' %}
+      <div class="form-top-text">
+        <h3>{{ 'customer.register.title' | t }}</h3>
+        <p>{{ 'customer.register.subtitle' | t }}</p>
+        {{ form.errors | default_errors }}
+      </div>
+
+      <div class="form-container">
+        <div class="form-inner {% if form.errors contains 'first_name' %}invalid{% endif %}">
+          <label for="FirstName" class="form-label">
+            {{ 'customer.register.first_name' | t }}
+          </label>
+          <input type="text"
+            name="customer[first_name]"
+            id="FirstName"
+            placeholder="{{ 'customer.register.first_name' | t }}"
+            autofocus
+            {% if form.first_name %}value="{{ form.first_name }}"{% endif %}>
+        </div>
+        <br>
+        <div class="form-inner {% if form.errors contains 'last_name' %}invalid{% endif %}">
+          <label for="LastName" class="form-label">
+            {{ 'customer.register.last_name' | t }}
+          </label>
+          <input type="text"
+            name="customer[last_name]"
+            id="LastName"
+            placeholder="{{ 'customer.register.last_name' | t }}"
+            {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+        </div>
+        <br>
+        <div class="form-inner {% if form.errors contains 'email' %}invalid{% endif %}">
+          <label for="Email" class="form-label">
+            {{ 'customer.register.email' | t }}
+          </label>
+          <input type="email"
+            name="customer[email]"
+            id="Email"
+            placeholder="{{ 'customer.register.email' | t }}"
+            value="{% if form.email %}{{ form.email }}{% endif %}"
+            spellcheck="false"
+            autocomplete="off"
+            autocapitalize="off">
+        </div>
+        <br>
+        <div class="form-inner {% if form.errors contains 'password' %}invalid{% endif %}">
+          <label for="CreatePassword" class="form-label">
+            {{ 'customer.register.password' | t }}
+          </label>
+          <input type="password"
+            name="customer[password]"
+            id="CreatePassword"
+            placeholder="{{ 'customer.register.password' | t }}">
+        </div>
+        <br>
+        <div class="form-inner">
+          <input type="submit" value="{{ 'customer.register.submit' | t }}" class="button">
+        </div>
+        <div class="form-inner form-links">
+          <p>{{ 'customer.register.cancel' | t }} <a class="featured" href="/account">{{ 'customer.register.log_in_text' | t }}</a></p>
+        </div>
+      </div>
+    {% endform %}
+  </div>
+</div>

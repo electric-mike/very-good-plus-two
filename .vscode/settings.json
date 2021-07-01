@@ -1,0 +1,26 @@
+{
+  "workbench.colorTheme": "Atom One Dark",
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": false,
+  "explorer.confirmDelete": false,
+  "window.zoomLevel": 0,
+  "workbench.startupEditor": "welcomePage",
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "[javascript]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "liquid.format": true,
+  "[scss]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[html]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "[json]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+  }
+}

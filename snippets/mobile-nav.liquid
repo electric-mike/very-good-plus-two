@@ -1,0 +1,236 @@
+<div id="mobile-nav" v-cloak>
+  <div class="hamburger" v-bind:class="{ 'open': navOpen, 'was-opened': wasOpened }" v-on:click="toggleNav()">
+    <span class="lines"></span>
+  </div>
+  <div
+    class="overlay nav-overlay"
+    v-show="navOpen"
+    v-on:click="toggleNav()"
+    v-bind:style="{ 'top': `${stickyHeights.headerTop()}px`, 'was-opened': wasOpened }"
+  ></div>
+
+  <!-- ACCORDION -->
+  <div
+    class="drawer-wrapper left-drawer mobile-nav-wrapper v-hide"
+    v-bind:class="{ 'open': navOpen }"
+    v-bind:style="{ 'top': `${stickyHeights.headerTop()}px` }"
+    v-if="mobileNavType === 'accordion'"
+    v-cloak
+  >
+    <search-input v-on:focused="toggleInputFocused()" v-bind:is-mobile="true"></search-input>
+    <search-results v-bind:input-focused="inputFocused"></search-results>
+    {% for link in linklists[settings.header_linklist].links %}
+      {% assign child_list_handle = link.title | handleize %}
+      {% if linklists[child_list_handle].links != blank %}
+        <div class="mobile-parent-links-wrapper" v-bind:class="{ 'active' : navToggles['{{ child_list_handle }}'] }">
+          {% if linklists[child_list_handle].links.size > 0 %}
+            <a
+              href="#"
+              class="mobile-link mobile-top-level-link has-children {% if forloop.first == true %}first-link{% endif %} "
+              v-bind:class="{ 'active' : navToggles['{{ child_list_handle }}'] }"
+              v-on:click.prevent="toggleMobileChildren('{{ child_list_handle }}')"
+            >
+              {{ link.title }}
+            </a>
+          {% else %}
+            <a
+              class="mobile-link mobile-top-level-link {% if forloop.first == true %}first-link{% endif %} is-direct-link"
+              href="{{ link.url }}"
+              {% if link.title contains 'Sale' %}data-sale="true"{% endif %}
+            >
+              {{ link.title }}
+            </a>
+          {% endif %}
+          <div class="mobile-children-links-wrapper" v-show="navToggles['{{ child_list_handle }}']">
+
+            {% for childlink in linklists[child_list_handle].links %}
+              {% if childlink.links.size > 0 %}
+                {% assign childlink_list_handle = childlink.title | handleize %}
+                <div class="mobile-child-wrapper">
+                  <a
+                    class="mobile-link mobile-child-link has-children"
+                    href="{{ childlink.url }}"
+                    v-on:click.prevent="toggleMobileChildren('{{ child_list_handle }}', '{{ childlink_list_handle }}')"
+                    v-bind:class="{ 'active' : navChildToggles['{{ childlink_list_handle }}'] }"
+                  >{{ childlink.title | escape }}</a>
+                  <div
+                    class="mobile-grandchild-wrapper"
+                    v-show="navChildToggles['{{ childlink_list_handle }}']"
+                  >
+                    {% for grandchild in childlink.links %}
+                      <a
+                        class="mobile-link mobile-grandchild-link is-direct-link"
+                        href="{{ grandchild.url }}"
+                      >
+                        {{ grandchild.title | escape }}
+                        <!-- <i class="chevron"></i> -->
+                      </a>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% else %}
+                <div class="mobile-child-wrapper">
+                  <a
+                    class="mobile-link mobile-child-link is-direct-link"
+                    href="{{ childlink.url }}"
+                  >
+                    {{ childlink.title | escape }}
+                    <!-- <i class="chevron"></i> -->
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            {% comment %}
+            {% if link.type == 'collection_link' %}
+              <h6 class="nested-mobile-top-level-link"><span class="mobile-link top-products">Top Products</span></h6>
+              <div class="mobile-nav-product-wrapper">
+                {% assign childLinkProducts = link.object.products %}
+                {% for product in childLinkProducts | limit: 5 %}
+                  <div class="parent-link-product">
+                    <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+                      <img
+                        class="product-image lazyload blur-up"
+                        src="{{ settings.placeholder_image | img_url }}"
+                        data-src="{{ product.featured_image.src | img_url: 'large' }}"
+                        data-additional-image="{{ settings.placeholder_image | img_url }}"
+                        data-additional-image-large="{{ product.images[1] | img_url: 'large' }}"
+                        alt="{{ product.featured_image.alt | escape }}"
+                      />
+                    </a>
+                    <div class="product-info">
+                      <a href="{{ product.url | within: collection }}">
+                        <h5>{{ product.title }}</h5>
+                      </a>
+                      {% if product.vendor %}<h6>{{ product.vendor }}</h6>{% endif %}
+                      <h5 class="price">{{ product.price | money }}</h5>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% endcomment %}
+          </div>
+        </div>
+      {% else %}
+        <a
+          href="{{ link.url }}"
+          class="mobile-link mobile-top-level-link {% if forloop.first == true %}first-link{% endif %}"
+          {% if link.title contains 'Sale' %}data-sale="true"{% endif %}
+        >{{ link.title }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if shop.customer_accounts_enabled %}
+      <br>
+      <br>
+      <a class="mobile-link additional-link in-out-link" href="/account">
+        {% if customer and customer.first_name != blank %}{{ 'layout.customer.account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}
+      </a>
+      {% if customer and customer.first_name != blank %}
+        <a class="mobile-link additional-link in-out-link" href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+      {% else %}
+        <a class="mobile-link additional-link" href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- PAGINATE -->
+  <transition-group
+    tag="div"
+    name="slide"
+    class="drawer-wrapper left-drawer mobile-nav-wrapper v-hide paginate-mobile-nav-wrapper"
+    v-bind:class="{ 'open': navOpen, 'was-opened': wasOpened }"
+    v-bind:style="{ 'top': `${stickyHeights.headerTop()}px` }"
+    v-else-if="mobileNavType === 'paginate'"
+    v-cloak
+  >
+    <div
+      key="home"
+      v-show="currentPaginatePage == 'home'"
+      v-bind:class="{ 'nested': currentPaginatePage === 'home' || currentPaginatePage === '{{ child_list_handle }}' }"
+    >
+      <search-input v-on:focused="toggleInputFocused()" v-bind:is-mobile="true"></search-input>
+      <search-results v-bind:input-focused="inputFocused"></search-results>
+      {% for link in linklists[settings.header_linklist].links %}
+        {% assign child_list_handle = link.title | handleize %}
+        {% assign loop_index = forloop.index %}
+        <a
+          href="{{ link.url }}"
+          class="mobile-link mobile-top-level-link {% if forloop.first == true %}first-link{% endif %} {% if linklists[child_list_handle].links != blank %}has-children{% endif %}"
+          {% if linklists[child_list_handle].links != blank %}
+          v-on:click.prevent="currentPaginatePage = '{{ child_list_handle }}-{{ loop_index }}'; inputFocused = false;"
+          {% endif %}
+          {% if link.title contains 'Sale' %}data-sale="true"{% endif %}
+        >{{ link.title }}</a>
+      {% endfor %}
+      {% if shop.customer_accounts_enabled %}
+        <br>
+        <br>
+        <a class="mobile-link additional-link in-out-link" href="/account">
+          {% if customer and customer.first_name != blank %}{{ 'layout.customer.account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}
+        </a>
+        {% if customer and customer.first_name != blank %}
+          <a class="mobile-link additional-link in-out-link" href="/account/logout">{{ 'layout.customer.log_out' | t }}</a>
+        {% else %}
+          <a class="mobile-link additional-link" href="/account/register">{{ 'layout.customer.create_account' | t }}</a>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    {% for link in linklists[settings.header_linklist].links %}
+      {% assign child_list_handle = link.title | handleize %}
+      {% assign loop_index = forloop.index %}
+      <div
+        class="{{ child_list_handle }}"
+        key="{{ child_list_handle }}-{{ forloop.index }}"
+        v-bind:class="{ 'nested': currentPaginatePage === 'home' || (currentPaginatePage === '{{ child_list_handle }}-{{ loop_index }}' && lastPaginatePage !== 'home') }"
+        v-show="currentPaginatePage == '{{ child_list_handle }}-{{ loop_index }}'"
+      >
+        <div class="paginate-header mobile-link mobile-top-level-link">
+          <a v-on:click.prevent="currentPaginatePage = 'home'">
+            <i class="chevron left"></i>
+          </a>
+          <a href="{{ link.url }}">{{ link.title | escape }}</a>
+        </div>
+        {% for childlink in linklists[child_list_handle].links %}
+          <a
+            class="mobile-link mobile-top-level-link {% if childlink.links != blank %}has-children{% endif %}"
+            {% if childlink.links != blank %}
+            v-on:click.prevent="currentPaginatePage = '{{ childlink.title | handleize }}-{{ loop_index }}'"
+            {% else %}
+            href="{{ childlink.url }}"
+            {% endif %}
+          >{{ childlink.title | escape }}</a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    {% for link in linklists[settings.header_linklist].links %}
+      {% assign child_list_handle = link.title | handleize %}
+      {% assign loop_index = forloop.index %}
+      {% for childlink in linklists[child_list_handle].links %}
+        {% if childlink.links.size > 0 %}
+          <div
+            class="{{ childlink.title | handleize }}"
+            key="{{ childlink.title | handleize }}"
+            v-bind:class="{ 'nested': currentPaginatePage === '{{ child_list_handle }}-{{ loop_index }}' }"
+            v-show="currentPaginatePage === '{{ childlink.title | handleize }}-{{ loop_index }}'"
+          >
+            <div class="paginate-header mobile-link mobile-top-level-link">
+              <a v-on:click.prevent="currentPaginatePage = '{{ child_list_handle }}-{{ loop_index }}'">
+                <i class="chevron left"></i>
+              </a>
+              <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+            </div>
+            {% for grandchild in childlink.links %}
+              <a
+                class="mobile-link mobile-top-level-link"
+                href="{{ grandchild.url }}"
+              >{{ grandchild.title | escape }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </transition-group>
+</div>

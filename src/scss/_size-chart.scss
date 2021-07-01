@@ -1,0 +1,63 @@
+$size-chart-width: 850px;
+
+.size-chart-wrapper .modal-content {
+  max-width: $size-chart-width !important;
+  overflow: hidden;
+  padding: 0 !important;
+  text-align: left;
+
+  .size-chart-header {
+    padding: 1.25rem 3rem 0 1.25rem;
+  }
+
+  .hamburger {
+    margin: 1.25em;
+
+    .lines {
+      &:before, &:after {
+        background-color: $secondary-color !important;
+      }
+    }
+  }
+
+  .size-chart-outer {
+    background: $white;
+    overflow-x: scroll;
+
+    .size-chart-inner {
+      padding: 0 1.25em 1.25em;
+      min-width: $size-chart-width - 200px;
+      width: 100%;
+
+      .size-chart {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 1px;
+        border: 1px solid $medium-gray;
+        background: $medium-gray;
+        width: 100%;
+
+        .size-chart-column {
+          text-align: center;
+          background: $white;
+
+          &:nth-of-type(odd) {
+            background: $light-gray;
+          }
+
+          .size-chart-header {
+            color: $gray;
+          }
+
+          > div {
+            padding: 0.75em 0.25em;
+
+            &:not(:first-of-type) {
+              border-top: 1px solid $medium-gray;
+            }
+          }
+        }
+      }
+    }
+  }
+}

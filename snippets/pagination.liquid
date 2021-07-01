@@ -1,0 +1,8 @@
+{% capture previous_label %}{% render 'prev-button' %}{% endcapture %}
+{% capture next_label %}{% render 'next-button' %}{% endcapture %}
+
+<div class="pagination-wrapper">
+  <div class="pagination">
+    {{ paginate | default_pagination: previous: previous_label, next: next_label | replace: 'view=ajax', '' }}
+  </div>
+</div>

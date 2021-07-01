@@ -1,0 +1,94 @@
+<script>
+  window.tags = "{{ collection.all_tags | join: ',' }}";
+  window.prices = [];
+
+  {% paginate collection.products by 9999 %}
+    {% for product in collection.products %}
+      window.prices.push("{{ product.price | money | remove: '$' }}");
+    {% endfor %}
+  {% endpaginate %}
+</script>
+
+<div id="category" class="category">
+  <section>
+    {% if collection.image %}
+      <div
+        class="category-hero category-hero-image lazyload blur-up"
+        data-bg="{{ collection.image | img_url: 'master' }}"
+        style="background: url({{ collection.image | img_url: 'medium' }})"
+      >
+        <div class="category-hero-inner category-hero-image">
+          <h1 class="hero"><span>{{ collection.title }}</span></h1>
+        </div>
+      </div>
+    {% else %}
+      <div class="category-hero max-width">
+        <div class="category-hero-inner">
+          <h1 class="hero"><span>{{ collection.title }}</span></h1>
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="max-width">
+      {% include 'breadcrumbs' %}
+    </div>
+
+    <div class="filters-products-wrapper row max-width">
+      <div id="filters" class="filters column-3" v-cloak>
+        <div class="filter" v-for="filter in filterOptions" v-if="filter.options.length > 0">
+          <h3>${ filter.name }</h3>
+          <ul>
+            <li v-for="option in filter.options">
+              <div class="checkbox">
+                <input v-bind:id="option.name + '-' + filter.name" type="checkbox" v-model="checkedOptions[filter.name]" v-bind:value="option">
+                <label v-bind:for="option.name + '-' + filter.name">${ option.name }</label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="products column-9">
+        {% paginate collection.products.results by 9999 %}
+          {% for product in collection.products %}
+            {% assign product_tags = product.tags | join: ',' %}
+            {% assign product_tags = product.tags | join: ',' %}
+            {% assign product_price = product.price | money %}
+            <div
+              class="product"
+              data-tags="{{ product_tags }}"
+              data-price="{{ product_price }}"
+              v-if="productInCheckedFilterOptions('{{ product_tags }}', '{{ product_price }}')"
+              v-bind:key="{{ product.sku }}"
+            >
+              <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+                <img
+                  class="product-image lazyload blur-up"
+                  src="{{ settings.placeholder_image | img_url }}"
+                  data-src="{{ product.featured_image.src | img_url: 'large' }}"
+                  data-additional-image="{{ settings.placeholder_image | img_url }}"
+                  data-additional-image-large="{{ product.images[1] | img_url: 'large' }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  v-on:mouseover="changeImage('in', $event)"
+                  v-on:mouseleave="changeImage('out', $event)"
+                />
+              </a>
+              <div class="product-info">
+                <a href="{{ product.url | within: collection }}">
+                  <h3>{{ product.title }}</h3>
+                </a>
+                <h6 class="original-price" v-if="product.compare_at_price > product.price">${ product.price | currency }</h6>
+                <div class="price">{{ product.price | money }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endpaginate %}
+        <div v-if="productsVisible === 0" v-cloak>
+          <div class="no-results">
+            <h2>No results</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

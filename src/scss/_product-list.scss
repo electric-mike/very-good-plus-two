@@ -1,0 +1,155 @@
+// GLOBAL PRODUCT STYLES
+.product {
+  &.siema-product {
+    padding: 0 !important;
+
+    .product-image-wrapper {
+      overflow: hidden;
+    }
+
+    .product-info {
+      word-break: break-word;
+
+      a {
+        margin-right: 0.5em;
+      }
+    }
+  }
+
+  // featured blog
+  &.article {
+    .article-description {
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .product-image-wrapper {
+    display: flex;
+    align-items: center;
+    background: $white;
+
+    &, .image-wrap, .product-image {
+      width: 100%;
+      display: block;
+      margin-bottom: 0;
+    }
+
+    .image-wrap, &.image-wrap {
+      overflow: hidden;
+      margin-bottom: .75em;
+    }
+  }
+
+  .product-info {
+    * {
+      // margin-bottom: 0.5rem;
+      margin-bottom: 0;
+
+      &.price, &.original-price {
+        display: inline-block;
+        font-family: $font-family;
+      }
+
+      &.price {
+        margin-bottom: 0;
+      }
+
+      &.original-price {
+        color: $black;
+        position: relative;
+        margin-right: 0.25em;
+
+        &:after {
+          position: absolute;
+          content: "";
+          left: 0;
+          top: 50%;
+          right: 0;
+          border-top: 1px solid;
+          border-color: inherit;
+        }
+      }
+
+      &.original-price + .price {
+        color: $red;
+      }
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+// product list wrapper
+.product-list-wrapper {
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  @media(min-width: $tablet) {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  &.siema-product-list-wrapper {
+    overflow: hidden;
+
+    .dots {
+      max-width: calc(100% - 2em);
+      margin: -1em auto 1em;
+
+      @media(min-width: 400px) {
+        display: none;
+      }
+    }
+  }
+
+  .siema-product-list {
+    .siema-product {
+      margin: 1em 1em 1em;
+    }
+
+    @media(min-width: 400px) {
+      padding-left: calc(26.5% - 0.5em);
+
+      .siema-product {
+        margin: 1em 0.5em 2em !important;
+      }
+    }
+
+    // NOTE will need to change these breakpoints if they change in siema
+    @media(min-width: 675px) {
+      padding-left: calc(17.5% - .5em);
+    }
+
+    @media(min-width: $tablet + 1) {
+      padding-left: calc(13.5% - 0.5em);
+    }
+
+    @media(min-width: $desktop + 1) {
+      padding-left: calc(10.5% - 0.5em);
+    }
+
+    @media(min-width: $max-width) {
+      padding-left: calc(9.25% - 1em);
+    }
+  }
+
+  &.product-recommendations {
+    padding-bottom: 0;
+
+    .siema-product {
+      margin: 1em 1.5em 1em;
+    }
+  }
+}
+
+.featured-collection {
+  .product-list-collection-link {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 3em;
+  }
+}
