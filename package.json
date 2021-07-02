@@ -1,7 +1,7 @@
 {
   "name": "vg-plus",
-  "version": "1.0.0",
-  "description": "Very Good Plus Custom Shopify Theme",
+  "version": "2.0.0",
+  "description": "Very Good Plus Custom Shopify Theme v2",
   "repository": "https://bitbucket.org/vg-plus/src/master/",
   "main": "src/index.js",
   "license": "MIT",
@@ -73,7 +73,6 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "lazysizes": "^5.1.1",
     "portal-vue": "^2.1.7",
     "siema": "^1.5.1",

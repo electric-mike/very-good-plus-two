@@ -1,4 +1,4 @@
-# Very Good Plus
+# Very Good Plus 2.0
 
 ## Technologies Used
 
