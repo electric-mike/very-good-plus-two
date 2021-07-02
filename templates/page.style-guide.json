@@ -1,0 +1,13 @@
+{
+  "wrapper": "div#style-guide.page.style-guide",
+  "sections": {
+    "main": {
+      "type": "template-style-guide",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

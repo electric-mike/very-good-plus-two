@@ -1,11 +1,15 @@
 {% comment %} Please don’t update this content {% endcomment %}
 
 {% layout none %}
-{
-  "product":
-    {
-      "id":{{ product.id }},
-      "metafields":[
+{% paginate collection.products by 50 %}
+  {
+    "products":
+      [
+        {% for product in collection.products %}
+          {
+            "id":{{ product.id }},
+            "position":{{ forloop.index }},
+            "metafields":[
 
               {% comment %}
                 Single Metafield
@@ -23,7 +27,7 @@
                 Single Metafield
               {% endcomment %}
               {% capture v_badge  %}
-			  {% include 'flair-product-badges' %}
+			        {% include 'flair-product-badges' %}
               {% endcapture %}
               {% if v_badge != blank %}
                 {
@@ -33,6 +37,9 @@
                 },
               {% endif %}
 
+            ]
+          },
+        {% endfor %}
       ]
-    }
-}
+  }
+{% endpaginate %}

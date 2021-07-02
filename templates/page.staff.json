@@ -1,0 +1,13 @@
+{
+  "wrapper": "div.page.cms-page.staff",
+  "sections": {
+    "main": {
+      "type": "template-staff",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

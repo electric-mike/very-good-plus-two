@@ -1,0 +1,171 @@
+<div
+  class="fc-header lazyload"
+  data-bg="{{ section.settings.header_image.src | img_url: 'master' }}"
+>
+  <h1 class="fc-header-title">{{ page.title }}</h1>
+</div>
+<div class="fc-container-wrapper max-width">
+  <div class="container">
+    {% for block in section.blocks %}
+    {% assign collection = collections[block.settings.collection] %}
+      <h2 class="fc-collection-title">{{ collection.title }}</h2>
+      <div class="fc row product-list-wrapper">
+        <div class="fc-description column-12-tablet-vert-4">
+          {%- assign iurl = block.settings.collection_image -%}
+          <img
+            class="lazyload"
+            src="{{ iurl | img_url: '300x' }}"
+            data-src="{{ iurl | img_url: '768x' }}"
+            alt="{{ block.settings.collection_description | escape }}"
+          />
+          <p>{{ block.settings.collection_description }}</p>
+          <a href="{{ collection.url }}" class="btn full-width-until-md">SHOP {{ collection.title | upcase }}</a>
+        </div>
+        {%- for product in collection.products limit: 5 -%}
+          <div class="product column-6-tablet-vert-4">
+            <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+              <img
+                class="product-image lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                data-src="{{ product.featured_image.src | img_url: 'large' }}"
+                data-additional-image="{{ settings.placeholder_image | img_url }}"
+                data-additional-image-large="{{ product.images[1] | img_url: 'large' }}"
+                alt="{{ product.featured_image.alt | escape }}"
+              />
+            </a>
+            <div class="fc-product-info product-info">
+              <a href="{{ product.url | within: collection }}">
+                <h5>{{ product.title }}</h5>
+              </a>
+              {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
+              <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+            </div>
+          </div>
+        {%- endfor -%}
+        <div class="column-6 fc-view-all hide-md">
+          <a href="{{ collection.url }}" class="btn">View More</a>
+        </div>
+      </div>
+      {% unless forloop.index == section.blocks.size %}<hr>{% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.fc-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 518px;
+  width: 100%;
+  background-size: cover !important;
+  background-position: center !important;
+  background-color: #000;
+}
+
+.fc-header:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.35);
+}
+
+.fc-header-title {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+
+.fc-collection-title {
+  margin-top: 2em;
+}
+
+.fc.product-list-wrapper {
+  padding-top: 0;
+}
+
+.fc-description img {
+  display: block;
+  width: 100%;
+}
+
+.product-image {
+  width: 100%;
+}
+
+.fc-description img, .fc-description p, .fc-description a {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.fc-description .btn {
+  min-width: 50%;
+}
+
+.fc-view-all {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-width-until-md {
+  width: 100%;
+}
+
+@media (min-width: 791px) {
+  .full-width-until-md {
+    width: auto;
+  }
+
+  .hide-md {
+    display: none !important;
+  }
+}
+
+.featured-collections hr {
+  border-top-color: #000;
+  margin: 0;
+}
+</style>
+
+</script>
+
+{% schema %}
+{
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "header_image",
+      "label": "Page Header Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Block",
+      "settings": [
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_image",
+          "label": "Collection Image"
+        },
+        {
+          "type": "textarea",
+          "id": "collection_description",
+          "label": "Collection Description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

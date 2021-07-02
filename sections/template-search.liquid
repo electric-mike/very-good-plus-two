@@ -1,56 +1,19 @@
-{% section 'collection-settings' %}
-{% section 'collection-filter-settings' %}
-
-<div id="category" class="category">
-  <section>
-    {% if collection.image %}
-      <div class="category-hero category-hero-image">
-        {%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-        <img
-          id="hero-image-desktop"
-          class="lazyload blur-up"
-          src="{{ collection.image.src | img_url: '200x' }}"
-          alt="{{ collection.title | escape }}"
-          data-src="{{ img_url }}"
-          data-widths="[360, 540, 720, 900, 1080, 1600]"
-          data-aspectratio="{{ collection.image.aspect_ratio }}"
-          data-sizes="auto"
-          style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
-        />
-        <noscript>
-          <img class="lazyloaded" src="{{ collection.image.src | img_url: '800x' }}" alt="{{ collection.title | escape }}">
-        </noscript>
-
-        <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
-          <h1 class="hero"><span>{{ collection.title }}</span></h1>
-          {% if collection.description != '' %}<p>{{ collection.description }}</p>{% endif %}
+<section>
+  <div class="category-hero max-width custom-constrain-items">
+    <div class="category-hero-inner category-hero-no-image">
+      <div class="hero">
+        <p>Search results for:</p>
+        <h1 class="hero"><span>{{ search.terms | escape }}</span></h1>
+        <div class="tab-buttons">
+          <button v-bind:class="{ 'secondary': activeTab === 'products' }" v-on:click="activateTab('products')">Product Results</button>
+          <button v-bind:class="{ 'secondary': activeTab === 'articles' }" v-on:click="activateTab('articles')">Article Results</button>
         </div>
       </div>
-    {% else %}
-      <div class="category-hero category-hero-image">
-        {%- assign base_url = settings.collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-        <img
-          id="hero-image-desktop"
-          class="lazyload blur-up"
-          src="{{ settings.collection_image | img_url: '200x' }}"
-          alt="{{ collection.title | escape }}"
-          data-src="{{ base_url }}"
-          data-widths="[360, 540, 720, 900, 1080, 1600]"
-          data-aspectratio="{{ collection.image.aspect_ratio }}"
-          data-sizes="auto"
-          style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
-        />
-        <noscript>
-          <img class="lazyloaded" src="{{ settings.collection_image | img_url: '800x' }}" alt="{{ collection.title | escape }}">
-        </noscript>
+    </div>
+  </div>
 
-        <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
-          <h1 class="hero"><span>{{ collection.title }}</span></h1>
-        </div>
-      </div>
-    {% endif %}
-
-    <div class="filters-products-wrapper row max-width">
+  <div v-if="activeTab === 'products'">
+    <div class="filters-products-wrapper row max-width" v-if="loading || (!loading && products.length > 0)">
       <div class="overlay filters-overlay v-hide" v-if="showMobileNav" v-on:click="toggleMobileCollectionNav(false)" v-cloak></div>
       <div class="filters column-12-tablet-vert-3" v-cloak v-bind:class="{ 'active': showMobileNav, 'was-opened': wasOpened, 'toggled-off': !showFilters || filterOptionsAvailable.length <= 0 }">
 
@@ -89,9 +52,8 @@
               <h5 class="filter-name">&nbsp</h5>
             </div>
           </div>
-
           <div id="filters" v-else>
-            <div class="filter">
+            <div class="filter hide-tablet">
               <h5
                 class="filter-name"
                 v-bind:class="{ 'active' : filterToggles['sort'] }"
@@ -136,6 +98,8 @@
                 </li>
               </ul>
             </div>
+
+            <br>
 
             <div
               class="filter"
@@ -219,51 +183,56 @@
 
         <div class="products-wrapper product-list-wrapper">
           <div class="products" v-show="!showVueProducts" v-bind:class="[computedMobileGridSize, { 'filters-hidden': !showFilters || filterOptionsAvailable.length <= 0 }]">
-            {% assign pagination_limit = settings.pagination_limit | default: 40 %}
-            {% paginate collection.products by pagination_limit %}
-            {% for product in collection.products %}
-              {% assign product_tags = product.tags | join: ',' %}
-              {% assign product_price = product.price | money %}
-              <div
-                class="product product-{{ product.id }}"
-                data-tags="{{ product_tags }}"
-                data-price="{{ product_price }}"
-                key="{{ forloop.index }}"
-              >
-                <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
-                  <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
-                    {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    <img
-                      class="product-image lazyload blur-up"
-                      src="{{ settings.placeholder_image | img_url }}"
-                      alt="{{ product.title | escape }}"
-                      data-src="{{ img_url }}"
-                      data-widths="[360, 540, 720, 900, 1080, 1600]"
-                      data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-                      data-secondary-aspectratio="{{ product.images[1].aspect_ratio }}"
-                      data-sizes="auto"
-                      data-first-src="{{ img_url }}"
-                      data-additional-image="{{ secondary_img_url }}"
-                      v-on:mouseover="changeImage('in', $event)"
-                      v-on:mouseleave="changeImage('out', $event)"
-                    />
-                    <noscript>
-                      <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
-                    </noscript>
-                  </div>
-                </a>
-                <div class="product-info">
-                  <h5 class="vendor">{{ product.vendor }}</h5>
-                  <a href="{{ product.url | within: collection }}">
-                    <h5>{{ product.title }}</h5>
+            {% assign limit = settings.pagination_limit | default: 40 %}
+            {% assign found_products = 0 %}
+            {% paginate search.results by 9999 %}
+            {% for product in search.results %}
+              {% if product.object_type == 'product' %}
+                {% assign found_products = found_products | plus: 1 %}
+                {% assign product_tags = product.tags | join: ',' %}
+                {% assign product_price = product.price | money %}
+                <div
+                  class="product product-{{ product.id }}"
+                  data-tags="{{ product_tags }}"
+                  data-price="{{ product_price }}"
+                  key="{{ forloop.index }}"
+                >
+                  <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+                    <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
+                      {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                      {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                      <img
+                        class="product-image lazyload blur-up"
+                        src="{{ settings.placeholder_image | img_url }}"
+                        alt="{{ product.title | escape }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[360, 540, 720, 900, 1080, 1600]"
+                        data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                        data-secondary-aspectratio="{{ product.images[1].aspect_ratio }}"
+                        data-sizes="auto"
+                        data-first-src="{{ img_url }}"
+                        data-additional-image="{{ secondary_img_url }}"
+                        v-on:mouseover="changeImage('in', $event)"
+                        v-on:mouseleave="changeImage('out', $event)"
+                      />
+                      <noscript>
+                        <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
+                      </noscript>
+                    </div>
                   </a>
-                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
-                  {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
-                  <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
-                  {% include 'color-swatches' %}
+                  <div class="product-info">
+                    <h5 class="vendor">{{ product.vendor }}</h5>
+                    <a href="{{ product.url | within: collection }}">
+                      <h5>{{ product.title }}</h5>
+                    </a>
+                    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+                    {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money }}</h5>{% endif %}
+                    <h5 class="price">${{ product.price | money_without_currency }}</h5>
+                    {% include 'color-swatches' %}
+                  </div>
                 </div>
-              </div>
+              {% endif %}
+              {% if found_products == limit %}{% break %}{% endif %}
             {% endfor %}
             {% endpaginate %}
           </div>
@@ -271,14 +240,14 @@
           <div class="products" v-bind:class="[computedMobileGridSize, { 'filters-hidden': !showFilters || filterOptionsAvailable.length <= 0 }]" v-show="showVueProducts" v-cloak>
             <div
               class="product"
-              v-for="product in paginatedProducts"
               v-bind:class="'product-' + product.id"
+              v-for="product in paginatedProducts"
               v-bind:key="product.id"
             >
               <a class="product-image-wrapper" v-bind:href="generateProductUrl(product.handle)">
                 <div class="image-wrap" style="height: 0;" v-bind:style="{ 'padding-bottom': (100 / product.featured_image_aspectratio) + '%' }">
                   <img
-                    class="product-image lazyload"
+                    class="product-image lazyload blur-up"
                     data-sizes="auto"
                     data-widths="[360, 540, 720, 900, 1080, 1600]"
                     src="{{ settings.placeholder_image | img_url }}"
@@ -287,7 +256,7 @@
                     v-bind:data-aspectratio="product.featured_image_aspectratio"
                     v-bind:data-secondary-aspectratio="product.secondary_image_aspectratio"
                     v-bind:alt="product.title"
-                    v-bind:data-additional-image="product.secondary_image"
+                    v-bind:data-additional-image="product.images.length > 1 ? product.secondary_image : product.featured_image"
                     v-on:mouseover="changeImage('in', $event)"
                     v-on:mouseleave="changeImage('out', $event)"
                   />
@@ -343,5 +312,106 @@
         </div>
       </div>
     </div>
-  </section>
-</div>
+    <div class="max-width" v-else>
+      <h3 class="center-text">No product results for {{ search.terms | escape }}</h3>
+      <br>
+    </div>
+  </div>
+</section>
+
+<section v-if="activeTab === 'articles'" class="max-width blog-section">
+  <div class="blog max-width no-top-padding">
+    <div class="posts row">
+      {% assign blog_results_size = 0 %}
+      {% paginate search.results by 9999 %}
+      {% for article in search.results %}
+        {% if article.object_type == 'article' and blog_results_size <= 50 %}
+          {% assign blog_results_size = blog_results_size | plus: 1 %}
+          <div class="blog-article column-12-tablet-vert-4 blog-article">
+            <div class="article-image">
+              {% if article.image != blank %}
+                <a href="{{ article.url }}">
+                  {%- assign img_url = article.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    class="product-image lazyload"
+                    src="{{ settings.placeholder_image | img_url }}"
+                    alt="{{ article.title }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[360, 540, 720, 900, 1080, 1600]"
+                    data-aspectratio="{{ article.image.aspect_ratio }}"
+                    data-sizes="auto"
+                  />
+                  <noscript>
+                    <img class="lazyloaded" src="{{ article.image.src | img_url: '800x' }}" alt="{{ article.title | escape }}">
+                  </noscript>
+                </a>
+              {% else %}
+                {% if article.content contains "<img" and ".jpg" %}
+                  {% assign src = article.content | split: 'src="' | last %}
+                  {% assign src = src | split: '.jpg' | first | append: '.jpg' %}
+                  <img
+                    src="{{ src }}"
+                    width="100%"
+                    class="lazyload"
+                    data-src="{{ src }}"
+                    src="{{ settings.placeholder_image | img_url }}"
+                  />
+                {% elsif article.content contains "<img" and ".png" %}
+                  {% assign src = article.content | split: 'src="' | last %}
+                  {% assign src = src | split: '.png' | first | append: '.png' %}
+                  <img
+                    src="{{ src }}"
+                    width="100%"
+                    class="lazyload"
+                    data-src="{{ src }}"
+                    src="{{ settings.placeholder_image | img_url }}"
+                  />
+                {% else %}
+                  <img
+                    src="{{ settings.placeholder_image | img_url }}"
+                    width="100%"
+                  />
+                {% endif %}
+              {% endif %}
+            </div>
+            <!-- <p>
+              {% for tag in article.tags %}
+                <span class="tags">
+                  {% if forloop.index > 1 %}<span>&nbsp;|&nbsp;</span>{% endif %}
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">
+                    {{ tag }}
+                  </a>
+                </span>
+              {% endfor %}
+            </p> -->
+            <div class="product-info">
+              <h5 class="posted-by">
+                By {{ article.user.first_name }}
+              </h5>
+              <a href="{{ article.url }}">
+                <h5>
+                  {{ article.title }}
+                <h5>
+              </a>
+              <h5>
+                {% if article.excerpt != blank %}
+                  {{ article.excerpt }}
+                {% else %}
+                  {{ article.content | strip_html | truncatewords: 30 }} <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+                {% endif %}
+              </h5>
+              {% assign published_at = article.published_at | date: "%b %d, %Y" %}
+              <h5>{{ published_at }}</h5>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      {% endpaginate %}
+    </div>
+
+    {% if blog_results_size > 0 %}
+    {% else %}
+    <h3 class="center-text">No blog results for {{ search.terms | escape }}</h3>
+    {% endif %}
+  </div>
+</section>

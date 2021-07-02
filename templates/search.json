@@ -1,0 +1,25 @@
+{
+  "wrapper": "div#category.category",
+  "sections": {
+    "collection-settings": {
+      "type": "collection-settings",
+      "settings": {
+      }
+    },
+    "collection-filter-settings": {
+      "type": "collection-filter-settings",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "template-search",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "collection-settings",
+    "collection-filter-settings",
+    "main"
+  ]
+}

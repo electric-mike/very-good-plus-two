@@ -1,0 +1,13 @@
+{
+  "wrapper": "div.page.cms-page",
+  "sections": {
+    "main": {
+      "type": "template-faq",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

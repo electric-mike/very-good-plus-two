@@ -1,0 +1,13 @@
+{
+  "wrapper": "div.featured-collections",
+  "sections": {
+    "main": {
+      "type": "template-featured-collections",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
