@@ -1,5 +1,204 @@
 {
-  "wrapper": "div#home.homepage",
   "sections": {
-  }
+    "162519630495205fca": {
+      "type": "hero-section",
+      "blocks": {
+        "ce0c3698-0220-49cd-962f-92e55b9ce8f8": {
+          "type": "header",
+          "settings": {
+            "header_desktop_text": "Header Text",
+            "header_color": "",
+            "header_desktop_size": 64,
+            "header_tablet_size": 48,
+            "header_desktop_weight": "900",
+            "header_mobile_text": "",
+            "header_mobile_size": 40,
+            "header_mobile_weight": "900"
+          }
+        },
+        "26b65ba0-2bad-4a0d-a2f8-5dae4cc84a33": {
+          "type": "subheader",
+          "settings": {
+            "subheader_text": "Some subheader text",
+            "subheader_color": "",
+            "subheader_desktop_size": 20,
+            "subheader_tablet_size": 16,
+            "subheader_desktop_weight": "400",
+            "subheader_mobile_size": 12,
+            "subheader_mobile_weight": "400"
+          }
+        },
+        "740af4ec-42f4-41e1-a4e7-59b24ba47a3a": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": "",
+            "button_desktop_weight": "400",
+            "button_mobile_weight": "400",
+            "button_color": "#ffffff",
+            "button_background_color": "#000000",
+            "is_button": true,
+            "secondary_button": false,
+            "button_top_margin": 20,
+            "button_side_margin": 0,
+            "button_top_padding": 16,
+            "button_side_padding": 48
+          }
+        }
+      },
+      "block_order": [
+        "ce0c3698-0220-49cd-962f-92e55b9ce8f8",
+        "26b65ba0-2bad-4a0d-a2f8-5dae4cc84a33",
+        "740af4ec-42f4-41e1-a4e7-59b24ba47a3a"
+      ],
+      "settings": {
+        "background_color": "",
+        "hero_image_desktop": "shopify:\/\/shop_images\/Group_92.jpg",
+        "desktop_height": 92,
+        "hero_image_mobile": "shopify:\/\/shop_images\/mobile-hero.jpg",
+        "mobile_height": 112,
+        "desktop_image_position": "center",
+        "desktop_text_align": "left",
+        "mobile_image_position": "center",
+        "mobile_text_align": "center",
+        "desktop_text_position": "center flex-start",
+        "mobile_text_position": "flex-end",
+        "max_width": 0
+      }
+    },
+    "featured_products": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "collection": "vinyl",
+        "product_limit": 4,
+        "shop_link_text": "Shop All Products",
+        "enable_scrollbar": false,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "1625084351df5f2b26": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Blog posts",
+        "blog": "news",
+        "post_limit": 3,
+        "enable_scrollbar": false,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "162519659079c84fcc": {
+      "type": "featured-quotes",
+      "blocks": {
+        "fdf027ec-20da-442e-92c3-bfb7b4cb7a73": {
+          "type": "block",
+          "settings": {
+            "background_color": "#ffffff",
+            "align_text": "left",
+            "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "author": "Author's name"
+          }
+        },
+        "b9c66ab1-875c-4976-987e-1a8cac7692af": {
+          "type": "block",
+          "settings": {
+            "background_color": "#ffffff",
+            "align_text": "left",
+            "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "author": "Author's name"
+          }
+        },
+        "bd9aec60-9a00-4031-87de-e5c310892fb7": {
+          "type": "block",
+          "settings": {
+            "background_color": "#ffffff",
+            "align_text": "left",
+            "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "author": "Author's name"
+          }
+        }
+      },
+      "block_order": [
+        "fdf027ec-20da-442e-92c3-bfb7b4cb7a73",
+        "b9c66ab1-875c-4976-987e-1a8cac7692af",
+        "bd9aec60-9a00-4031-87de-e5c310892fb7"
+      ],
+      "settings": {
+        "enable_scrollbar": true,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "1625196604757093bf": {
+      "type": "image-callout",
+      "blocks": {
+        "c15b2d29-9c99-41f8-b120-caf9e16a09f7": {
+          "type": "left-image-callout",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
+            "textarea": "<h2>Lorem Ipsum<\/h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+            "background_color": "#f0efee",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c15b2d29-9c99-41f8-b120-caf9e16a09f7"
+      ],
+      "settings": {
+      }
+    },
+    "1625196787a3c87ff0": {
+      "type": "logo-list",
+      "blocks": {
+        "1625196787a3c87ff0-0": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "1625196787a3c87ff0-1": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "1625196787a3c87ff0-2": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "1625196787a3c87ff0-3": {
+          "type": "logo_image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1625196787a3c87ff0-0",
+        "1625196787a3c87ff0-1",
+        "1625196787a3c87ff0-2",
+        "1625196787a3c87ff0-3"
+      ],
+      "settings": {
+        "title": "Featured In",
+        "logo_opacity": 76,
+        "background_color": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "162519630495205fca",
+    "featured_products",
+    "1625084351df5f2b26",
+    "162519659079c84fcc",
+    "1625196604757093bf",
+    "1625196787a3c87ff0"
+  ]
 }

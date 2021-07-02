@@ -27,7 +27,7 @@
     "email_link": "",
     "pagination_limit": 20,
     "collection_image": "shopify:\/\/shop_images\/base-header-image.jpg",
-    "placeholder_image": "shopify:\/\/shop_images\/placeholder-image.png",
+    "placeholder_image": "shopify:\/\/shop_images\/placeholder-image_1.png",
     "placeholder_aspect_ratio": "4:5",
     "product_colors": "black: #000000,\nblue: #0000FF,\nBright Blue: #87ceeb,\nbrown: #7B3F00,\nCarolina Blue: #7BAFD4,\nCharcoal: #616A6B,\ncoat: #ff0000,\nDark Grey: #707B7C,\nDark Gray: #707B7C,\ndark-turquoise: #23cddc,\nDeep Heather: #C0C0C0,\nDynamic Yellow: #FFFF33,\nEagle White: #fcfcfc,\nGloss Black: #000000,\nGloss Red: #ff0000,\nGloss White: #fafafa,\nGold: #FFD700,\nGray: #C0C0C0,\ngreen: #58D68D,\ngrey: #808080,\nHeather blue: #0000FF,\nHeather blue: #0000FF,\nHeather green: #58D68D,\nHeather Red: #ff0000,\nHeather Slate: #34495E,\nHeather Gray: #9c9ca6,\nHeather Grey: #9c9ca6,\nLeaf Green: #2d572c,\nlight blue: #add8e6,\nlight-brown: #feb035,\nMaroon: #800000,\nMint Green: #98ff98,\nNavy Blue: #000080,\nOlive Drab: #6b8e23,\nOlive: #6b8e23,\norange: #fe9001,\npink: #FFC0CB,\npurple: #800080,\nRed: #ff0000,\nRiver Red: #FF0000,\nRoyal Blue: #3498DB,\nSandstone: #FDEBD0,\nSignal Orange: #ff6700,\nSignal Yellow: #e5be01,\nsilver: #c0c0c0,\ntan: #eacea7,\nviolet: #EE82EE,\nwhite: #ffffff,\nYellow Green: #9acd32,\nyellow: #ffff00,\nKhaki: #c3b091,\nFatigue Green: #7c8a6f,\nRed\/Grey\/Black: #CC3300,\nBlack\/Grey: #0d0d0d,\nCamouflage: #78866B,\nOlive Drab Green: #6B8E23,\nBlack Camo: #000000,\nSlate:  #34495E",
     "footer_linklist": "footer",
@@ -35,8 +35,8 @@
     "klaviyo_desktop_form_id": "NtLWcq",
     "klaviyo_mobile_form_id": "JrenzQ",
     "blog_show_tag_filter": true,
-    "password_image": "shopify:\/\/shop_images\/404.jpg",
-    "four_oh_four_image": "shopify:\/\/shop_images\/404.jpg",
+    "password_image": "shopify:\/\/shop_images\/nirvana-nevermind.jpg",
+    "four_oh_four_image": "shopify:\/\/shop_images\/nirvana-nevermind.jpg",
     "404_header": "404 Page Not Found",
     "404_subtext": "Uh Oh! We can't find the page.",
     "404_left_link": "shopify:\/\/collections\/all",
@@ -164,7 +164,8 @@
         "block_order": [
           "e8ee8c35-f997-405b-9a19-59bd73fcb430"
         ],
-        "settings": {}
+        "settings": {
+        }
       },
       "product-rhpa": {
         "type": "product-rhpa",
@@ -176,7 +177,8 @@
       },
       "product-description": {
         "type": "product-description",
-        "settings": {}
+        "settings": {
+        }
       },
       "email-signup": {
         "type": "email-signup",
@@ -187,150 +189,12 @@
           "klaviyo_mobile_form_id": ""
         }
       },
-      "featured-collections-template": {
-        "type": "featured-collections-template",
-        "blocks": {
-          "985e2ab7-5fac-45a6-8dea-1b334370e9e8": {
-            "type": "collection",
-            "settings": {
-              "collection": "apparel",
-              "collection_image": "shopify:\/\/shop_images\/DSC7288_1.png",
-              "collection_description": "Where it all started. An absolute classic for any Westside Barbell fanatic. Now on sale for a limited time during Black Friday Weekend. (3 Line max.)"
-            }
-          },
-          "2cafa142-2022-4785-a440-817d6065cd38": {
-            "type": "collection",
-            "settings": {
-              "collection": "books",
-              "collection_image": "shopify:\/\/shop_images\/Rectangle_16.png",
-              "collection_description": "Where it all started. An absolute classic for any Westside Barbell fanatic. Now on sale for a limited time during Black Friday Weekend. (3 Line max.)"
-            }
-          },
-          "f5ef30c7-7536-4cff-b057-20e1284d2822": {
-            "type": "collection",
-            "settings": {
-              "collection": "special-offers",
-              "collection_image": "shopify:\/\/shop_images\/Rectangle_10.png",
-              "collection_description": "Where it all started. An absolute classic for any Westside Barbell fanatic. Now on sale for a limited time during Black Friday Weekend. (3 Line max.)"
-            }
-          }
-        },
-        "block_order": [
-          "985e2ab7-5fac-45a6-8dea-1b334370e9e8",
-          "2cafa142-2022-4785-a440-817d6065cd38",
-          "f5ef30c7-7536-4cff-b057-20e1284d2822"
-        ],
-        "settings": {
-          "header_image": "shopify:\/\/shop_images\/DSC7800_1.jpg"
-        }
-      },
       "collection-settings": {
         "type": "collection-settings",
         "settings": {
           "enable_product_image_hover": true,
           "enable_vendor_filter": true
         }
-      },
-      "page-contact-settings": {
-        "type": "page-contact-settings",
-        "settings": {
-          "page_image_enable": true,
-          "page_image_url": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b7.jpg"
-        }
-      },
-      "page-faq": {
-        "type": "page-faq",
-        "blocks": {
-          "b91c54ef-270b-40bc-9d28-db769b315cb5": {
-            "type": "header",
-            "settings": {
-              "header_text": "General Questions"
-            }
-          },
-          "d45b92b6-ca63-4365-bed8-68ba6fff45b3": {
-            "type": "question",
-            "settings": {
-              "question": "Frequently asked question",
-              "answer": "Use this text to answer questions in as much detail as possible for your customers."
-            }
-          },
-          "2df0dd17-5130-460c-8888-0844e0c956fd": {
-            "type": "question",
-            "settings": {
-              "question": "Frequently asked question",
-              "answer": "Use this text to answer questions in as much detail as possible for your customers."
-            }
-          },
-          "7a21ace2-6ad9-4256-9c98-0ef62d540dd2": {
-            "type": "header",
-            "settings": {
-              "header_text": "Vinyl"
-            }
-          },
-          "d4486a11-8bf4-4e90-adb4-2e843d0a5fdf": {
-            "type": "question",
-            "settings": {
-              "question": "Frequently asked question",
-              "answer": "Use this text to answer questions in as much detail as possible for your customers."
-            }
-          },
-          "2e886005-ce29-40f5-9d6e-d77d4f72022a": {
-            "type": "question",
-            "settings": {
-              "question": "Frequently asked question",
-              "answer": "Use this text to answer questions in as much detail as possible for your customers."
-            }
-          },
-          "00166199-4b52-4b39-8019-dde2f03049c2": {
-            "type": "question",
-            "settings": {
-              "question": "Frequently asked question",
-              "answer": "Use this text to answer questions in as much detail as possible for your customers."
-            }
-          }
-        },
-        "block_order": [
-          "b91c54ef-270b-40bc-9d28-db769b315cb5",
-          "d45b92b6-ca63-4365-bed8-68ba6fff45b3",
-          "2df0dd17-5130-460c-8888-0844e0c956fd",
-          "7a21ace2-6ad9-4256-9c98-0ef62d540dd2",
-          "d4486a11-8bf4-4e90-adb4-2e843d0a5fdf",
-          "2e886005-ce29-40f5-9d6e-d77d4f72022a",
-          "00166199-4b52-4b39-8019-dde2f03049c2"
-        ],
-        "settings": {}
-      },
-      "staff-settings": {
-        "type": "staff-settings",
-        "blocks": {
-          "efc90978-3e87-44f4-b999-4f2ad5fd4523": {
-            "type": "person",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/9f16dac8db22ad6b5613319f68639bfe.jpg",
-              "description": "<h1>Ronald McDonald<\/h1>\n<h4>Media Manger <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
-            }
-          },
-          "bf09f097-bf30-4fe0-95d0-001115724997": {
-            "type": "person",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/number-of-the-beast-black-vinyl_720x_0df1e966-42c5-4bd8-8488-ad3174545d97.jpg",
-              "description": "<h1>John Q Public<\/h1>\n<h4>Vinyl Curator <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
-            }
-          },
-          "068cace2-f1dc-4b77-8f6e-83d62567eb76": {
-            "type": "person",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b7.jpg",
-              "description": "<h1>Mike Weaver<\/h1>\n<h4>Overall Good Guy <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "efc90978-3e87-44f4-b999-4f2ad5fd4523",
-          "bf09f097-bf30-4fe0-95d0-001115724997",
-          "068cace2-f1dc-4b77-8f6e-83d62567eb76"
-        ],
-        "settings": {}
       },
       "custom-html-grid": {
         "type": "custom-html-grid",
@@ -363,23 +227,6 @@
           "heading": "Knowledge",
           "blog": "2020-articles",
           "post_limit": 6
-        }
-      },
-      "page-settings": {
-        "type": "page-settings",
-        "settings": {
-          "page_image_enable": false
-        }
-      },
-      "instagram": {
-        "type": "instagram",
-        "settings": {
-          "heading": "Follow us on Instagram",
-          "instagram_access_token": "8fc98ad200e51e8e9a88dc3cb09670bd",
-          "item_limit": 6,
-          "per_row": 6,
-          "instagram_heading_color": "#000",
-          "instagram_background_color": "#fff"
         }
       },
       "1611863947c36eb840": {
@@ -464,13 +311,6 @@
           "enable_scrollbar": true,
           "background_color": "rgba(0,0,0,0)",
           "text_color": "rgba(0,0,0,0)"
-        }
-      },
-      "page-about-settings": {
-        "type": "page-about-settings",
-        "settings": {
-          "page_image_enable": true,
-          "page_image_url": "shopify:\/\/shop_images\/9f16dac8db22ad6b5613319f68639bfe.jpg"
         }
       },
       "1612452886d26689e4": {
