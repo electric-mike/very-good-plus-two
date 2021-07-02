@@ -301,34 +301,34 @@
       },
       {
         "type": "text",
-        "id": "404_header",
+        "id": "four_oh_four_header",
         "label": "404 Header",
-        "default": "404 - Not Found"
+        "default": "404 Page Not Found"
       },
       {
         "type": "text",
-        "id": "404_subtext",
+        "id": "four_oh_four_subtext",
         "label": "404 Subtext",
         "default": "Uh Oh! We can't find the page. Try clicking a link in the nav!"
       },
       {
         "type": "url",
-        "id": "404_left_link",
+        "id": "four_oh_four_left_link",
         "label": "Left Link"
       },
       {
         "type": "text",
-        "id": "404_left_link_text",
+        "id": "four_oh_four_left_link_text",
         "label": "Left Link Text"
       },
       {
         "type": "url",
-        "id": "404_right_link",
+        "id": "four_oh_four_right_link",
         "label": "Right Link"
       },
       {
         "type": "text",
-        "id": "404_right_link_text",
+        "id": "four_oh_four_right_link_text",
         "label": "Right Link Text"
       }
     ]
