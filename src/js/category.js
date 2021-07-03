@@ -10,7 +10,7 @@ import getUrlParameter from './helpers/_get-url-param'
 
 export default function category() {
   if (window.location.href.indexOf('collections') > -1 || window.location.href.indexOf('search') > -1) {
-    const collection = document.getElementById('category') || document.getElementById('search')
+    const collection = document.getElementById('category-app') || document.getElementById('search-app')
 
     if (collection) {
       new Vue({

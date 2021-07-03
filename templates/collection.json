@@ -1,13 +1,27 @@
 {
-  "wrapper": "div#category.category",
+  "wrapper": "div.category",
   "sections": {
     "collection-settings": {
       "type": "collection-settings",
       "settings": {
+        "enable_product_image_hover": true,
+        "enable_vendor_filter": false
       }
     },
     "collection-filter-settings": {
       "type": "collection-filter-settings",
+      "blocks": {
+        "777a5c3b-5c58-4a4f-a9fa-1980c0081a6b": {
+          "type": "group",
+          "settings": {
+            "name": "Search",
+            "tags": "Black, \nRed, \nBlue, \nBrown, \nCharcoal, \nGrey, \nTurquoise, \nYellow, \nWhite, \nGold, \nGray, \nGreen, \nSlate, \nMaroon, \nMint Green, \nNavy, \nOlive Drab, \nOrange, \nPink, \nPurple, \nSandstone, \nYellow, \nSilver, \nTan, \nCamouflage, \nKhaki"
+          }
+        }
+      },
+      "block_order": [
+        "777a5c3b-5c58-4a4f-a9fa-1980c0081a6b"
+      ],
       "settings": {
       }
     },
