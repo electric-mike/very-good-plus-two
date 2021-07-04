@@ -14,11 +14,18 @@
     "main": {
       "type": "template-product-top",
       "settings": {
+        "desktop_images_type": "tiles",
+        "rhpa_type": "swatch",
+        "rhpa_color_swatch_type": "swatch",
+        "show_quantity_selector": true
       }
     },
     "recommendations": {
       "type": "template-product-recommendations",
       "settings": {
+        "product_limit": 4,
+        "header_text": "Related Products",
+        "enable_scrollbar": false
       }
     },
     "klaviyo": {
