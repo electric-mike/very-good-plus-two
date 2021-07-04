@@ -46,7 +46,7 @@
       }
     }
 
-    #shopify-section-product-images {
+    .product-images-wrapper {
       width: 100%;
     }
 
@@ -487,7 +487,7 @@
     @media(min-width: $tablet) {
       flex-flow: row;
 
-      #shopify-section-product-images {
+      .product-images-wrapper {
         width: 50%;
       }
 
@@ -499,7 +499,7 @@
     @media(min-width: $desktop) {
       flex-flow: row;
 
-      #shopify-section-product-images {
+      .product-images-wrapper {
         width: 60%;
       }
 

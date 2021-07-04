@@ -1,0 +1,37 @@
+{
+  "wrapper": "div.product",
+  "sections": {
+    "metadata": {
+      "type": "template-product-metadata",
+      "settings": {
+      }
+    },
+    "breadcrumbs": {
+      "type": "template-product-breadcrumbs",
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "template-product-top",
+      "settings": {
+      }
+    },
+    "recommendations": {
+      "type": "template-product-recommendations",
+      "settings": {
+      }
+    },
+    "klaviyo": {
+      "type": "template-product-klaviyo",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "metadata",
+    "breadcrumbs",
+    "main",
+    "recommendations",
+    "klaviyo"
+  ]
+}

@@ -1,0 +1,149 @@
+<div class="top-product-info top-area">
+  <div class="top-product-info-inner max-width {% if product.variants.size > 1 %}has-variants{% endif %}">
+    <div class="rhpa-wrapper hide-tablet">
+      <div class="options-and-price">
+        <portal-target id="title-and-price-portal"></portal-target>
+      </div>
+    </div>
+
+    {% render 'product-images' %}
+
+    <div class="rhpa-wrapper">
+      <!-- {% if current_variant.sku.size > 0 %}<p class="sku">{{ current_variant.sku }}</p>{% endif %} -->
+      <div id="rhpa" class="options-and-price">
+        <mounting-portal mount-to="#title-and-price-portal">
+          <div class="title-and-price mobile-title-and-price v-hide" v-cloak>
+            <div class="mobile-top-tap">
+              <div class="title-wrapper">
+                <h1 class="product-title">{{ product.title }}</h1>
+                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+              </div>
+            </div>
+            <div class="mobile-bottom-tap">
+              <a class="product-vendor" href="/collections/vendors?q={{ product.vendor | url_encode }}"><h6>{{ product.vendor }}</h6></a>
+              <div v-if="!productPrice" class="price-wrapper">
+                <h5>{{ product.price | money_without_trailing_zeros }}</h5>
+              </div>
+              <div class="price-wrapper v-hide" v-cloak v-else>
+                <h5 style="display: none" id="product-price" class="price">${ productPrice }</h5>
+                <h5 id="product-visible-price">
+                  <span :class="{ 'sale-price': hasDiscount }">${ productPrice.replace('.00', '') }</span>
+                  <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted.replace('.00', '') }</span>
+                </h5>
+                <h5 class="at-price" v-if="formQuantity > 1">(${ formQuantity } @ ${ formatMoney(productOriginalPrice).replace('.00', '') })</h5>
+              </div>
+            </div>
+          </div>
+        </mounting-portal>
+
+        <div class="title-and-price show-tablet">
+          <div class="title-wrapper">
+            <h1 class="product-title">{{ product.title }}</h1>
+            {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+            <a class="product-vendor" href="/collections/vendors?q={{ product.vendor | url_encode }}"><h6>{{ product.vendor }}</h6></a>
+          </div>
+          <div v-if="!productPrice" class="price-wrapper">
+            <h5>{{ product.price | money_without_trailing_zeros }}</h5>
+          </div>
+          <div class="price-wrapper v-hide" v-cloak v-else>
+            <h5 style="display: none" id="product-price" class="price">${ productPrice }</h5>
+            <h5 id="product-visible-price">
+              <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted.replace('.00', '') }</span>
+              <span :class="{ 'sale-price': hasDiscount }">${ productPrice.replace('.00', '') }</span>
+            </h5>
+            <h5 class="at-price" v-if="formQuantity > 1">(${ formQuantity } @ ${ formatMoney(productOriginalPrice).replace('.00', '') })</h5>
+          </div>
+        </div>
+
+        <!-- "data-productid" property is for Recharge -->
+        <form
+          class="vue-form v-hide"
+          action="/cart/add"
+          v-on:submit="addToCart($event)"
+          data-productid="{{ product.id }}"
+          v-cloak
+        >
+          <div class="options-wrapper">
+            <!-- Product RHPA -->
+            {% render 'product-rhpa' %}
+
+            <!-- Recharge Hidden Inputs -->
+            {% if product.available %}
+              <input v-if="selectedOptionVariant && selectedOptionVariant.available" type="hidden" class="rc-widget-variant" name="id" data-productid="{{ product.id }}" v-bind:value="selectedOptionVariant ? selectedOptionVariant.id : ''" />
+              <input v-else-if="InvalidVariantSelections" type="hidden" class="rc-widget-variant" name="id" data-productid="{{ product.id }}" value="{{product.selected_or_first_available_variant.id}}" />
+            {% endif %}
+          </div>
+        </form>
+      </div>
+
+      {% render 'product-description' %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Product Images / RHPA",
+    "settings": [
+      {
+        "type": "select",
+        "id": "desktop_images_type",
+        "label": "Desktop Images Type",
+        "options": [
+          {
+            "value": "tiles",
+            "label": "Tiles"
+          },
+          {
+            "value": "swatches",
+            "label": "Swatches"
+          }
+        ],
+        "default": "swatches"
+      },
+      {
+        "type": "select",
+        "id": "rhpa_type",
+        "label": "Variant Display Type",
+        "options": [
+          {
+            "value": "swatch",
+            "label": "Swatch"
+          },
+          {
+            "value": "radio",
+            "label": "Radio"
+          },
+          {
+            "value": "select",
+            "label": "Select"
+          }
+        ],
+        "default": "swatch"
+      },
+      {
+        "type": "select",
+        "id": "rhpa_color_swatch_type",
+        "label": "Color Swatch Type",
+        "options": [
+          {
+            "value": "swatch",
+            "label": "Swatch"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "swatch"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show Quantity Selector",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

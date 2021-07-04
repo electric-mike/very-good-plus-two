@@ -1,0 +1,9 @@
+<script>
+  window.productData = {{ product | json }};
+  window.productPrice = '{{ product.price }}';
+  window.productOriginalPrice = '{{ product.compare_at_price_max }}';
+  window.productVendor = '{{ product.vendor | escape_once }}';
+  </script>
+
+  <!-- FeedArmy Google Microdata -->
+  {% include 'product-microdata' %}
