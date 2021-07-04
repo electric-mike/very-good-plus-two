@@ -17,7 +17,7 @@
         "desktop_images_type": "tiles",
         "rhpa_type": "swatch",
         "rhpa_color_swatch_type": "swatch",
-        "show_quantity_selector": true
+        "show_quantity_selector": false
       }
     },
     "recommendations": {
