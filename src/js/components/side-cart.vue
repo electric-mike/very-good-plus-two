@@ -130,7 +130,7 @@ export default {
   /deep/ .cart-content {
     height: auto;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     flex-grow: 1;
   }
 }

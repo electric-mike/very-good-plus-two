@@ -171,7 +171,7 @@
         top: 0;
         left: 0;
         bottom: 0;
-        overflow-x: scroll;
+        overflow-x: auto;
         z-index: 9999;
         max-width: $mobile - 200;
         padding: 1.25em 0;
@@ -186,7 +186,7 @@
           overflow: hidden;
 
           .filters-inner {
-            overflow: scroll;
+            overflow: auto;
             margin-top: 32px;
             padding: 2.5em 1.25em 1.25em;
             max-height: calc(100% - 12px);
@@ -256,7 +256,7 @@
           display: block;
           width: 100%;
           max-height: 225px;
-          overflow-y: scroll;
+          overflow-y: auto;
           overflow-x: hidden;
           border-bottom: 1px solid $medium-gray;
           margin-left: 0;

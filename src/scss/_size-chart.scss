@@ -22,7 +22,7 @@ $size-chart-width: 850px;
 
   .size-chart-outer {
     background: $white;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     .size-chart-inner {
       padding: 0 1.25em 1.25em;

@@ -370,7 +370,7 @@ body > header {
         // border-bottom: 1px solid $medium-gray;
 
         .search-products {
-          overflow: scroll;
+          overflow: auto;
           display: flex;
           margin-top: 1.25em;
         }
@@ -399,7 +399,7 @@ body > header {
 
       //mobile nav
       .mobile-nav-wrapper {
-        overflow-y: scroll;
+        overflow-y: auto;
         background: $light-gray;
 
         form {
@@ -542,7 +542,7 @@ body > header {
 
         .mobile-nav-product-wrapper {
           max-width: 100%;
-          overflow: scroll;
+          overflow: auto;
           display: flex;
 
           .parent-link-product {

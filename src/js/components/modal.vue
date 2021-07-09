@@ -29,7 +29,7 @@ export default {
     backface-visibility: hidden;
     width: calc(100% - 2.5em);
     max-height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-width: 500px;
     background: $white;
     z-index: 999999;
