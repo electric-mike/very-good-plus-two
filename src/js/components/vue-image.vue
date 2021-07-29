@@ -1,19 +1,32 @@
-<template lang="pug">
-.vue-image(:style="{ 'padding-bottom': computedPaddingBottom, 'height': computedHeight }")
-  transition(name="fade")
-    img(v-if="loaded" :src="source" :alt="alt")
-    svg(
-      v-else
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns="http://www.w3.org/2000/svg"
-      viewbox="0 0 10 10"
-      :width="localWidth"
-      :height="localHeight"
-      :style="{ 'background-color': backgroundColor }"
-    )
+<template>
+  <img
+    :srcset="`
+      ${sizeImageOrReturn(source, '200x')} 200w,
+      ${sizeImageOrReturn(source, '500x')} 500w,
+      ${sizeImageOrReturn(source, '730x')} 730w,
+      ${sizeImageOrReturn(source, '990x')} 990w,
+      ${sizeImageOrReturn(source, '1440x')} 1440w,
+      ${sizeImageOrReturn(source, '2080x')} 2080w
+    `"
+    :src="sizeImageOrReturn(source, '100x')"
+    sizes="`
+      (min-width: 0px) 200px,
+      (min-width: 500px) 500px,
+      (min-width: 730px) 730px,
+      (min-width: 990px) 990px,
+      (min-width: 1440px) 1440px,
+      (min-width: 2080px) 2080px
+    `"
+    :alt="alt"
+    loading="lazy"
+    :width="width"
+    :height="height"
+  >
 </template>
 
 <script>
+import getSizedImage from '../helpers/_get-sized-image'
+
 export default {
   props: {
     backgroundColor: {
@@ -41,96 +54,23 @@ export default {
       default : false,
     },
   },
-
-  data() {
-    const localWidth = this.width || 200
-    let localHeight = this.height || 200
-    const aspectRatio = window.themeSettings.placeholderImageAspectRatio || false
-
-    if (aspectRatio && aspectRatio === '4:5') {
-      localHeight = 250
-    }
-
-    return {
-      loaded   : false,
-      observer : null,
-      localWidth,
-      localHeight,
-    }
-  },
-
-  computed: {
-    computedHeight() {
-      if (this.disableAspectRatio) return false
-
-      return 0
-    },
-
-    computedPaddingBottom() {
-      if (this.disableAspectRatio) return false
-
-      return `${(this.localHeight / this.localWidth * 100)}%`
-    },
-  },
-
-  mounted() {
-    this.intersectionWatcher()
-  },
-
-  destroyed() {
-    this.observer.disconnect()
-  },
-
   methods: {
-    intersectionWatcher() {
-      this.observer = new IntersectionObserver(async (entries) => {
-        const image = entries[0]
-        if (image.isIntersecting) {
-          this.observer.disconnect()
+    getSizedImage,
+    sizeImageOrReturn(sentSource, sentSize) {
+      if (sentSource.includes('cdn.shopify')) {
+        return this.getSizedImage(sentSource, sentSize)
+      }
 
-          if (this.source !== '') {
-            const newImg = new Image()
-            newImg.src = this.source
-
-            newImg.onload = () => {
-              this.loaded = true
-
-              if (!this.disableAspectRatio) {
-                this.localHeight = newImg.height
-                this.localWidth = newImg.width
-              }
-            }
-          }
-        }
-      })
-
-      this.observer.observe(this.$el)
+      return sentSource
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.vue-image {
-  position: relative;
-
-  svg, img {
-    display: block;
-    height: auto;
-    width: 100%;
-    max-width: 100%;
-  }
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
-
-.fade-leave-active {
-  position: absolute;
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 </style>

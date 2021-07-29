@@ -3,7 +3,7 @@
   .upsell-image
     a(:href='"/products/" + upsellProduct.handle')
       vue-image.upsell-image(
-        :source='getSizedImage(computedImage, "200x")'
+        :source='computedImage'
         :width='200'
         :height='placeholderHeight'
         :alt='upsellProduct.title'
@@ -29,7 +29,6 @@
 import { mapState } from 'vuex'
 import vueImage from './vue-image'
 import formatMoney from '../helpers/_format-money'
-import getSizedImage from '../helpers/_get-sized-image'
 
 export default {
   components: {
@@ -102,7 +101,6 @@ export default {
 
   methods: {
     formatMoney,
-    getSizedImage,
 
     checkUpsellInCart() {
       this.upsellProductInCart = false

@@ -8,7 +8,7 @@
         .product-image
           a(:href='productLink(item)' :aria-title='item.title')
             vue-image.product-image(
-              :source='getSizedImage(item.image, "200x")'
+              :source='item.image'
               :width='200'
               :height='placeholderHeight'
               :alt='item.title'
@@ -56,7 +56,6 @@ import { mapState } from 'vuex'
 import quantityInput from './quantity-input'
 import vueImage from './vue-image'
 import upsell from './upsell'
-import getSizedImage from '../helpers/_get-sized-image'
 
 export default {
   components: {
@@ -94,8 +93,6 @@ export default {
   },
 
   methods: {
-    getSizedImage,
-
     productLink(item) {
       if (item.properties && item.properties.shipping_interval_frequency) {
         return '#'

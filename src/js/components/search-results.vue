@@ -125,7 +125,7 @@
                 <img
                   class="product-image lazyload blur-up"
                   :src="placeholderImageUrl"
-                  :data-src="getSizedImage(product.featured_image.url, 'large')"
+                  :data-src="product.featured_image.url"
                   :alt="product.featured_image.alt"
                 >
               </div>
@@ -171,7 +171,6 @@
 <script>
 import { mapState } from 'vuex'
 import simplebar from 'simplebar-vue'
-import getSizedImage from '../helpers/_get-sized-image'
 import 'simplebar-vue/dist/simplebar.min.css'
 
 export default {
@@ -241,8 +240,6 @@ export default {
   },
 
   methods: {
-    getSizedImage,
-
     // doSimpleBar(show) {
     //   if (show) {
     //     console.log('show', this.computedSearchResultProducts)

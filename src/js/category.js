@@ -4,7 +4,6 @@ import VRuntimeTemplate from 'v-runtime-template'
 import baseFilterOptions from './data/base-filter-options'
 import fetchCollectionData from './_fetch-collection-data'
 import swatches from './helpers/_swatches'
-import getSizedImage from './helpers/_get-sized-image'
 import toggleMobileCollectionNav from './_toggle-mobile-collection-nav'
 import getUrlParameter from './helpers/_get-url-param'
 
@@ -346,7 +345,6 @@ export default function category() {
         },
 
         methods: {
-          getSizedImage,
           getUrlParameter,
 
           checkURL() {
