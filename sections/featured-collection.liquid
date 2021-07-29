@@ -26,7 +26,15 @@
       <h3>{{ section.settings.title }}</h3>
       <br>
     </div>
-    <div id="simplebar-{{ section.id }}" class="product-list row">
+    <div
+      id="simplebar-{{ section.id }}"
+      class="product-list row"
+      {% if section.settings.enable_scrollbar %}
+        data-simplebar
+        data-simplebar-auto-hide="true"
+        data-force-visible="true"
+      {% endif %}
+    >
       {% for prod in collection.products limit: limit %}
         <div class="product column-6-tablet-vert-{{ 12 | divided_by: limit }}">
           <a class="product-image-wrapper image-wrap" href="{{ prod.url | within: collection }}">
@@ -61,15 +69,6 @@
     </div>
   </div>
 </div>
-
-{% if section.settings.enable_scrollbar %}
-<script>
-  new SimpleBar(document.getElementById('simplebar-{{ section.id }}'), {
-    autoHide: true,
-    forceVisible: false
-  });
-</script>
-{% endif %}
 
 {% schema %}
   {

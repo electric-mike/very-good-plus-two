@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import Siema from 'siema'
 import PortalVue from 'portal-vue'
+import SimpleBar from 'simplebar'
 import SiemaOverflow from './helpers/_siema-overflow'
 import cart from './cart'
 import homepage from './homepage'
@@ -11,6 +12,9 @@ import category from './category'
 import cms from './cms'
 import blog from './blog'
 import account from './account'
+
+// simplebar css
+import 'simplebar/dist/simplebar.css'
 
 // polyfills
 import './helpers/polyfills'
@@ -22,6 +26,9 @@ import StickyNav from './_sticky-nav'
 import 'lazysizes'
 import 'lazysizes/plugins/unveilhooks/ls.unveilhooks'
 import 'lazysizes/plugins/rias/ls.rias'
+
+// make simplebar globally available
+window.SimpleBar = SimpleBar
 
 // make Siema instances global
 window.Siema = Siema

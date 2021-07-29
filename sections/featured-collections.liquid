@@ -22,7 +22,15 @@
         <br>
       </div>
     {% endif %}
-    <div id="simplebar-{{ section.id }}" class="product-list row">
+    <div
+      id="simplebar-{{ section.id }}"
+      class="product-list row"
+      {% if section.settings.enable_scrollbar %}
+        data-simplebar
+        data-simplebar-auto-hide="true"
+        data-force-visible="true"
+      {% endif %}
+      >
       {% for block in section.blocks %}
       {% assign collection = collections[block.settings.collection] %}
         <div class="product column-6-tablet-vert-{{ 12 | divided_by: section.blocks.size }}">
@@ -58,12 +66,6 @@
 </section>
 
 {% if section.settings.enable_scrollbar %}
-<script>
-  new SimpleBar(document.getElementById('simplebar-{{ section.id }}'), {
-    autoHide: true,
-    forceVisible: false
-  });
-</script>
 <style>
   @media(min-width: 768px) {
     #simplebar-{{ section.id }} .product {

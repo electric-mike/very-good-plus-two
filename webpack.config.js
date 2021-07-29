@@ -20,7 +20,13 @@ module.exports = (env, argv) => ({
   context: path.join(__dirname, 'src'),
   entry: {
     application: './js/index.js',
+    grid: './scss/grid.scss',
+    elements: './scss/elements.scss',
+    helpers: './scss/helpers.scss',
     global: './scss/global.scss',
+    header: './scss/header.scss',
+    nav: './scss/nav.scss',
+    footer: './scss/footer.scss',
     homepage: './scss/homepage.scss',
     category: './scss/category.scss',
     collection: './scss/collection.scss',

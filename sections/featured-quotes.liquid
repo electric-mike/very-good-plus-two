@@ -19,7 +19,14 @@
   data-section-id="{{ section.id }}"
   data-section-type="testimonial"
 >
-  <div id="simplebar-{{ section.id }}">
+  <div
+    id="simplebar-{{ section.id }}"
+    {% if section.settings.enable_scrollbar %}
+      data-simplebar
+      data-simplebar-auto-hide="true"
+      data-force-visible="true"
+    {% endif %}
+  >
     {% for block in section.blocks %}
       <div
         class="testimonial-wrapper"
@@ -67,13 +74,6 @@
 
 
 {% if section.settings.enable_scrollbar %}
-<script>
-  new SimpleBar(document.getElementById('simplebar-{{ section.id }}'), {
-    autoHide: true,
-    forceVisible: false
-  });
-</script>
-
 <style>
 #simplebar-{{ section.id }}[data-simplebar="init"] {
   margin: 3em 0;

@@ -1,0 +1,41 @@
+//------------------
+// SCSS VARS
+//------------------
+@import './variables.scss';
+
+//------------------
+// HAMBURGER
+//------------------
+@import './hamburger.scss';
+
+//------------------
+// HEADER
+//------------------
+body > header {
+  background: $light-gray;
+  display: flex;
+  width: 100%;
+  z-index: 999;
+  border-bottom: 1px solid $medium-gray;
+
+  @media(min-width: $desktop) {
+    border-bottom: 0;
+    box-shadow: $shadow;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    // animation: slide-down 0.2s;
+  }
+
+  @media(min-width: $desktop) {
+    #desktop-top-level-links, .left-links, .right-link {
+      display: flex !important;
+    }
+
+    #mobile-nav {
+      display: none;
+    }
+  }
+}

@@ -53,30 +53,9 @@
 }
 
 //------------------
-// GRID
-//------------------
-@import './grid.scss';
-
-//------------------
-// GLOBAL ELEMENTS
-//------------------
-@import './elements.scss';
-
-//------------------
-// HELPER CLASSES
-//------------------
-@import './helpers.scss';
-
-//------------------
 // ANNOUNCEMENT BAR
 //------------------
 @import './announcement-bar.scss';
-
-//------------------
-// HEADER AND FOOTER
-//------------------
-@import './header.scss';
-@import './footer.scss';
 
 //------------------
 // DRAWER
@@ -110,7 +89,7 @@
 //------------------
 * {
   box-sizing: border-box;
-  font-display: swap;
+  font-display: optional;
   font-family: $font-family;
   font-size: 1em;
   margin: 0;
@@ -185,8 +164,10 @@ body {
     margin-right: -1.25em !important;
 
     .simplebar-track.simplebar-horizontal {
+      margin: 0 1.25em;
       left: 1.25em;
       right: 1.25em;
+      width: 100%;
     }
 
     .product {
@@ -208,17 +189,8 @@ body {
     left: 0 !important;
     top: 0 !important;
     bottom: 0 !important;
-    height: auto !important;
-
-    &:before {
-      opacity: 1 !important;
-      background-color: $black;
-      border-radius: 0;
-      top: 0 !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-    }
+    height: 100% !important;
+    background-color: $black;
   }
 
   .simplebar-track {
@@ -228,6 +200,10 @@ body {
     &.simplebar-horizontal {
       height: 6px;
     }
+  }
+
+  .simplebar-placeholder {
+    display: none;
   }
 
   .simplebar-content {

@@ -240,26 +240,6 @@ export default {
   },
 
   methods: {
-    // doSimpleBar(show) {
-    //   if (show) {
-    //     console.log('show', this.computedSearchResultProducts)
-
-    //     if (
-    //       this.computedSearchResultProducts
-    //       && this.computedSearchResultProducts.length > 0
-    //       && !window.MobileSearchSimpleBar
-    //     ) {
-    //       console.log('run')
-    //       if (window.SimpleBar) {
-    //         window.MobileSearchSimpleBar = new SimpleBar(document.getElementById('mobile-search-products'), { //eslint-disable-line
-    //           autoHide     : false,
-    //           forceVisible : true,
-    //         })
-    //       }
-    //     }
-    //   }
-    // },
-
     setSearchQuery(term) {
       this.$store.dispatch('search/fetchSearch', term)
     },

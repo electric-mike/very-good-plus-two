@@ -97,12 +97,14 @@
 
     <!-- Global Styles -->
     <style>{% render 'styles.css' %}</style>
+    {{ 'header.css' | asset_url | stylesheet_tag }}
+    {{ 'nav.css' | asset_url | stylesheet_tag }}
+    {{ 'grid.css' | asset_url | stylesheet_tag }}
+    {{ 'elements.css' | asset_url | stylesheet_tag }}
+    {{ 'helpers.css' | asset_url | stylesheet_tag }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
+    {{ 'footer.css' | asset_url | stylesheet_tag }}
     {{ 'application.css' | asset_url | stylesheet_tag }}
-
-    <!-- SIMPLEBAR -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css" />
-    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
 
     <!-- Conditional Styles & Scripts for Pages -->
     {% if template contains 'index' %}

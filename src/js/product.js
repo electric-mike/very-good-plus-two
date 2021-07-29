@@ -71,7 +71,7 @@ export default function product() {
   if (additionalImages.length > 0) {
     /// desktop simplescroll
     const mainImageWrapper = document.querySelector('.desktop-images-wrapper .main-image')
-    let localSimpleBar = false
+    const localSimpleBar = false
 
     const observer = new MutationObserver(() => {
       const additionalImagesWrapper = document.querySelector('.desktop-images-wrapper .additional-images-wrapper')
@@ -90,11 +90,6 @@ export default function product() {
           additionalImagesWrapper.style.maxHeight = `${mainImageHeight}px`
         }
         document.querySelector('.desktop-images-wrapper').classList.add('has-simplebar')
-
-        localSimpleBar = new SimpleBar(additionalImagesWrapper, { //eslint-disable-line
-          autoHide     : false,
-          forceVisible : true,
-        })
       } else if (localSimpleBar) {
         document.querySelector('.desktop-images-wrapper').classList.remove('has-simplebar')
         additionalImagesWrapper.style.maxHeight = ''

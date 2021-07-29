@@ -10,7 +10,15 @@
       <h3>{{ section.settings.header_text }}</h3>
       <br>
     </div>
-    <div id="recommendations" class="recommendations product-list row">
+    <div
+      id="recommendations"
+      class="recommendations product-list row"
+      {% if section.settings.enable_scrollbar %}
+        data-simplebar
+        data-simplebar-auto-hide="true"
+        data-force-visible="true"
+      {% endif %}
+    >
       {% assign count = 0 %}
       {%- for prod in products -%}
         {%- if prod.vendor != 'Route' and count < 4 -%}
@@ -66,13 +74,6 @@
 
         if(recommendedProductsResponseInner.querySelectorAll('.product').length > 0) {
           dynamicProductRecommendationSection.querySelector('.recommendations').innerHTML = recommendedProductsResponseInner.innerHTML;
-
-          {% if section.settings.enable_scrollbar %}
-            new SimpleBar(document.getElementById('recommendations'), {
-              autoHide: true,
-              forceVisible: false
-            });
-          {% endif %}
         } else {
           productRecommendationsWrapper.style.display = 'none';
         }
