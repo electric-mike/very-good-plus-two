@@ -31,4 +31,4 @@ To build a production payload, run `npm run build`, and run `shopify theme push`
 
 ## Themekit Backup
 
-If you dislike the Shopify CLI, and/or prefer Themekit, feel free to use it as well; there is a sample config file in the repository as well.
+If you dislike the Shopify CLI, and/or prefer Themekit, feel free to use it instead; there is a sample config file in the repository.
