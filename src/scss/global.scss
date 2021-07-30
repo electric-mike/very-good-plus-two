@@ -167,7 +167,6 @@ body {
       margin: 0 1.25em;
       left: 1.25em;
       right: 1.25em;
-      width: 100%;
     }
 
     .product {
@@ -204,6 +203,10 @@ body {
 
   .simplebar-placeholder {
     display: none;
+  }
+
+  .simplebar-wrapper {
+    overflow: hidden;
   }
 
   .simplebar-content {
