@@ -69,14 +69,22 @@ body > header nav {
       background: $light-gray;
 
       .search-products {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 1.25em;
-        margin: 0 auto;
-        width: 100%;
+        .simplebar-wrapper {
+          width: 100%;
+        }
 
-        .product {
-          flex-grow: 0 !important; //override global styles
+        .simplebar-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-gap: 1.25em;
+          margin: 0 auto;
+          width: 100%;
+
+          .product {
+            flex-grow: 0 !important; //override global styles
+            margin-left: 0;
+            margin-right: 0;
+          }
         }
       }
     }
@@ -345,6 +353,29 @@ body > header nav {
     .search-results {
       background: $light-gray;
       // border-bottom: 1px solid $medium-gray;
+
+      [data-simplebar="init"] {
+        @media(max-width: $desktop - 1) {
+          margin-left: -1.25em !important;
+          margin-right: -1.25em !important;
+
+          .simplebar-track.simplebar-horizontal {
+            margin: 0 1.25em;
+            left: 1.25em;
+            right: 1.25em;
+            width: 100%;
+          }
+
+          .product {
+            margin: 0 0 2.5em 1.25em !important;
+
+            &:last-of-type {
+              flex-basis: calc(65% + 1.25em) !important;
+              padding-right: 1.25em !important;
+            }
+          }
+        }
+      }
 
       .search-products {
         overflow: auto;

@@ -13,11 +13,6 @@
     <div
       id="recommendations"
       class="recommendations product-list row"
-      {% if section.settings.enable_scrollbar %}
-        data-simplebar
-        data-simplebar-auto-hide="true"
-        data-force-visible="true"
-      {% endif %}
     >
       {% assign count = 0 %}
       {%- for prod in products -%}
@@ -73,7 +68,9 @@
         var recommendedProductsResponseInner = dataHTML.querySelector('.product-recommendations .recommendations');
 
         if(recommendedProductsResponseInner.querySelectorAll('.product').length > 0) {
-          dynamicProductRecommendationSection.querySelector('.recommendations').innerHTML = recommendedProductsResponseInner.innerHTML;
+          var recommendationsWrapper = document.getElementById('recommendations');
+          recommendationsWrapper.innerHTML = recommendedProductsResponseInner.innerHTML;
+          new SimpleBar(recommendationsWrapper);
         } else {
           productRecommendationsWrapper.style.display = 'none';
         }

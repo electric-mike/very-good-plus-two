@@ -39,6 +39,7 @@
     .image-wrap, &.image-wrap {
       overflow: hidden;
       margin-bottom: .75em;
+      background-size: cover !important;
     }
   }
 
@@ -139,6 +140,12 @@
 
   &.product-recommendations {
     padding-bottom: 0;
+
+    .simplebar-wrapper {
+      @media(min-width: $tablet) {
+        width: 100%;
+      }
+    }
 
     .siema-product {
       margin: 1em 1.5em 1em;

@@ -97,8 +97,8 @@
 
     <!-- Global Styles -->
     <style>{% render 'styles.css' %}</style>
-    {{ 'header.css' | asset_url | stylesheet_tag }}
     {{ 'nav.css' | asset_url | stylesheet_tag }}
+    {{ 'header.css' | asset_url | stylesheet_tag }}
     {{ 'grid.css' | asset_url | stylesheet_tag }}
     {{ 'elements.css' | asset_url | stylesheet_tag }}
     {{ 'helpers.css' | asset_url | stylesheet_tag }}
@@ -160,7 +160,7 @@
         },
         upsellProduct: {{ all_products[settings.upsell_product] | json }},
         placeholderImageUrl: '{{ settings.placeholder_image | img_url }}',
-        placeholderImageAspectRatio: '{{ settings.placeholder_aspect_ratio | img_url }}',
+        placeholderImageAspectRatio: '{{ settings.placeholder_aspect_ratio }}',
         searchTerms: '{{ settings.header_search_terms }}'.split(', '),
         mobileNavType: '{{ settings.mobile_nav_type }}',
         enablePromoCodeInput: {{ settings.enable_promo_code }},
@@ -212,7 +212,7 @@
               subscription_success_label: "You're in! We'll let you know when it's back.",
               font_family: '"neue-haas-grotesk-text", Helvetica, sans-serif',
               headers_font_family: '"neue-haas-grotesk-text", Helvetica, sans-serif',
-              additional_styles: "@font-face { font-family: 'neue-haas-grotesk-text'; src: url('https://use.typekit.net/axa2zac.css') format('opentype'); font-display: swap; font-weight: 400; } body, p, .btn, select, input { font-family: 'neue-haas-grotesk-text', Helvetica, sans-serif; font-size: 16px !important; } h3 { font-weight: bold !important; } button { font-weight: normal !important; text-transform: capitalize; }",
+              additional_styles: "@font-face { font-family: 'neue-haas-grotesk-text'; src: url('https://use.typekit.net/axa2zac.css') format('opentype'); font-display: optional; font-weight: 400; } body, p, .btn, select, input { font-family: 'neue-haas-grotesk-text', Helvetica, sans-serif; font-size: 16px !important; } h3 { font-weight: bold !important; } button { font-weight: normal !important; text-transform: capitalize; }",
               drop_background_color: "#060606",
               background_color: "#fff",
               text_color: "#060606",

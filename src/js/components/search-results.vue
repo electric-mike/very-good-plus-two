@@ -71,6 +71,17 @@
                   class="product-image"
                   :src="placeholderImageUrl"
                 >
+                <div class="product-info">
+                  <h5 class="vendor">
+                    &nbsp;
+                  </h5>
+                  <a>
+                    <h5>&nbsp;</h5>
+                  </a>
+                  <h5 class="price">
+                    &nbsp;
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
@@ -121,13 +132,17 @@
               class="product-image-wrapper"
               :href="product.url"
             >
-              <div class="image-wrap">
-                <img
-                  class="product-image lazyload blur-up"
-                  :src="placeholderImageUrl"
-                  :data-src="product.featured_image.url"
+              <div
+                class="image-wrap"
+                :style="{ 'background': `url(${placeholderImageUrl})` }"
+              >
+                <vue-image
+                  class="product-image"
+                  :width="293"
+                  :height="placeholderHeight"
+                  :source="product.featured_image.url"
                   :alt="product.featured_image.alt"
-                >
+                />
               </div>
             </a>
             <div class="product-info">
@@ -172,11 +187,12 @@
 import { mapState } from 'vuex'
 import simplebar from 'simplebar-vue'
 import 'simplebar-vue/dist/simplebar.min.css'
+import vueImage from './vue-image'
 
 export default {
-
   components: {
     simplebar,
+    vueImage,
   },
   props: {
     inputFocused: {
@@ -186,7 +202,15 @@ export default {
   },
 
   data() {
+    let placeholderHeight = this.height || 293
+    const aspectRatio = window.themeSettings.placeholderImageAspectRatio || false
+
+    if (aspectRatio && aspectRatio === '4:5') {
+      placeholderHeight = 366
+    }
+
     return {
+      placeholderHeight,
       placeholderImageUrl : (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
       searchTerms         : (window.themeSettings && window.themeSettings.searchTerms) || '',
     }
