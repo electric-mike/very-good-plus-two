@@ -133,7 +133,9 @@
     <script src="{{ 'vendor.js' | asset_url }}" defer></script>
 
     <!-- Judge.me -->
+    {% comment %}
     {% include 'judgeme_core' %}
+    {% endcomment` %}
   </head>
 
   <body>
@@ -191,6 +193,7 @@
     <!--Gorgias Chat Widget End-->
     {% endcomment %}
 
+    {% comment %}
     <!-- Klaviyo global JS and CSS Overrides -->
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     {% if settings.klaviyo_api_key.size > 0 %}
@@ -229,5 +232,6 @@
         {% endif %}
       </script>
     {% endif %}
+    {% endcomment %}
   </body>
 </html>

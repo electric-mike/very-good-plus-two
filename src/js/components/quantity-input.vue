@@ -9,6 +9,7 @@
         name="quantity"
         min=`${ isCart ? 0 : 1 }`
         required
+        label="Quantity Input"
       )
     .button-wrapper
       button.secondary(@click.prevent="changeValue(internalValue + 1)") +

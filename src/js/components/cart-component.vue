@@ -6,7 +6,7 @@
     .products
       .product(v-for='(item, index) in cartData.items' :key='item.id')
         .product-image
-          a(:href='productLink(item)' :aria-title='item.title')
+          a(:href='productLink(item)' :aria-label='item.title')
             vue-image.product-image(
               :source='item.image'
               :width='200'

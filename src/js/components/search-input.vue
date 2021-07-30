@@ -9,6 +9,7 @@
     <button
       type="submit"
       class="link search-link"
+      aria-label="Search"
     >
       <div class="search" />
     </button>
