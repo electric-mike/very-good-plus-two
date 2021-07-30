@@ -121,7 +121,14 @@
       </div>
 
       <div
-        v-show="!loadingResults && computedSearchResultProducts.length > 0"
+        v-show="
+          !loadingResults && computedSearchResultProducts.length > 0
+            && !(
+              searchResults.products
+              && searchResults.products.length === 0
+              && searchQuery !== ''
+            )
+        "
         class="search-products-wrapper"
       >
         <h6
