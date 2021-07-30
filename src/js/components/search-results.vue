@@ -46,7 +46,7 @@
       </div>
 
       <div
-        v-if="
+        v-show="
           loadingResults
             || (!loadingResults && (!computedSearchResultProducts || computedSearchResultProducts.length == 0))
         "
@@ -61,35 +61,54 @@
           class="search-products product-list-wrapper product-list row"
         >
           <div
-            v-for="i in 4"
+            v-for="(product, i) in featuredSearchResults.products"
             :key="i"
             class="search-product product column-6"
           >
-            <div class="product-image-wrapper">
+            <a class="product-image-wrapper">
               <div class="image-wrap">
                 <img
                   class="product-image"
                   :src="placeholderImageUrl"
                 >
-                <div class="product-info">
-                  <h5 class="vendor">
-                    &nbsp;
-                  </h5>
-                  <a>
-                    <h5>&nbsp;</h5>
-                  </a>
-                  <h5 class="price">
-                    &nbsp;
-                  </h5>
-                </div>
               </div>
+            </a>
+            <div
+              class="product-info"
+              style="visibility: hidden"
+            >
+              <h5 class="vendor">
+                {{ product.vendor }}
+              </h5>
+              <a :href="product.url">
+                <h5>{{ product.title }}</h5>
+              </a>
+              <h5
+                v-if="parseFloat(product.compare_at_price_min) > parseFloat(product.price)"
+                class="original-price"
+              >
+                {{ product.compare_at_price_min | currency }}
+              </h5>
+              <h5 class="price">
+                {{ product.price | currency }}
+              </h5>
             </div>
           </div>
         </simplebar>
+
+        <div
+          style="visibility: hidden"
+          class="view-all"
+        >
+          <a
+            href="#"
+            @click.prevent="submitForm()"
+          >View All</a>
+        </div>
       </div>
 
       <div
-        v-else-if="
+        v-show="
           !loadingResults
             && searchResults.products
             && searchResults.products.length === 0
@@ -102,7 +121,7 @@
       </div>
 
       <div
-        v-else-if="!loadingResults && computedSearchResultProducts.length > 0"
+        v-show="!loadingResults && computedSearchResultProducts.length > 0"
         class="search-products-wrapper"
       >
         <h6
@@ -166,7 +185,11 @@
         </simplebar>
 
         <div
-          v-if="searchResults.products && searchResults.products.length > 0"
+          :style="{
+            'visibility': loadingResults
+              || (!loadingResults && (!computedSearchResultProducts || computedSearchResultProducts.length == 0))
+              ? 'hidden' : ''
+          }"
           class="view-all"
         >
           <a
