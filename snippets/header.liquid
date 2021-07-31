@@ -118,9 +118,9 @@
       {% endif %}
 
       <div id="cart">
-        <div class="cart" v-on:click="openCart()" v-bind:class="{ 'active': isCartPage }">
+        <div class="cart" v-on:click="openCart($event)" v-bind:class="{ 'active': isCartPage }">
           <div class="cart-icon"></div>
-          <a class="cart-text link search-link right-link" aria-label="Cart">Cart <span class="v-hide" v-cloak v-if="cartSize > 0">&nbsp;(${ cartSize })</span></a>
+          <a href="/cart" class="cart-text link search-link right-link" aria-label="Cart">Cart <span class="v-hide" v-cloak v-if="cartSize > 0">&nbsp;(${ cartSize })</span></a>
         </div>
         <side-cart v-bind:show-side-cart="showSideCart"></side-cart>
       </div>

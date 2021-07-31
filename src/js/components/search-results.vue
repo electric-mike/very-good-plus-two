@@ -65,7 +65,11 @@
             :key="i"
             class="search-product product column-6"
           >
-            <a class="product-image-wrapper">
+            <a
+              class="product-image-wrapper"
+              :href="product.url"
+              @click="(e) => { e.preventDefault(); e.stopPropagation(); }"
+            >
               <div class="image-wrap">
                 <img
                   class="product-image"
@@ -80,7 +84,10 @@
               <h5 class="vendor">
                 {{ product.vendor }}
               </h5>
-              <a :href="product.url">
+              <a
+                :href="product.url"
+                @click="(e) => { e.preventDefault(); e.stopPropagation(); }"
+              >
                 <h5>{{ product.title }}</h5>
               </a>
               <h5

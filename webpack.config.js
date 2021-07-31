@@ -111,13 +111,7 @@ module.exports = (env, argv) => ({
         loader: 'babel-loader',
         options: {
           sourceMap: argv.mode === 'production',
-          presets: [['@babel/preset-env', {
-            targets: {
-              esmodules: true,
-              "chrome": "58",
-              "ie": "11"
-            }
-          }]],
+          presets: [['@babel/preset-env']],
           plugins: ["@babel/plugin-transform-runtime"]
         },
       },

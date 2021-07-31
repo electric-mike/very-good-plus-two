@@ -14,11 +14,8 @@
     "test:run": "./node_modules/.bin/cypress run"
   },
   "browserslist": [
-    "Chrome >= 30",
-    "Firefox >= 30",
-    "IE >= 10",
-    "Safari >= 6.1",
-    "iOS >= 7"
+    "> 0.25%",
+    "not dead"
   ],
   "devDependencies": {
     "@babel/core": "^7.4.3",

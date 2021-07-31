@@ -103,8 +103,11 @@
     {{ 'elements.css' | asset_url | stylesheet_tag }}
     {{ 'helpers.css' | asset_url | stylesheet_tag }}
     {{ 'global.css' | asset_url | stylesheet_tag }}
-    {{ 'footer.css' | asset_url | stylesheet_tag }}
     {{ 'application.css' | asset_url | stylesheet_tag }}
+
+    <!-- below the fold styles -->
+    <link rel="preload" href="{{ 'footer.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ 'footer.css' | asset_url }}"></noscript>
 
     <!-- Conditional Styles & Scripts for Pages -->
     {% if template contains 'index' %}
@@ -135,7 +138,7 @@
     <!-- Judge.me -->
     {% comment %}
     {% include 'judgeme_core' %}
-    {% endcomment` %}
+    {% endcomment %}
   </head>
 
   <body>

@@ -60,7 +60,10 @@ export default function cart() {
       },
 
       methods: {
-        openCart() {
+        openCart(e) {
+          e.preventDefault()
+          e.stopPropagation()
+
           if (!this.isCartPage) {
             this.$store.commit('cart/toggleSideCart')
           }

@@ -22,13 +22,16 @@
           </div>
         {% endfor %}
       </div>
+
       <div class="footer-klaviyo-wrapper">
-        <div class="footer-klaviyo-description">
-          <h4 class="footer-main-link">News & updates</h4>
-          <p class="small">Sign up to get the latest on sales, new releases and more. We promise not to spam your inbox!</p>
-        </div>
-        <div class="klaviyo-form-{{ settings.klaviyo_desktop_form_id }} klaviyo-desktop"></div>
-        <div class="klaviyo-form-{{ settings.klaviyo_mobile_form_id }} klaviyo-mobile"></div>
+        {% if settings.klaviyo_desktop_form_id.size > 0 or settings.klaviyo_mobile_form_id.size > 0 %}
+          <div class="footer-klaviyo-description">
+            <h4 class="footer-main-link">News & updates</h4>
+            <p class="small">Sign up to get the latest on sales, new releases and more. We promise not to spam your inbox!</p>
+          </div>
+          <div class="klaviyo-form-{{ settings.klaviyo_desktop_form_id }} klaviyo-desktop"></div>
+          <div class="klaviyo-form-{{ settings.klaviyo_mobile_form_id }} klaviyo-mobile"></div>
+        {% endif %}
       </div>
     </div>
   </div>
