@@ -42,8 +42,8 @@
     "four_oh_four_left_link_text": "Shop New Arrivals",
     "four_oh_four_right_link": "shopify:\/\/collections\/vinyl",
     "four_oh_four_right_link_text": "Shop Vinyl",
-    "klaviyo_api_key": "LD5U78",
-    "klaviyo_bis_list": "Mw4q5X",
+    "klaviyo_api_key": "",
+    "klaviyo_bis_list": "",
     "style_guide_logo": "shopify:\/\/shop_images\/Very_Good_Plus.png",
     "checkout_header_image": "",
     "checkout_logo_image": "shopify:\/\/shop_images\/VERY_GOOD_PLUS_3.png",
@@ -162,8 +162,7 @@
         "block_order": [
           "e8ee8c35-f997-405b-9a19-59bd73fcb430"
         ],
-        "settings": {
-        }
+        "settings": {}
       },
       "email-signup": {
         "type": "email-signup",

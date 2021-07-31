@@ -3,13 +3,11 @@
   "sections": {
     "metadata": {
       "type": "template-product-metadata",
-      "settings": {
-      }
+      "settings": {}
     },
     "breadcrumbs": {
       "type": "template-product-breadcrumbs",
-      "settings": {
-      }
+      "settings": {}
     },
     "main": {
       "type": "template-product-top",
@@ -25,13 +23,12 @@
       "settings": {
         "product_limit": 4,
         "header_text": "Related Products",
-        "enable_scrollbar": false
+        "enable_scrollbar": true
       }
     },
     "klaviyo": {
       "type": "template-product-klaviyo",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
