@@ -60,13 +60,13 @@ export default function navigation() {
       // https://stackoverflow.com/questions/39245488/event-path-undefined-with-firefox-and-vue-js
       const path = event.path || (event.composedPath && event.composedPath()) || event.composedPath(event.target)
       toggleLayeredNavActive(path, true)
-    })
+    }, { passive: true })
 
     link.addEventListener('mouseout', (event) => {
       // https://stackoverflow.com/questions/39245488/event-path-undefined-with-firefox-and-vue-js
       const path = event.path || (event.composedPath && event.composedPath()) || event.composedPath(event.target)
       toggleLayeredNavActive(path, false)
-    })
+    }, { passive: true })
   }
 
   const layeredNavLink = document.querySelectorAll('#desktop-top-level-links .parent-links-wrapper > a')
@@ -145,7 +145,7 @@ export default function navigation() {
           if (window.innerWidth >= 1024) {
             this.toggleNav(true)
           }
-        })
+        }, { passive: true })
 
         window.addEventListener('hideMobileNav', () => { this.navOpen = false })
       },

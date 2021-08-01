@@ -9,7 +9,7 @@ export default {
   mounted() {
     window.addEventListener('resize', () => {
       this.toggleMobileCollectionNav(false)
-    })
+    }, { passive: true })
   },
 
   methods: {

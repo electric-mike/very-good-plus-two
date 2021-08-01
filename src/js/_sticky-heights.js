@@ -6,7 +6,7 @@ export default class StickyHeights {
   init() {
     this.elements = this.getElements()
     this.resizeListenerHandler = this.resizeListener.bind(this)
-    window.addEventListener('resize', this.resizeListenerHandler)
+    window.addEventListener('resize', this.resizeListenerHandler, { passive: true })
   }
 
   unmountClass() {

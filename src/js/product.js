@@ -23,7 +23,7 @@ export default function product() {
   const zoomImages = document.querySelectorAll('.zoomImg')
   if (zoomImages.length > 0) {
     zoomImages.forEach((zoomImg) => {
-      zoomImg.addEventListener('mousemove', zoom)
+      zoomImg.addEventListener('mousemove', zoom, { passive: true })
     })
   }
 

@@ -11,7 +11,7 @@ export default class StickyNav {
 
     // have to do this to allow us to be able to remove event listener
     this.scrollListenerHandler = this.scrollListener.bind(this)
-    document.addEventListener('scroll', this.scrollListenerHandler)
+    document.addEventListener('scroll', this.scrollListenerHandler, { passive: true })
   }
 
   unmountClass() {
