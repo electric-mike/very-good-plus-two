@@ -1,6 +1,6 @@
 import responsiveYoutube from './helpers/_responsive-youtube'
 
-export default function blog() {
+document.addEventListener('DOMContentLoaded', () => {
   responsiveYoutube()
 
   // filter change
@@ -13,4 +13,4 @@ export default function blog() {
       }
     })
   }
-}
+})

@@ -1,17 +1,8 @@
 // Imports
 import Vue from 'vue'
 import Siema from 'siema'
-import PortalVue from 'portal-vue'
 import SimpleBar from 'simplebar'
 import SiemaOverflow from './helpers/_siema-overflow'
-import cart from './cart'
-import homepage from './homepage'
-import navigation from './navigation'
-import product from './product'
-import category from './category'
-import cms from './cms'
-import blog from './blog'
-import account from './account'
 
 // simplebar css
 import 'simplebar/dist/simplebar.css'
@@ -37,11 +28,7 @@ window.SiemaOverflow = SiemaOverflow
 // import favicon
 // require('../assets/favicon.png')
 
-// plugins
-Vue.use(PortalVue)
-
 // global filters
-Vue.filter('removeDashes', str => str.replace(/-/g, ' ').replace(/ca/g, 'CA'))
 Vue.filter('currency', (str) => {
   // shopify API prices are stupid
   str = str ? str.toString() : '000'
@@ -55,15 +42,6 @@ Vue.filter('currency', (str) => {
 
 // Wrap everything in a DCL
 document.addEventListener('DOMContentLoaded', () => {
-  cart()
-  homepage()
-  navigation()
-  product()
-  category()
-  cms()
-  blog()
-  account()
-
   // Open non-internal links in new tab
   const { links } = document
   for (let i = 0, linksLength = links.length; i < linksLength; i += 1) {

@@ -59,7 +59,7 @@ function generateForm(formId) {
   })
 }
 
-export default function account() {
+document.addEventListener('DOMContentLoaded', () => {
   // active link
   // if (window.location.href.includes('/addresses')) {
   //   document.getElementById('view-address').classList.add('active')
@@ -87,4 +87,4 @@ export default function account() {
       tag.classList.add('featured')
     })
   }
-}
+})

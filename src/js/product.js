@@ -3,7 +3,7 @@ import Siema from 'siema'
 import rhpa from './_rhpa'
 import productDescription from './_product-description'
 
-export default function product() {
+document.addEventListener('DOMContentLoaded', () => {
   // run RHPA
   rhpa()
 
@@ -172,4 +172,4 @@ export default function product() {
       })
     })
   }
-}
+})

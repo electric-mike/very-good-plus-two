@@ -1,4 +1,4 @@
-// category page
+// collection page
 import Vue from 'vue'
 import VRuntimeTemplate from 'v-runtime-template'
 import baseFilterOptions from './data/base-filter-options'
@@ -7,7 +7,7 @@ import swatches from './helpers/_swatches'
 import toggleMobileCollectionNav from './_toggle-mobile-collection-nav'
 import getUrlParameter from './helpers/_get-url-param'
 
-export default function category() {
+document.addEventListener('DOMContentLoaded', () => {
   if (window.location.href.indexOf('collections') > -1 || window.location.href.indexOf('search') > -1) {
     const collection = document.getElementById('category-app') || document.getElementById('search-app')
 
@@ -742,4 +742,4 @@ export default function category() {
       })
     }
   }
-}
+})

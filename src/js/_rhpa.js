@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import PortalVue from 'portal-vue'
 import store from './store/index'
 import formatMoney from './helpers/_format-money'
 import getUrlParameter from './helpers/_get-url-param'
 import quantityInput from './components/quantity-input'
 import modal from './components/modal'
+
+// plugins
+Vue.use(PortalVue)
 
 export default function rhpa() {
   const rhpaEl = document.getElementById('rhpa')

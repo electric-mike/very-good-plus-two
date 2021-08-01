@@ -7,7 +7,7 @@ import StickyHeights from './_sticky-heights'
 import searchInput from './components/search-input'
 import searchResults from './components/search-results'
 
-export default function navigation() {
+document.addEventListener('DOMContentLoaded', () => {
   // set top level active links
   // const links = document.querySelectorAll('.top-level-link')
   // links.forEach((link) => {
@@ -259,4 +259,4 @@ export default function navigation() {
       },
     })
   }
-}
+})

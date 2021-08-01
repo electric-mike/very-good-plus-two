@@ -1,3 +1,3 @@
 // homepage
-export default function homepage() {
-}
+// document.addEventListener('DOMContentLoaded', () => {
+// })

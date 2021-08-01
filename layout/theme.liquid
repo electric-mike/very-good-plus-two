@@ -97,7 +97,7 @@
 
     <!-- Global Styles -->
     <style>{% render 'styles.css' %}</style>
-    {{ 'nav.css' | asset_url | stylesheet_tag }}
+    {{ 'navigation.css' | asset_url | stylesheet_tag }}
     {{ 'header.css' | asset_url | stylesheet_tag }}
     {{ 'grid.css' | asset_url | stylesheet_tag }}
     {{ 'elements.css' | asset_url | stylesheet_tag }}
@@ -109,31 +109,36 @@
     <link rel="preload" href="{{ 'footer.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="{{ 'footer.css' | asset_url }}"></noscript>
 
+      <!-- Global Scripts -->
+      <script src="{{ 'vendor.js' | asset_url }}" defer></script>
+      <script src="{{ 'navigation.js' | asset_url }}" defer></script>
+      <script src="{{ 'cart.js' | asset_url }}" defer></script>
+      <script src="{{ 'application.js' | asset_url }}" defer></script>
+      <script src="{{ 'assets.js' | asset_url }}" defer></script>
+
     <!-- Conditional Styles & Scripts for Pages -->
     {% if template contains 'index' %}
       {{ 'homepage.css' | asset_url | stylesheet_tag }}
     {% elsif template contains 'page' or template == '404' %}
       {{ 'cms.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'cms.js' | asset_url }}" defer></script>
     {% elsif template contains 'collection' or template contains 'search' %}
-      {{ 'category.css' | asset_url | stylesheet_tag }}
       {{ 'collection.css' | asset_url | stylesheet_tag }}
-      {% comment %}{{ '//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js' | script_tag }}{% endcomment %}
+      <script src="{{ 'collection.js' | asset_url }}" defer></script>
     {% elsif template contains 'product' %}
       {{ 'product.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'product.js' | asset_url }}" defer></script>
     {% elsif template contains 'blog' or template contains 'article' %}
       {{ 'blog.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'blog.js' | asset_url }}" defer></script>
     {% elsif template contains 'cart' %}
       {{ 'cart.css' | asset_url | stylesheet_tag }}
     {% elsif template contains 'customers' or request.path == '/challenge' or request.path contains '/tools/recurring/customers' %}
       {{ 'account.css' | asset_url | stylesheet_tag }}
       {{ "shopify_common.js" | shopify_asset_url | script_tag }}
       {{ "customer_area.js"  | shopify_asset_url | script_tag }}
+      <script src="{{ 'account.js' | asset_url }}" defer></script>
     {% endif %}
-
-    <!-- Global Scripts -->
-    <script src="{{ 'application.js' | asset_url }}" defer></script>
-    <script src="{{ 'assets.js' | asset_url }}" defer></script>
-    <script src="{{ 'vendor.js' | asset_url }}" defer></script>
 
     <!-- Judge.me -->
     {% comment %}

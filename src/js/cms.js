@@ -9,7 +9,7 @@ import variables from '../scss/_variables.scss'
 
 // const CONTACT_US_FORM_URL = ''
 
-export default function cms() {
+document.addEventListener('DOMContentLoaded', () => {
   // --------
   // STYLE GUIDE
   // --------
@@ -197,4 +197,4 @@ export default function cms() {
   //     },
   //   })
   // }
-}
+})
