@@ -112,7 +112,6 @@
       <!-- Global Scripts -->
       <script src="{{ 'vendor.js' | asset_url }}" defer></script>
       <script src="{{ 'navigation.js' | asset_url }}" defer></script>
-      <script src="{{ 'cart.js' | asset_url }}" defer></script>
       <script src="{{ 'application.js' | asset_url }}" defer></script>
       <script src="{{ 'assets.js' | asset_url }}" defer></script>
 
@@ -127,7 +126,6 @@
       <script src="{{ 'collection.js' | asset_url }}" defer></script>
     {% elsif template contains 'product' %}
       {{ 'product.css' | asset_url | stylesheet_tag }}
-      <script src="{{ 'product.js' | asset_url }}" defer></script>
     {% elsif template contains 'blog' or template contains 'article' %}
       {{ 'blog.css' | asset_url | stylesheet_tag }}
       <script src="{{ 'blog.js' | asset_url }}" defer></script>

@@ -225,12 +225,18 @@ import { mapState } from 'vuex'
 import simplebar from 'simplebar-vue'
 import 'simplebar-vue/dist/simplebar.min.css'
 import vueImage from './vue-image'
+import currency from '../helpers/_currency'
 
 export default {
   components: {
     simplebar,
     vueImage,
   },
+
+  filters: {
+    currency,
+  },
+
   props: {
     inputFocused: {
       type    : Boolean,

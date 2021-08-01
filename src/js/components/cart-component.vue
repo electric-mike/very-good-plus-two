@@ -56,12 +56,17 @@ import { mapState } from 'vuex'
 import quantityInput from './quantity-input'
 import vueImage from './vue-image'
 import upsell from './upsell'
+import currency from '../helpers/_currency'
 
 export default {
   components: {
     quantityInput,
     vueImage,
     upsell,
+  },
+
+  filters: {
+    currency,
   },
 
   props: {

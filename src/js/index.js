@@ -1,8 +1,9 @@
 // Imports
-import Vue from 'vue'
 import Siema from 'siema'
 import SimpleBar from 'simplebar'
 import SiemaOverflow from './helpers/_siema-overflow'
+import cart from './cart'
+import product from './product'
 
 // simplebar css
 import 'simplebar/dist/simplebar.css'
@@ -28,18 +29,6 @@ window.SiemaOverflow = SiemaOverflow
 // import favicon
 // require('../assets/favicon.png')
 
-// global filters
-Vue.filter('currency', (str) => {
-  // shopify API prices are stupid
-  str = str ? str.toString() : '000'
-
-  const decimalVal = str.substring(str.length - 2)
-  const beforeDecimal = str.slice(0, -2).replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace('.', '')
-
-  return decimalVal !== '00' ? `$${beforeDecimal}.${decimalVal}` : `$${beforeDecimal}`
-  // return `$${beforeDecimal}.${decimalVal}`
-})
-
 // Wrap everything in a DCL
 document.addEventListener('DOMContentLoaded', () => {
   // Open non-internal links in new tab
@@ -50,6 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
       links[i].rel = 'noreferrer noopener'
     }
   }
+
+  // cart and product have to be loaded together because of vuex
+  cart()
+  product()
 
   new StickyNav()
 })

@@ -30,8 +30,8 @@ module.exports = (env, argv) => ({
     homepage: './scss/homepage.scss',
     collection: ['./js/collection.js', './scss/collection.scss'],
     cms: ['./js/cms.js', './scss/cms.scss'],
-    product: ['./js/product.js', './scss/product.scss'],
-    cart: ['./js/cart.js', './scss/cart.scss'],
+    product: './scss/product.scss',
+    cart: './scss/cart.scss',
     blog: ['./js/blog.js', './scss/blog.scss'],
     account: ['./js/account.js', './scss/account.scss'],
   },
@@ -75,6 +75,11 @@ module.exports = (env, argv) => ({
     minimizer: [
       new TerserPlugin({
         exclude: /\/excludes/,
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
       }),
     ],
   },

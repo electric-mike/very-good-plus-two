@@ -6,6 +6,7 @@ import formatMoney from './helpers/_format-money'
 import getUrlParameter from './helpers/_get-url-param'
 import quantityInput from './components/quantity-input'
 import modal from './components/modal'
+import currency from './helpers/_currency'
 
 // plugins
 Vue.use(PortalVue)
@@ -22,6 +23,10 @@ export default function rhpa() {
       components: {
         quantityInput,
         modal,
+      },
+
+      filters: {
+        currency,
       },
 
       data() {
@@ -399,6 +404,7 @@ export default function rhpa() {
           }
 
           this.$store.dispatch('cart/addToCart', payload)
+          console.log(this.$store)
         },
 
         updateConfig() {

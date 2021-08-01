@@ -35,11 +35,16 @@
 import { mapState } from 'vuex'
 import cartButton from './cart-button'
 import promoCode from './promo-code'
+import currency from '../helpers/_currency'
 
 export default {
   components: {
     cartButton,
     promoCode,
+  },
+
+  filters: {
+    currency,
   },
 
   props: {

@@ -6,7 +6,7 @@ import sideCart from './components/side-cart'
 import subtotalCheckout from './components/subtotal-checkout'
 import cartButton from './components/cart-button'
 
-document.addEventListener('DOMContentLoaded', () => {
+export default function cart() {
   // cart icon
   const cartEl = document.getElementById('cart')
   if (cartEl) {
@@ -97,4 +97,4 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     })
   }
-})
+}
