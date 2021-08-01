@@ -79,6 +79,7 @@ module.exports = (env, argv) => ({
           output: {
             comments: false,
           },
+          extractComments: false,
         },
       }),
     ],

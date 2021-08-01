@@ -2,7 +2,12 @@
   .quantity-input(:class="{ 'is-cart': isCart, 'updating-cart': updatingCart }")
     button.secondary(v-if="isCart" @click.prevent="changeValue(internalValue - 1)") -
     .required
-      //- label(for="quantity" v-if="!isCart") Qty
+      label(
+        for="quantity"
+        v-if="!isCart"
+        style="display: none"
+        aria-label="Quantity"
+      ) Qty
       input(
         v-model.number="internalValue"
         type="number"
