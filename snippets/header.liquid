@@ -78,12 +78,22 @@
     <div class="logo-link">
       {% if settings.logo %}
         <a href="/" class="logo desktop-logo">
-          <img src="{{ settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" />
+          <img
+            src="{{ settings.logo | img_url: 'master' }}"
+            alt="{{ shop.name }}"
+            width="{{ settings.logo.width }}"
+            height="{{ settings.logo.height }}"
+          />
         </a>
       {% endif %}
       {% if settings.logo_mobile %}
         <a href="/" class="logo mobile-logo">
-          <img src="{{ settings.logo_mobile | img_url: 'master' }}" alt="{{ shop.name }}" />
+          <img
+            src="{{ settings.logo_mobile | img_url: 'master' }}"
+            alt="{{ shop.name }}"
+            width="{{ settings.logo_mobile.width }}"
+            height="{{ settings.logo_mobile.height }}"
+          />
         </a>
       {% endif %}
     </div>

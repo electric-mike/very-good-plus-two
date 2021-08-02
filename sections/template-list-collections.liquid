@@ -20,6 +20,8 @@
                     data-widths="[360, 540, 720, 900, 1080, 1600]"
                     data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
                     data-sizes="auto"
+                    width="{{ prod.featured_image.width }}"
+                    height="{{ prod.featured_image.height }}"
                   />
                   <noscript>
                     <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">

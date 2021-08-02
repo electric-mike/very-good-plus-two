@@ -74,6 +74,7 @@
           margin: 0 auto;
           padding: 0;
           width: 100%;
+          height: auto;
         }
 
         > img:not(:first-of-type) {
@@ -409,6 +410,7 @@
         label {
           padding-left: 2em;
           line-height: 0.5em !important;
+          margin-left: 0;
         }
 
         .rc_widget__option__plans {

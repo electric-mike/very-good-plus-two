@@ -36,6 +36,8 @@
           data-aspectratio="{{ collection.image.aspect_ratio }}"
           data-sizes="auto"
           style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
+          width="{{ prod.featured_image.width }}"
+          height="{{ prod.featured_image.height }}"
         />
         <noscript>
           <img class="lazyloaded" src="{{ settings.collection_image | img_url: '800x' }}" alt="{{ collection.title | escape }}">
@@ -244,6 +246,8 @@
                       data-additional-image="{{ secondary_img_url }}"
                       v-on:mouseover="changeImage('in', $event)"
                       v-on:mouseleave="changeImage('out', $event)"
+                      width="{{ product.featured_image.width }}"
+                      height="{{ product.featured_image.height }}"
                     />
                     <noscript>
                       <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
@@ -287,6 +291,8 @@
                     v-bind:data-additional-image="product.secondary_image"
                     v-on:mouseover="changeImage('in', $event)"
                     v-on:mouseleave="changeImage('out', $event)"
+                    v-bind:width="product.featured_image.width"
+                    v-bind:height="product.featured_image.height"
                   />
                 </div>
               </a>

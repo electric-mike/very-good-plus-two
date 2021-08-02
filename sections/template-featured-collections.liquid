@@ -31,6 +31,8 @@
                 data-additional-image="{{ settings.placeholder_image | img_url }}"
                 data-additional-image-large="{{ product.images[1] | img_url: 'large' }}"
                 alt="{{ product.featured_image.alt | escape }}"
+                width="{{ product.featured_image.width }}"
+                height="{{ product.featured_image.height }}"
               />
             </a>
             <div class="fc-product-info product-info">

@@ -74,6 +74,10 @@
                 <img
                   class="product-image"
                   :src="placeholderImageUrl"
+                  :source="product.featured_image.url"
+                  :alt="product.featured_image.alt"
+                  :width="product.featured_image.width"
+                  :height="product.featured_image.height"
                 >
               </div>
             </a>

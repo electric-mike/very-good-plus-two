@@ -15,6 +15,8 @@
             data-aspectratio="{{ image.aspect_ratio }}"
             data-sizes="auto"
             data-variantid="{{ image.id }}"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
           />
           <noscript>
             <img class="lazyloaded" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt }}">
@@ -39,6 +41,8 @@
               data-small-src="{{ settings.placeholder_image | img_url }}"
               data-aspectratio="{{ image.aspect_ratio }}"
               data-variantid="{{ image.id }}"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
             ></div>
           {% endfor %}
         </div>
@@ -57,6 +61,8 @@
               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
               data-placeholder="{{ settings.placeholder_image | img_url }}"
               data-sizes="auto"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
             />
           </figure>
           <noscript>
@@ -81,6 +87,8 @@
               data-placeholder="{{ settings.placeholder_image | img_url }}"
               data-sizes="auto"
               data-variantid="{{ image.id }}"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
             />
           </figure>
           <noscript>

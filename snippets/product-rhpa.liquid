@@ -2,10 +2,9 @@
   class="swatches-wrapper v-hide"
   v-for="(options, i) in [option1Options, option2Options, option3Options]"
   v-if="options.length > 1"
-  v-cloak
 >
   {% if section.settings.rhpa_type == 'swatch' %}
-    <div v-bind:class="{ 'swatch-size-link-wrapper': productVariantOptions[i].toLowerCase() ==='size' }">
+    <div v-bind:class="{ 'swatch-size-link-wrapper': productVariantOptions[i].toLowerCase() ==='size' }" v-cloak>
       <span class="swatch-title">
         <span>${ productVariantOptions[i] }: </span>${ optionSelections[i + 1] || 'Select ' + productVariantOptions[i] }
       </span>
@@ -17,7 +16,7 @@
       </div>
     </div>
     {% if section.settings.rhpa_color_swatch_type == 'image' %}
-      <div class="swatches image-swatches" v-if="productVariantOptions[i] === 'Color'">
+      <div class="swatches image-swatches" v-if="productVariantOptions[i] === 'Color'" v-cloak>
         <div
           class="swatch color-image-swatch" v-for="(option, j) in options"
           v-bind:class="{ 'oos': outOfStock(option, i + 1) }"
@@ -39,7 +38,7 @@
           </label>
         </div>
       </div>
-      <div class="swatches" v-else>
+      <div class="swatches" v-else v-cloak>
         <div
           class="swatch" v-for="option in options"
           v-bind:class="{ 'oos': outOfStock(option, i + 1) }"
@@ -55,7 +54,7 @@
         </div>
       </div>
     {% else %}
-      <div class="swatches" v-bind:class="{ 'color-swatches': productVariantOptions[i] === 'Color' }">
+      <div class="swatches" v-bind:class="{ 'color-swatches': productVariantOptions[i] === 'Color' }" v-cloak>
         <div
           class="swatch" v-for="option in options"
           v-bind:class="{ 'color-swatch': productVariantOptions[i] === 'Color', 'oos': outOfStock(option, i + 1) }"
@@ -72,8 +71,8 @@
       </div>
     {% endif %}
   {% elsif section.settings.rhpa_type == 'radio' %}
-    <h6 class="radio-title"><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
-    <div class="radio-wrapper">
+    <h6 class="radio-title" v-cloak><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
+    <div class="radio-wrapper" v-cloak>
       <div class="radio" v-for="option in options" v-bind:class="{ 'half-width': options.length > 10 }">
         <input
           type="radio"
@@ -88,7 +87,7 @@
       </div>
     </div>
   {% elsif section.settings.rhpa_type == 'select' %}
-    <div class="select-wrapper">
+    <div class="select-wrapper" v-cloak>
       <h6 class="select-title"><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
       <select v-model="optionSelections[i + 1]">
         <option
@@ -110,7 +109,7 @@
 
 <div class="quantity-atc-wrapper">
   {% if section.settings.show_quantity_selector %}
-    <div class="quantity-input-wrapper required">
+    <div class="quantity-input-wrapper required" v-cloak>
       <quantity-input v-bind:is-cart="false" v-model.number="formQuantity"></quantity-input>
     </div>
   {% endif %}

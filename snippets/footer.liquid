@@ -4,7 +4,12 @@
       <div class="footer-left">
         <div class="footer-logo-wrapper">
           <div class="footer-logo">
-            <img src="{{ settings.footer_logo | img_url: 'master' }}" alt="{{ shop.name }}" />
+            <img
+              src="{{ settings.footer_logo | img_url: 'master' }}"
+              alt="{{ shop.name }}"
+              width="{{ settings.footer_logo.width }}"
+              height="{{ settings.footer_logo.height }}"
+            />
           </div>
         </div>
       </div>

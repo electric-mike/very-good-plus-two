@@ -213,6 +213,8 @@
                           data-additional-image="{{ secondary_img_url }}"
                           v-on:mouseover="changeImage('in', $event)"
                           v-on:mouseleave="changeImage('out', $event)"
+                          width="{{ prod.featured_image.width }}"
+                          height="{{ prod.featured_image.height }}"
                         />
                         <noscript>
                           <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
@@ -258,6 +260,8 @@
                       v-bind:data-additional-image="product.images.length > 1 ? product.secondary_image : product.featured_image"
                       v-on:mouseover="changeImage('in', $event)"
                       v-on:mouseleave="changeImage('out', $event)"
+                      v-bind:width="product.featured_image.width"
+                      v-bind:height="product.featured_image.height"
                     />
                   </div>
                 </a>
