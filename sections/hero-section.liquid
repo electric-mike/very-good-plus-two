@@ -37,7 +37,7 @@
   </noscript>
 
   <div class="container">
-    <div id="hero-text-{{ section.id }}" {% if section.settings.max_width > 0 %}style="max-width: {{ section.settings.max_width }}px"{% endif %}>
+    <div id="hero-text-{{ section.id }}">
       {% for block in section.blocks %}
         {% case block.type %}
         {% when 'preheader' %}
@@ -189,6 +189,20 @@
     text-align: {{ section.settings.desktop_text_align }};
     margin: 7vw;
   }
+
+  {% if section.settings.max_width > 0 %}
+    div#hero-text {
+      max-width: {{ section.settings.max_width }}px;
+    }
+  {% endif %}
+
+  {% if section.settings.mobile_max_width > 0 %}
+    @media(max-width: 767px) {
+      div#hero-text {
+        max-width: {{ section.settings.mobile_max_width }}px;
+      }
+    }
+  {% endif %}
 
   /*
   @media(min-width: 768px) {
