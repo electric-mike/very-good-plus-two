@@ -8,7 +8,7 @@
       ${sizeImageOrReturn(source, '1440x')} 1440w,
       ${sizeImageOrReturn(source, '2080x')} 2080w
     `"
-    :src="sizeImageOrReturn(source, '100x')"
+    :src="placeholderImageUrl"
     sizes="`
       (min-width: 0px) 200px,
       (min-width: 500px) 500px,
@@ -53,6 +53,11 @@ export default {
       type    : Boolean,
       default : false,
     },
+  },
+  data() {
+    return {
+      placeholderImageUrl: (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
+    }
   },
   methods: {
     getSizedImage,
