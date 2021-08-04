@@ -22,32 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
           const {
             totalProducts,
             additionalFilterOptions,
-            enableProductImageHover,
             enableVendorFilter,
           } = window
 
           const { paginationLimit } = window.themeSettings
 
           return {
-            products                : [],
-            tags                    : [],
-            prices                  : [],
-            types                   : [],
-            vendors                 : [],
-            sizes                   : [],
-            filterOptions           : additionalFilterOptions.concat(baseFilterOptions),
-            filterToggles           : {},
-            checkedOptions          : {},
+            products           : [],
+            tags               : [],
+            prices             : [],
+            types              : [],
+            vendors            : [],
+            sizes              : [],
+            filterOptions      : additionalFilterOptions.concat(baseFilterOptions),
+            filterToggles      : {},
+            checkedOptions     : {},
             totalProducts,
-            currentPage             : 1,
-            sort                    : '',
-            setPageFromURL          : false,
-            enableProductImageHover : enableProductImageHover || false,
-            enableVendorFilter      : enableVendorFilter || false,
-            activeTab               : 'products',
-            showFilters             : window.localStorage.getItem('showCategoryFilters') ? window.localStorage.getItem('showCategoryFilters') === 'true' : true,
-            mobileGridSize          : parseFloat(window.localStorage.getItem('mobileGridSize') || 2),
-            paginationLimit         : paginationLimit || 40,
+            currentPage        : 1,
+            sort               : '',
+            setPageFromURL     : false,
+            enableVendorFilter : enableVendorFilter || false,
+            activeTab          : 'products',
+            showFilters        : window.localStorage.getItem('showCategoryFilters') ? window.localStorage.getItem('showCategoryFilters') === 'true' : true,
+            mobileGridSize     : parseFloat(window.localStorage.getItem('mobileGridSize') || 2),
+            paginationLimit    : paginationLimit || 40,
           }
         },
 
@@ -655,31 +653,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.loading) return true
 
             return this.paginatedProducts.find(product => product.id === sentId)
-          },
-
-          changeImage(inOrOut, $event) {
-            if (this.enableProductImageHover) {
-              const image = $event.target
-
-              if (
-                Object.prototype.hasOwnProperty.call(image.dataset, 'additionalImage')
-                && !image.dataset.additionalImage.includes('no-image')
-                && !('ontouchstart' in window || navigator.msMaxTouchPoints) // touch check
-              ) {
-                if (inOrOut === 'in') {
-                  image.dataset.src = image.dataset.additionalImage
-                  image.src = image.dataset.additionalImage
-                  image.parentElement.style.paddingBottom = `${100 / image.dataset.secondaryAspectratio}%`
-                } else {
-                  image.dataset.src = image.dataset.firstSrc
-                  image.src = image.dataset.firstSrc
-                  image.parentElement.style.paddingBottom = `${100 / image.dataset.aspectratio}%`
-                }
-
-                image.classList.add('lazyload')
-                image.classList.remove('lazyloaded')
-              }
-            }
           },
 
           triggerLazyload() {

@@ -34,6 +34,11 @@ export default function product() {
 
   // set to window for when we don't have an option selected
   window.isFirstTime = true
+  function updateZoomImg(image, zoomImg) {
+    zoomImg.dataset.bg = image.dataset.masterSrc
+    zoomImg.style.backgroundImage = `url(${image.dataset.masterSrc})`
+  }
+
   function changeMainImage(sentIndex) {
     additionalImages.forEach((image, index) => {
       if (index === sentIndex) {
@@ -52,12 +57,10 @@ export default function product() {
         mainImage.classList.remove('lazyloaded')
         document.querySelector('.main-image-wrapper .image-wrap').style.paddingBottom = `${100 / image.dataset.aspectratio}%`
 
-        if (zoomImages.length < 1) {
+        if (zoomImages.length > 0) {
           zoomImages.forEach((zoomImg) => {
-            zoomImg.style.backgroundImage = ''
-            mainImage.addEventListener('load', () => {
-              zoomImg.style.backgroundImage = `url(${image.dataset.masterSrc})`
-            })
+            updateZoomImg(image, zoomImg)
+            mainImage.addEventListener('load', updateZoomImg.bind(image, zoomImg))
           })
         }
       } else {

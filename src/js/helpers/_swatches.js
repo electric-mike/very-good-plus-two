@@ -1,11 +1,37 @@
 export default {
   data() {
     return {
-      activeSwatches: window.activeSwatches || {},
+      activeSwatches          : window.activeSwatches || {},
+      enableProductImageHover : window.enableProductImageHover || false,
     }
   },
 
   methods: {
+    changeImage(inOrOut, $event) {
+      if (this.enableProductImageHover) {
+        const image = $event.target
+
+        if (
+          Object.prototype.hasOwnProperty.call(image.dataset, 'additionalImage')
+          && !image.dataset.additionalImage.includes('no-image')
+          && !('ontouchstart' in window || navigator.msMaxTouchPoints) // touch check
+        ) {
+          if (inOrOut === 'in') {
+            image.dataset.src = image.dataset.additionalImage
+            image.src = image.dataset.additionalImage
+            image.parentElement.style.paddingBottom = `${100 / image.dataset.secondaryAspectratio}%`
+          } else {
+            image.dataset.src = image.dataset.firstSrc
+            image.src = image.dataset.firstSrc
+            image.parentElement.style.paddingBottom = `${100 / image.dataset.aspectratio}%`
+          }
+
+          image.classList.add('lazyload')
+          image.classList.remove('lazyloaded')
+        }
+      }
+    },
+
     changeSwatch(sentImageVariant, imgUrl, aspectRatio, productId, productUrl) {
       if (this.activeSwatches[productId] === sentImageVariant) return
 
