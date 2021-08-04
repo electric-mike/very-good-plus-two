@@ -6,6 +6,7 @@ import fetchCollectionData from './_fetch-collection-data'
 import swatches from './helpers/_swatches'
 import toggleMobileCollectionNav from './_toggle-mobile-collection-nav'
 import getUrlParameter from './helpers/_get-url-param'
+import currency from './helpers/_currency'
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.href.indexOf('collections') > -1 || window.location.href.indexOf('search') > -1) {
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         el         : collection,
         delimiters : ['${', '}'],
         components : { VRuntimeTemplate },
+        filters    : { currency },
         mixins     : [fetchCollectionData, toggleMobileCollectionNav, swatches],
 
         data() {

@@ -60,7 +60,8 @@ export default function product() {
         if (zoomImages.length > 0) {
           zoomImages.forEach((zoomImg) => {
             updateZoomImg(image, zoomImg)
-            mainImage.addEventListener('load', updateZoomImg.bind(image, zoomImg))
+            document.addEventListener('DOMContentLoaded', updateZoomImg.bind(this, image, zoomImg))
+            mainImage.addEventListener('load', updateZoomImg.bind(this, image, zoomImg))
           })
         }
       } else {
