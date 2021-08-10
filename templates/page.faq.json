@@ -3,8 +3,105 @@
   "sections": {
     "main": {
       "type": "template-faq",
-      "settings": {
-      }
+      "blocks": {
+        "1a8f6098-6bbf-462e-ab82-a0c03b2b7cc1": {
+          "type": "header",
+          "settings": {
+            "header_text": "Vinyl Care"
+          }
+        },
+        "28fcdc83-83b6-47ef-a191-b0c900fdefa7": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "c79fc638-0a72-48d7-bde1-7c767519fd20": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "d20af548-7f79-416b-baa2-704b51404927": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "d1941eeb-7ec5-44c3-8cc0-348f35d92d56": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "f18b6006-305e-4245-8474-d0e8e9d65e4f": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "75109b99-e9ea-47f0-9a33-5df76cf75630": {
+          "type": "header",
+          "settings": {
+            "header_text": "Returns"
+          }
+        },
+        "475b81ba-12c5-4611-94ec-a34f8cf06f4c": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "0b626776-6e82-4a9c-93fc-d05277e5c821": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "1ea377e1-3985-45f5-a0b9-488dd1ff632b": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "b266202f-3fa4-44d8-9217-327c5938ff11": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        },
+        "2ba148cc-4422-4dc0-b011-43526731b133": {
+          "type": "question",
+          "settings": {
+            "question": "Frequently asked question",
+            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+          }
+        }
+      },
+      "block_order": [
+        "1a8f6098-6bbf-462e-ab82-a0c03b2b7cc1",
+        "28fcdc83-83b6-47ef-a191-b0c900fdefa7",
+        "c79fc638-0a72-48d7-bde1-7c767519fd20",
+        "d20af548-7f79-416b-baa2-704b51404927",
+        "d1941eeb-7ec5-44c3-8cc0-348f35d92d56",
+        "f18b6006-305e-4245-8474-d0e8e9d65e4f",
+        "75109b99-e9ea-47f0-9a33-5df76cf75630",
+        "475b81ba-12c5-4611-94ec-a34f8cf06f4c",
+        "0b626776-6e82-4a9c-93fc-d05277e5c821",
+        "1ea377e1-3985-45f5-a0b9-488dd1ff632b",
+        "b266202f-3fa4-44d8-9217-327c5938ff11",
+        "2ba148cc-4422-4dc0-b011-43526731b133"
+      ],
+      "settings": {}
     }
   },
   "order": [

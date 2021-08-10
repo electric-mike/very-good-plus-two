@@ -3,8 +3,35 @@
   "sections": {
     "main": {
       "type": "template-staff",
-      "settings": {
-      }
+      "blocks": {
+        "6bcbdcb1-c166-4d63-9855-a2d5d08d702b": {
+          "type": "person",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b7.jpg",
+            "description": "<h1>Ronald McDonald<\/h1>\n<h4>Media Manger <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+          }
+        },
+        "65a396a2-a799-4a33-8f78-1cd462d358ae": {
+          "type": "person",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/9f16dac8db22ad6b5613319f68639bfe.jpg",
+            "description": "<h1>John Q Public<\/h1>\n<h4>Vinyl Curator <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+          }
+        },
+        "ed289c98-efce-4da7-a74e-e109c0d8e275": {
+          "type": "person",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
+            "description": "<h1>Mike Weaver<\/h1>\n<h4>Overall Good Guy <\/h4>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "6bcbdcb1-c166-4d63-9855-a2d5d08d702b",
+        "65a396a2-a799-4a33-8f78-1cd462d358ae",
+        "ed289c98-efce-4da7-a74e-e109c0d8e275"
+      ],
+      "settings": {}
     }
   },
   "order": [

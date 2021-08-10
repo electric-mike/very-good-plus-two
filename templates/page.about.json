@@ -4,6 +4,8 @@
     "main": {
       "type": "template-about",
       "settings": {
+        "page_image_enable": true,
+        "page_image_url": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png"
       }
     }
   },

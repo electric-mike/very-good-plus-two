@@ -32,7 +32,7 @@
           "type": "button",
           "settings": {
             "button_text": "Shop Now",
-            "button_link": "",
+            "button_link": "shopify:\/\/collections\/vinyl",
             "button_desktop_weight": "400",
             "button_mobile_weight": "400",
             "button_color": "#ffffff",
@@ -148,8 +148,7 @@
       "block_order": [
         "c15b2d29-9c99-41f8-b120-caf9e16a09f7"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "1625196787a3c87ff0": {
       "type": "logo-list",

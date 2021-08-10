@@ -21,14 +21,14 @@
     "reviews": {
       "type": "template-product-reviews",
       "settings": {
-        "reviews": "none"
+        "review_type": "none"
       }
     },
     "recommendations": {
       "type": "template-product-recommendations",
       "settings": {
         "product_limit": 4,
-        "header_text": "Related Products",
+        "header_text": "You might also like",
         "enable_scrollbar": true
       }
     },

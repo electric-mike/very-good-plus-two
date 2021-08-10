@@ -4,6 +4,8 @@
     "main": {
       "type": "template-contact",
       "settings": {
+        "page_image_enable": true,
+        "page_image_url": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b7.jpg"
       }
     }
   },
