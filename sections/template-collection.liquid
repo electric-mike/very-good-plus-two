@@ -259,7 +259,11 @@
                   <a href="{{ product.url | within: collection }}">
                     <h5>{{ product.title }}</h5>
                   </a>
-                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+                  {% if settings.review_type == 'judgeme' %}
+                    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+                  {% elsif settings.review_type == 'okendo' %}
+                    {% render 'okendo-summary-widget', product: product %}
+                  {% endif %}
                   {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
                   <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
                   {% include 'color-swatches' %}
@@ -302,9 +306,9 @@
                   <h5 v-html="product.title"></h5>
                 </a>
                 <div
-                v-bind:data-id='product.id'
-                class="jdgm-widget jdgm-preview-badge"
-                v-html="product.reviews"
+                  v-bind:data-id='product.id'
+                  class="jdgm-widget jdgm-preview-badge"
+                  v-html="product.reviews"
                 ></div>
                 <h5 class="original-price" v-if="product.compare_at_price > product.price">${ product.compare_at_price | currency }</h5>
                 <h5 class="price">${ product.price | currency }</h5>

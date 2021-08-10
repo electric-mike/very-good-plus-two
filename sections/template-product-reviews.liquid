@@ -1,0 +1,35 @@
+<div class="product-reviews max-width constrain-items">
+  {% if settings.review_type == 'judgeme' %}
+    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+  {% elsif settings.review_type == 'okendo' %}
+    {% render 'okendo-reviews-product-rating-summary', product: product %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Reviews",
+  "settings": [
+    {
+      "type": "select",
+      "id": "review_type",
+      "label": "Review Type",
+      "options": [
+        {
+          "value": "okendo",
+          "label": "Okendo"
+        },
+        {
+          "value": "judgeme",
+          "label": "Judge.me"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "none"
+    }
+  ]
+}
+{% endschema %}

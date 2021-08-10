@@ -37,7 +37,11 @@ Please do not edit
             "sizes": {{ sizes | strip | strip_newlines | replace: ' ,', ',' | json }},
             {% endif %}
             "images": {{ product.images | json }},
+            {% if settings.review_type == 'judgeme' %}
             "reviews": {{ product.metafields.judgeme["badge"] | json }},
+            {% elsif settings.review_type == 'okendo' %}
+            "reviews": {{ product.metafields.okendo["ProductListingSnippet"] | json }},
+            {% endif %}
             "tags": "{{ product.tags | join: ',' }}",
             "vendor": "{{ product.vendor | escape }}",
             "type": "{{ product.type | escape }}",

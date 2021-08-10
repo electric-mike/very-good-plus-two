@@ -137,10 +137,14 @@
       <script src="{{ 'account.js' | asset_url }}" defer></script>
     {% endif %}
 
-    <!-- Judge.me -->
-    {% comment %}
-    {% include 'judgeme_core' %}
-    {% endcomment %}
+    {% if settings.review_type == 'judgeme' %}
+      <!-- Judge.me -->
+      {% include 'judgeme_core' %}
+    {% elsif settings.review_type == 'okendo' %}
+      <!-- Okendo -->
+      {{ shop.metafields.okendo.ReviewsWidgetStyleTag }}
+      {{ shop.metafields.okendo.StyleCustomizations }}
+    {% endif %}
   </head>
 
   <body>

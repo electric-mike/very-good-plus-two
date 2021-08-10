@@ -16,7 +16,11 @@
             <div class="mobile-top-tap">
               <div class="title-wrapper">
                 <h1 class="product-title">{{ product.title }}</h1>
-                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+                {% if settings.review_type == 'judgeme' %}
+                  {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+                {% elsif settings.review_type == 'okendo' %}
+                  {% render 'okendo-summary-widget', product: product %}
+                {% endif %}
               </div>
             </div>
             <div class="mobile-bottom-tap">
@@ -39,7 +43,11 @@
         <div class="title-and-price show-tablet">
           <div class="title-wrapper">
             <h1 class="product-title">{{ product.title }}</h1>
-            {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+            {% if settings.review_type == 'judgeme' %}
+              {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+            {% elsif settings.review_type == 'okendo' %}
+                {% render 'okendo-summary-widget', product: product %}
+            {% endif %}
             <a class="product-vendor" href="/collections/vendors?q={{ product.vendor | url_encode }}"><h6>{{ product.vendor }}</h6></a>
           </div>
           <div v-if="!productPrice" class="price-wrapper">

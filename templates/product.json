@@ -18,6 +18,12 @@
         "show_quantity_selector": false
       }
     },
+    "reviews": {
+      "type": "template-product-reviews",
+      "settings": {
+        "reviews": "none"
+      }
+    },
     "recommendations": {
       "type": "template-product-recommendations",
       "settings": {
@@ -35,6 +41,7 @@
     "metadata",
     "breadcrumbs",
     "main",
+    "reviews",
     "recommendations",
     "klaviyo"
   ]

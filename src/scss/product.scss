@@ -288,7 +288,7 @@
       }
 
       //judge.me styles
-      .jdgm-preview-badge {
+      .jdgm-preview-badge, .okeReviews {
         margin-bottom: 1em;
       }
 
@@ -297,7 +297,7 @@
         // used in portal-vue
         &.mobile-title-and-price {
           .title-wrapper {
-            & * {
+            & *:not([class*="okeReviews"]) {
               margin-bottom: 0.5rem !important;
             }
 
