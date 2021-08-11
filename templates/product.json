@@ -20,9 +20,7 @@
     },
     "reviews": {
       "type": "template-product-reviews",
-      "settings": {
-        "review_type": "none"
-      }
+      "settings": {}
     },
     "recommendations": {
       "type": "template-product-recommendations",

@@ -143,6 +143,31 @@
     ]
   },
   {
+    "name": "Product Reviews",
+    "settings": [
+      {
+        "type": "select",
+        "id": "review_type",
+        "label": "Review Type",
+        "options": [
+          {
+            "value": "okendo",
+            "label": "Okendo"
+          },
+          {
+            "value": "judgeme",
+            "label": "Judge.me"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ],
+        "default": "none"
+      }
+    ]
+  },
+  {
     "name": "Social Media",
     "settings": [
       {
