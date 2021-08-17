@@ -20,6 +20,8 @@ To install and start the build process watcher, simply run `npm run start`
 
 To start development, run `npm run watch` **FIRST** to compile and watch (the above process will do this for you).
 
+If you need to pull changes from the live theme, run `shopify theme pull --nodelete` to ensure no local files are squashed.
+
 Once webpack is done compiling, run `shopify theme serve` in a separate terminal to spin up a local development environment.
 
 
