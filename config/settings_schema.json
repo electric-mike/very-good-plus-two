@@ -139,6 +139,17 @@
         "id": "enable_promo_code",
         "label": "Enable Promo Code Input",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_free_shipping_threshold",
+        "label": "Enable Free Shipping Bar",
+        "default": true
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free Shipping Bar Threshold"
       }
     ]
   },

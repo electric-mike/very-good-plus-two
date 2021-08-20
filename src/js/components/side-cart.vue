@@ -17,6 +17,7 @@
         :style="{ 'background-color' : announcement.color }"
       )
         h6.drawer-announcement-text(v-html="announcement.text")
+      free-shipping-bar
       cart-component
       subtotal-checkout(v-if="cartData.item_count && cartData.item_count >= 0")
 </template>
@@ -26,11 +27,13 @@ import { mapState } from 'vuex'
 import cartComponent from './cart-component'
 import subtotalCheckout from './subtotal-checkout'
 import StickyHeights from '../_sticky-heights'
+import freeShippingBar from './free-shipping-bar'
 
 export default {
   components: {
     cartComponent,
     subtotalCheckout,
+    freeShippingBar,
   },
 
   data() {

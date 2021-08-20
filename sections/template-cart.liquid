@@ -1,5 +1,6 @@
 <section id="cart-page" class="page cart-page max-width">
   <h1>Your Cart <span v-if="cartData.item_count" v-cloak>(${ cartData.item_count })</span></h1>
+  <free-shipping-bar class="hide-from-tablet" v-bind:is-cart="true"></free-shipping-bar>
   <div class="row hide-tablet">
     <div class="column-12">
       <a class="secondary-featured blue back-to-shopping top-back-to-shopping" href="/">Back To Shopping</a>
@@ -11,7 +12,10 @@
   <br>
   <div class="row cart-details">
     <cart v-bind:is-cart="true" class="column-12-tablet-vert-7"></cart>
-    <subtotal-checkout v-bind:is-cart="true" class="column-12-tablet-vert-5"></subtotal-checkout>
+    <div class="column-12-tablet-vert-5">
+      <free-shipping-bar class="hide-to-tablet" v-bind:is-cart="true"></free-shipping-bar>
+      <subtotal-checkout v-bind:is-cart="true"></subtotal-checkout>
+    </div>
   </div>
 </section>
 

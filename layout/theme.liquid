@@ -176,7 +176,9 @@
         mobileNavType: '{{ settings.mobile_nav_type }}',
         enablePromoCodeInput: {{ settings.enable_promo_code }},
         customerTags: '{{ customer.tags }}'.split(', '),
-        paginationLimit: {{ settings.pagination_limit }}
+        paginationLimit: {{ settings.pagination_limit }},
+        enableFreeShippingBar: {{ settings.enable_free_shipping_threshold }},
+        freeShippingThreshold: {{ settings.free_shipping_threshold }}
       };
     </script>
 

@@ -5,6 +5,7 @@ import cartComponent from './components/cart-component'
 import sideCart from './components/side-cart'
 import subtotalCheckout from './components/subtotal-checkout'
 import cartButton from './components/cart-button'
+import freeShippingBar from './components/free-shipping-bar'
 
 export default function cart() {
   // cart icon
@@ -88,6 +89,7 @@ export default function cart() {
         cart: cartComponent,
         subtotalCheckout,
         cartButton,
+        freeShippingBar,
       },
 
       computed: {
