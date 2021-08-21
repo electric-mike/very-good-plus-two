@@ -200,6 +200,11 @@
   box-shadow: $shallow-shadow;
 }
 
+// hide image wrap overflow
+.image-wrap {
+  overflow: hidden;
+}
+
 // Lazysizes blur styles
 .blur-up {
   // lol - due to global change, but still needing this style for stuff (product page, maybe additional image hover)
