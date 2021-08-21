@@ -45,6 +45,7 @@ body > footer {
       .footer-left {
         text-align: center;
         flex-shrink: 0;
+        flex-basis: 15%;
 
         @media(min-width: $desktop) {
           text-align: left;
@@ -63,11 +64,7 @@ body > footer {
               display: block;
               width: 100%;
               height: auto;
-
-              @media(min-width: $desktop) {
-                max-width: 3.5em;
-                margin-right: 3em;
-              }
+              max-width: 4.25em;
             }
           }
         }
