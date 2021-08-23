@@ -11,7 +11,62 @@
       <div class="size-chart-link-wrapper" v-if="productVariantOptions[i].toLowerCase() ==='size'">
         <a class="size-chart-link" href="#" v-on:click.prevent="toggleSizeChart()">Size Chart</a>
         <modal class="size-chart-wrapper" v-if="showSizeChart" v-on:close="toggleSizeChart()">
-          {% include 'size-chart' %}
+          <h2 class="size-chart-header">Apparel Size Chart</h2>
+          <div class="size-chart-outer">
+            <div class="size-chart-inner">
+              <div class="size-chart">
+                <div class="size-chart-column">
+                  <div class="size-chart-header">Size</div>
+                  <div>Numeric</div>
+                  <div>Waist</div>
+                  <div>Chest</div>
+                  <div>Hip</div>
+                </div>
+                <div class="size-chart-column">
+                  <div class="size-chart-header">XXS</div>
+                  <div>0-00</div>
+                  <div>24-25</div>
+                  <div>32</div>
+                  <div>35</div>
+                </div>
+                <div class="size-chart-column">
+                  <div class="size-chart-header">XS</div>
+                  <div>2</div>
+                  <div>26</div>
+                  <div>33</div>
+                  <div>36</div>
+                </div>
+                <div class="size-chart-column">
+                  <div class="size-chart-header">S</div>
+                  <div>4-6</div>
+                  <div>27-28</div>
+                  <div>34-35</div>
+                  <div>37-38</div>
+                </div>
+                <div class="size-chart-column">
+                  <div class="size-chart-header">M</div>
+                  <div>8-10</div>
+                  <div>29-30</div>
+                  <div>36-37</div>
+                  <div>39-40</div>
+                </div>
+                <div class="size-chart-column">
+                  <div class="size-chart-header">L</div>
+                  <div>12</div>
+                  <div>31</div>
+                  <div>38-39</div>
+                  <div>41-42</div>
+                </div>
+                <div class="size-chart-column">
+                  <div class="size-chart-header">XL</div>
+                  <div>14</div>
+                  <div>32</div>
+                  <div>40-41</div>
+                  <div>43-44</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </modal>
       </div>
     </div>

@@ -522,20 +522,16 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 1em;
+        margin: 0.5em 0 1.25em;
 
         &.color-swatches {
           display: flex;
           flex-wrap: wrap;
-          grid-gap: 0.5em;
-
-          .swatch {
-            margin-bottom: 1em;
-          }
+          grid-gap: 1em;
         }
 
         &.image-swatches {
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-          margin-bottom: 0.5em;
 
           .color-image-swatch {
             label {
@@ -551,7 +547,6 @@
 
         .swatch {
           position: relative;
-          margin: 0.5em 0;
           cursor: pointer;
           color: $black;
           overflow: hidden;
@@ -610,6 +605,7 @@
             position: relative;
             width: 30px !important;
             height: 30px !important;
+            margin: 0;
 
             label {
               position: absolute;
