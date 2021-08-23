@@ -271,11 +271,6 @@
       @media(min-width: $tablet) {
         padding-right: 0;
         margin-top: 0;
-        margin-left: 0.5em;
-      }
-
-      @media(min-width: $max-width) {
-        margin-left: 1.5em;
       }
 
       .product-vendor {
@@ -491,11 +486,11 @@
       flex-flow: row;
 
       .product-images-wrapper {
-        width: 50%;
+        width: 55%;
       }
 
       .rhpa-wrapper {
-        width: 50%;
+        width: 45%;
       }
     }
 
@@ -503,11 +498,11 @@
       flex-flow: row;
 
       .product-images-wrapper {
-        width: 60%;
+        width: percentage((100 / 12) * 8);
       }
 
       .rhpa-wrapper {
-        width: 40%;
+        width: percentage((100 / 12) * 4);
       }
     }
   }
@@ -521,13 +516,13 @@
       .swatches {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-gap: 1em;
+        grid-gap: 0.75em;
         margin: 0.5em 0 1.25em;
 
         &.color-swatches {
           display: flex;
           flex-wrap: wrap;
-          grid-gap: 1em;
+          grid-gap: 0.5em;
         }
 
         &.image-swatches {

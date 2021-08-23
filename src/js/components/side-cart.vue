@@ -10,7 +10,7 @@
       :style="{ 'top': `${enableStickyHeights && stickyHeights.headerTop()}px` }"
     )
       .drawer-header
-        h4.cart-text #[a(href='/cart') Your cart ({{ cartData.item_count }})]
+        p.cart-text #[a(href='/cart') Your cart ({{ cartData.item_count }})]
         .hamburger.open(@click="closeSideCart()") #[.lines]
       .drawer-announcement(
         v-if="announcement.enable"

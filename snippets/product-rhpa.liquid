@@ -5,9 +5,9 @@
 >
   {% if section.settings.rhpa_type == 'swatch' %}
     <div v-bind:class="{ 'swatch-size-link-wrapper': productVariantOptions[i].toLowerCase() ==='size' }" v-cloak>
-      <span class="swatch-title">
+      <h6 class="swatch-title">
         <span>${ productVariantOptions[i] }: </span>${ optionSelections[i + 1] || 'Select ' + productVariantOptions[i] }
-      </span>
+      </h6>
       <div class="size-chart-link-wrapper" v-if="productVariantOptions[i].toLowerCase() ==='size'">
         <a class="size-chart-link" href="#" v-on:click.prevent="toggleSizeChart()">Size Chart</a>
         <modal class="size-chart-wrapper" v-if="showSizeChart" v-on:close="toggleSizeChart()">

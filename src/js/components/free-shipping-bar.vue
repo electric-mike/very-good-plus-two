@@ -4,10 +4,10 @@
     :class="{ 'cart-page-free-shipping-progress-outer' : isCart }"
   )
     .free-shipping-progress
-      p(
+      h6(
         v-if="freeShippingMinimum <= cartTotal"
       ) You qualify for free shipping!
-      p(v-else)
+      h6(v-else)
         | You are&nbsp;
         strong {{ priceUntilFreeShipping | currency }}&nbsp;
         | away from free shipping.
