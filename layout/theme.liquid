@@ -168,9 +168,9 @@
           enable: {{ settings.side_cart_announcement_show_the_bar }},
           color: '{{ settings.side_cart_announcement_color }}',
           text: {
-            US: '{{ settings.side_cart_announcement_us | default: 0 }}',
-            CA: '{{ settings.side_cart_announcement_ca | default: 0 }}',
-            EU: '{{ settings.side_cart_announcement_eu | default: 0 }}'
+            US: '{{ settings.side_cart_announcement_us }}',
+            CA: '{{ settings.side_cart_announcement_ca }}',
+            EU: '{{ settings.side_cart_announcement_eu }}'
           },
         },
         upsellProduct: {{ all_products[settings.upsell_product] | json }},

@@ -93,7 +93,7 @@
       {
         "type": "textarea",
         "id": "eu_announcement_text",
-        "label": "EU\/Catch All Announcement"
+        "label": "International Announcement"
       },
       {
         "type": "color",
@@ -152,7 +152,7 @@
       {
         "type": "textarea",
         "id": "side_cart_announcement_eu",
-        "label": "EU\/Catch All Announcement Text"
+        "label": "International Announcement Text"
       },
       {
         "type": "color",
@@ -184,7 +184,7 @@
       {
         "type": "number",
         "id": "free_shipping_threshold_eu",
-        "label": "EU\/Catch All Free Shipping Bar Threshold"
+        "label": "International Free Shipping Bar Threshold"
       }
     ]
   },
