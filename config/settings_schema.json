@@ -82,8 +82,8 @@
       {
         "type": "textarea",
         "id": "us_announcement_text",
-        "label": "US/Default Announcement",
-        "default": "Free shipping over $100! <a href=\"https://very-good-plus.myshopify.com/collections/lps\">Shop now</a>"
+        "label": "US\/Default Announcement",
+        "default": "Free shipping over $100! <a href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>"
       },
       {
         "type": "textarea",
@@ -93,7 +93,7 @@
       {
         "type": "textarea",
         "id": "eu_announcement_text",
-        "label": "EU/Catch All Announcement"
+        "label": "EU\/Catch All Announcement"
       },
       {
         "type": "color",
@@ -141,8 +141,8 @@
       {
         "type": "textarea",
         "id": "side_cart_announcement_us",
-        "label": "US/Default Announcement Text",
-        "default": "Free shipping over $100! <a href=\"https://very-good-plus.myshopify.com/collections/lps\">Shop now</a>"
+        "label": "US\/Default Announcement Text",
+        "default": "Free shipping over $100! <a href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>"
       },
       {
         "type": "textarea",
@@ -152,7 +152,7 @@
       {
         "type": "textarea",
         "id": "side_cart_announcement_eu",
-        "label": "EU/Catch All Announcement Text"
+        "label": "EU\/Catch All Announcement Text"
       },
       {
         "type": "color",
@@ -174,7 +174,7 @@
       {
         "type": "number",
         "id": "free_shipping_threshold_us",
-        "label": "US/Default Free Shipping Bar Threshold"
+        "label": "US\/Default Free Shipping Bar Threshold"
       },
       {
         "type": "number",
@@ -184,7 +184,7 @@
       {
         "type": "number",
         "id": "free_shipping_threshold_eu",
-        "label": "EU/Catch All Free Shipping Bar Threshold"
+        "label": "EU\/Catch All Free Shipping Bar Threshold"
       }
     ]
   },
