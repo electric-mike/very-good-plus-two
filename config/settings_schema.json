@@ -81,14 +81,29 @@
       },
       {
         "type": "textarea",
-        "id": "announcement_headline",
-        "label": "Text",
-        "default": "Free shippings and returns on orders over $50!"
+        "id": "us_announcement_text",
+        "label": "US/Default Announcement",
+        "default": "Free shipping over $100! <a href=\"https://very-good-plus.myshopify.com/collections/lps\">Shop now</a>"
+      },
+      {
+        "type": "textarea",
+        "id": "ca_announcement_text",
+        "label": "CA Announcement"
+      },
+      {
+        "type": "textarea",
+        "id": "eu_announcement_text",
+        "label": "EU/Catch All Announcement"
       },
       {
         "type": "color",
-        "id": "announcement_color",
+        "id": "announcement_background_color",
         "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "announcement_text_color",
+        "label": "Text Color"
       }
     ]
   },
@@ -125,9 +140,19 @@
       },
       {
         "type": "textarea",
-        "id": "side_cart_announcement_headline",
-        "label": "Announcement Text",
-        "default": "Free shippings and returns on orders over $50"
+        "id": "side_cart_announcement_us",
+        "label": "US/Default Announcement Text",
+        "default": "Free shipping over $100! <a href=\"https://very-good-plus.myshopify.com/collections/lps\">Shop now</a>"
+      },
+      {
+        "type": "textarea",
+        "id": "side_cart_announcement_ca",
+        "label": "CA Announcement Text"
+      },
+      {
+        "type": "textarea",
+        "id": "side_cart_announcement_eu",
+        "label": "EU/Catch All Announcement Text"
       },
       {
         "type": "color",
@@ -148,8 +173,18 @@
       },
       {
         "type": "number",
-        "id": "free_shipping_threshold",
-        "label": "Free Shipping Bar Threshold"
+        "id": "free_shipping_threshold_us",
+        "label": "US/Default Free Shipping Bar Threshold"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold_ca",
+        "label": "CA Free Shipping Bar Threshold"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold_eu",
+        "label": "EU/Catch All Free Shipping Bar Threshold"
       }
     ]
   },

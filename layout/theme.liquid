@@ -166,8 +166,12 @@
         sideCartLinkCollection: '{{ settings.side_cart_link_collection }}',
         sideCartAnnouncement: {
           enable: {{ settings.side_cart_announcement_show_the_bar }},
-          text: '{{ settings.side_cart_announcement_headline }}',
-          color: '{{ settings.side_cart_announcement_color }}'
+          color: '{{ settings.side_cart_announcement_color }}',
+          text: {
+            US: '{{ settings.side_cart_announcement_us | default: 0 }}',
+            CA: '{{ settings.side_cart_announcement_ca | default: 0 }}',
+            EU: '{{ settings.side_cart_announcement_eu | default: 0 }}'
+          },
         },
         upsellProduct: {{ all_products[settings.upsell_product] | json }},
         placeholderImageUrl: '{{ settings.placeholder_image | img_url }}',
@@ -178,7 +182,11 @@
         customerTags: '{{ customer.tags }}'.split(', '),
         paginationLimit: {{ settings.pagination_limit }},
         enableFreeShippingBar: {{ settings.enable_free_shipping_threshold }},
-        freeShippingThreshold: {{ settings.free_shipping_threshold }}
+        freeShippingThresholds: {
+          US: {{ settings.free_shipping_threshold_us | default: 0 }},
+          CA: {{ settings.free_shipping_threshold_ca | default: 0 }},
+          EU: {{ settings.free_shipping_threshold_eu | default: 0 }}
+        }
       };
     </script>
 

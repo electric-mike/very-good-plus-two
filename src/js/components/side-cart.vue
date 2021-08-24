@@ -13,10 +13,10 @@
         p.cart-text #[a(href='/cart') Your cart ({{ cartData.item_count }})]
         .hamburger.open(@click="closeSideCart()") #[.lines]
       .drawer-announcement(
-        v-if="announcement.enable"
-        :style="{ 'background-color' : announcement.color }"
+        v-if="announcementEnable && announcement !== ''"
+        :style="{ 'background-color' : announcementColor }"
       )
-        h6.drawer-announcement-text(v-html="announcement.text")
+        h6.drawer-announcement-text(v-html="announcement")
       free-shipping-bar
       cart-component
       subtotal-checkout(v-if="cartData.item_count && cartData.item_count >= 0")
@@ -28,6 +28,7 @@ import cartComponent from './cart-component'
 import subtotalCheckout from './subtotal-checkout'
 import StickyHeights from '../_sticky-heights'
 import freeShippingBar from './free-shipping-bar'
+import geolocate from '../helpers/_geolocate'
 
 export default {
   components: {
@@ -39,13 +40,11 @@ export default {
   data() {
     return {
       stickyHeights       : new StickyHeights(),
+      announcementColor   : window.themeSettings.sideCartAnnouncement.color,
+      announcementEnable  : window.themeSettings.sideCartAnnouncement.enable,
       enableStickyHeights : false,
       wasOpened           : false,
-      announcement        : (
-        window.themeSettings
-        && window.themeSettings.sideCartAnnouncement
-        && window.themeSettings.sideCartAnnouncement.enable
-      ) ? window.themeSettings.sideCartAnnouncement : false,
+      geocode             : '',
     }
   },
 
@@ -54,6 +53,20 @@ export default {
       'cartData',
       'showSideCart',
     ]),
+
+    announcement() {
+      if (
+        window.themeSettings.sideCartAnnouncement
+        && window.themeSettings.sideCartAnnouncement.text
+        && window.themeSettings.sideCartAnnouncement.text[this.geocode]
+      ) return window.themeSettings.sideCartAnnouncement.text[this.geocode]
+
+      return ''
+    },
+  },
+
+  async mounted() {
+    this.geocode = await geolocate()
   },
 
   methods: {
@@ -83,6 +96,7 @@ export default {
     align-items: center;
     padding: 1em;
     position: relative;
+    border-bottom: 1px solid $medium-gray;
 
     .cart-text {
       margin: 0;

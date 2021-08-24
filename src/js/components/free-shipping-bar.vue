@@ -1,6 +1,6 @@
 <template lang="pug">
   section.free-shipping-progress-outer(
-    v-if="(cartData.item_count && cartData.item_count >= 0) && enableFreeShippingBar"
+    v-if="(cartData.item_count && cartData.item_count >= 0) && enableFreeShippingBar && freeShippingMinimum !== false"
     :class="{ 'cart-page-free-shipping-progress-outer' : isCart }"
   )
     .free-shipping-progress
@@ -17,6 +17,7 @@
 <script>
 import { mapState } from 'vuex'
 import currency from '../helpers/_currency'
+import geolocate from '../helpers/_geolocate'
 
 export default {
   filters: {
@@ -32,8 +33,9 @@ export default {
 
   data() {
     return {
-      enableFreeShippingBar : window.themeSettings.enableFreeShippingBar,
-      freeShippingMinimum   : parseFloat(window.themeSettings.freeShippingThreshold) * 100 || 7500,
+      enableFreeShippingBar  : window.themeSettings.enableFreeShippingBar,
+      freeShippingThresholds : window.themeSettings.freeShippingThresholds,
+      geocode                : '',
     }
   },
 
@@ -49,6 +51,14 @@ export default {
     priceUntilFreeShipping() {
       return this.freeShippingMinimum - this.cartTotal
     },
+
+    freeShippingMinimum() {
+      return parseFloat(this.freeShippingThresholds[this.geocode]) * 100 || false
+    },
+  },
+
+  async mounted() {
+    this.geocode = await geolocate()
   },
 }
 </script>

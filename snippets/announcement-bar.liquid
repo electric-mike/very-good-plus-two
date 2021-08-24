@@ -1,5 +1,52 @@
 {% if settings.announcement_show_the_bar != blank and settings.announcement_show_the_bar == true %}
-  <div class="announcement-bar" {% if settings.announcement_color != 'rgba(0,0,0,0)' %}style="background-color: {{ settings.announcement_color }};"{% endif %}>
-    {{ settings.announcement_headline }}
+  <div
+    v-cloak
+    id="announcement-bar"
+    v-if="announcement !== ''"
+    class="announcement-bar center-text"
+    {% if settings.announcement_background_color != 'rgba(0,0,0,0)' %}
+    style="background-color: {{ settings.announcement_background_color }};"
+    {% endif %}
+  >
+    <div
+      v-cloak
+      v-html="announcement"
+    >
+    </div>
   </div>
 {% endif %}
+
+{% if settings.announcement_text_color != 'rgba(0,0,0,0)' %}
+<style>
+  #announcement-bar {
+    padding: 0.5em 1.25em;
+    font-size: 0.9em;
+  }
+
+  #announcement-bar a {
+    text-decoration: underline;
+    margin-left: 0.5em;
+  }
+
+  #announcement-bar, #announcement-bar > * {
+    color: {{ settings.announcement_text_color }};
+  }
+</style>
+{% endif %}
+
+<script>
+  var announcements = {
+  'US': {
+    message: '{{ settings.us_announcement_text }}'
+  },
+  'CA': {
+    message: '{{ settings.ca_announcement_text }}'
+  },
+  'EU': {
+    message: '{{ settings.eu_announcement_text }}',
+    catchAll: ['EU', 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'EL', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'NO']
+  }
+};
+
+window.announcements = announcements;
+</script>

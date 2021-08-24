@@ -4,15 +4,13 @@ import SimpleBar from 'simplebar'
 import SiemaOverflow from './helpers/_siema-overflow'
 import cart from './cart'
 import product from './product'
+import announcementBar from './announcement-bar'
 
 // simplebar css
 import 'simplebar/dist/simplebar.css'
 
 // polyfills
 import './helpers/polyfills'
-
-// general sticky nav
-import StickyNav from './_sticky-nav'
 
 // lazyload img tags and background images
 import 'lazysizes'
@@ -40,9 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // run sticky nav here due to async AJAX
+  announcementBar()
+
   // cart and product have to be loaded together because of vuex
   cart()
   product()
-
-  new StickyNav()
 })
