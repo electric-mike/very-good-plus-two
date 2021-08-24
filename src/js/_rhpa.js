@@ -196,9 +196,9 @@ export default function rhpa() {
                 if (currentColorSelected) {
                   const foundVariant = this.productVariants.find(variant => variant.options.includes(currentColorSelected.value)) //eslint-disable-line
                   if (foundVariant) {
-                    const foundVariantId = foundVariant.featured_image.id
+                    const foundVariantId = foundVariant.featured_image && foundVariant.featured_image.id
                     const closeToCurrentVariantImage = document.querySelector(`div[data-variantid="${foundVariantId}"]`)
-                    if (closeToCurrentVariantImage) {
+                    if (foundVariantId && closeToCurrentVariantImage) {
                       closeToCurrentVariantImage.click()
                       // set offset top for image inside simplebar wrapper
                       const simplebarWrapper = document.querySelector('.additional-images-wrapper .simplebar-content-wrapper')
