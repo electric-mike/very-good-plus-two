@@ -195,7 +195,6 @@
           "8ca962ea-30ac-494f-835e-47340497a9fd": {
             "type": "block",
             "settings": {
-              "background_color": "rgba(0,0,0,0)",
               "overlay": false,
               "invert_text": true,
               "no_side_padding": true,
@@ -462,7 +461,6 @@
           "a009698c-3352-429e-914f-f108a1054c87": {
             "type": "block",
             "settings": {
-              "background_color": "#ffffff",
               "mobile_background_image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
               "desktop_background_image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
               "overlay": false,
@@ -477,7 +475,6 @@
           "38177150-aafd-4dc8-99e1-a8cdeee5d521": {
             "type": "block",
             "settings": {
-              "background_color": "#f8f7f1",
               "overlay": false,
               "invert_text": false,
               "no_side_padding": false,

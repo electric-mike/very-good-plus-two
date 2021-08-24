@@ -1,136 +1,145 @@
 {% if section.blocks.size > 0 %}
   <section
     id="html-grid-{{ section.id }}"
-    class="custom-html-grid {% if section.settings.max_width %}max-width{% endif %}"
+    class="custom-html-grid"
     style="background-color: {{ section.settings.background_color }};{% if section.settings.background_image %}position: relative;{% endif %}"
   >
-  {% if section.settings.reverse_mobile_order %}
-      <style>
-        @media(max-width: 767px) {
-          #html-grid-{{ section.id }} > .row {
-            flex-flow: column-reverse;
-          }
-        }
-      </style>
-    {% endif %}
-
-    {% if section.settings.background_image %}
-      {%- assign img_url = section.settings.background_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-      <img
-        class="lazyload blur-up"
-        src="{{ section.settings.background_image.src | img_url: '200x' }}"
-        alt="Mobile block image {{ section.id }}"
-        data-src="{{ img_url }}"
-        data-widths="[360, 540, 720, 900, 1080, 1600]"
-        data-sizes="auto"
-        data-aspectratio="{{ section.settings.background_image.aspect_ratio }}"
-        style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute;"
-      />
-      <noscript>
-        <img class="lazyloaded" src="{{ section.settings.background_image.src | img_url: '800x' }}" alt="Mobile block image">
-      </noscript>
-    {% endif %}
-    <div class="row {% if section.settings.constrain_items %}max-width{% endif %} {% if section.settings.tablet_constrain_items %}tablet-constrain-items{% endif %}">
-      {% for block in section.blocks %}
-        <div id="block-{{ block.id }}" class="block column-12-tablet-vert-{{ 12 | divided_by: section.blocks.size }}">
-
-          <style>
-            {% if block.settings.mobile_background_image or block.settings.desktop_background_image %}
-              #html-grid-{{ section.id }} #block-{{ block.id }} {
-                {{ block.settings.desktop_styles }}
-              }
-
-              #html-grid-{{ section.id }} #block-{{ block.id }} .custom-html-grid-description {
-                position: absolute;
-                top: 0;
-                left: 50%;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                flex-flow: column;
-                align-items: flex-start;
-                justify-content: center;
-                margin: 0 auto;
-                transform: translateX(-50%);
-                padding: 0 1.25em;
-              }
-            {% else %}
-              #html-grid-{{ section.id }} #block-{{ block.id }}  .mobile-block,
-              #html-grid-{{ section.id }} #block-{{ block.id }}  .desktop-block {
-                padding: 3em 1.25em;
-              }
-            {% endif %}
-
-            @media(max-width: 767px) {
-              #html-grid-{{ section.id }} #block-{{ block.id }} {
-                {{ block.settings.mobile_styles }}
-              }
-              /* #html-grid-{{ section.id }} .custom-html-grid-description {
-                padding: 0 1.25em;
-              } */
-
-              /* #html-grid-{{ section.id }} {
-                padding: 1.25em 0 0;
-              } */
-            }
-
-            @media(min-width: 1440px) {
-              #html-grid-{{ section.id }} #block-{{ block.id }} {
-                font-size: 1.1em;
-              }
-            }
-          </style>
-
-          <!-- Mobile Block -->
-          <div class="mobile-block {% if block.settings.no_side_padding %}no-side-padding{% endif %} {% if block.settings.invert_text %}invert{% endif %} lazyload {% if block.settings.overlay %}overlay{% endif %}">
-            {% if block.settings.mobile_background_image %}
-              {%- assign img_url = block.settings.mobile_background_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              <img
-                class="lazyload blur-up"
-                src="{{ block.settings.mobile_background_image.src | img_url: '200x' }}"
-                alt="Mobile block image {{ section.id }}"
-                data-src="{{ img_url }}"
-                data-widths="[360, 540, 720, 900, 1080, 1600]"
-                data-sizes="auto"
-                data-aspectratio="{{ block_image.aspect_ratio }}"
-                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
-              />
-              <noscript>
-                <img class="lazyloaded" src="{{ block.settings.mobile_background_image.src | img_url: '800x' }}" alt="Mobile block image {{ section.id }}">
-              </noscript>
-            {% endif %}
-
-            <div class="custom-html-grid-description">
-              {{ block.settings.mobile_html }}
-            </div>
-          </div>
-
-          <!-- Desktop Block -->
-          <div class="desktop-block {% if block.settings.no_side_padding %}no-side-padding{% endif %} {% if block.settings.invert_text %}invert{% endif %} lazyload {% if block.settings.overlay %}overlay{% endif %}">
-            {% if block.settings.mobile_background_image %}
-              {%- assign img_url = block.settings.desktop_background_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              <img
-                class="lazyload blur-up"
-                src="{{ block.settings.desktop_background_image.src | img_url: '200x' }}"
-                alt="Desktop block image {{ section.id }}"
-                data-src="{{ img_url }}"
-                data-widths="[360, 540, 720, 900, 1080, 1600]"
-                data-sizes="auto"
-                data-aspectratio="{{ block_image.aspect_ratio }}"
-                style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
-              />
-              <noscript>
-                <img class="lazyloaded" src="{{ block.settings.desktop_background_image.src | img_url: '800x' }}" alt="Desktop block image {{ section.id }}">
-              </noscript>
-            {% endif %}
-
-            <div class="custom-html-grid-description">
-              {{ block.settings.desktop_html }}
-            </div>
-          </div>
-
+    <div class="{% if section.settings.max_width %}max-width{% endif %}">
+      {% if section.settings.heading != blank %}
+        <div class="title center-text">
+          <h3>{{ section.settings.heading | escape }}</h3>
+          <br>
         </div>
-      {% endfor %}
+      {% endif %}
+
+      {% if section.settings.reverse_mobile_order %}
+        <style>
+          @media(max-width: 767px) {
+            #html-grid-{{ section.id }} > .row {
+              flex-flow: column-reverse;
+            }
+          }
+        </style>
+      {% endif %}
+
+      {% if section.settings.background_image %}
+        {%- assign img_url = section.settings.background_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          class="lazyload blur-up"
+          src="{{ section.settings.background_image.src | img_url: '200x' }}"
+          alt="Mobile block image {{ section.id }}"
+          data-src="{{ img_url }}"
+          data-widths="[360, 540, 720, 900, 1080, 1600]"
+          data-sizes="auto"
+          data-aspectratio="{{ section.settings.background_image.aspect_ratio }}"
+          style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute;"
+        />
+        <noscript>
+          <img class="lazyloaded" src="{{ section.settings.background_image.src | img_url: '800x' }}" alt="Mobile block image">
+        </noscript>
+      {% endif %}
+      <div class="row {% if section.settings.constrain_items %}max-width{% endif %} {% if section.settings.tablet_constrain_items %}tablet-constrain-items{% endif %}">
+        {% for block in section.blocks %}
+          <div id="block-{{ block.id }}" class="block column-6-tablet-vert-{{ 12 | divided_by: section.blocks.size }}">
+
+            <style>
+              {% if section.settings.block_as_background_image %}
+                {% if block.settings.mobile_background_image or block.settings.desktop_background_image %}
+                  #html-grid-{{ section.id }} #block-{{ block.id }} {
+                    {{ block.settings.desktop_styles }}
+                  }
+
+                  #html-grid-{{ section.id }} #block-{{ block.id }} .custom-html-grid-description {
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-flow: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    margin: 0 auto;
+                    transform: translateX(-50%);
+                    padding: 0 1.25em;
+                  }
+                {% else %}
+                  #html-grid-{{ section.id }} #block-{{ block.id }}  .mobile-block,
+                  #html-grid-{{ section.id }} #block-{{ block.id }}  .desktop-block {
+                    padding: 3em 1.25em;
+                  }
+                {% endif %}
+              {% endif %}
+
+              @media(max-width: 767px) {
+                #html-grid-{{ section.id }} #block-{{ block.id }} {
+                  {{ block.settings.mobile_styles }}
+                }
+                /* #html-grid-{{ section.id }} .custom-html-grid-description {
+                  padding: 0 1.25em;
+                } */
+
+                /* #html-grid-{{ section.id }} {
+                  padding: 1.25em 0 0;
+                } */
+              }
+
+              @media(min-width: 1440px) {
+                #html-grid-{{ section.id }} #block-{{ block.id }} {
+                  font-size: 1.1em;
+                }
+              }
+            </style>
+
+            <!-- Mobile Block -->
+            <div class="mobile-block {% if block.settings.no_side_padding %}no-side-padding{% endif %} {% if block.settings.invert_text %}invert{% endif %} lazyload {% if block.settings.overlay %}overlay{% endif %}">
+              {% if block.settings.mobile_background_image %}
+                {%- assign img_url = block.settings.mobile_background_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="lazyload blur-up"
+                  src="{{ block.settings.mobile_background_image.src | img_url: '200x' }}"
+                  alt="Mobile block image {{ section.id }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-sizes="auto"
+                  data-aspectratio="{{ block_image.aspect_ratio }}"
+                />
+                <noscript>
+                  <img class="lazyloaded" src="{{ block.settings.mobile_background_image.src | img_url: '800x' }}" alt="Mobile block image {{ section.id }}">
+                </noscript>
+              {% endif %}
+
+              <div class="custom-html-grid-description">
+                {{ block.settings.mobile_html }}
+              </div>
+            </div>
+
+            <!-- Desktop Block -->
+            <div class="desktop-block {% if block.settings.no_side_padding %}no-side-padding{% endif %} {% if block.settings.invert_text %}invert{% endif %} lazyload {% if block.settings.overlay %}overlay{% endif %}">
+              {% if block.settings.mobile_background_image %}
+                {%- assign img_url = block.settings.desktop_background_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="lazyload blur-up"
+                  src="{{ block.settings.desktop_background_image.src | img_url: '200x' }}"
+                  alt="Desktop block image {{ section.id }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-sizes="auto"
+                  data-aspectratio="{{ block_image.aspect_ratio }}"
+                />
+                <noscript>
+                  <img class="lazyloaded" src="{{ block.settings.desktop_background_image.src | img_url: '800x' }}" alt="Desktop block image {{ section.id }}">
+                </noscript>
+              {% endif %}
+
+              <div class="custom-html-grid-description">
+                {{ block.settings.desktop_html }}
+              </div>
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </section>
 {% endif %}
@@ -143,24 +152,16 @@
 
   section.custom-html-grid {
     overflow: hidden;
+    padding: 3em 0.625rem;
   }
 
-  section.custom-html-grid .max-width{
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+  {% if section.settings.block_as_background_image %}
+  section.custom-html-grid .block img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
-
-  /* if they are stacked, remove top padding */
-  .custom-html-grid + .custom-html-grid section,
-  .custom-html-grid + .callout-grid section
-  {
-    padding-top: 0 !important;
-  }
-
-  section.custom-html-grid .block {
-    padding-bottom: 0;
-  }
-
   section.custom-html-grid .block .mobile-block,
   section.custom-html-grid .block .desktop-block {
     position: relative;
@@ -171,14 +172,6 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
-  }
-
-  section.custom-html-grid .block .mobile-block.no-side-padding,
-  section.custom-html-grid .block .desktop-block.no-side-padding,
-  section.custom-html-grid .block .mobile-block.no-side-padding .max-width,
-  section.custom-html-grid .block .desktop-block.no-side-padding .max-width {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
   }
 
   section.custom-html-grid .block .mobile-block.overlay:before,
@@ -192,6 +185,48 @@
     background: rgba(0, 0, 0, 0.25);
   }
 
+  @media(max-width: 767px) {
+    section.custom-html-grid .block {
+      max-width: 100%;
+      flex-basis: 100%;
+    }
+  }
+  section.custom-html-grid .block {
+    padding-bottom: 0;
+  }
+  {% else %}
+  section.custom-html-grid .block {
+    padding-bottom: 1.25em;
+  }
+
+  section.custom-html-grid .block img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.75em;
+  }
+  {% endif %}
+
+  section.custom-html-grid .max-width {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+  }
+
+  /* if they are stacked, remove top padding */
+  .custom-html-grid + .custom-html-grid section,
+  .custom-html-grid + .callout-grid section
+  {
+    padding-top: 0 !important;
+  }
+
+  section.custom-html-grid .block .mobile-block.no-side-padding,
+  section.custom-html-grid .block .desktop-block.no-side-padding,
+  section.custom-html-grid .block .mobile-block.no-side-padding .max-width,
+  section.custom-html-grid .block .desktop-block.no-side-padding .max-width {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
   section.custom-html-grid .block p:last-of-type {
     margin-bottom: 0;
   }
@@ -201,11 +236,6 @@
   }
 
   @media(max-width: 767px) {
-    section.custom-html-grid .block {
-      max-width: 100%;
-      flex-basis: 100%;
-    }
-
     section.custom-html-grid .block .desktop-block {
       display: none !important;
     }
@@ -223,6 +253,11 @@
   "class": "custom-html-grid",
   "max_blocks": 4,
   "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
     {
       "type": "checkbox",
       "id": "max_width",
@@ -263,6 +298,12 @@
       "type": "image_picker",
       "id": "background_image",
       "label": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "block_as_background_image",
+      "label": "Blocks use image as backgrounds?",
+      "default": false
     }
   ],
   "blocks": [
@@ -271,20 +312,14 @@
       "name": "Grid Block",
       "settings": [
         {
-          "type": "color",
-          "id": "background_color",
-          "label": "Background Color",
-          "default": "#ffffff"
-        },
-        {
           "type": "image_picker",
           "id": "mobile_background_image",
-          "label": "Mobile Background Image"
+          "label": "Mobile Image"
         },
         {
           "type": "image_picker",
           "id": "desktop_background_image",
-          "label": "Desktop Background Image"
+          "label": "Desktop Image"
         },
         {
           "type": "checkbox",
@@ -296,7 +331,7 @@
           "type": "checkbox",
           "id": "invert_text",
           "label": "Invert Text Color",
-          "default": true
+          "default": false
         },
         {
           "type": "checkbox",
