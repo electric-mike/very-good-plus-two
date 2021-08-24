@@ -104,10 +104,6 @@ export default {
 
 // Specific to cart page
 .cart-page-free-shipping-progress-outer {
-  @media(min-width: $tablet) {
-    padding-left: 1em;
-  }
-
   @media(min-width: $desktop) {
     max-width: 425px;
     margin-right: 0;

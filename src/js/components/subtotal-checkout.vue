@@ -149,10 +149,6 @@ export default {
   .cart-page-subtotal-checkout {
     border-top: none;
 
-    @media(min-width: $tablet) {
-      padding-left: 1em;
-    }
-
     @media(min-width: $desktop) {
       max-width: 425px;
       margin-right: 0;

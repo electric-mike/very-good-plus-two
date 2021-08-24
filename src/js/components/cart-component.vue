@@ -32,7 +32,6 @@
               v-bind:is-cart="true"
               @input='updateQuantity(index + 1, item.quantity)'
             )
-            a.remove-text(href="#" v-if="isCart" @click.prevent='removeFromCart(index + 1)') Remove
         .product-quantity
           .product-total
             p.at-price(v-if="item.quantity > 1") {{ item.quantity }} x {{ item.price | currency }}
@@ -288,52 +287,8 @@ export default {
   padding: 0 .625em 1.25em;
 
   .products {
-    padding: 0;
-
-    .product {
-      &:first-of-type {
-        padding-top: 1em;
-        border-top: 1px solid $medium-gray;
-      }
-
-      &:last-of-type {
-        border-bottom: 1px solid $medium-gray;
-      }
-
-      .product-info {
-        .remove-text {
-          display: none;
-        }
-
-        @media(min-width: $tablet) {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          height: 100%;
-
-          .product-text {
-            margin-right: 1em;
-          }
-
-          .remove-text {
-            display: block;
-            color: $dark-gray;
-            text-align: center;
-            font-size: 0.9em;
-            margin-top: 0.5em;
-          }
-        }
-      }
-
-      .product-quantity {
-        @media(min-width: $tablet) {
-          justify-content: center !important;
-
-          .remove {
-            display: none;
-          }
-        }
-      }
+    @media(min-width: $tablet) {
+      max-width: $mobile;
     }
   }
 
