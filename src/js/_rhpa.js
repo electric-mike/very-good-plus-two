@@ -404,7 +404,6 @@ export default function rhpa() {
           }
 
           this.$store.dispatch('cart/addToCart', payload)
-          console.log(this.$store)
         },
 
         updateConfig() {
