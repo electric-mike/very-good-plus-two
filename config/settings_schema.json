@@ -141,18 +141,18 @@
       {
         "type": "textarea",
         "id": "side_cart_announcement_us",
-        "label": "US\/Default Announcement Text",
+        "label": "US\/Default Announcement",
         "default": "Free shipping over $100! <a href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>"
       },
       {
         "type": "textarea",
         "id": "side_cart_announcement_ca",
-        "label": "CA Announcement Text"
+        "label": "CA Announcement"
       },
       {
         "type": "textarea",
         "id": "side_cart_announcement_eu",
-        "label": "International Announcement Text"
+        "label": "International Announcement"
       },
       {
         "type": "color",
