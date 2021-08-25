@@ -361,8 +361,33 @@ h1 + .accordion {
       justify-content: center;
       position: relative;
       z-index: 1;
-      min-height: 250px;
       text-align: center;
+      min-height: 150px;
+
+      @media(min-width: $tablet) {
+        min-height: 250px;
+      }
+
+      &.search-no-results {
+        &, .inner-wrapper {
+          width: 100%;
+        }
+
+        form {
+          display: grid;
+          grid-gap: 1.25em;
+          margin-top: 1.25em;
+          width: 100%;
+
+          @media(min-width: $tablet) {
+            grid-template-columns: auto 150px;
+          }
+
+          input, button {
+            width: 100%;
+          }
+        }
+      }
 
       .tab-buttons {
         margin-top: 2em;
@@ -395,6 +420,10 @@ h1 + .accordion {
 
       p, h1 {
         margin: 0;
+      }
+
+      p {
+        margin-top: 1.25em;
       }
 
       h1 span {

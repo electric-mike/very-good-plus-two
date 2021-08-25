@@ -18,7 +18,7 @@
           <img class="lazyloaded" src="{{ collection.image.src | img_url: '800x' }}" alt="{{ collection.title | escape }}">
         </noscript>
 
-        <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
+        <div class="category-hero-inner category-hero-image max-width tablet-constrain-items">
           <h1><span>{{ collection.title }}</span></h1>
           {% if collection.description != '' %}<p>{{ collection.description }}</p>{% endif %}
         </div>
@@ -28,7 +28,7 @@
       {% if base_url contains 'no-image' %}
         <div class="max-width">
           <div class="no-image-category-hero-wrapper">
-            <div class="category-hero custom-constrain-items">
+            <div class="category-hero tablet-constrain-items">
               <div class="category-hero-inner category-hero-no-image">
                 <div class="hero">
                   <h1><span>{{ collection.title }}</span></h1>
