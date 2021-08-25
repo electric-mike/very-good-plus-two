@@ -123,7 +123,7 @@ export default function rhpa() {
         },
 
         hasDiscount() {
-          return parseFloat(this.computedProductOriginalPrice) > parseFloat(this.productPrice.replace(/[,$.]/g, ''))
+          return parseFloat(this.computedProductOriginalPrice) > parseFloat(this.productPrice)
         },
 
         InvalidVariantSelections() {
@@ -217,8 +217,8 @@ export default function rhpa() {
           if (this.formQuantity) {
             this.updateConfig()
           } else {
-            this.productPrice = this.formatMoney(this.productInitialPrice * val)
-            this.productOriginalPrice = this.formatMoney(this.productInitialOriginalPrice * val)
+            this.productPrice = this.productInitialPrice * val
+            this.productOriginalPrice = this.productInitialOriginalPrice * val
           }
         },
 
@@ -408,10 +408,10 @@ export default function rhpa() {
 
         updateConfig() {
           if (!this.selectedOptionVariant) {
-            this.productPrice = this.formatMoney(this.productInitialPrice * this.formQuantity)
+            this.productPrice = this.productInitialPrice * this.formQuantity
             this.productOriginalPrice = this.formatMoney(this.productOriginalPrice)
           } else {
-            this.productPrice = this.formatMoney(this.selectedOptionVariant.price * this.formQuantity)
+            this.productPrice = this.selectedOptionVariant.price * this.formQuantity
             this.productOriginalPrice = this.selectedOptionVariant.price
           }
         },

@@ -29,12 +29,12 @@
                 <h5>{{ product.price | money_without_trailing_zeros }}</h5>
               </div>
               <div class="price-wrapper v-hide" v-cloak v-else>
-                <h5 style="display: none" id="product-price" class="price">${ productPrice }</h5>
+                <h5 style="display: none" id="product-price" class="price">${ formatMoney(productPrice) }</h5>
                 <h5 id="product-visible-price">
-                  <span :class="{ 'sale-price': hasDiscount }">${ productPrice.replace('.00', '') }</span>
-                  <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted.replace('.00', '') }</span>
+                  <span :class="{ 'sale-price': hasDiscount }">${ formatMoney(productPrice) }</span>
+                  <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted }</span>
                 </h5>
-                <h5 class="at-price" v-if="formQuantity > 1">(${ formQuantity } @ ${ formatMoney(productOriginalPrice).replace('.00', '') })</h5>
+                <h5 class="at-price" v-if="formQuantity > 1">(${ formQuantity } @ ${ formatMoney(productOriginalPrice) })</h5>
               </div>
             </div>
           </div>
@@ -54,10 +54,10 @@
             <h5>{{ product.price | money_without_trailing_zeros }}</h5>
           </div>
           <div class="price-wrapper v-hide" v-cloak v-else>
-            <h5 style="display: none" id="product-price" class="price">${ productPrice }</h5>
+            <h5 style="display: none" id="product-price" class="price">${ formatMoney(productPrice) }</h5>
             <h5 id="product-visible-price">
               <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted.replace('.00', '') }</span>
-              <span :class="{ 'sale-price': hasDiscount }">${ productPrice.replace('.00', '') }</span>
+              <span :class="{ 'sale-price': hasDiscount }">${ formatMoney(productPrice).replace('.00', '') }</span>
             </h5>
             <h5 class="at-price" v-if="formQuantity > 1">(${ formQuantity } @ ${ formatMoney(productOriginalPrice).replace('.00', '') })</h5>
           </div>
