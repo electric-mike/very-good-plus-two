@@ -329,6 +329,10 @@ h1 + .accordion {
 //category hero
 //shared on category, blog, and pages
 .category, .blog-post, .blog, .page {
+  .no-image-category-hero-wrapper {
+    border-bottom: 1px solid $medium-gray;
+  }
+
   .category-hero {
     position: relative;
     background-size: cover !important;
