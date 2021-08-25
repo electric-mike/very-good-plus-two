@@ -334,10 +334,9 @@ button,
 
   @media (hover) {
     &:hover:not(.disabled), &.hover:not(.disabled) {
-      color: $white !important;
-      background: $primary-color !important;
-      border-color: $primary-color !important;
-      text-decoration: none !important;
+      color: $white;
+      background: $primary-color;
+      border-color: $primary-color;
     }
   }
 
@@ -345,16 +344,16 @@ button,
     color: $secondary-color;
     background: $white;
     border-color: $secondary-color;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   &.disabled {
     pointer-events: none;
     user-select: none;
-    color: $white !important;
-    background: $primary-color !important;
-    border-color: $primary-color !important;
-    text-decoration: none !important;
+    color: $white;
+    background: $primary-color;
+    border-color: $primary-color;
+    text-decoration: none;
   }
 
   &.normal-case {
