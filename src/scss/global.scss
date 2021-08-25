@@ -582,3 +582,58 @@ h1 + .accordion {
     }
   }
 }
+
+// GUTTER HELPER
+// This adds extra gutter on page elements on desktop+
+// remove this and it all goes away
+@media(min-width: $desktop) {
+  .max-width,
+  .announcement-bar,
+  .search-results-inner
+  {
+    padding-left: 2.5em !important;
+    padding-right: 2.5em !important;
+  }
+
+  .max-width {
+    .row {
+      margin: 0 -0.625em;
+    }
+
+    .max-width {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
+  .invert {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  .search-input-and-close,
+  section.custom-html-grid,
+  section.custom-html-grid .max-width
+  {
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+  }
+
+  .children-links-wrapper .layered-nav {
+    padding-right: 1.25em;
+    padding-left: .75em;
+  }
+
+  #desktop-top-level-links {
+    padding-left: 1.25em;
+  }
+
+  .cart {
+    padding-right: 1.25em;
+    margin-right: 0;
+  }
+}

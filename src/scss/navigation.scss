@@ -316,7 +316,11 @@ body > header nav {
     justify-content: flex-end;
 
     .link {
-      padding: 1em 0.5em;
+      padding: 1em 1.25em;
+
+      &:last-of-type {
+        padding-right: 0.75em;
+      }
     }
   }
 
