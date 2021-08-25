@@ -1,7 +1,10 @@
-<div class="product-reviews max-width constrain-items">
-  {% if settings.review_type == 'judgeme' %}
+{% if settings.review_type == 'judgeme' %}
+  <div class="product-reviews max-width constrain-items">
     {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
-  {% elsif settings.review_type == 'okendo' %}
+  </div>
+{% elsif settings.review_type == 'okendo' %}
+  <div class="product-reviews max-width constrain-items">
     {% render 'okendo-reviews-product-rating-summary', product: product %}
-  {% endif %}
+  </div>
+{% endif %}
 </div>

@@ -322,7 +322,6 @@ button,
   color: $white;
   border: 1px solid $secondary-color;
   cursor: pointer;
-  text-decoration: none !important;
   text-transform: capitalize;
   text-align: center;
   user-select: none;
@@ -330,7 +329,7 @@ button,
   transition: all 0.1s;
   font-family: $secondary-font;
   font-weight: 400; //have to explicitly define for secondary font
-  text-decoration: none;
+  text-decoration: none !important;
 
   * {
     color: inherit;
@@ -465,7 +464,10 @@ a {
     &:hover:not(.disabled), &.hover:not(.disabled) {
       &, * {
         color: $dark-gray;
-        text-decoration: underline !important;
+
+        &:not(.button):not(.btn) {
+          text-decoration: underline !important;
+        }
       }
     }
   }
