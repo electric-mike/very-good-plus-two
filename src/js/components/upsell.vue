@@ -12,9 +12,10 @@
     .upsell-text
       h6.upsell-deal Deal of the Day
       h6.upsell-title #[a(:href='"/products/" + computedUpsellProduct.handle') {{ computedUpsellProduct.title }}]
+      h6.price {{ formatMoney(selectedVariant.price) }}
         //- span(v-if='selectedVariant.title')&nbsp;({{ selectedVariant.title }})&nbsp;
       .upsell-modify
-        select(
+        select.hover(
           v-model='selectedVariant'
           v-if='computedUpsellProduct.variants && computedUpsellProduct.variants.length > 1'
         )
@@ -24,9 +25,7 @@
             :value='variant'
             :disabled="!variant.available"
           ) {{ variant.title }}
-  .upsell-add
-    button.secondary(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") ADD +
-    p.price {{ formatMoney(selectedVariant.price) }}
+        button.secondary(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") ADD +
 </template>
 
 <script>
@@ -199,7 +198,7 @@ export default {
     flex-grow: 1;
     padding: 0 1.25em;
 
-    .upsell-deal, .upsell-title {
+    .upsell-deal, .upsell-title, .price {
       margin: 0 0 0.5rem;
 
       a {
@@ -208,7 +207,9 @@ export default {
     }
   }
 
-  .upsell-modify, .upsell-add {
+  .upsell-modify {
+    display: flex;
+
     select, button {
       padding: 7.5px 15px !important;
       font-size: 0.75em !important;
@@ -219,18 +220,6 @@ export default {
       background-size: 7.5px;
       padding-right: 30px !important;
       margin-right: 1em;
-    }
-  }
-
-  .upsell-modify {
-    display: flex;
-  }
-
-  .upsell-add {
-    text-align: right;
-
-    .price {
-      margin-top: 0.625em;
     }
   }
 }

@@ -2,13 +2,25 @@
   button#checkout-button(
     @click="goToCartOrCheckout()"
     :class="{ 'loading': loading, 'disabled': cartData.item_count <= 0 }"
-  ) Checkout
+  ) Checkout#[span(v-if="showPrice") &nbsp;- {{ cartData.total_price | currency }}]
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import currency from '../helpers/_currency'
 
 export default {
+
+  filters: {
+    currency,
+  },
+  props: {
+    showPrice: {
+      type    : Boolean,
+      default : false,
+    },
+  },
+
   data() {
     return {
       loading: false,

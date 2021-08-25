@@ -332,6 +332,10 @@ button,
   font-weight: 400; //have to explicitly define for secondary font
   text-decoration: none;
 
+  * {
+    color: inherit;
+  }
+
   @media (hover) {
     &:hover:not(.disabled), &.hover:not(.disabled) {
       color: $white;
