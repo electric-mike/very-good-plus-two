@@ -367,7 +367,7 @@ button,
     color: $secondary-color;
 
     &:active:not(.disabled), &.active:not(.disabled) {
-      color: $white;
+      color: $secondary-color;
       border-color: $secondary-color;
     }
 

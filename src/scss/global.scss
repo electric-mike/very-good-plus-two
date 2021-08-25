@@ -612,10 +612,14 @@ h1 + .accordion {
   }
 
   .row {
-    margin: 0;
+    margin: 0 auto;
   }
 
-  .search-input-and-close,
+  .search-input-and-close {
+    padding-left: 1.25em !important;
+    padding-right: 0.75em !important;
+  }
+
   section.custom-html-grid,
   section.custom-html-grid .max-width
   {
