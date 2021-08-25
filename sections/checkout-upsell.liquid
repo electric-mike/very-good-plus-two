@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function() {
       str = str ? str.toString() : '000';
       var decimalVal = str.substring(str.length - 2);
       var beforeDecimal = str.slice(0, -2).replace(/\B(?=(\d{3})+(?!\d))/g, ',').replace('.', '');
-      return '$' + beforeDecimal + '.' + decimalVal;
+      return ('$' + beforeDecimal + '.' + decimalVal).replace('.00', '');
     }
   }
 

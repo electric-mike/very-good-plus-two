@@ -45,5 +45,5 @@ export default function formatMoney(cents, format) {
       break
   }
 
-  return formatString.replace(placeholderRegex, value)
+  return formatString.replace(placeholderRegex, value).replace('.00', '')
 }

@@ -72,7 +72,7 @@
         if(recommendedProductsResponseInner.querySelectorAll('.product').length > 0) {
           var recommendationsWrapper = document.getElementById('recommendations');
           recommendationsWrapper.innerHTML = recommendedProductsResponseInner.innerHTML;
-          new SimpleBar(recommendationsWrapper);
+          // new SimpleBar(recommendationsWrapper);
         } else {
           productRecommendationsWrapper.style.display = 'none';
         }

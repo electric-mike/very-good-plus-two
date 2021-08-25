@@ -583,62 +583,70 @@ h1 + .accordion {
   }
 }
 
-// GUTTER HELPER
+//------------------
+// GLOBAL BODY GUTTER HELPER
 // This adds extra gutter on page elements on desktop+
-// remove this and it all goes away
-@media(min-width: $desktop) {
-  .max-width,
-  .announcement-bar,
-  .search-results-inner
-  {
-    padding-left: 2.5rem !important;
-    padding-right: 2.5rem !important;
-  }
-
-  .max-width {
-    .row {
-      margin: 0 -0.625rem;
+// toggle in theme settings
+//------------------
+body.global-gutter {
+  @media(min-width: $desktop) {
+    .max-width,
+    .announcement-bar,
+    .search-results-inner
+    {
+      padding-left: 2.5rem !important;
+      padding-right: 2.5rem !important;
     }
 
     .max-width {
+      .row {
+        margin: 0 -0.625rem;
+      }
+
+      .max-width {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+
+    .invert {
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
-  }
 
-  .invert {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+    .product .product-list {
+      margin: 0 auto !important;
 
-  .product .product-list {
-    margin: 0 auto !important;
-  }
+      &.recommendations product-list row {
+        margin: 0 -0.625rem;
+      }
+    }
 
-  .search-input-and-close {
-    padding-left: 1.25rem !important;
-    padding-right: 0.75rem !important;
-  }
+    .search-input-and-close {
+      padding-left: 1.25rem !important;
+      padding-right: 0.75rem !important;
+    }
 
-  section.custom-html-grid,
-  section.custom-html-grid .max-width
-  {
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
-  }
+    section.custom-html-grid,
+    section.custom-html-grid .max-width
+    {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
 
-  .children-links-wrapper.layered-nav {
-    padding-right: 1.25rem;
-    padding-left: 1.25rem;
-  }
+    .children-links-wrapper.layered-nav {
+      padding-right: 1.25rem;
+      padding-left: 1.25rem;
+    }
 
-  #desktop-top-level-links {
-    padding-left: 1.25rem;
-    margin-right: 1.25rem;
-  }
+    #desktop-top-level-links {
+      padding-left: 1.25rem;
+      margin-right: 1.25rem;
+    }
 
-  .cart, .action-links .link:last-of-type {
-    margin-right: 0;
-    padding-right: 1.25rem !important;
+    .cart, .action-links .link:last-of-type {
+      margin-right: 0;
+      padding-right: 1.25rem !important;
+    }
   }
 }

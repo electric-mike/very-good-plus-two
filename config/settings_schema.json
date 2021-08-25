@@ -2,10 +2,21 @@
   {
     "name": "theme_info",
     "theme_name": "Very Good Plus",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_author": "Mike Weaver",
     "theme_documentation_url": "https:\/\/dev.electriceye.io",
     "theme_support_url": "https:\/\/bitbucket.org\/electriceyeagency\/vg-plus\/src\/master"
+  },
+  {
+    "name": "Global",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "add_global_gutter",
+        "label": "Add global side gutter to site on desktop",
+        "default": true
+      }
+    ]
   },
   {
     "name": "Header",
@@ -131,6 +142,11 @@
         "type": "product",
         "id": "upsell_product",
         "label": "Upsell Product"
+      },
+      {
+        "type": "product",
+        "id": "secondary_upsell_product",
+        "label": "Secondary Upsell Product"
       },
       {
         "type": "checkbox",

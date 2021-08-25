@@ -243,7 +243,7 @@ export default function rhpa() {
           // logic for when we don't use additional image swatches
           if (this.selectedOptionVariant && window.mobileSlider && this.productVariants.length > 1) {
             this.productVariants.forEach((variant) => {
-              if (variant.id === this.selectedOptionVariant.id) {
+              if (variant.id === this.selectedOptionVariant.id && variant.featured_image) {
                 const variantImage = document.getElementById(variant.featured_image.id)
                 if (variantImage) {
                   const imageIndex = variantImage.dataset.index

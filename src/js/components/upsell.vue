@@ -1,28 +1,32 @@
 <template lang="pug">
-.upsell(v-if='upsellProduct && !upsellProductInCart')
+.upsell(v-if='computedUpsellProduct')
   .upsell-image
-    a(:href='"/products/" + upsellProduct.handle')
+    a(:href='"/products/" + computedUpsellProduct.handle')
       vue-image.upsell-image(
         :source='computedImage'
         :width='200'
         :height='placeholderHeight'
-        :alt='upsellProduct.title'
+        :alt='computedUpsellProduct.title'
       )
   .upsell-info
     .upsell-text
-      h5.upsell-title
-        | Add a #[a(:href='"/products/" + upsellProduct.handle') {{ upsellProduct.title }}]
+      h6.upsell-deal Deal of the Day
+      h6.upsell-title #[a(:href='"/products/" + computedUpsellProduct.handle') {{ computedUpsellProduct.title }}]
         //- span(v-if='selectedVariant.title')&nbsp;({{ selectedVariant.title }})&nbsp;
-        | to your cart for {{ formatMoney(selectedVariant.price) }}
-    .upsell-modify
-      select(v-model='selectedVariant' v-if='upsellProduct.variants && upsellProduct.variants.length > 1')
-        option(
-          v-for='(variant, i) in upsellProduct.variants'
-          :key='variant.id'
-          :value='variant'
-          :disabled="!variant.available"
-        ) {{ variant.title }}
-      button(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") Add
+      .upsell-modify
+        select(
+          v-model='selectedVariant'
+          v-if='computedUpsellProduct.variants && computedUpsellProduct.variants.length > 1'
+        )
+          option(
+            v-for='(variant, i) in computedUpsellProduct.variants'
+            :key='variant.id'
+            :value='variant'
+            :disabled="!variant.available"
+          ) {{ variant.title }}
+  .upsell-add
+    button.secondary(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") ADD +
+    p.price {{ formatMoney(selectedVariant.price) }}
 </template>
 
 <script>
@@ -50,8 +54,14 @@ export default {
         && window.themeSettings.upsellProduct
         && !Object.prototype.hasOwnProperty.call(window.themeSettings.upsellProduct, 'error')
       ) ? window.themeSettings.upsellProduct : false,
-      upsellProductInCart : false,
-      selectedVariant     : false,
+      secondaryUpsellProduct: (
+        window.themeSettings
+        && window.themeSettings.secondaryUpsellProduct
+        && !Object.prototype.hasOwnProperty.call(window.themeSettings.secondaryUpsellProduct, 'error')
+      ) ? window.themeSettings.secondaryUpsellProduct : false,
+      upsellProductInCart          : false,
+      secondaryUpsellProductInCart : false,
+      selectedVariant              : false,
     }
   },
 
@@ -61,6 +71,13 @@ export default {
       'fetchingCart',
       'addingToCart',
     ]),
+
+    computedUpsellProduct() {
+      if (!this.upsellProductInCart) return this.upsellProduct
+      if (!this.secondaryUpsellProductInCart) return this.secondaryUpsellProduct
+
+      return false
+    },
 
     computedImage() {
       if (
@@ -72,45 +89,35 @@ export default {
         return this.selectedVariant.featured_image.src
       }
 
-      return this.upsellProduct.featured_image
+      return this.computedUpsellProduct.featured_image
     },
   },
 
   watch: {
     cartData() {
-      this.checkUpsellInCart()
+      this.checkUpsellsInCart()
     },
   },
 
   mounted() {
-    this.checkUpsellInCart()
-
-    if (this.upsellProduct && this.upsellProduct.variants.length > 0) {
-      this.upsellProduct.variants.forEach((variant) => {
-        if (variant.available && !this.selectedVariant) {
-          this.selectedVariant = variant
-        }
-      })
-    }
-
-    // Shut it down if no variants available
-    if (!this.selectedVariant) {
-      this.upsellProduct = false
-    }
+    this.checkUpsellsInCart()
   },
 
   methods: {
     formatMoney,
 
-    checkUpsellInCart() {
+    checkUpsellsInCart() {
       this.upsellProductInCart = false
+      this.secondaryUpsellProductInCart = false
 
       if (this.cartData.items) {
         this.cartData.items.forEach((item) => {
           if (this.upsellProduct.id === item.id) {
             this.upsellProductInCart = true
+          }
 
-            return
+          if (this.secondaryUpsellProduct.id === item.id) {
+            this.secondaryUpsellProductInCart = true
           }
 
           if (this.upsellProduct) {
@@ -120,6 +127,28 @@ export default {
               }
             })
           }
+
+          if (this.secondaryUpsellProduct) {
+            this.secondaryUpsellProduct.variants.forEach((variant) => {
+              if (item.id === variant.id) {
+                this.secondaryUpsellProductInCart = true
+              }
+            })
+          }
+        })
+      }
+
+      this.selectDefaultVariant()
+    },
+
+    selectDefaultVariant() {
+      if (this.computedUpsellProduct && this.computedUpsellProduct.variants.length > 0) {
+        this.selectedVariant = this.computedUpsellProduct.variants.find((variant) => {
+          if (variant.available) {
+            return variant
+          }
+
+          return false
         })
       }
     },
@@ -161,6 +190,7 @@ export default {
 
     img {
       max-width: 100%;
+      margin-bottom: 0;
     }
   }
 
@@ -169,8 +199,8 @@ export default {
     flex-grow: 1;
     padding: 0 1.25em;
 
-    .upsell-title {
-      margin: 0 0 0.5em;
+    .upsell-deal, .upsell-title {
+      margin: 0 0 0.5rem;
 
       a {
         text-decoration: none;
@@ -178,9 +208,7 @@ export default {
     }
   }
 
-  .upsell-modify {
-    display: flex;
-
+  .upsell-modify, .upsell-add {
     select, button {
       padding: 7.5px 15px !important;
       font-size: 0.75em !important;
@@ -191,6 +219,18 @@ export default {
       background-size: 7.5px;
       padding-right: 30px !important;
       margin-right: 1em;
+    }
+  }
+
+  .upsell-modify {
+    display: flex;
+  }
+
+  .upsell-add {
+    text-align: right;
+
+    .price {
+      margin-top: 0.625em;
     }
   }
 }

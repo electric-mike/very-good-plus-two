@@ -367,8 +367,9 @@ button,
     color: $secondary-color;
 
     &:active:not(.disabled), &.active:not(.disabled) {
-      color: $secondary-color;
+      color: $white;
       border-color: $secondary-color;
+      background: $secondary-color;
     }
 
     &.loading {

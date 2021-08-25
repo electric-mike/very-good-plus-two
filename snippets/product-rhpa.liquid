@@ -9,7 +9,7 @@
         <span>${ productVariantOptions[i] }: </span>${ optionSelections[i + 1] || 'Select ' + productVariantOptions[i] }
       </h6>
       <div class="size-chart-link-wrapper" v-if="productVariantOptions[i].toLowerCase() ==='size'">
-        <a class="size-chart-link" href="#" v-on:click.prevent="toggleSizeChart()">Size Chart</a>
+        <h6 class="size-chart-link"><a href="#" v-on:click.prevent="toggleSizeChart()">Size Chart</a></h6>
         <modal class="size-chart-wrapper" v-if="showSizeChart" v-on:close="toggleSizeChart()">
           <h2 class="size-chart-header">Apparel Size Chart</h2>
           <div class="size-chart-outer">

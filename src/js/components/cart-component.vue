@@ -15,7 +15,7 @@
             )
         .product-info
           .product-text
-            h5.product-title.capitalize
+            h6.product-title.capitalize
               a(:href='productLink(item)') {{ item.product_title }}
             h6.product-variant(v-if='item.variant_title') {{ item.variant_title }}
             p.product-variant(
@@ -153,6 +153,7 @@ export default {
         img {
           max-width: 100%;
           display: block;
+          margin-bottom: 0;
         }
       }
 
@@ -175,17 +176,13 @@ export default {
         padding: 0 1.25em;
 
         .product-title {
-          margin: 0 0 0.35rem;
+          margin: 0 0 0.5rem;
         }
 
         .product-variant {
           color: $dark-gray;
-          margin: 0 0 0.75rem;
+          margin: 0 0 0.5rem;
           margin-bottom: 0;
-
-          &:last-of-type {
-            margin-bottom: 1em;
-          }
         }
 
         .discount-text {

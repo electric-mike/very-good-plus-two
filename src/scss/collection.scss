@@ -171,7 +171,7 @@
       display: block;
       color: $black;
       // white-space: nowrap;
-      padding-left: 0;
+      padding: 0;
 
       @media(max-width: $tablet - 1) {
         position: fixed;
@@ -213,11 +213,8 @@
         .filters-inner {
           position: sticky;
           top: 82px;
+          margin-right: 1.25em;
         }
-      }
-
-      @media(min-width: $desktop) {
-        padding-right: 0.625em;
       }
 
       .filter {
@@ -371,11 +368,7 @@
 
     .collection-right {
       @media(min-width: $tablet) {
-        padding-left: 1em;
-
-        &.filters-hidden {
-          padding-left: 0;
-        }
+        padding-left: 0;
 
         select {
           width: auto;
