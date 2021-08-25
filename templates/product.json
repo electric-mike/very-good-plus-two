@@ -18,10 +18,6 @@
         "show_quantity_selector": false
       }
     },
-    "reviews": {
-      "type": "template-product-reviews",
-      "settings": {}
-    },
     "recommendations": {
       "type": "template-product-recommendations",
       "settings": {
@@ -29,6 +25,10 @@
         "header_text": "You might also like",
         "enable_scrollbar": true
       }
+    },
+    "reviews": {
+      "type": "template-product-reviews",
+      "settings": {}
     },
     "klaviyo": {
       "type": "template-product-klaviyo",
@@ -39,8 +39,8 @@
     "metadata",
     "breadcrumbs",
     "main",
-    "reviews",
     "recommendations",
+    "reviews",
     "klaviyo"
   ]
 }
