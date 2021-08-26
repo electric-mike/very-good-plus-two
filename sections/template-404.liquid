@@ -20,7 +20,7 @@
       <div class="category-hero-inner category-hero-image max-width tablet-constrain-items">
         <div class="hero">
           <h1><span>{{ settings.four_oh_four_header }}</span></h1>
-          {% if settings.four_oh_four_subtext.size > 0 %}<p>{{ settings.four_oh_four_subtext }}</p>{% endif %}
+          {% if settings.four_oh_four_subtext.size > 0 %}<div class="description">{{ settings.four_oh_four_subtext }}</div>{% endif %}
         </div>
       </div>
     </div>
@@ -30,14 +30,14 @@
         <div class="category-hero-inner category-hero-no-image">
           <div class="hero">
             <h1><span>{{ settings.four_oh_four_header }}</span></h1>
-            {% if settings.four_oh_four_subtext.size > 0 %}<p>{{ settings.four_oh_four_subtext }}</p>{% endif %}
+            {% if settings.four_oh_four_subtext.size > 0 %}<div class="description">{{ settings.four_oh_four_subtext }}</div>{% endif %}
           </div>
         </div>
       </div>
     </div>
   {% endif %}
 
-  <section class="max-width">
+  <div class="max-width">
     <div class="products-wrapper product-list-wrapper">
       <div class="products row">
         {% for prod in collections[settings.four_oh_four_collection].products limit: 40 %}
@@ -83,5 +83,5 @@
         {% endfor %}
       </div>
     </div>
-  </section>
+  </div>
 </div>

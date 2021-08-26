@@ -340,7 +340,7 @@ h1 + .accordion {
     height: 100%;
 
     > div {
-      padding: 1em 0;
+      padding: 1.25em;
     }
 
     &:not(.category-hero-image) h1 {
@@ -360,14 +360,18 @@ h1 + .accordion {
       text-align: center;
       min-height: 150px;
 
-      p, h1 {
+      h1, span {
         margin: 0;
+      }
+
+      .description {
+        margin-bottom: 0.625em;
       }
 
       @media(min-width: $tablet) {
         min-height: 250px;
 
-        p {
+        .description {
           margin-top: 1.25em;
         }
       }
@@ -412,7 +416,7 @@ h1 + .accordion {
         margin-bottom: 0;
       }
 
-      h1, span, p {
+      h1, span, .description, .description > * {
         color: $white;
       }
 
@@ -428,7 +432,7 @@ h1 + .accordion {
     .category-hero-no-image {
       justify-content: center;
 
-      h1, span, p {
+      h1, span, .description, .description > * {
         color: $black;
       }
     }
