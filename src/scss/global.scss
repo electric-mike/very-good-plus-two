@@ -364,12 +364,12 @@ h1 + .accordion {
         margin: 0;
       }
 
-      p {
-        margin-top: 1.25em;
-      }
-
       @media(min-width: $tablet) {
         min-height: 250px;
+
+        p {
+          margin-top: 1.25em;
+        }
       }
 
       &.search-no-results {
@@ -406,6 +406,8 @@ h1 + .accordion {
     }
 
     .category-hero-image {
+      min-height: 250px;
+
       h1 {
         margin-bottom: 0;
       }
