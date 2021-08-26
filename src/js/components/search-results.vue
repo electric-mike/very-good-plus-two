@@ -205,7 +205,11 @@
         <div
           :style="{
             'visibility': loadingResults
-              || (!loadingResults && (!computedSearchResultProducts || computedSearchResultProducts.length == 0))
+              || (!loadingResults && (
+                !computedSearchResultProducts
+              || computedSearchResultProducts.length == 0
+              || searchQuery.length <= 0)
+              )
               ? 'hidden' : ''
           }"
           class="view-all"

@@ -429,11 +429,21 @@
     </section>
   </div>
 {% else %}
+  <div class="max-width">
+    <div class="no-image-category-hero-wrapper">
+      <div class="category-hero tablet-constrain-items">
+        <div class="category-hero-inner category-hero-no-image">
+          <div class="hero">
+            <h1>Search</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <section>
     <div class="category-hero max-width tablet-constrain-items">
       <div class="category-hero-inner category-hero-no-image search-no-results">
         <div class="inner-wrapper">
-          <h1>Search</h1>
           <form
             class="search-input-form"
             action="/search"
