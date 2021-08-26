@@ -136,6 +136,9 @@ document.addEventListener('DOMContentLoaded', () => {
       watch: {
         currentPaginatePage(newVal, oldVal) {
           this.lastPaginatePage = oldVal
+
+          const drawer = document.querySelector('.drawer-wrapper')
+          if (drawer) drawer.scrollTo(0, 0)
         },
       },
 

@@ -80,36 +80,6 @@
                 </div>
               {% endif %}
             {% endfor %}
-
-            {% comment %}
-            {% if link.type == 'collection_link' %}
-              <h6 class="nested-mobile-top-level-link"><span class="mobile-link top-products">Top Products</span></h6>
-              <div class="mobile-nav-product-wrapper">
-                {% assign childLinkProducts = link.object.products %}
-                {% for product in childLinkProducts | limit: 5 %}
-                  <div class="parent-link-product">
-                    <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
-                      <img
-                        class="product-image lazyload blur-up"
-                        src="{{ settings.placeholder_image | img_url }}"
-                        data-src="{{ product.featured_image.src | img_url: 'large' }}"
-                        data-additional-image="{{ settings.placeholder_image | img_url }}"
-                        data-additional-image-large="{{ product.images[1] | img_url: 'large' }}"
-                        alt="{{ product.featured_image.alt | escape }}"
-                      />
-                    </a>
-                    <div class="product-info">
-                      <a href="{{ product.url | within: collection }}">
-                        <h5>{{ product.title }}</h5>
-                      </a>
-                      {% if product.vendor %}<h6>{{ product.vendor }}</h6>{% endif %}
-                      <h5 class="price">{{ product.price | money }}</h5>
-                    </div>
-                  </div>
-                {% endfor %}
-              </div>
-            {% endif %}
-            {% endcomment %}
           </div>
         </div>
       {% else %}
@@ -202,6 +172,47 @@
             {% endif %}
           >{{ childlink.title | escape }}</a>
         {% endfor %}
+
+        <div class="mobile-link mobile-top-level-link">
+          <p>Top Products</p>
+          <div class="mobile-nav-products">
+            <div
+              data-simplebar
+              data-auto-hide="true"
+              data-force-visible="false"
+              class="product-list-wrapper product-list row"
+            >
+              {% assign linkProducts = link.object.products %}
+              {% for product in linkProducts | limit: 4 %}
+                <div class="product column-6">
+                  <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}">
+                    {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    <img
+                      class="product-image lazyload blur-up"
+                      src="{{ settings.placeholder_image | img_url }}"
+                      alt="{{ prod.title | escape }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[360, 540, 720, 900, 1080, 1600]"
+                      data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                      data-sizes="auto"
+                    />
+                    <noscript>
+                      <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+                    </noscript>
+                  </a>
+                  <div class="product-info">
+                    {% if product.vendor %}<h5>{{ product.vendor }}</h5>{% endif %}
+                    <a href="{{ product.url | within: collection }}">
+                      <h5>{{ product.title }}</h5>
+                    </a>
+                    {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}
+                    <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
       </div>
     {% endfor %}
 

@@ -207,7 +207,7 @@
             'visibility': loadingResults
               || (!loadingResults && (
                 !computedSearchResultProducts
-              || computedSearchResultProducts.length == 0
+              || computedSearchResultProducts.length <= 1
               || searchQuery.length <= 0)
               )
               ? 'hidden' : ''

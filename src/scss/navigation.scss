@@ -354,10 +354,7 @@ body > header nav {
     max-width: 53px; //to evenly space logo (Same width as cart)
 
     //mobile search
-    .search-results {
-      background: $light-gray;
-      // border-bottom: 1px solid $medium-gray;
-
+    .search-results, .mobile-nav-products {
       [data-simplebar="init"] {
         @media(max-width: $desktop - 1) {
           margin-left: -1.25em !important;
@@ -386,6 +383,10 @@ body > header nav {
         display: flex;
         margin-top: 1.25em;
       }
+    }
+
+    .search-results {
+      background: $light-gray;
     }
 
     [data-simplebar="init"] {
