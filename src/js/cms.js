@@ -6,6 +6,7 @@ import Vue from 'vue'
 // import formOptions from './vue-form/options'
 // import formValidationMethods from './vue-form/_form-validation'
 import variables from '../scss/_variables.scss'
+import swatches from './helpers/_swatches'
 
 // const CONTACT_US_FORM_URL = ''
 
@@ -99,6 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
           this.showPassword = !this.showPassword
         },
       },
+    })
+  }
+
+  // --------
+  // 404
+  // --------
+  const fourOhFour = document.getElementById('four-oh-four')
+  if (fourOhFour) {
+    new Vue({
+      el         : fourOhFour,
+      delimiters : ['${', '}'],
+      mixins     : [swatches],
     })
   }
 

@@ -51,8 +51,13 @@
     }
   }
 
-  // 404 & Password
-  &.four-oh-four, &.password {
+  // Password
+  &.password {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     padding-top: 3em;
@@ -73,7 +78,7 @@
       z-index: 1;
     }
 
-    .four-oh-four-inner, .password-inner {
+    .password-inner {
       width: 100%;
       max-width: 650px;
       margin: 1em;
@@ -112,14 +117,6 @@
         }
       }
     }
-  }
-
-  &.password {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 
     .toggle-show-password {
       position: fixed;

@@ -182,13 +182,6 @@
           "klaviyo_mobile_form_id": ""
         }
       },
-      "collection-settings": {
-        "type": "collection-settings",
-        "settings": {
-          "enable_product_image_hover": true,
-          "enable_vendor_filter": true
-        }
-      },
       "custom-html-grid": {
         "type": "custom-html-grid",
         "blocks": {

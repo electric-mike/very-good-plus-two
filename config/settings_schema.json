@@ -291,6 +291,18 @@
         "type": "image_picker",
         "id": "collection_image",
         "label": "Collection Header Image"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_product_image_hover",
+        "label": "Enable Product Image Hover",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_vendor_filter",
+        "label": "Enable Vendor (Brand) Filter",
+        "default": false
       }
     ]
   },
@@ -399,24 +411,9 @@
         "default": "Uh Oh! We can't find the page. Try clicking a link in the nav!"
       },
       {
-        "type": "url",
-        "id": "four_oh_four_left_link",
-        "label": "Left Link"
-      },
-      {
-        "type": "text",
-        "id": "four_oh_four_left_link_text",
-        "label": "Left Link Text"
-      },
-      {
-        "type": "url",
-        "id": "four_oh_four_right_link",
-        "label": "Right Link"
-      },
-      {
-        "type": "text",
-        "id": "four_oh_four_right_link_text",
-        "label": "Right Link Text"
+        "type": "collection",
+        "id": "four_oh_four_collection",
+        "label": "404 Collection"
       }
     ]
   },

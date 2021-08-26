@@ -1,15 +1,87 @@
-<div
-  class="page four-oh-four lazyload"
-  style="background-image: url('{{ settings.four_oh_four_image | img_url: 'medium' }}');"
-  data-bg="{{ settings.four_oh_four_image | img_url: 'master' }}"
->
-  <div class="overlay"></div>
-  <div class="four-oh-four-inner max-width">
-    <h1>{{ settings.four_oh_four_header }}</h1>
-    <p>{{ settings.four_oh_four_subtext }}</p>
-    <div class="links-wrapper">
-      <a class="button" href="{{ settings.four_oh_four_left_link }}">{{ settings.four_oh_four_left_link_text }}</a>
-      <a class="button secondary" href="{{ settings.four_oh_four_right_link }}">{{ settings.four_oh_four_right_link_text }}</a>
+<div id="four-oh-four" class="page">
+  {% if settings.four_oh_four_image %}
+    <div class="category-hero category-hero-image">
+      {%- assign img_url = settings.four_oh_four_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img
+        id="hero-image-desktop"
+        class="lazyload blur-up"
+        src="{{ settings.four_oh_four_image | img_url: '200x' }}"
+        alt="404 Page Not Found"
+        data-src="{{ img_url }}"
+        data-widths="[360, 540, 720, 900, 1080, 1600]"
+        data-aspectratio="{{ settings.four_oh_four_image.aspect_ratio }}"
+        data-sizes="auto"
+        style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
+      />
+      <noscript>
+        <img class="lazyloaded" src="{{ settings.four_oh_four_image | img_url: '800x' }}" alt="404 Page Not Found">
+      </noscript>
+
+      <div class="category-hero-inner category-hero-image max-width tablet-constrain-items">
+        <div class="hero">
+          <h1><span>{{ settings.four_oh_four_header }}</span></h1>
+          {% if settings.four_oh_four_subtext.size > 0 %}<p>{{ settings.four_oh_four_subtext }}</p>{% endif %}
+        </div>
+      </div>
     </div>
-  </div>
+  {% else %}
+    <div class="no-image-category-hero-wrapper">
+      <div class="category-hero tablet-constrain-items">
+        <div class="category-hero-inner category-hero-no-image">
+          <div class="hero">
+            <h1><span>{{ settings.four_oh_four_header }}</span></h1>
+            {% if settings.four_oh_four_subtext.size > 0 %}<p>{{ settings.four_oh_four_subtext }}</p>{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <section class="max-width">
+    <div class="products-wrapper product-list-wrapper">
+      <div class="products row">
+        {% for prod in collections[settings.four_oh_four_collection].products limit: 40 %}
+          <div class="product product-{{ prod.id }} column-6-tablet-vert-3">
+            <a class="product-image-wrapper" href="{{ prod.url | within: collection }}">
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: prod.featured_image.aspect_ratio }}%;">
+                {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                {%- assign secondary_img_url = prod.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="product-image lazyload blur-up"
+                  src="{{ settings.placeholder_image | img_url }}"
+                  alt="{{ prod.title | escape }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+                  data-secondary-aspectratio="{{ prod.images[1].aspect_ratio }}"
+                  data-sizes="auto"
+                  data-first-src="{{ img_url }}"
+                  data-additional-image="{{ secondary_img_url }}"
+                  v-on:mouseover="changeImage('in', $event)"
+                  v-on:mouseleave="changeImage('out', $event)"
+                />
+                <noscript>
+                  <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+                </noscript>
+              </div>
+            </a>
+            <div class="product-info">
+              <h5 class="vendor">{{ prod.vendor }}</h5>
+              <a href="{{ prod.url | within: collection }}">
+                <h5>{{ prod.title }}</h5>
+              </a>
+              {% if settings.review_type == 'judgeme' %}
+                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: prod %}
+              {% elsif settings.review_type == 'okendo' %}
+                {% render 'okendo-summary-widget', product: prod %}
+              {% endif %}
+              {% if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
+              <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
+              {% include 'color-swatches' %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 </div>

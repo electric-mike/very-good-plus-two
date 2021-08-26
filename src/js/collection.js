@@ -24,10 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const {
             totalProducts,
             additionalFilterOptions,
-            enableVendorFilter,
           } = window
 
-          const { paginationLimit } = window.themeSettings
+          const { paginationLimit, enableVendorFilter } = window.themeSettings
 
           return {
             products           : [],

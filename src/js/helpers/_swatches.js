@@ -2,7 +2,7 @@ export default {
   data() {
     return {
       activeSwatches          : window.activeSwatches || {},
-      enableProductImageHover : window.enableProductImageHover || false,
+      enableProductImageHover : window.themeSettings.enableProductImageHover || false,
     }
   },
 
@@ -13,14 +13,13 @@ export default {
 
         if (
           Object.prototype.hasOwnProperty.call(image.dataset, 'additionalImage')
-          && !image.dataset.additionalImage.includes('no-image')
           && !('ontouchstart' in window || navigator.msMaxTouchPoints) // touch check
         ) {
-          if (inOrOut === 'in') {
+          if (inOrOut === 'in' && !image.dataset.additionalImage.includes('no-image')) {
             image.dataset.src = image.dataset.additionalImage
             image.src = image.dataset.additionalImage
             image.parentElement.style.paddingBottom = `${100 / image.dataset.secondaryAspectratio}%`
-          } else {
+          } else if (!image.dataset.firstSrc.includes('no-image')) {
             image.dataset.src = image.dataset.firstSrc
             image.src = image.dataset.firstSrc
             image.parentElement.style.paddingBottom = `${100 / image.dataset.aspectratio}%`
@@ -40,7 +39,10 @@ export default {
       const parentEls = document.querySelectorAll(`.product-${productId}`)
       parentEls.forEach((parentEl) => {
         const parentImageWrapper = parentEl.querySelector('.image-wrap')
-        if (parentImageWrapper) {
+        if (
+          parentImageWrapper
+          && !imgUrl.includes('no-image')
+        ) {
           parentImageWrapper.style.paddingBottom = `${100 / parseInt(aspectRatio, 10)}%`
           parentImageWrapper.querySelector('img').dataset.src = imgUrl
           parentImageWrapper.querySelector('img').classList.add('lazyload', 'blur-up', 'blur-up-actually')

@@ -349,10 +349,6 @@ h1 + .accordion {
 
     h1 {
       text-transform: capitalize;
-
-      span {
-        color: $white;
-      }
     }
 
     .category-hero-image, .category-hero-no-image {
@@ -363,6 +359,14 @@ h1 + .accordion {
       z-index: 1;
       text-align: center;
       min-height: 150px;
+
+      p, h1 {
+        margin: 0;
+      }
+
+      p {
+        margin-top: 1.25em;
+      }
 
       @media(min-width: $tablet) {
         min-height: 250px;
@@ -406,6 +410,10 @@ h1 + .accordion {
         margin-bottom: 0;
       }
 
+      h1, span, p {
+        color: $white;
+      }
+
       @media(min-width: $tablet) {
         min-height: 300px;
       }
@@ -418,15 +426,7 @@ h1 + .accordion {
     .category-hero-no-image {
       justify-content: center;
 
-      p, h1 {
-        margin: 0;
-      }
-
-      p {
-        margin-top: 1.25em;
-      }
-
-      h1 span {
+      h1, span, p {
         color: $black;
       }
     }

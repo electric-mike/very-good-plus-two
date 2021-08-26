@@ -173,6 +173,8 @@
             EU: '{{ settings.side_cart_announcement_eu }}'
           },
         },
+        enableProductImageHover: {{ settings.enable_product_image_hover }},
+        enableVendorFilter: {{ settings.enable_vendor_filter }},
         upsellProduct: {{ all_products[settings.upsell_product] | json }},
         secondaryUpsellProduct: {{ all_products[settings.secondary_upsell_product] | json }},
         placeholderImageUrl: '{{ settings.placeholder_image | img_url }}',

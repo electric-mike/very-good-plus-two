@@ -40,8 +40,8 @@
                 class="swatch swatch-{{ current_option | handleize }} {{ current_option | replace: ' ', '-' | handleize }}"
                 data-image-id="{{ variant.featured_image.id }}"
                 data-color-name="{{ current_option }}"
-                v-bind:class="{ 'active': activeSwatches['{{ product.id }}'] === '{{ variant.featured_image.id }}' }"
-                v-on:click="changeSwatch('{{ variant.featured_image.id }}', '{{ img_url }}', '{{ variant.featured_image.aspect_ratio }}', '{{ product.id }}', '{{ product.url | within: collection }}?variant={{ variant.id }}')"
+                v-bind:class="{ 'active': activeSwatches['{{ product.id }}'] === '{{ variant.id }}' }"
+                v-on:click="changeSwatch('{{ variant.id }}', '{{ img_url }}', '{{ variant.featured_image.aspect_ratio }}', '{{ product.id }}', '{{ product.url | within: collection }}?variant={{ variant.id }}')"
               ></li>
               {% assign swatches_size = swatches_size | plus: 1 %}
             {% endunless %}
