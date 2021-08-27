@@ -288,8 +288,8 @@
                   {% elsif settings.review_type == 'okendo' %}
                     {% render 'okendo-summary-widget', product: product %}
                   {% endif %}
-                  {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
-                  <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+                  {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '.00', '' }}</h5>{% endif %}
+                  <h5 class="price">{{ product.price | money_without_trailing_zeros | replace: '.00', '' }}</h5>
                   {% include 'color-swatches' %}
                 </div>
               </div>
