@@ -12,7 +12,7 @@
 // HEADER
 //------------------
 body > header {
-  background: $light-gray;
+  background: $white;
   display: flex;
   width: 100%;
   z-index: 999;
@@ -20,13 +20,15 @@ body > header {
 
   @media(min-width: $desktop) {
     border-bottom: 0;
-    box-shadow: $shadow;
   }
 
   &.sticky {
     position: fixed;
     top: 0;
-    // animation: slide-down 0.2s;
+
+    @media(min-width: $desktop) {
+      box-shadow: $shadow;
+    }
   }
 
   @media(min-width: $desktop) {

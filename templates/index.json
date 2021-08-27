@@ -210,6 +210,7 @@
         "background_color": "",
         "hero_image_desktop": "shopify:\/\/shop_images\/Text_Overlay.png",
         "desktop_height": 50,
+        "hero_image_mobile": "shopify:\/\/shop_images\/Text_Overlay.png",
         "mobile_height": 50,
         "desktop_image_position": "center",
         "desktop_text_align": "center",
