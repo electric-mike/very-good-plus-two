@@ -20,7 +20,7 @@
   {% endif %}
 </style>
 
-<div class="product-list-wrapper featured-collection" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+<div class="product-list-wrapper featured-collection">
   <div class="max-width">
     <div class="title center-text">
       <h3>{{ section.settings.title }}</h3>
@@ -28,11 +28,13 @@
     </div>
     <div
       id="simplebar-{{ section.id }}"
-      class="product-list row"
       {% if section.settings.enable_scrollbar %}
+        class="product-list"
         data-simplebar
         data-simplebar-auto-hide="true"
         data-force-visible="true"
+      {% else %}
+        class="product-list row"
       {% endif %}
     >
       {% for prod in collection.products limit: limit %}

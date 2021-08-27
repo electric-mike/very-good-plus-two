@@ -38,7 +38,16 @@
           <img class="lazyloaded" src="{{ section.settings.background_image.src | img_url: '800x' }}" alt="Mobile block image">
         </noscript>
       {% endif %}
-      <div class="row {% if section.settings.constrain_items %}max-width{% endif %} {% if section.settings.tablet_constrain_items %}tablet-constrain-items{% endif %}">
+      <div
+      {% if section.settings.enable_scrollbar %}
+        class="{% if section.settings.constrain_items %}max-width{% endif %} {% if section.settings.tablet_constrain_items %}tablet-constrain-items{% endif %}"
+        data-simplebar
+        data-simplebar-auto-hide="true"
+        data-force-visible="true"
+      {% else %}
+        class="row {% if section.settings.constrain_items %}max-width{% endif %} {% if section.settings.tablet_constrain_items %}tablet-constrain-items{% endif %}"
+      {% endif %}
+      >
         {% for block in section.blocks %}
           <div id="block-{{ block.id }}" class="block column-6-tablet-vert-{{ 12 | divided_by: section.blocks.size }}">
 
@@ -268,6 +277,12 @@
       "type": "checkbox",
       "id": "min_height",
       "label": "Min Height Box",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_scrollbar",
+      "label": "Enable Scrollbar",
       "default": false
     },
     {

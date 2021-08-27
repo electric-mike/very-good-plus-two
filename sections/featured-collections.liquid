@@ -14,7 +14,7 @@
     {% endif %}
 </style>
 
-<section class="featured-collections-{{ section.id }} product-list-wrapper featured-collection" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+<div class="featured-collections-{{ section.id }} product-list-wrapper featured-collection">
   <div class="max-width">
     {% if section.settings.heading != blank %}
       <div class="title center-text">
@@ -24,11 +24,13 @@
     {% endif %}
     <div
       id="simplebar-{{ section.id }}"
-      class="product-list row"
       {% if section.settings.enable_scrollbar %}
+        class="product-list"
         data-simplebar
         data-simplebar-auto-hide="true"
         data-force-visible="true"
+      {% else %}
+        class="product-list row"
       {% endif %}
       >
       {% for block in section.blocks %}
@@ -63,18 +65,7 @@
     </div>
     <div class="product-list-collection-link"></div>
   </div>
-</section>
-
-{% if section.settings.enable_scrollbar %}
-<style>
-  @media(min-width: 768px) {
-    #simplebar-{{ section.id }} .product {
-      {% assign blockSize = section.blocks.size | times: 1.0 %}
-      flex-basis: calc({{ 100 | divided_by: blockSize }}% - 0.9em);
-    }
-  }
-  </style>
-{% endif %}
+</div>
 
 {% schema %}
   {

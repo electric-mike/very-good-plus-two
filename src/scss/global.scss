@@ -163,7 +163,7 @@ body {
       right: 1.25em;
     }
 
-    .product {
+    .product, .block {
       margin: 0 0 2.5em 1.25em !important;
 
       &:last-of-type {
@@ -208,7 +208,7 @@ body {
     flex-wrap: nowrap;
     align-items: flex-end;
 
-    .product {
+    .product, .block {
       flex-basis: 65%;
       margin-bottom: 1em;
       align-self: flex-start;
@@ -431,6 +431,8 @@ h1 + .accordion {
 
     .category-hero-no-image {
       justify-content: center;
+      padding-left: 0;
+      padding-right: 0;
 
       h1, span, .description, .description > * {
         color: $black;

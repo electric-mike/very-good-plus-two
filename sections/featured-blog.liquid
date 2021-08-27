@@ -27,12 +27,14 @@
     {% endif %}
     <div
       id="simplebar-{{ section.id }}"
-      class="product-list row"
       {% if section.settings.enable_scrollbar %}
-          data-simplebar
-          data-simplebar-auto-hide="true"
-          data-force-visible="true"
-        {% endif %}
+        class="product-list"
+        data-simplebar
+        data-simplebar-auto-hide="true"
+        data-force-visible="true"
+      {% else %}
+        class="product-list row"
+      {% endif %}
       >
       {% for article in blog.articles limit: post_limit %}
         <div class="product article column-6-tablet-vert-{{ 12 | divided_by: post_limit }}">

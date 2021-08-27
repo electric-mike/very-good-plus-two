@@ -1,14 +1,18 @@
 {% if search.terms.size > 0 %}
   <div id="search-app">
     <section>
-      <div class="category-hero max-width custom-constrain-items">
-        <div class="category-hero-inner category-hero-no-image">
-          <div class="hero">
-            <p>Search results for:</p>
-            <h1><span>{{ search.terms | escape }}</span></h1>
-            <div class="tab-buttons">
-              <button v-bind:class="{ 'secondary': activeTab === 'products' }" v-on:click="activateTab('products')">Product Results</button>
-              <button v-bind:class="{ 'secondary': activeTab === 'articles' }" v-on:click="activateTab('articles')">Article Results</button>
+      <div class="max-width">
+        <div class="no-image-category-hero-wrapper">
+          <div class="category-hero tablet-constrain-items">
+            <div class="category-hero-inner category-hero-no-image">
+              <div class="hero">
+                <p>Search results for:</p>
+                <h1><span>{{ search.terms | escape }}</span></h1>
+                <div class="tab-buttons">
+                  <button v-bind:class="{ 'secondary': activeTab === 'products' }" v-on:click="activateTab('products')">Product Results</button>
+                  <button v-bind:class="{ 'secondary': activeTab === 'articles' }" v-on:click="activateTab('articles')">Article Results</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
