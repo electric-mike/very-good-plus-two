@@ -108,6 +108,8 @@
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 0.5em;
+      padding-top: 1.25em;
+      border-top: 1px solid $medium-gray;
 
       .checked-option {
         display: inline-block;
