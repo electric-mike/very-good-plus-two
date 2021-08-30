@@ -203,8 +203,8 @@
         </simplebar>
 
         <div
-          :style="{
-            'visibility': loadingResults
+          :class="{
+            'view-all-hide': loadingResults
               || (!loadingResults && (
                 !computedSearchResultProducts
               || computedSearchResultProducts.length <= 1
@@ -420,6 +420,15 @@ export default {
 .view-all {
   text-align: right;
   margin: 1.25em 0 0.5em;
+
+  &.view-all-hide {
+    display: none;
+
+    @media(min-width: $tablet) {
+      display: block;
+      visibility: hidden;
+    }
+  }
 
   @media(min-width: $desktop) {
     margin-bottom: 1em;
