@@ -13,25 +13,40 @@
     </div>
   </div>
 {% else %}
-  <div class="category-hero category-hero-image">
-    {%- assign base_url = settings.collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-    <img
-      id="hero-image-desktop"
-      class="lazyload blur-up"
-      src="{{ settings.collection_image | img_url: '200x' }}"
-      alt="{{ collection.title | escape }}"
-      data-src="{{ base_url }}"
-      data-widths="[360, 540, 720, 900, 1080, 1600]"
-      data-aspectratio="{{ collection.image.aspect_ratio }}"
-      data-sizes="auto"
-      style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
-    />
-    <noscript>
-      <img class="lazyloaded" src="{{ settings.collection_image | img_url: '800x' }}" alt="{{ collection.title | escape }}">
-    </noscript>
-
-    <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
-      <h1 class="hero"><span>{{ page_title }}</span></h1>
+  {%- assign base_url = settings.collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+  {% if base_url contains 'no-image' %}
+    <div class="max-width">
+      <div class="no-image-category-hero-wrapper">
+        <div class="category-hero tablet-constrain-items">
+          <div class="category-hero-inner category-hero-no-image">
+            <div class="hero">
+              <h1><span>{{ page_title }}</span></h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  {% else %}
+    <div class="category-hero category-hero-image">
+      <img
+        id="hero-image-desktop"
+        class="lazyload blur-up"
+        src="{{ settings.collection_image | img_url: '200x' }}"
+        alt="{{ collection.title | escape }}"
+        data-src="{{ base_url }}"
+        data-widths="[360, 540, 720, 900, 1080, 1600]"
+        data-aspectratio="{{ collection.image.aspect_ratio }}"
+        data-sizes="auto"
+        style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
+        loading="lazy"
+      />
+      <noscript>
+        <img class="lazyloaded" src="{{ settings.collection_image | img_url: '800x' }}" alt="{{ collection.title | escape }}">
+      </noscript>
+
+      <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
+        <h1 class="hero"><span>{{ page_title }}</span></h1>
+      </div>
+    </div>
+  {% endif %}
 {% endif %}
