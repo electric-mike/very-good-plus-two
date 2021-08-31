@@ -24,7 +24,7 @@
             "subheader_desktop_size": 20,
             "subheader_tablet_size": 16,
             "subheader_desktop_weight": "400",
-            "subheader_mobile_size": 12,
+            "subheader_mobile_size": 16,
             "subheader_mobile_weight": "400"
           }
         },
@@ -98,7 +98,7 @@
       ],
       "settings": {
         "heading": "Featured Collections",
-        "enable_scrollbar": false,
+        "enable_scrollbar": true,
         "background_color": "",
         "text_color": ""
       }
@@ -163,7 +163,7 @@
         "collection": "new-arrivals",
         "product_limit": 4,
         "shop_link_text": "Shop All Products",
-        "enable_scrollbar": false,
+        "enable_scrollbar": true,
         "background_color": "",
         "text_color": ""
       }
@@ -227,7 +227,7 @@
         "heading": "Featured Articles",
         "blog": "blog",
         "post_limit": 4,
-        "enable_scrollbar": false,
+        "enable_scrollbar": true,
         "background_color": "#f8f7f2",
         "text_color": ""
       }
@@ -363,6 +363,7 @@
         "heading": "Instagram Feed",
         "max_width": true,
         "min_height": false,
+        "enable_scrollbar": true,
         "constrain_items": false,
         "tablet_constrain_items": false,
         "reverse_mobile_order": false,
