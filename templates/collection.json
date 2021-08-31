@@ -1,5 +1,13 @@
 {
   "wrapper": "div.category",
+  "sections": {
+    "collection-settings": {
+      "type": "collection-settings",
+      "settings": {
+        "enable_product_image_hover": true,
+        "enable_vendor_filter": false
+      }
+    },
     "collection-filter-settings": {
       "type": "collection-filter-settings",
       "blocks": {
@@ -14,16 +22,15 @@
       "block_order": [
         "777a5c3b-5c58-4a4f-a9fa-1980c0081a6b"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "main": {
       "type": "template-collection",
-      "settings": {
-      }
+      "settings": {}
     }
   },
   "order": [
+    "collection-settings",
     "collection-filter-settings",
     "main"
   ]
