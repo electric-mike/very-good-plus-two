@@ -12,7 +12,7 @@ export default {
 
   methods: {
     fetchCollectionData(sentPage) {
-      let url = `${window.location.pathname}?view=json&page=${sentPage}`
+      let url = `${window.location.pathname}?view=products-endpoint&page=${sentPage}`
       if (window.location.search.includes('?q=') || window.location.search.includes('&q=')) {
         url += window.location.search.replace('?', '&').replace('&type=article', '')
       }
