@@ -682,6 +682,10 @@ body.global-gutter {
     .children-links-wrapper.layered-nav {
       padding-right: 1.25rem;
       padding-left: 1.25rem;
+
+      .children-links-wrapper-inner {
+        max-width: calc(#{$max-width} - 2.5em) !important;
+      }
     }
 
     #desktop-top-level-links {
