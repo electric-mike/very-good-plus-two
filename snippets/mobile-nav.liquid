@@ -173,46 +173,48 @@
           >{{ childlink.title | escape }}</a>
         {% endfor %}
 
-        <div class="mobile-link mobile-top-level-link">
-          <p>Top Products</p>
-          <div class="mobile-nav-products">
-            <div
-              data-simplebar
-              data-auto-hide="true"
-              data-force-visible="false"
-              class="product-list-wrapper product-list row"
-            >
-              {% assign linkProducts = link.object.products %}
-              {% for product in linkProducts | limit: 4 %}
-                <div class="product column-6">
-                  <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}">
-                    {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    <img
-                      class="product-image lazyload blur-up"
-                      src="{{ settings.placeholder_image | img_url }}"
-                      alt="{{ prod.title | escape }}"
-                      data-src="{{ img_url }}"
-                      data-widths="[360, 540, 720, 900, 1080, 1600]"
-                      data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-                      data-sizes="auto"
-                    />
-                    <noscript>
-                      <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
-                    </noscript>
-                  </a>
-                  <div class="product-info">
-                    {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}
-                    <a href="{{ product.url | within: collection }}">
-                      <h5>{{ product.title }}</h5>
+        {% assign linkProducts = link.object.products %}
+        {% if linkProducts.size > 0 %}
+          <div class="mobile-link mobile-top-level-link">
+            <p>Top Products</p>
+            <div class="mobile-nav-products">
+              <div
+                data-simplebar
+                data-auto-hide="true"
+                data-force-visible="false"
+                class="product-list-wrapper product-list row"
+              >
+                {% for product in linkProducts | limit: 4 %}
+                  <div class="product column-6">
+                    <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}">
+                      {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                      <img
+                        class="product-image lazyload blur-up"
+                        src="{{ settings.placeholder_image | img_url }}"
+                        alt="{{ prod.title | escape }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[360, 540, 720, 900, 1080, 1600]"
+                        data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                        data-sizes="auto"
+                      />
+                      <noscript>
+                        <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+                      </noscript>
                     </a>
-                    {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}
-                    <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+                    <div class="product-info">
+                      {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}
+                      <a href="{{ product.url | within: collection }}">
+                        <h5>{{ product.title }}</h5>
+                      </a>
+                      {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}
+                      <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+                    </div>
                   </div>
-                </div>
-              {% endfor %}
+                {% endfor %}
+              </div>
             </div>
           </div>
-        </div>
+        {% endif %}
       </div>
     {% endfor %}
 
