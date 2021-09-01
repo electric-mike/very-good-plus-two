@@ -218,6 +218,10 @@ body {
       @media(min-width: $tablet) {
         flex-basis: calc(25% - 0.95em);
         flex-grow: 1;
+
+        &:last-of-type {
+          margin-right: 0;
+        }
       }
 
       @media(max-width: $tablet - 1) {
