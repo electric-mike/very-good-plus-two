@@ -201,7 +201,7 @@
                     </noscript>
                   </a>
                   <div class="product-info">
-                    {% if product.vendor %}<h5>{{ product.vendor }}</h5>{% endif %}
+                    {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}
                     <a href="{{ product.url | within: collection }}">
                       <h5>{{ product.title }}</h5>
                     </a>
