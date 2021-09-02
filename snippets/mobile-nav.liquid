@@ -197,9 +197,6 @@
                         data-aspectratio="{{ product.featured_image.aspect_ratio }}"
                         data-sizes="auto"
                       />
-                      <noscript>
-                        <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
-                      </noscript>
                     </a>
                     <div class="product-info">
                       {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}

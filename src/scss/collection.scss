@@ -216,6 +216,7 @@
           position: sticky;
           top: 82px;
           margin-right: 1.25em;
+          margin-bottom: 3em;
         }
       }
 
@@ -450,6 +451,18 @@
 
     span, a {
       font-size: 0.9em;
+    }
+  }
+
+  .blog-results {
+    margin-top: 2em;
+
+    // @media(min-width: $tablet) {
+    //   margin-top: 3em;
+    // }
+
+    .product-info {
+
     }
   }
 }

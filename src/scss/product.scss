@@ -498,11 +498,11 @@
       flex-flow: row;
 
       .product-images-wrapper {
-        width: percentage((100 / 12) * 8);
+        width: 66.666666%;
       }
 
       .rhpa-wrapper {
-        width: percentage((100 / 12) * 4);
+        width: 33.3333333%;
       }
     }
   }

@@ -336,7 +336,7 @@
     </section>
 
     <section v-if="activeTab === 'articles'" class="max-width blog-section">
-      <div class="blog max-width no-top-padding">
+      <div class="blog blog-results max-width">
         <div class="posts row">
           {% assign blog_results_size = 0 %}
           {% paginate search.results by 9999 %}
@@ -366,7 +366,6 @@
                       {% assign src = article.content | split: 'src="' | last %}
                       {% assign src = src | split: '.jpg' | first | append: '.jpg' %}
                       <img
-                        src="{{ src }}"
                         width="100%"
                         class="lazyload"
                         data-src="{{ src }}"
@@ -376,7 +375,6 @@
                       {% assign src = article.content | split: 'src="' | last %}
                       {% assign src = src | split: '.png' | first | append: '.png' %}
                       <img
-                        src="{{ src }}"
                         width="100%"
                         class="lazyload"
                         data-src="{{ src }}"
