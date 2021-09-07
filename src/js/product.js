@@ -1,7 +1,10 @@
 // product page
+import Vue from 'vue'
 import Siema from 'siema'
+
 import rhpa from './_rhpa'
 import productDescription from './_product-description'
+import swatches from './helpers/_swatches'
 
 export default function product() {
   // run RHPA
@@ -173,6 +176,17 @@ export default function product() {
       image.addEventListener('click', () => {
         if (window.mobileSlider) window.mobileSlider.goTo(index + 1)
         changeMainImage.bind(this, index + 1)
+      })
+    })
+  }
+
+  const recommendations = document.getElementById('recommendations')
+  if (recommendations) {
+    window.addEventListener('doRecommendationSwatches', () => {
+      new Vue({
+        el         : recommendations,
+        delimiters : ['${', '}'],
+        mixins     : [swatches],
       })
     })
   }

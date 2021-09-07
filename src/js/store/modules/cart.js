@@ -3,6 +3,7 @@ export default {
 
   state() {
     const appliedPromoCode = window.localStorage.getItem('storedDiscount') || ''
+    const orderNote = window.localStorage.getItem('orderNote') || ''
 
     return {
       cartData     : {},
@@ -13,6 +14,7 @@ export default {
       addingToCart : false,
       updatingCart : false,
       appliedPromoCode,
+      orderNote,
       pageYOffset  : 0,
     }
   },
@@ -69,6 +71,11 @@ export default {
       window.localStorage.setItem('storedDiscount', sentPromoCode)
       state.appliedPromoCode = sentPromoCode
     },
+
+    setOrderNote(state, sentOrderNote = '') {
+      window.localStorage.setItem('orderNote', sentOrderNote)
+      state.orderNote = sentOrderNote
+    },
   },
 
   actions: {
@@ -118,7 +125,7 @@ export default {
     },
 
     updateQuantity(store, { quantity, line }) {
-      if (store.updatingCart) return
+      if (store.state.updatingCart) return
 
       store.commit('toggleUpdatingCart')
 
@@ -146,7 +153,7 @@ export default {
     },
 
     removeFromCart(store, line) {
-      if (store.updatingCart) return
+      if (store.state.updatingCart) return
 
       store.commit('toggleUpdatingCart')
 
@@ -177,6 +184,28 @@ export default {
 
       fetch('/cart/clear.js', {
         method: 'POST',
+      }).then(res => res.json()).then((res) => {
+        if (!res.message) {
+          store.commit('setCartData', res)
+          store.commit('setCartError')
+        } else {
+          store.commit('setCartError', res)
+        }
+
+        store.commit('toggleUpdatingCart')
+      })
+    },
+
+    updateOrderNote(store) {
+      store.commit('toggleUpdatingCart')
+
+      fetch('/cart/update.js', {
+        method  : 'POST',
+        headers : {
+          'Content-Type'     : 'application/json',
+          'X-Requested-With' : 'XMLHttpRequest',
+        },
+        body: JSON.stringify({ note: store.state.orderNote }),
       }).then(res => res.json()).then((res) => {
         if (!res.message) {
           store.commit('setCartData', res)

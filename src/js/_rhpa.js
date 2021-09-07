@@ -228,7 +228,7 @@ export default function rhpa() {
           && this.selectedOptionVariant.featured_image
           && this.selectedOptionVariant.featured_image.id
           const currentVariantImage = document.querySelector(`.additional-images-wrapper div[data-variantid="${currentVariantImageID}"]`)
-            || document.querySelector(`div[alt*="${this.selectedOptionVariant.option1}"]`)
+            || document.querySelector(`div[alt*="${escape(this.selectedOptionVariant.option1)}"]`)
 
           if (currentVariantImage) {
             currentVariantImage.click()

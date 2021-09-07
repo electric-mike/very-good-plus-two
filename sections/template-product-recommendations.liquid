@@ -18,24 +18,29 @@
       {%- for prod in products -%}
         {%- if prod.vendor != 'Route' and count < 4 -%}
           {%- assign count = count | plus: 1 -%}
-          <div class="product column-6-tablet-vert-{{ 12 | divided_by: limit }}">
-            <a class="product-image-wrapper image-wrap" href="{{ prod.url | within: collection }}">
-              {% include 'flair-product-badges', product: prod %}
-              {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              <img
-                class="product-image lazyload blur-up"
-                src="{{ settings.placeholder_image | img_url }}"
-                alt="{{ prod.title | escape }}"
-                data-src="{{ img_url }}"
-                data-widths="[360, 540, 720, 900, 1080, 1600]"
-                data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
-                data-sizes="auto"
-                width="{{ prod.featured_image.width }}"
-                height="{{ prod.featured_image.height }}"
-              />
-              <noscript>
-                <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
-              </noscript>
+          <div class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
+            <a class="product-image-wrapper" href="{{ prod.url | within: collection }}">
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: prod.featured_image.aspect_ratio }}%;">
+                {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                {%- assign secondary_img_url = prod.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="product-image lazyload blur-up"
+                  src="{{ settings.placeholder_image | img_url }}"
+                  alt="{{ prod.title | escape }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+                  data-secondary-aspectratio="{{ prod.images[1].aspect_ratio }}"
+                  data-sizes="auto"
+                  data-first-src="{{ img_url }}"
+                  data-additional-image="{{ secondary_img_url }}"
+                  v-on:mouseover="changeImage('in', $event)"
+                  v-on:mouseleave="changeImage('out', $event)"
+                />
+                <noscript>
+                  <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
+                </noscript>
+              </div>
             </a>
             <div class="product-info">
               <a href="{{ prod.url | within: collection }}">
@@ -44,6 +49,7 @@
               {%- if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{%- endif -%}
               <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
             </div>
+            {% include 'color-swatches', product: prod %}
           </div>
         {%- endif -%}
       {%- endfor -%}
@@ -76,6 +82,9 @@
           {% if section.settings.enable_scrollbar %}
             new SimpleBar(recommendationsWrapper);
           {% endif %}
+
+          var doRecSwatchEvent = new CustomEvent('doRecommendationSwatches');
+          window.dispatchEvent(doRecSwatchEvent);
         } else {
           productRecommendationsWrapper.style.display = 'none';
         }

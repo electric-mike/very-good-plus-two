@@ -44,9 +44,12 @@ export default {
           && !imgUrl.includes('no-image')
         ) {
           parentImageWrapper.style.paddingBottom = `${100 / parseInt(aspectRatio, 10)}%`
-          parentImageWrapper.querySelector('img').dataset.src = imgUrl
-          parentImageWrapper.querySelector('img').classList.add('lazyload', 'blur-up', 'blur-up-actually')
-          parentImageWrapper.querySelector('img').classList.remove('lazyloaded')
+          const mainImage = parentImageWrapper.querySelector('img')
+
+          mainImage.dataset.src = imgUrl
+          mainImage.dataset.firstSrc = imgUrl
+          mainImage.classList.add('lazyload', 'blur-up', 'blur-up-actually')
+          mainImage.classList.remove('lazyloaded')
         }
 
         const parentLinks = parentEl.querySelectorAll('a')
