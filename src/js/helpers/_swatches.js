@@ -1,12 +1,25 @@
 export default {
   data() {
     return {
-      activeSwatches          : window.activeSwatches || {},
-      enableProductImageHover : window.themeSettings.enableProductImageHover || false,
+      activeSwatches                : window.activeSwatches || {},
+      enableProductImageHover       : window.themeSettings.enableProductImageHover || false,
+      enableDefaultProductSelection : window.themeSettings.enableDefaultProductSelection || false,
     }
   },
 
   methods: {
+    defaultSwatchSelected(sentProductId, sentIndex) {
+      if (
+        this.enableDefaultProductSelection
+        && Object.keys(this.activeSwatches).indexOf(sentProductId) <= -1
+        && sentIndex <= 0
+      ) {
+        return true
+      }
+
+      return false
+    },
+
     changeImage(inOrOut, $event) {
       if (this.enableProductImageHover) {
         const image = $event.target

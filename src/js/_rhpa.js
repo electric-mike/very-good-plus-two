@@ -31,16 +31,17 @@ export default function rhpa() {
 
       data() {
         return {
-          formQuantity                : 1,
-          productInitialOriginalPrice : JSON.parse(JSON.stringify(window.productOriginalPrice)),
-          productOriginalPrice        : window.productOriginalPrice,
-          productInitialPrice         : JSON.parse(JSON.stringify(window.productPrice)),
-          productVendor               : window.productVendor,
-          productPrice                : window.productPrice,
-          productVariantOptions       : window.productData.options,
-          productVariants             : window.productData.variants,
-          customerTags                : window.themeSettings.customerTags,
-          optionSelections            : {
+          formQuantity                  : 1,
+          productInitialOriginalPrice   : JSON.parse(JSON.stringify(window.productOriginalPrice)),
+          productOriginalPrice          : window.productOriginalPrice,
+          productInitialPrice           : JSON.parse(JSON.stringify(window.productPrice)),
+          productVendor                 : window.productVendor,
+          productPrice                  : window.productPrice,
+          productVariantOptions         : window.productData.options,
+          productVariants               : window.productData.variants,
+          customerTags                  : window.themeSettings.customerTags,
+          enableDefaultProductSelection : window.themeSettings.enableDefaultProductSelection || false,
+          optionSelections              : {
             1 : null,
             2 : null,
             3 : null,
@@ -286,30 +287,42 @@ export default function rhpa() {
         selectOptions() {
           this.selectOptionsFromURL()
 
-          this.updateConfig()
+          if (this.enableDefaultProductSelection) {
+            // set default options
+            [this.option1Options, this.option2Options, this.option3Options].forEach((option, i) => {
+              if (option.length > 0 && (!this.optionSelections[i + 1] || this.optionSelections[i + 1].length <= 0)) {
+                this.optionSelections[i + 1] = option[0] //eslint-disable-line
+              }
+            })
 
-          // check if only has one option
-          // for simple products only
-          // if there's more than one, we require a selection
-          // which is why below is commented out
-          if (this.productVariants.length <= 1) {
+            // then check for oos options
+            this.checkOOSSelected()
+          } else {
+            this.updateConfig()
+
+            // check if only has one option
+            // for simple products only
+            // if there's more than one, we require a selection
+            // which is why below is commented out
+            if (this.productVariants.length <= 1) {
             this.optionSelections[1] = this.option1Options[0] //eslint-disable-line
-          }
-
-          // set default options
-          // Right now only preselecting if it's the only option
-          // such as only one color
-          [this.option1Options, this.option2Options, this.option3Options].forEach((option, i) => {
-            if (option.length === 1 && (!this.optionSelections[i + 1] || this.optionSelections[i + 1].length <= 0)) {
-              this.optionSelections[i + 1] = option[0] //eslint-disable-line
             }
-          })
+
+            // set default options
+            // Right now only preselecting if it's the only option
+            // such as only one color
+            [this.option1Options, this.option2Options, this.option3Options].forEach((option, i) => {
+              if (option.length === 1 && (!this.optionSelections[i + 1] || this.optionSelections[i + 1].length <= 0)) {
+              this.optionSelections[i + 1] = option[0] //eslint-disable-line
+              }
+            })
 
           // then check for oos options
           // only check if URL does not already contain a variant
           // if (!window.location.search.includes('variant=')) {
           //   this.checkOOSSelected()
           // }
+          }
         },
 
         checkOOSSelected() {

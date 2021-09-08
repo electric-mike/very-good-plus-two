@@ -281,7 +281,7 @@
       {
         "type": "range",
         "id": "pagination_limit",
-        "label": "Pagination Limit",
+        "label": "Collection Pagination Limit",
         "min": 6,
         "max": 200,
         "step": 2,
@@ -333,7 +333,7 @@
     ]
   },
   {
-    "name": "Product Swatch Colors",
+    "name": "Product Swatch & Variants",
     "settings": [
       {
         "type": "textarea",
@@ -341,6 +341,12 @@
         "label": "Product Color",
         "default": "red: #ff0000,\r\nyellow: #ffff00,\r\nblack: #000000,\r\nblue: #0000FF,\r\ngreen: #00ff00,\r\npurple: #800080,\r\nsilver: #c0c0c0,\r\nwhite: #ffffff,\r\nbrown: #7B3F00,\r\nlight-brown: #feb035,\r\ndark-turquoise: #23cddc,\r\norange: #fe9001,\r\ntan: #eacea7,\r\nviolet: #EE82EE,\r\npink: #FFC0CB,\r\ngrey: #808080",
         "info": "Items separate with comma. Write color name from product option and separate option with color HEX value. All texts in lowercase."
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_default_product_selection",
+        "label": "Enable Product Default Variant Selected",
+        "default": false
       }
     ]
   },
