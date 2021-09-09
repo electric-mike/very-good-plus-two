@@ -1,13 +1,6 @@
 <template>
   <img
-    :srcset="`
-      ${sizeImageOrReturn(source, '200x')} 200w,
-      ${sizeImageOrReturn(source, '500x')} 500w,
-      ${sizeImageOrReturn(source, '730x')} 730w,
-      ${sizeImageOrReturn(source, '990x')} 990w,
-      ${sizeImageOrReturn(source, '1440x')} 1440w,
-      ${sizeImageOrReturn(source, '2080x')} 2080w
-    `"
+    :srcset="computedSrcSet"
     :src="placeholderImageUrl"
     sizes="`
       (min-width: 0px) 200px,
@@ -56,9 +49,37 @@ export default {
   },
   data() {
     return {
-      placeholderImageUrl: (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
+      placeholderImageUrl : (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
+      loaded              : false,
+      observer            : null,
     }
   },
+
+  computed: {
+    computedSrcSet() {
+      if (this.loaded) {
+        return `
+        ${this.sizeImageOrReturn(this.source, '200x')} 200w,
+        ${this.sizeImageOrReturn(this.source, '500x')} 500w,
+        ${this.sizeImageOrReturn(this.source, '730x')} 730w,
+        ${this.sizeImageOrReturn(this.source, '990x')} 990w,
+        ${this.sizeImageOrReturn(this.source, '1440x')} 1440w,
+        ${this.sizeImageOrReturn(this.source, '2080x')} 2080w
+        `
+      }
+
+      return ''
+    },
+  },
+
+  mounted() {
+    this.intersectionWatcher()
+  },
+
+  destroyed() {
+    this.observer.disconnect()
+  },
+
   methods: {
     getSizedImage,
     sizeImageOrReturn(sentSource, sentSize) {
@@ -67,6 +88,21 @@ export default {
       }
 
       return sentSource
+    },
+
+    intersectionWatcher() {
+      this.observer = new IntersectionObserver(async (entries) => {
+        const image = entries[0]
+        if (image.isIntersecting) {
+          this.observer.disconnect()
+
+          if (this.source !== '') {
+            this.loaded = true
+          }
+        }
+      })
+
+      this.observer.observe(this.$el)
     },
   },
 }
