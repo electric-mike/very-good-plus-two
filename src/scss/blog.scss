@@ -92,12 +92,12 @@
 .blog-post {
   &-content {
     max-width: 900px;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 
     @media(min-width: $mobile) {
-      margin-top: 4em;
-      margin-bottom: 4em;
+      padding-top: 4em;
+      padding-bottom: 4em;
     }
 
     .blog-post-image {
