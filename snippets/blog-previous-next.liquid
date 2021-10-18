@@ -1,0 +1,60 @@
+<div class="previous-next">
+  {% if blog.next_article or blog.previous_article %}
+  <div class="left">
+    <span>
+      {% if blog.next_article %}
+        {{ blog.next_article.title | split: ' - ' | first | replace: '.', '' | prepend: '&lt; ' | link_to: blog.next_article }}
+      {% else %}
+        &nbsp;
+    {% endif %}
+    </span>
+  </div>
+  <div class="middle">
+    <span>
+      {{ blog.title | split: ' - ' | first | replace: '.', '' | prepend: 'Back to ' | link_to: blog.url }}
+    </span>
+  </div>
+  <div class="right">
+    <span>
+    {% if blog.previous_article %}
+      {{ blog.previous_article.title | split: ' - ' | first | replace: '.', '' | append: ' &gt;' | link_to: blog.previous_article }}
+    {% else %}
+      &nbsp;
+    {% endif %}
+    </span>
+  </div>
+  {% endif %}
+</div>
+
+<style>
+  .previous-next {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    text-align: left;
+    justify-content: space-between;
+    margin: 50px auto;
+  }
+
+  .previous-next .middle {
+    text-align: center;
+  }
+
+  .previous-next .right {
+    text-align: right;
+  }
+
+  @media(max-width: 769px) {
+    .previous-next {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    .middle {
+      order: 1;
+      flex: 1 0 100%;
+      padding-top: 20px;
+    }
+  }
+</style>
