@@ -1,0 +1,146 @@
+<div class="max-width">
+  <div class="no-image-category-hero-wrapper">
+    <div class="category-hero tablet-constrain-items">
+      <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
+        <div>
+          <h1 class="hero black">{{ page.title }}</h1>
+          <p>{{ page.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="bundle-wrapper" class="max-width bundle-wrapper">
+  {% for block in section.blocks %}
+    {% assign limit = block.settings.collection_limit %}
+    {% assign collection = collections[block.settings.collection] %}
+
+    <h2 class="collection-title center-text">{{ collection.title }}</h2>
+
+    <div class="product-list-wrapper">
+      <div class="product-list row">
+        {% for product in collection.products limit: limit %}
+          <div
+            class="product product-{{ prod.id }} column-6-tablet-vert-3"
+            key="{{ forloop.index }}"
+          >
+            <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
+                {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="product-image lazyload blur-up"
+                  src="{{ settings.placeholder_image | img_url }}"
+                  alt="{{ product.title | escape }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                  data-secondary-aspectratio="{{ product.images[1].aspect_ratio }}"
+                  data-sizes="auto"
+                  data-first-src="{{ img_url }}"
+                  data-additional-image="{{ secondary_img_url }}"
+                  v-on:mouseover="changeImage('in', $event)"
+                  v-on:mouseleave="changeImage('out', $event)"
+                  width="{{ product.featured_image.width }}"
+                  height="{{ product.featured_image.height }}"
+                />
+                <noscript>
+                  <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
+                </noscript>
+              </div>
+            </a>
+            <div class="product-info">
+              <h5 class="vendor">{{ product.vendor }}</h5>
+              <a href="{{ product.url | within: collection }}">
+                <h5>{{ product.title }}</h5>
+              </a>
+              {% if settings.review_type == 'judgeme' %}
+                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+              {% elsif settings.review_type == 'okendo' %}
+                {% render 'okendo-summary-widget', product: product %}
+              {% endif %}
+              {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '.00', '' }}</h5>{% endif %}
+              <h5 class="price">{{ product.price | money_without_trailing_zeros | replace: '.00', '' }}</h5>
+              {% include 'color-swatches' %}
+            </div>
+            {% assign id = product.variants[0].id %}
+            {% assign avail = product.variants[0].available %}
+            {% if avail %}
+              <button
+                class="add-to-cart full-width"
+                v-on:click="addBundleProductToCart({{ id }}, '{{ collection.handle }}')"
+                v-bind:class="{ 'active': productIdsInCart.includes({{ id }}), 'loading': addingId === {{ id }} }"
+              >
+                <span v-cloak class="v-hide" v-if="productIdsInCart.includes({{ id }})">Added &check;</span>
+                <span v-else>Add To Cart</span>
+              </button>
+              <div v-if="errors[{{ id }}]" v-cloak class="v-hide invalid"><p class="field-message">${ errors[{{ id }}] }</p></div>
+            {% else %}
+              <button
+                class="active full-width"
+                disabled
+              >Sold Out</button>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+
+  <div v-cloak class="v-hide bundle-modal" v-bind:class="{ 'has-button': hasMetDiscount }">
+    <h6 class="bundle-text" v-bind:class="{ 'no-button': !hasMetDiscount }">
+      <span v-if="!hasMetDiscount" class="discount-text">Add <span class="bold">${ currentDiscount ? currentDiscount.limit : discounts[0].limit - productQtyInCart }</span> to save <span class="bold">${ discounts[0].percent }%</span></span>
+      <span v-else class="discount-text">You saved <span class="bold">${ currentDiscount.percent }%</span></span>
+      <a href="#" v-on:click="openCart($event)">View Cart</a>
+    </h6>
+    <form
+      class="checkout-form"
+      action="/cart"
+      method="post"
+      novalidate=""
+      v-on:submit="goingToCheckout = true"
+      v-if="hasMetDiscount"
+    >
+      <button
+        class="secondary"
+        type="submit"
+        name="checkout"
+        v-bind:class="{ 'loading': goingToCheckout }"
+      >Checkout - ${ cartData.total_price | currency }</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Hide widgets on page */
+  .Rise__widget, #ps__widget_container { display: none !important; }
+</style>
+
+{% schema %}
+  {
+    "name": "Bundle Settings",
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "range",
+            "id": "collection_limit",
+            "label": "Collection Limit",
+            "min": 4,
+            "max": 48,
+            "step": 4,
+            "default": 20
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,11 @@
+{
+  "wrapper": "div.page.bundle",
+  "sections": {
+    "main": {
+      "type": "template-bundle"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

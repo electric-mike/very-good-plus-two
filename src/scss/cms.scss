@@ -458,4 +458,124 @@
       }
     }
   }
+
+  // bundle (books)
+  &.bundle {
+    .bundle-wrapper {
+      margin-top: 2em;
+
+      @media(min-width: $tablet) {
+        margin-top: 3em;
+      }
+    }
+
+    .collection-title {
+      margin-bottom: 0;
+    }
+
+    .product {
+      margin-bottom: 2em;
+      // display: flex;
+      // flex-flow: column;
+      // justify-content: space-between;
+
+      .image-wrap {
+        margin-bottom: .75em;
+
+        img {
+          display: block;
+        }
+      }
+
+      .add-to-cart {
+        margin-top: 0.5em;
+      }
+
+      .field-message {
+        position: relative;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .bundle-modal {
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: $medium-gray;
+    border-top: 1px solid $black;
+    border-left: 1px solid $black;
+    border-right: 1px solid $black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0.75em 1em;
+    min-width: 300px;
+    max-width: 700px;
+
+    &.has-button {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: auto auto;
+      align-items: center;
+      width: calc(100% - 2em);
+    }
+
+    .bundle-text {
+      margin: 0;
+      text-transform: capitalize;
+
+      &.no-button  {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: auto auto;
+        align-items: center;
+
+        .discount-text {
+          white-space: nowrap;
+        }
+      }
+
+      div, span {
+        font-family: inherit;
+      }
+
+      a {
+        display: block;
+        color: $black;
+        text-decoration: underline;
+        white-space: nowrap;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.65em;
+    }
+
+    @media(min-width: $mobile) {
+      width: auto !important;
+
+      .bundle-text, button {
+        white-space: nowrap;
+      }
+
+      .bundle-text {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: auto auto;
+        align-items: center;
+        text-align: center;
+      }
+
+      a {
+        display: inline-block;
+      }
+
+      button {
+        padding: 0.65em 2em;
+      }
+    }
+  }
 }

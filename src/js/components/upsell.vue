@@ -154,9 +154,9 @@ export default {
 
     addToCart() {
       this.$store.dispatch('cart/addToCart', {
-        quantity : 1,
-        id       : this.selectedVariant.id,
-        upsell   : true,
+        quantity       : 1,
+        id             : this.selectedVariant.id,
+        dontOpenDrawer : true,
       })
     },
   },

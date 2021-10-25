@@ -4,6 +4,7 @@ import SimpleBar from 'simplebar'
 import SiemaOverflow from './helpers/_siema-overflow'
 import cart from './cart'
 import product from './product'
+import bundle from './bundle'
 import announcementBar from './announcement-bar'
 
 // simplebar css
@@ -41,7 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // run sticky nav here due to async AJAX
   announcementBar()
 
-  // cart and product have to be loaded together because of vuex
+  // anything dependent on a shared cart
+  // has to be loaded together here
+  // because of vuex
   cart()
   product()
+  bundle()
 })

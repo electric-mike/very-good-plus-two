@@ -2,7 +2,6 @@
 import Vue from 'vue'
 // import VueForm from 'vue-form'
 // import VueRecaptcha from 'vue-recaptcha'
-
 // import formOptions from './vue-form/options'
 // import formValidationMethods from './vue-form/_form-validation'
 import variables from '../scss/_variables.scss'
