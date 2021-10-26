@@ -83,8 +83,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-
 .drawer-wrapper {
   display: flex;
   flex-flow: column;
@@ -96,7 +94,7 @@ export default {
     align-items: center;
     padding: 1em;
     position: relative;
-    border-bottom: 1px solid $medium-gray;
+    border-bottom: 1px solid var(--shop-medium-gray);
 
     .cart-text {
       margin: 0;
@@ -122,7 +120,7 @@ export default {
 
       .lines {
         &:before, &:after {
-          background-color: $black;
+          background-color: var(--shop-black);
         }
       }
     }
@@ -140,7 +138,7 @@ export default {
 
     &-text {
       margin-bottom: 0;
-      color: $white;
+      color: var(--shop-white);
     }
   }
 

@@ -8,7 +8,7 @@
   transition: filter 0.1s;
 
   &:hover {
-    filter: $gray-filter;
+    filter: var(--shop-gray)-filter;
   }
 
   &-facebook {

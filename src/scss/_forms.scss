@@ -33,17 +33,17 @@
       }
 
       p {
-        color: $black;
+        color: var(--shop-black);
         margin: 2em 0;
 
         a {
-          color: $black;
+          color: var(--shop-black);
           text-decoration: none;
           font-weight: bold;
           cursor: pointer;
 
           &:hover {
-            color: $black;
+            color: var(--shop-black);
           }
         }
       }
@@ -80,15 +80,15 @@
 .contact-message {
   padding: 0.5em;
   margin-bottom: 1.5em;
-  background: rgba($medium-gray, 0.25);
+  background: var(--shop-overlay);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.25);
   font-weight: bold;
 
   &.success-message {
-    border-left: 3px solid $primary-color;
+    border-left: 3px solid var(--shop-primary-color);
   }
 
   &.error-message {
-    border-left: 3px solid $red;
+    border-left: 3px solid var(--shop-red);
   }
 }

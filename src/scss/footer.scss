@@ -12,14 +12,14 @@
 // FOOTER
 //------------------
 body > footer {
-  background: $light-gray;
+  background: var(--shop-footer-background-color);
 
   a, a * {
-    color: $dark-gray;
+    color: var(--shop-dark-gray);
     text-decoration: none;
 
     &:hover {
-      color: $dark-gray;
+      color: var(--shop-dark-gray);
     }
   }
 
@@ -54,7 +54,7 @@ body > footer {
 
         .footer-logo-wrapper {
           text-decoration: none;
-          color: $black;
+          color: var(--shop-black);
           margin-bottom: 2em;
 
           .footer-logo {
@@ -118,7 +118,7 @@ body > footer {
 
       .footer-main-link {
         font-size: 0.85em;
-        color: $secondary-color;
+        color: var(--shop-footer-link-color);
       }
 
       .child-link {
@@ -143,7 +143,7 @@ body > footer {
           margin: 0 auto;
 
           p {
-            color: $dark-gray;
+            color: var(--shop-dark-gray);
           }
         }
 
@@ -165,7 +165,7 @@ body > footer {
         }
 
         // button {
-        //   background: $primary-color !important;
+        //   background: var(--shop-primary-color) !important;
         // }
 
         * {
@@ -220,7 +220,7 @@ body > footer {
       justify-content: center;
       text-align: center;
       padding: 1em 0;
-      border-top: 1px solid $medium-gray;
+      border-top: 1px solid var(--shop-medium-gray);
 
       @media(min-width: $tablet) {
         flex-flow: row;
@@ -237,7 +237,7 @@ body > footer {
 
           a {
             display: inline-block;
-            color: $dark-gray;
+            color: var(--shop-dark-gray);
             margin: 1.5em 0.75em 0.75em;
 
             @media(min-width: $tablet) {
@@ -266,7 +266,7 @@ body > footer {
           margin-top: 1em;
 
           &:hover {
-            filter: $gray-filter;
+            filter: var(--shop-gray)-filter;
           }
 
           &:not(:first-of-type) {

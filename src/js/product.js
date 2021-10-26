@@ -139,6 +139,8 @@ export default function product() {
 
           this.selector.parentNode.insertBefore(dotsDiv, this.selector.nextSibling)
         }
+
+        this.setAutoHeight()
       },
       onChange() {
         const dots = this.selector.parentNode.querySelectorAll('.dot')
@@ -151,6 +153,8 @@ export default function product() {
             dots[i].classList.remove('active')
           }
         }
+
+        this.setAutoHeight()
       },
     })
   }

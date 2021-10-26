@@ -22,7 +22,7 @@
     }
 
     .product-count {
-      color: $medium-gray;
+      color: var(--shop-medium-gray);
     }
 
     .toggle-filters {
@@ -86,7 +86,7 @@
           justify-content: center;
           width: 25px;
           height: 25px;
-          border: 1px solid $gray;
+          border: 1px solid var(--shop-gray);
           margin: 0;
           border-radius: 50%;
           cursor: pointer;
@@ -94,7 +94,7 @@
         }
 
         input:checked + label {
-          border-color: $black;
+          border-color: var(--shop-black);
         }
       }
     }
@@ -109,13 +109,13 @@
       flex-wrap: wrap;
       margin-bottom: 0.5em;
       padding-top: 1.25em;
-      border-top: 1px solid $medium-gray;
+      border-top: 1px solid var(--shop-medium-gray);
 
       .checked-option {
         display: inline-block;
         font-size: .8em;
         padding: 0.25em 0.5em;
-        background: $light-gray;
+        background: var(--shop-light-gray);
         border-radius: 5px;
         margin-right: 1em;
         margin-bottom: 1em;
@@ -170,7 +170,7 @@
 
     .filters {
       display: block;
-      color: $black;
+      color: var(--shop-black);
       // white-space: nowrap;
       padding: 0;
 
@@ -202,7 +202,7 @@
             margin-top: 32px;
             padding: 2.5em 1.25em 1.25em;
             max-height: calc(100% - 12px);
-            background: $light-gray;
+            background: var(--shop-light-gray);
           }
         }
       }
@@ -223,7 +223,7 @@
       .filter {
         .filter-name {
           position: relative;
-          border-bottom: 1px solid $medium-gray;
+          border-bottom: 1px solid var(--shop-medium-gray);
           padding: 1em 0;
           margin: 0;
           cursor: pointer;
@@ -237,7 +237,7 @@
             content: '';
             width: 8px;
             height: 2px;
-            background: $black;
+            background: var(--shop-black);
             position: absolute;
             top: 50%;
             right: 0.5em;
@@ -260,7 +260,7 @@
         }
 
         &:first-of-type .filter-name {
-          border-top: 1px solid $medium-gray;
+          border-top: 1px solid var(--shop-medium-gray);
         }
 
         ul {
@@ -269,7 +269,7 @@
           max-height: 225px;
           overflow-y: auto;
           overflow-x: hidden;
-          border-bottom: 1px solid $medium-gray;
+          border-bottom: 1px solid var(--shop-medium-gray);
           margin-left: 0;
 
           &.swatches {
@@ -305,7 +305,7 @@
             padding: 1em;
             color: transparent !important;
             border-radius: 50%;
-            border: 2px solid $white;
+            border: 2px solid var(--shop-white);
             width: 25px;
             height: 25px;
             border-radius: 50%;
@@ -316,16 +316,16 @@
 
             @media (hover) {
               &:hover {
-                border: 2px solid $gray;
+                border: 2px solid var(--shop-gray);
               }
             }
           }
 
           input:checked + label {
-            border-color: $black;
+            border-color: var(--shop-black);
 
             &:after {
-              background: $black;
+              background: var(--shop-black);
             }
           }
         }
@@ -338,21 +338,21 @@
             width: auto;
             min-width: 40px;
             text-align: center;
-            color: $black !important;
-            border: 2px solid $light-gray;
+            color: var(--shop-black) !important;
+            border: 2px solid var(--shop-light-gray);
             border-radius: 0;
             padding: 0.75em;
             margin-right: 0.75em;
 
             @media (hover) {
               &:hover {
-                border-color: $gray;
+                border-color: var(--shop-gray);
               }
             }
           }
 
           input:checked + label {
-            border-color: $black;
+            border-color: var(--shop-black);
           }
         }
 

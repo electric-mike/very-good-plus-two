@@ -14,15 +14,15 @@
     border-radius: 50%;
     margin: 0.25em 0.25em 0 0;
     cursor: pointer;
-    border: 1px solid $white;
+    border: 1px solid var(--shop-white);
 
     &.active {
-      border: 1px solid $black;
+      border: 1px solid var(--shop-black);
     }
 
     @media (hover) {
       &:hover {
-        border: 1px solid $gray;
+        border: 1px solid var(--shop-gray);
       }
     }
   }

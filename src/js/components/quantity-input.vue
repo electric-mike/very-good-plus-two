@@ -61,8 +61,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-
 .quantity-input {
   display: flex;
   align-items: flex-end;
@@ -79,7 +77,7 @@ export default {
     grid-gap: 5px;
     flex-basis: 25%;
     margin-left: 5px;
-    border: 1px solid $medium-gray;
+    border: 1px solid var(--shop-gray);
     border-radius: 3px;
   }
 
@@ -89,14 +87,14 @@ export default {
     height: 100%;
     height: 21px;
     line-height: 1;
-    color: $medium-gray;
-    background: $white;
+    color: var(--shop-gray);
+    background: var(--shop-white);
     border-radius: 0;
     border: none;
 
     &:hover {
-      color: $black;
-      background: $white;
+      color: var(--shop-black);
+      background: var(--shop-white);
     }
   }
 
@@ -111,12 +109,12 @@ export default {
       padding-right: .5em;
       padding-left: .5em;
       text-align: center;
-      border: 1px solid $medium-gray;
+      border: 1px solid var(--shop-gray);
       border-radius: 3px;
-      color: $black;
+      color: var(--shop-black);
 
       &:hover {
-        border-color: $black;
+        border-color: var(--shop-black);
       }
     }
 
@@ -154,11 +152,11 @@ export default {
       border-left: 0 !important;
       border-right: 0 !important;
       border-radius: 0 !important;
-      border-color: $medium-gray;
-      font-family: $primary-font;
+      border-color: var(--shop-gray);
+      font-family: var(--shop-primary-font);
 
       &:hover {
-        border-color: $medium-gray;
+        border: 1px solid var(--shop-black) !important;
       }
     }
 
@@ -166,19 +164,19 @@ export default {
       padding: 4px 7.5px !important;
       line-height: 1.6 !important;
       width: 30px !important;
-      border: 1px solid $medium-gray;
+      border: 1px solid var(--shop-gray);
 
       &:first-of-type {
-        border-bottom: 1px solid $medium-gray;
+        border-bottom: 1px solid var(--shop-gray);
       }
 
       &:last-of-type {
-        border-top: 1px solid $medium-gray;
+        border-top: 1px solid var(--shop-gray);
       }
 
       &:hover {
-        border: 1px solid $black;
-        color: $black;
+        border: 1px solid var(--shop-black);
+        color: var(--shop-black);
       }
     }
 

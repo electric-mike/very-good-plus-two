@@ -16,7 +16,7 @@
 
     .breadcrumbs {
       a, span:not(:last-of-type) {
-        color: $dark-gray;
+        color: var(--shop-dark-gray);
       }
     }
   }
@@ -114,7 +114,7 @@
 
           //     .simplebar-scrollbar:before {
           //       transition: opacity 0.1s;
-          //       background-color: $primary-color;
+          //       background-color: var(--shop-primary-color);
           //       top: 0;
           //       bottom: 0;
           //       left: 0;
@@ -166,10 +166,10 @@
           margin-left: -9px;
           // transform: translate(-50%,-50%) rotate(0deg);
           animation: spinner .6s infinite linear;
-          border: 3px solid rgba($black, 0.25);
-          border-top: 3px solid $black;
+          border: 3px solid rgba(0, 0, 0, 0.25);
+          border-top: 3px solid var(--shop-black);
           border-radius: 50%;
-          stroke: $white;
+          stroke: var(--shop-white);
           z-index: -1;
         }
 
@@ -178,7 +178,7 @@
           display: block;
           width: 100%;
           height: auto;
-          background: $white;
+          background: var(--shop-white);
 
           &:hover {
             opacity: 0;
@@ -206,7 +206,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba($white, 0.5);
+            background: rgba(255, 255, 255, 0.5);
             z-index: 1;
           }
         }
@@ -335,7 +335,7 @@
         .product-title, .price-wrapper > * {
           margin-bottom: 0;
           display: inline-block;
-          font-family: $font-family;
+          font-family: var(--shop-font-family);
         }
 
         .product-title {
@@ -373,7 +373,7 @@
 
       .at-price {
         margin: 0;
-        font-family: $font-family !important;
+        font-family: var(--shop-font-family) !important;
         font-size: 0.75em;
       }
 
@@ -394,7 +394,7 @@
       }
 
       .sale-price {
-        color: $red;
+        color: var(--shop-red);
       }
 
       // recharge
@@ -426,7 +426,7 @@
 
       .description-wrapper {
         overflow-y: auto;
-        border-top: 1px solid $medium-gray;
+        border-top: 1px solid var(--shop-medium-gray);
 
         // single description
         .description-text {
@@ -435,7 +435,7 @@
 
         // description accordions
         .description-accordion {
-          border-bottom: 1px solid $medium-gray;
+          border-bottom: 1px solid var(--shop-medium-gray);
           margin: 0;
 
           h5 {
@@ -449,7 +449,7 @@
               content: '';
               width: 8px;
               height: 2px;
-              background: $black;
+              background: var(--shop-black);
               position: absolute;
               top: 50%;
               right: 0.5em;
@@ -543,7 +543,7 @@
         .swatch {
           position: relative;
           cursor: pointer;
-          color: $black;
+          color: var(--shop-black);
           overflow: hidden;
           z-index: 1;
           // https://stackoverflow.com/questions/24077725/mobile-safari-sometimes-does-not-trigger-the-click-event
@@ -556,8 +556,8 @@
 
           label {
             padding: 0.75em;
-            border: 1px solid $medium-gray;
-            color: $black;
+            border: 1px solid var(--shop-medium-gray);
+            color: var(--shop-black);
             // border-radius: 5px;
             cursor: pointer;
             text-transform: uppercase;
@@ -566,32 +566,32 @@
 
           &:not(.color-swatch) {
             label {
-              color: $black !important; //override weird "blue" scenario
+              color: var(--shop-black) !important; //override weird "blue" scenario
             }
 
             input:disabled + label, input.disabled + label {
-              background: $light-gray;
-              color: $dark-gray;
-              border-color: $medium-gray;
+              background: var(--shop-light-gray);
+              color: var(--shop-dark-gray);
+              border-color: var(--shop-medium-gray);
             }
 
             input:checked + label {
-              color: $black;
+              color: var(--shop-black);
             }
           }
 
           input:checked + label {
-            border-color: $black !important;
-            color: $black;
+            border-color: var(--shop-black) !important;
+            color: var(--shop-black);
 
             &:after {
-              background: $black !important;
+              background: var(--shop-black) !important;
             }
           }
 
           &.oos {
             label {
-              color: $gray !important;
+              color: var(--shop-gray) !important;
             }
             // border-radius: 5px;
           }
@@ -611,7 +611,7 @@
               padding: 0;
               margin: 0 !important;
               color: transparent !important;
-              border-color: $white;
+              border-color: var(--shop-white);
               border-radius: 50%;
               position: relative;
               overflow: hidden;
@@ -619,13 +619,13 @@
 
             &[class*="white"] {
               label {
-                border-color: $light-gray;
+                border-color: var(--shop-light-gray);
               }
             }
 
             &.oos {
               label {
-                border-color: $gray;
+                border-color: var(--shop-gray);
 
                 &:before {
                   content: "";
@@ -633,7 +633,7 @@
                   left: 50%;
                   width: 150%;
                   height: 2px;
-                  background: $gray;
+                  background: var(--shop-gray);
                   transform: translate(-50%, -50%) rotate(-45deg);
                   z-index: 1;
                   position: absolute;
@@ -645,7 +645,7 @@
                   left: 50%;
                   width: 150%;
                   height: 2px;
-                  background: $gray;
+                  background: var(--shop-gray);
                   transform: translate(-50%, -50%) rotate(-45deg);
                   z-index: 1;
                   position: absolute;
@@ -663,7 +663,7 @@
                 width: 1px;
                 height: 150%;
                 transform: translate(-50%, -50%) rotate(39deg);
-                background: $medium-gray;
+                background: var(--shop-medium-gray);
                 z-index: 1;
                 position: absolute;
               }
@@ -674,23 +674,23 @@
             }
 
             input:hover + label {
-              border-color: $gray;
+              border-color: var(--shop-gray);
 
               &:before, &:after {
-                background: $gray;
+                background: var(--shop-gray);
               }
             }
 
             input:checked + label {
               &:before, &:after {
-                background: $black;
+                background: var(--shop-black);
               }
             }
           }
 
           @media (hover) {
             &:hover label {
-              border-color: $gray;
+              border-color: var(--shop-gray);
             }
           }
         }
@@ -705,7 +705,7 @@
       }
 
       .radio-wrapper {
-        border: 1px solid $medium-gray;
+        border: 1px solid var(--shop-medium-gray);
         margin-bottom: 1em;
         padding: 0.75em 0.75em 0;
         display: flex;

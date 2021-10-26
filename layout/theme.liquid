@@ -96,7 +96,7 @@
     {{ content_for_header }}
 
     <!-- Global Styles -->
-    <style>{% render 'styles.css' %}</style>
+    <style id="vars-colors">{% render 'styles.css' %}</style>
     {{ 'navigation.css' | asset_url | stylesheet_tag }}
     {{ 'header.css' | asset_url | stylesheet_tag }}
     {{ 'grid.css' | asset_url | stylesheet_tag }}

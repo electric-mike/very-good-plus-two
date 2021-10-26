@@ -136,7 +136,7 @@ export default {
       align-items: flex-start;
       justify-content: space-between;
       width: 100%;
-      border-bottom: 1px solid $medium-gray;
+      border-bottom: 1px solid var(--shop-medium-gray);
       padding: 1.25em 0;
 
       &:first-of-type {
@@ -180,7 +180,7 @@ export default {
         }
 
         .product-variant {
-          color: $dark-gray;
+          color: var(--shop-dark-gray);
           margin: 0 0 0.5rem;
           margin-bottom: 0;
         }
@@ -188,11 +188,11 @@ export default {
         .discount-text {
           padding: 2px 10px;
           font-size: .75em;
-          background: $gray;
+          background: var(--shop-gray);
           display: inline-block;
           border-radius: 10px;
           margin-bottom: 0.5em;
-          color: $white;
+          color: var(--shop-white);
           font-style: italic;
           text-align: center;
         }
@@ -238,7 +238,7 @@ export default {
         }
 
         .original-price {
-          color: $black;
+          color: var(--shop-black);
           position: relative;
           display: inline-block;
 
@@ -254,7 +254,7 @@ export default {
         }
 
         .original-price + .price {
-          color: $red;
+          color: var(--shop-red);
           display: inline-block;
           margin-left: 0.25em;
         }
@@ -274,7 +274,7 @@ export default {
     padding-bottom: 1.25em;
 
     .button {
-      border: 1px solid $primary-color;
+      border: 1px solid var(--shop-primary-color);
     }
   }
 }

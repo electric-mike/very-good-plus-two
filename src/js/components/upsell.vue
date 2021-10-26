@@ -164,8 +164,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-
 .upsell {
   display: flex;
   align-items: flex-start;
@@ -174,7 +172,7 @@ export default {
   border-top: 0 !important;
   padding: 1.25em;
   margin: -1px 0 1.25em;
-  background: $light-gray;
+  background: var(--shop-light-gray);
 
   &:first-of-type {
     padding-top: 0;

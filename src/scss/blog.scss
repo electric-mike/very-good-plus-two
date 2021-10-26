@@ -56,7 +56,7 @@
       width: 100%;
 
       &, * {
-        color: $black;
+        color: var(--shop-black);
         text-decoration: none;
       }
 

@@ -3,12 +3,12 @@
   <p class="bold primary-font uppercase">Primary Font</p>
   <div class="row">
     <div class="column-6">
-      <h1 v-if="variables.global" class="primary-font capitalize">
-        ${ variables.global['$primary-font'].value[0].value.replace(/-/g, ' ') }
+      <h1 v-if="variables" class="primary-font capitalize">
+        ${ variables['--shop-primary-font'].replace(/-/g, ' ') }
       </h1>
     </div>
     <div class="column-6">
-      <p>
+      <p class="primary-font bold">
         A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
         <br>
         a b c d e f g h i j k l m n o p q r s t u v w x y z
@@ -19,8 +19,8 @@
   <p class="bold uppercase">Secondary Font</p>
   <div class="row">
     <div class="column-6">
-      <h1 v-if="variables.global" class="secondary-font capitalize">
-        ${ variables.global['$secondary-font'].value[0].value.replace(/-/g, ' ') }
+      <h1 v-if="variables" class="secondary-font capitalize">
+        ${ variables['--shop-secondary-font'].replace(/-/g, ' ') }
       </h1>
     </div>
     <div class="column-6">

@@ -455,7 +455,7 @@ export default {
       left: 0;
       width: 100%;
       height: 100%;
-      background: $overlay;
+      background: var(--shop-overlay);
       pointer-events: none;
       user-select: none;
       z-index: -1;

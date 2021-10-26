@@ -109,13 +109,11 @@
     <div class="links action-links">
       {% if shop.customer_accounts_enabled %}
         <a class="link account-link-wrapper right-link" href="/account">
-          <span>
-            {% if customer and customer.first_name != blank %}
-              {{ 'layout.customer.account' | t }}
-            {% else %}
-              {{ 'layout.customer.log_in' | t }}
-            {% endif %}
-          </span>
+          {% if customer and customer.first_name != blank %}
+            {{ 'layout.customer.account' | t }}
+          {% else %}
+            {{ 'layout.customer.log_in' | t }}
+          {% endif %}
         </a>
       {% endif %}
 
@@ -130,7 +128,7 @@
       <div id="cart">
         <div class="cart" v-on:click="openCart($event)" v-bind:class="{ 'active': isCartPage }">
           <div class="cart-icon"></div>
-          <a href="/cart" class="cart-text link search-link right-link" aria-label="Cart">Cart <span class="v-hide" v-cloak v-if="cartSize > 0">&nbsp;(${ cartSize })</span></a>
+          <a href="/cart" class="cart-text link search-link right-link" aria-label="Cart">Cart <span style="color: inherit;" class="v-hide" v-cloak v-if="cartSize > 0">&nbsp;(${ cartSize })</span></a>
         </div>
         <side-cart v-bind:show-side-cart="showSideCart"></side-cart>
       </div>

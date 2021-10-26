@@ -90,8 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-
 .search-input-form {
   display: flex;
   width: 100%;

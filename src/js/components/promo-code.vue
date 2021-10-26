@@ -53,8 +53,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-
 .promo-code {
   position: relative;
   margin: 1em 1em 0;
@@ -68,17 +66,17 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     right: 1em;
-    color: $primary-color;
+    color: var(--shop-primary-color);
     margin: 0;
     cursor: pointer;
 
     &:hover {
-      color: $black;
+      color: var(--shop-black);
     }
   }
 
   .applied {
-    color: $black;
+    color: var(--shop-black);
   }
 }
 </style>

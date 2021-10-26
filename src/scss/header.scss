@@ -12,11 +12,11 @@
 // HEADER
 //------------------
 body > header {
-  background: $white;
+  background: var(--shop-header-background-color);
   display: flex;
   width: 100%;
   z-index: 999;
-  border-bottom: 1px solid $medium-gray;
+  border-bottom: 1px solid var(--shop-medium-gray);
 
   @media(min-width: $desktop) {
     border-bottom: 0;
@@ -27,7 +27,7 @@ body > header {
     top: 0;
 
     @media(min-width: $desktop) {
-      box-shadow: $shadow;
+      box-shadow: var(--shop-shadow);
     }
   }
 

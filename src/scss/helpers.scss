@@ -58,7 +58,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: $overlay;
+  background: var(--shop-overlay);
   z-index: 9999;
   animation: fadeIn 0.5s;
 }
@@ -85,11 +85,11 @@
 }
 
 .primary-font {
-  font-family: $primary-font;
+  font-family: var(--shop-primary-font);
 }
 
 .secondary-font {
-  font-family: $secondary-font;
+  font-family: var(--shop-secondary-font);
   font-weight: 400; //have to explicitly define for secondary font
 }
 
@@ -106,10 +106,10 @@
 }
 
 .invert {
-  background: $black;
+  background: var(--shop-black);
 
   *:not(button) {
-    color: $white;
+    color: var(--shop-white);
   }
 }
 
@@ -146,7 +146,7 @@
 //global errors
 .errors {
   ul {
-    color: $red;
+    color: var(--shop-red);
   }
 }
 
@@ -162,7 +162,7 @@
     display: inline-block;
     line-height: 2;
     padding: 0 1rem;
-    background: $white;
+    background: var(--shop-white);
     z-index: 1;
     margin: 0;
   }
@@ -174,30 +174,30 @@
     left: 50%;
     width: 100%;
     height: 1px;
-    background-color: $light-gray;
+    background-color: var(--shop-light-gray);
     transform: translate(-50%, -50%);
     z-index: -1;
   }
 }
 
 .black {
-  color: $black !important;
+  color: var(--shop-black) !important;
 }
 
 .white {
-  color: $white !important;
+  color: var(--shop-white) !important;
 }
 
 .gray {
-  color: $dark-gray !important;
+  color: var(--shop-dark-gray) !important;
 }
 
 .light-gray {
-  background: $light-gray;
+  background: var(--shop-light-gray);
 }
 
 .shallow-shadow {
-  box-shadow: $shallow-shadow;
+  box-shadow: var(--shop-shallow-shadow);
 }
 
 // hide image wrap overflow
@@ -213,7 +213,7 @@
     filter: blur(5px);
     transition: filter .15s, -webkit-filter .15s;
     overflow: hidden;
-    background: $white;
+    background: var(--shop-white);
 
     &.lazyloaded {
       -webkit-filter: blur(0);

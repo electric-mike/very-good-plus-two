@@ -10,7 +10,7 @@
   min-width: 300px;
   max-width: $mobile - 100;
   z-index: 99999999;
-  background: $white;
+  background: var(--shop-white);
   -webkit-overflow-scrolling: touch;
   transform: translateX(101%);
 

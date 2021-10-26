@@ -75,7 +75,7 @@ export default {
   align-self: center;
   width: 100%;
   padding: 1.25em;
-  border-bottom: 1px solid $medium-gray;
+  border-bottom: 1px solid var(--shop-medium-gray);
 
   p strong {
     display: inline;
@@ -85,19 +85,19 @@ export default {
     appearance: none;
     width: 100%;
     height: 0.75em;
-    border: 1px solid $secondary-color;
-    color: $secondary-color;
+    border: 1px solid var(--shop-secondary-color);
+    color: var(--shop-secondary-color);
 
     &::-webkit-progress-bar {
-      background-color: $white;
+      background-color: var(--shop-white);
     }
 
     &::-webkit-progress-value {
-      background-color: $secondary-color;
+      background-color: var(--shop-secondary-color);
     }
 
     &::-moz-progress-bar {
-      background-color: $secondary-color;
+      background-color: var(--shop-secondary-color);
     }
   }
 }

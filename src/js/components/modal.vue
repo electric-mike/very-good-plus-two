@@ -17,8 +17,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-
 .modal-wrapper {
   .modal-content {
     position: fixed;
@@ -31,7 +29,7 @@ export default {
     max-height: 600px;
     overflow-y: auto;
     max-width: 500px;
-    background: $white;
+    background: var(--shop-white);
     z-index: 999999;
     padding: 1em;
     animation: fadeIn 0.5s;
@@ -43,7 +41,7 @@ export default {
 
     .lines {
       &:before, &:after {
-        background-color: $black !important;
+        background-color: var(--shop-black) !important;
       }
     }
   }

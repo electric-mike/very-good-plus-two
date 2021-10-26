@@ -96,7 +96,7 @@ export default {
   @import '../../scss/variables.scss';
 
   .subtotal-checkout {
-    border-top: 1px solid $medium-gray;
+    border-top: 1px solid var(--shop-medium-gray);
 
     .title-subtotal {
       padding: 1.25em 1.25em 0;
@@ -156,7 +156,7 @@ export default {
     }
 
     .title-subtotal {
-      background: $light-gray;
+      background: var(--shop-light-gray);
       padding: 1em;
     }
 

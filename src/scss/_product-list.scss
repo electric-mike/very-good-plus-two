@@ -28,7 +28,7 @@
   .product-image-wrapper {
     display: flex;
     align-items: center;
-    background: $white;
+    background: var(--shop-white);
 
     &, .image-wrap, .product-image {
       width: 100%;
@@ -54,7 +54,7 @@
 
       &.price, &.original-price {
         display: inline-block;
-        font-family: $font-family;
+        font-family: var(--shop-font-family);
       }
 
       &.price {
@@ -62,7 +62,7 @@
       }
 
       &.original-price {
-        color: $black;
+        color: var(--shop-black);
         position: relative;
         margin-right: 0.25em;
 
@@ -78,7 +78,7 @@
       }
 
       &.original-price + .price {
-        color: $red;
+        color: var(--shop-red);
       }
     }
 

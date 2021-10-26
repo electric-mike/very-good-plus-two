@@ -16,8 +16,8 @@
 {
   padding-top: 3em;
   padding-bottom: 3em;
-  background: $light-gray;
-  border-bottom: 1px solid $white;
+  background: var(--shop-light-gray);
+  border-bottom: 1px solid var(--shop-white);
 }
 
 // shared left side nav styles
@@ -46,7 +46,7 @@
         }
 
         &.active {
-          color: $black;
+          color: var(--shop-black);
           text-decoration: underline;
         }
       }
@@ -55,10 +55,10 @@
     .contact-area {
       margin-top: 2em;
       padding-top: 2em;
-      border-top: 1px solid $dark-gray;
+      border-top: 1px solid var(--shop-dark-gray);
 
       .contact-header {
-        color: $primary-color;
+        color: var(--shop-primary-color);
         font-weight: bold;
         letter-spacing: 1px;
       }
@@ -76,7 +76,7 @@
   .right-area {
     padding: 2em;
     margin-top: 1em;
-    background: $white;
+    background: var(--shop-white);
 
     @media(min-width: $tablet) {
       margin-top: 0;
@@ -103,7 +103,7 @@
     width: 100%;
     max-width: 500px;
     margin: 1em 0;
-    background: $white;
+    background: var(--shop-white);
     padding: 2em;
 
     .button {
@@ -118,7 +118,7 @@
       list-style-type: none;
 
       li {
-        color: $red;
+        color: var(--shop-red);
         margin-left: 0;
         font-size: 0.9em;
       }
@@ -206,10 +206,10 @@ table.order-history {
   thead {
     tr {
       th {
-        border-bottom: 1px solid $dark-gray;
+        border-bottom: 1px solid var(--shop-dark-gray);
         padding-top: 0.5em;
         padding-bottom: 0.5em;
-        color: $primary-color;
+        color: var(--shop-primary-color);
         font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
@@ -314,7 +314,7 @@ table.order-table, table.rc_table {
 }
 
 .rc_schedule__order {
-  border-bottom: 1px solid $light-gray;
+  border-bottom: 1px solid var(--shop-light-gray);
   margin-bottom: 2em;
 }
 
