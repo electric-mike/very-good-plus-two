@@ -616,6 +616,11 @@ document.addEventListener('DOMContentLoaded', () => {
               })
             }
 
+            // sort all filterOptions
+            this.filterOptions.forEach((option) => {
+              option.options.sort((a, b) => a.value.localeCompare(b.value))
+            })
+
             // open sort by default on mobile
             this.$set(this.filterToggles, 'sort', true)
 
