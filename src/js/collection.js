@@ -616,21 +616,21 @@ document.addEventListener('DOMContentLoaded', () => {
               })
             }
 
-            // sort all filterOptions
-            this.filterOptions.forEach((option) => {
-              option.options.sort((a, b) => a.value.localeCompare(b.value))
-            })
-
             // open sort by default on mobile
             this.$set(this.filterToggles, 'sort', true)
 
             // Set first option to be open initially
+            // and sort filter options
+            let toggledFirst = false
             if (Object.keys(this.filterOptions).length > 0) {
               for (let i = 0; i < this.filterOptions.length; i += 1) {
                 if (this.filterOptions[i].options.length > 1) {
-                  this.toggleFilter(this.filterOptions[i].name)
+                  this.filterOptions[i].options.sort((a, b) => a.value.localeCompare(b.value))
 
-                  return
+                  if (!toggledFirst) {
+                    toggledFirst = true
+                    this.toggleFilter(this.filterOptions[i].name)
+                  }
                 }
               }
             }
