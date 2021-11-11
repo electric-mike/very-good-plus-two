@@ -63,6 +63,7 @@ export default {
       this.generateFilters()
       this.loading = false
       this.checkURL()
+      this.sortFilterOptions()
     },
   },
 }
