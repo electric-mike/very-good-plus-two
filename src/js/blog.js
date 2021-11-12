@@ -1,7 +1,26 @@
-import responsiveYoutube from './helpers/_responsive-youtube'
+// import responsiveYoutube from './helpers/_responsive-youtube'
 
 document.addEventListener('DOMContentLoaded', () => {
-  responsiveYoutube()
+  // BUG - This file does not export on build if this file is imported,
+  // so we raw dog it in here instead
+  // responsiveYoutube()
+
+  function wrap(el, wrapper) {
+    el.parentNode.insertBefore(wrapper, el)
+    wrapper.appendChild(el)
+  }
+
+  // responsive youtube
+  document.querySelectorAll('iframe[src*="youtube"]').forEach((video) => {
+    const videoWrapper = document.createElement('div')
+    videoWrapper.classList.add('video-responsive')
+
+    const videoOuterWrapper = document.createElement('div')
+    videoOuterWrapper.classList.add('video-responsive-wrapper')
+
+    wrap(video, videoOuterWrapper)
+    wrap(video, videoWrapper)
+  })
 
   // filter change
   const BlogTagFilter = document.getElementById('BlogTagFilter')
@@ -11,6 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (newURL) {
         window.location.pathname = newURL
       }
+    })
+  }
+
+  // comments badge scroll
+  const commentsBadge = document.getElementById('comments-count')
+  if (commentsBadge) {
+    commentsBadge.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+
+      window.scrollTo({
+        top      : document.getElementById('comments').offsetTop - (document.querySelector('header nav').getBoundingClientRect().height + 20),
+        behavior : 'smooth',
+      })
     })
   }
 })

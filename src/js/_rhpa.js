@@ -433,10 +433,21 @@ export default function rhpa() {
           if (window.judgeme) {
             window.judgeme.caches = {
               $revWidgets : document.querySelector('.jdgm-review-widget'),
-              $prevBadges : document.querySelector('.jdgm-preview-badge'),
+              $prevBadges : document.querySelectorAll('.jdgm-preview-badge'),
             }
+
             window.judgeme.customizeBadges()
             window.judgeme.initializeWidgets()
+
+            // force scroll watcher
+            window.judgeme.caches.$prevBadges.forEach((badge) => {
+              badge.addEventListener('click', () => {
+                window.scrollTo({
+                  top      : window.judgeme.caches.$revWidgets.offsetTop - (document.querySelector('header nav').getBoundingClientRect().height + 20),
+                  behavior : 'smooth',
+                })
+              })
+            })
           }
         },
 

@@ -26,6 +26,12 @@
       <strong>{{ article.author }}</strong>
       <br>
       <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
+      {% if article.comments_enabled? and article.comments_count > 0 %}
+        <br>
+        <span>
+          <a id="comments-count" href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
+        </span>
+      {% endif %}
     </p>
     <div>{{ article.content }}</div>
 
@@ -60,6 +66,8 @@
       </div>
     {% endif %} -->
 
+    {% render 'blog-reviews' %}
+    {% render 'blog-comment-form' %}
     {% render 'blog-previous-next' %}
   </div>
 </div>

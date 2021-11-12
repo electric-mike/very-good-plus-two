@@ -67,7 +67,19 @@
       "by_author": "by {{ author }}",
       "tags": "Tags"
     },
+    "counts": {
+      "comments_with_count": {
+        "one": "{{ count }} Comment",
+        "other": "{{ count }} Comments"
+      }
+    },
     "comments": {
+      "comment": "Comment",
+      "response_count": {
+        "zero": "Responses",
+        "one": "{{ count }} Response",
+        "other": "{{ count }} Responses"
+      },
       "title": "Leave a comment",
       "name": "Name",
       "email": "Email",
@@ -129,7 +141,8 @@
       "phone": "Phone Number",
       "message": "Message",
       "send": "Send",
-      "post_success": "Thanks for contacting us. We'll get back to you as soon as possible."
+      "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
+      "post_error": "Not all the fields have been filled out correctly"
     }
   },
   "customer": {

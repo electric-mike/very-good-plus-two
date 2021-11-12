@@ -1,0 +1,51 @@
+{% if blog.comments_enabled? and article.comments_count > 0 %}
+<br><br>
+{% endif %}
+
+{% if article.comments_enabled? %}
+  <h3>Leave A Comment</h3>
+  {% form article, class: 'vue-form' %}
+    {% if form.posted_successfully? %}
+      <div class="comment-form__success">
+        {% if blog.moderated? %}
+          <p class="comment-form__success-message">{{ 'blogs.comments.success_moderated' | t }}</p>
+        {% else %}
+          <p class="comment-form__success-message">{{ 'blogs.comments.success' | t }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if form.errors %}
+      <div class="comment-form__error">
+        <p class="comment-form__error-message">{{ 'general.forms.post_error' | t }}</p>
+      </div>
+    {% endif %}
+
+    <div class="form-row no-margin comment-form__name">
+      <div class="form-column full-column">
+        <label for="comment_author">{{ 'blogs.comments.name' | t }} <span class="red">*</span></label>
+        <input type="text" id="comment_author" name="comment[author]" value="{{ form.author }}" required="required" />
+      </div>
+    </div>
+
+    <div class="form-row no-margin comment-form__email">
+      <div class="form-column full-column">
+        <label for="comment_email">{{ 'blogs.comments.email' | t }} <span class="red">*</span></label>
+        <input type="text" id="comment_email" name="comment[email]" value="{{ form.email }}" required="required" />
+      </div>
+    </div>
+
+    <div class="form-row no-margin comment-form__body">
+      <div class="form-column full-column">
+        <label for="comment_body">{{ 'blogs.comments.comment' | t }} <span class="red">*</span></label>
+        <textarea id="comment_body" name="comment[body]" rows="5" required="required">{{ form.body }}</textarea>
+      </div>
+    </div>
+
+    <div class="form-row no-margin comment-form__submit">
+      <div class="form-column full-column">
+        <input type="submit" value="{{ 'blogs.comments.post' | t }}" id="comment-submit" class="button" />
+      </div>
+    </div>
+  {% endform %}
+{% endif %}

@@ -130,4 +130,26 @@
       width: 100%;
     }
   }
+
+  // blog reviews
+  .one-whole {
+    margin: 0 -0.625rem 0;
+
+    h3, h4, h5, h6 {
+      margin-bottom: 0;
+    }
+  }
+
+  .blog__comment-author {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1.25rem;
+    margin-bottom: 1.25rem;
+
+    .blog__comment-author-bio {
+      .meta {
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
 }
