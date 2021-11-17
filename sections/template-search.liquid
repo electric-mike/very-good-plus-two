@@ -148,7 +148,7 @@
                   class="toggle-filters show-tablet"
                   v-on:click.prevent="toggleFilters()"
                 ><span class="v-cloak" v-cloak>${ showFilters ? 'Hide' : 'Show' }</span> Filter & Sort</a>
-                <span class="product-count left-padding" v-if="!loading">
+                <span class="product-count left-padding show-tablet" v-if="!loading">
                   <span v-if="paginatedProductsPages > 1">
                     ${ pageRangeStart + 1 }-${ pageRangeEnd }
                     <span v-if="paginatedProducts.length < filteredProducts.length">
