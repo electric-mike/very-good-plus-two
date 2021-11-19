@@ -3,7 +3,7 @@ import store from './store/index'
 import geolocate from './helpers/_geolocate'
 import StickyNav from './_sticky-nav'
 
-export default function cart() {
+export default function abar() {
   // cart icon
   const announcementBar = document.getElementById('announcement-bar')
   if (announcementBar) {

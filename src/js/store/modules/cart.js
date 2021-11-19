@@ -91,15 +91,15 @@ export default {
       })
     },
 
-    addToCart(store, {
+    async addToCart(store, {
       quantity,
       id,
-      upsell,
+      dontOpenDrawer,
       selling_plan, //eslint-disable-line
     }) {
       store.commit('toggleAddingToCart')
 
-      fetch('/cart/add.js', {
+      return fetch('/cart/add.js', {
         method  : 'POST',
         headers : {
           'Content-Type'     : 'application/json',
@@ -118,7 +118,7 @@ export default {
             await store.dispatch('fetchCart')
             store.commit('setPdpError')
 
-            if (!upsell) {
+            if (!dontOpenDrawer) {
               store.commit('toggleSideCart')
             }
           } else {
@@ -126,6 +126,8 @@ export default {
           }
 
           store.commit('toggleAddingToCart')
+
+          return res
         })
     },
 
