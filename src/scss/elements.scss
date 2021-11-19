@@ -95,6 +95,10 @@ ul, ol {
       margin-left: 1.25rem;
     }
   }
+
+  li + li, ul, ol {
+    margin-top: 0.625em;
+  }
 }
 
 ol {

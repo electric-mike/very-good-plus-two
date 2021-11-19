@@ -21,27 +21,39 @@
           <p>{{ block.settings.collection_description }}</p>
           <a href="{{ collection.url }}" class="btn full-width-until-md">SHOP {{ collection.title | upcase }}</a>
         </div>
-        {%- for product in collection.products limit: 5 -%}
-          <div class="product column-6-tablet-vert-4">
-            <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
-              <img
-                class="product-image lazyload blur-up"
-                src="{{ settings.placeholder_image | img_url }}"
-                data-src="{{ product.featured_image.src | img_url: 'large' }}"
-                data-additional-image="{{ settings.placeholder_image | img_url }}"
-                data-additional-image-large="{{ product.images[1] | img_url: 'large' }}"
-                alt="{{ product.featured_image.alt | escape }}"
-                width="{{ product.featured_image.width }}"
-                height="{{ product.featured_image.height }}"
-              />
+        {%- for prod in collection.products limit: 5 -%}
+          <div class="product product-{{ prod.id }} column-6-tablet-vert-4">
+            <a class="product-image-wrapper" href="{{ prod.url | within: collection }}">
+              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: prod.featured_image.aspect_ratio }}%;">
+                {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                {%- assign secondary_img_url = prod.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="product-image lazyload blur-up"
+                  src="{{ settings.placeholder_image | img_url }}"
+                  alt="{{ prod.title | escape }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+                  data-secondary-aspectratio="{{ prod.images[1].aspect_ratio }}"
+                  data-sizes="auto"
+                  data-first-src="{{ img_url }}"
+                  data-additional-image="{{ secondary_img_url }}"
+                  v-on:mouseover="changeImage('in', $event)"
+                  v-on:mouseleave="changeImage('out', $event)"
+                  width="{{ prod.featured_image.width }}"
+                  height="{{ prod.featured_image.height }}"
+                />
+              </div>
             </a>
-            <div class="fc-product-info product-info">
-              <a href="{{ product.url | within: collection }}">
-                <h5>{{ product.title }}</h5>
+            <div class="product-info">
+              <p class="vendor">{{ prod.vendor }}</p>
+              <a href="{{ prod.url | within: collection }}">
+                <p>{{ prod.title }}</p>
               </a>
-              {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
-              <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+              {% if prod.compare_at_price > prod.price %}<p class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</p>{% endif %}
+              <p class="price">{{ prod.price | money_without_trailing_zeros }}</p>
             </div>
+            {% render 'color-swatches', product: prod %}
           </div>
         {%- endfor -%}
         <div class="column-6 fc-view-all hide-md">

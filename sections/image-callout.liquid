@@ -1,61 +1,81 @@
-<div data-section-id="{{ section.id }}" data-section-type="page-section">
+<div data-section-id="{{ section.id }}" data-section-type="page-section" style="background-color: {{ section.settings.background_color }};">
   <div class="image-callout-sections image-callout-sections-{{ section.id }}">
     {% for block in section.blocks %}
       <div class="image-callout-wrapper" style="background-color: {{ block.settings.background_color }};">
         {% if block.type == 'left-image-callout' %}
-          <div class="row row-middle max-width">
+          <div class="text-row row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}">
+            {% if block.settings.image_link %}
+            <a href="{{ block.settings.image_link }}" class="column-12-tablet-vert-6 image-row">
+            {% else %}
             <div class="column-12-tablet-vert-6 image-row">
+            {% endif %}
               {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
               <img
                 class="lazyload blur-up"
-                src="{{ settings.placeholder_image | img_url }}"
+                src="{{ block.settings.image.src | img_url: '360x' }}"
                 alt="{{ block.settings.image.alt | escape }}"
                 data-src="{{ img_url }}"
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                 data-sizes="auto"
+                width="1600"
+                height="1600"
               />
               <noscript>
                 <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
               </noscript>
+            {% if block.settings.image_link %}
+            </a>
+            {% else %}
             </div>
+            {% endif %}
             <div class="column-12-tablet-vert-6 callout-text">
               {{ block.settings.textarea }}
               {% if block.settings.button_text.size > 0 %}
                 <a
-                  class="button {% if block.settings.invert_text %}secondary{% endif %}"
+                  class="button{% if block.settings.forward_button %} forward-button{% endif %}{% if block.settings.wider_button %} wider{% endif %}"
                   href="{{ block.settings.button_link }}"
                 >{{ block.settings.button_text }}</a>
               {% endif %}
             </div>
           </div>
         {% elsif block.type == 'right-image-callout' %}
-          <div class="row row-middle max-width" style="background-color: {{ block.settings.background_color }};">
+          <div class="row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}" style="background-color: {{ block.settings.background_color }};">
             <div class="column-12-tablet-vert-6 callout-text">
               {{ block.settings.textarea }}
               {% if block.settings.button_text.size > 0 %}
                 <a
-                  class="button {% if block.settings.invert_text %}secondary{% endif %}"
+                  class="button{% if block.settings.forward_button %} forward-button{% endif %}{% if block.settings.wider_button %} wider{% endif %}"
                   href="{{ block.settings.button_link }}"
                 >{{ block.settings.button_text }}</a>
               {% endif %}
             </div>
+            <div class="text-row row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}">
+            {% if block.settings.image_link %}
+            <a href="{{ block.settings.image_link }}" class="column-12-tablet-vert-6 image-row">
+            {% else %}
             <div class="column-12-tablet-vert-6 image-row">
+            {% endif %}
               {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
               <img
                 class="lazyload blur-up"
-                src="{{ settings.placeholder_image | img_url }}"
+                src="{{ block.settings.image.src | img_url: '360x' }}"
                 alt="{{ block.settings.image.alt | escape }}"
                 data-src="{{ img_url }}"
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                 data-sizes="auto"
-                data-variantid="{{ block.settings.image.id }}"
+                width="1600"
+                height="1600"
               />
               <noscript>
                 <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
               </noscript>
+            {% if block.settings.image_link %}
+            </a>
+            {% else %}
             </div>
+            {% endif %}
           </div>
         {% endif %}
       </div>
@@ -64,30 +84,78 @@
 </div>
 
 <style>
-.image-callout-sections-{{ section.id }} .row > div {
+.image-callout-sections-{{ section.id }},
+.image-callout-sections-{{ section.id }} .text-row {
+  overflow: hidden;
+  margin: 0;
+}
+
+.image-callout-sections-{{ section.id }} .image-row {
+  padding: 0;
+}
+
+
+{% if section.settings.only_bottom_padding %}
+.image-callout-sections-{{ section.id }} div[class*="row"] > div,
+.image-callout-sections-{{ section.id }} div[class*="row"] > a {
   padding-bottom: 0;
+  margin: 0;
+}
+{% else if section.settings.no_padding %}
+.image-callout-sections-{{ section.id }} div[class*="row"] > div,
+.image-callout-sections-{{ section.id }} div[class*="row"] > a {
+  padding: 0;
+  margin: 0;
+}
+{% else %}
+.image-callout-sections-{{ section.id }} {
+  padding: 0 0.625rem;
+}
+{% endif %}
+
+.image-callout-sections-{{ section.id }} div[class*="row"] .callout-text {
+  padding: 2.5em 1.25em;
 }
 
-.image-callout-sections-{{ section.id }} .row .callout-text {
-  padding: 1em 2.5em;
+@media(min-width: 768px) {
+  {% unless section.settings.no_padding %}
+  .image-callout-sections-{{ section.id }} {
+    padding: 0 0 3em;
+  }
+  {% endunless  %}
+
+  .image-callout-sections-{{ section.id }} div[class*="row"] .callout-text {
+    padding: 1.25em !important;
+  }
 }
 
-.image-callout-sections-{{ section.id }} .row img {
+.image-callout-sections-{{ section.id }} div[class*="row"] img {
   display: block;
   width: 100%;
+  height: auto;
+}
+
+.image-callout-sections-{{ section.id }} div[class*="row"] .image-row {
+  display: block;
 }
 
 @media(max-width: 767px) {
-  .image-callout-sections-{{ section.id }} .row,
-  .image-callout-sections-{{ section.id }} .row .image-row
+  .image-callout-sections-{{ section.id }} div[class*="row"],
+  .image-callout-sections-{{ section.id }} div[class*="row"] .image-row
   {
     padding: 0;
     margin: 0;
   }
+}
 
-  .image-callout-sections-{{ section.id }} .row .callout-text {
-    padding: 2em 1em;
+@media(min-width: 1280px) {
+  .image-callout-sections-{{ section.id }} div[class*="row"] .callout-text {
+    padding: 1.25em 5em !important;
   }
+}
+
+.image-callout-sections-{{ section.id }} div[class*="row"] .callout-text {
+  padding: 2.5em 1.25em;
 }
 </style>
 
@@ -95,7 +163,52 @@
 {
   "name": "Image Callout",
   "max_blocks": 4,
-  "settings": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "blocks_vertical_align",
+      "label": "Blocks Vertical Alignment",
+      "default": "top",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "max_width",
+      "label": "Max Width?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "only_bottom_padding",
+      "label": "Only Bottom Padding?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "no_padding",
+      "label": "No Padding?",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
   "blocks": [
     {
       "type": "left-image-callout",
@@ -107,6 +220,11 @@
           "label": "Image"
         },
         {
+          "type": "url",
+          "id": "image_link",
+          "label": "Image Link"
+        },
+        {
           "type": "textarea",
           "id": "textarea",
           "label": "Text",
@@ -127,6 +245,18 @@
           "type": "url",
           "id": "button_link",
           "label": "Button Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "forward_button",
+          "label": "Forward Button",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "wider_button",
+          "label": "Wider Button",
+          "default": false
         }
       ]
     },
@@ -135,10 +265,14 @@
       "name": "Right Image Callout",
       "settings": [
         {
-          "type": "color",
-          "id": "background_color",
-          "label": "Background Color",
-          "default": "#ffffff"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "image_link",
+          "label": "Image Link"
         },
         {
           "type": "textarea",
@@ -147,9 +281,10 @@
           "default": "<h2>Lorem Ipsum</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>"
         },
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#ffffff"
         },
         {
           "type": "text",
@@ -160,6 +295,18 @@
           "type": "url",
           "id": "button_link",
           "label": "Button Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "forward_button",
+          "label": "Forward Button",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "wider_button",
+          "label": "Wider Button",
+          "default": false
         }
       ]
     }

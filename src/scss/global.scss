@@ -58,9 +58,9 @@
 @import './drawer.scss';
 
 //------------------
-// CART
+// ICON
 //------------------
-@import './cart-icon.scss';
+@import './icons.scss';
 
 //------------------
 // FORMS
@@ -424,13 +424,13 @@ h1 + .accordion {
         color: var(--shop-white);
       }
 
-      @media(min-width: $tablet) {
-        min-height: 300px;
-      }
+      // @media(min-width: $tablet) {
+      //   min-height: 300px;
+      // }
 
-      @media(min-width: $desktop) {
-        min-height: 400px;
-      }
+      // @media(min-width: $desktop) {
+      //   min-height: 400px;
+      // }
     }
 
     .category-hero-no-image {

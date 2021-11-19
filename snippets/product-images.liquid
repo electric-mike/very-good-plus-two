@@ -2,17 +2,17 @@
   <div class="mobile-images-wrapper">
     <div class="mobile-images">
       {% for image in product.images %}
-        <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%;">
+        <div class="image-wrap">
           {%- assign img_url = image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
           <img
+            data-lightbox-trigger
+            data-index="{{ forloop.index | minus: 1 }}"
             id="{{ image.id }}"
-            data-index="{{ forloop.index }}"
             class="lazyload blur-up"
-            src="{{ settings.placeholder_image | img_url }}"
+            src="{{ settings.placeholder_image | img_url: 'large' }}"
             alt="{{ image.alt | escape }}"
             data-src="{{ img_url }}"
             data-widths="[360, 540, 720, 900, 1080, 1600]"
-            data-aspectratio="{{ image.aspect_ratio }}"
             data-sizes="auto"
             data-variantid="{{ image.id }}"
             width="{{ image.width }}"
@@ -33,6 +33,7 @@
           {% for image in product.images %}
             {%- assign img_url = image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
             <div
+              data-index="{{ forloop.index | minus: 1 }}"
               class="lazyload blur-up additional-image"
               style="background-image: url({{ image.src | img_url: '200x' }})"
               alt="{{ image.alt | escape }}"
@@ -52,14 +53,16 @@
           {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
           <figure class="lazyload blur-up zoomImg" data-bg="{{ product.featured_image.src | img_url: '1600x' }}">
             <img
+              data-lightbox-trigger
+              data-index="0"
               id="ProductPhotoImg"
-              class="main-image lazyload"
-              src="{{ settings.placeholder_image | img_url }}"
+              class="main-image lazyload blur-up"
+              src="{{ settings.placeholder_image | img_url: 'large' }}"
               alt="{{ product.featured_image.alt | escape }}"
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-              data-placeholder="{{ settings.placeholder_image | img_url }}"
+              data-placeholder="{{ settings.placeholder_image | img_url: 'large' }}"
               data-sizes="auto"
               width="{{ product.featured_image.width }}"
               height="{{ product.featured_image.height }}"
@@ -74,17 +77,19 @@
   {% elsif section.settings.desktop_images_type == 'tiles' %}
     <div class="desktop-images-wrapper desktop-images-wrapper-tiles {% if product.images.size > 1 %}has-additional-images{% endif %}">
       {% for image in product.images %}
-        <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%; overflow: hidden;">
+        <div class="image-wrap" data-alt="{{ image.alt | escape }}" data-variantid="{{ image.id }}" style="height: 0; padding-bottom: {{ 100 | divided_by: image.aspect_ratio }}%; overflow: hidden;">
           {%- assign img_url = image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-          <figure class="lazyload blur-up zoomImg" data-bg="{{ image.src | img_url: '1600x' }}" style="width: 100%">
+          <figure class="lazyload blur-up zoomImg" data-bg="{{ image.src | img_url: '1600x' }}">
             <img
-              class="main-image lazyload"
-              src="{{ settings.placeholder_image | img_url }}"
+              data-lightbox-trigger
+              data-index="{{ forloop.index | minus: 1 }}"
+              class="main-image lazyload blur-up"
+              src="{{ settings.placeholder_image | img_url: 'large' }}"
               alt="{{ image.alt | escape }}"
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
               data-aspectratio="{{ image.aspect_ratio }}"
-              data-placeholder="{{ settings.placeholder_image | img_url }}"
+              data-placeholder="{{ settings.placeholder_image | img_url: 'large' }}"
               data-sizes="auto"
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"

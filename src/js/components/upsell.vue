@@ -10,7 +10,8 @@
       )
   .upsell-info
     .upsell-text
-      h6.upsell-deal Deal of the Day
+      h6.upsell-deal(v-if="computedUpsellProduct === upsellProduct") Deal of the Day
+      h6.upsell-deal(v-else) Complete Your Cart
       h6.upsell-title #[a(:href='"/products/" + computedUpsellProduct.handle') {{ computedUpsellProduct.title }}]
       h6.price {{ formatMoney(selectedVariant.price) }}
         //- span(v-if='selectedVariant.title')&nbsp;({{ selectedVariant.title }})&nbsp;

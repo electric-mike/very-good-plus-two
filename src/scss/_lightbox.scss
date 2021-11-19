@@ -1,0 +1,90 @@
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--shop-overlay);
+  z-index: 999;
+  animation: fadeIn 0.5s;
+
+  .lightbox-images {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0.625em 1.25em;
+  }
+
+  .image-wrap {
+    width: 100%;
+    flex-shrink: 0;
+    margin: 0.625em auto;
+    max-width: $desktop;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .hamburger-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1.25em;
+    z-index: 9999;
+    cursor: pointer;
+
+    .hamburger {
+      margin: 0;
+      width: 25px;
+      height: 20px;
+
+      .lines:before, .lines:after {
+        height: 2px;
+      }
+    }
+  }
+
+  @media(min-width: $tablet) {
+    &.hide-non-active .image-wrap:not(.active) {
+      display: none;
+    }
+
+    .hamburger-wrapper {
+      padding: 2.5em;
+    }
+
+    .lightbox-images {
+      padding: 1.25em 2.5em;
+
+      .image-wrap {
+        margin: 1.25em auto;
+
+        &.active {
+          order: -1;
+        }
+
+        &:first-of-type {
+          order: -1;
+        }
+      }
+    }
+  }
+
+  @media(min-width: $max-width - 250px) {
+    .hamburger {
+      .lines {
+        background: transparent;
+
+        &:before, &:after {
+          background: var(--shop-white);
+        }
+      }
+    }
+  }
+}

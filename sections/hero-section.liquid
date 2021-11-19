@@ -105,7 +105,7 @@
           {% endif %}
 
         {% when 'subheader' %}
-          <h4 class="hero-text" id="hero-subheader-{{ section.id }}">{{ block.settings.subheader_text }}</h4>
+          <p class="hero-text" id="hero-subheader-{{ section.id }}">{{ block.settings.subheader_text }}</p>
           {% style %}
             #hero-subheader-{{ section.id }} {
               font-weight: {{ block.settings.subheader_desktop_weight }};
@@ -136,11 +136,17 @@
           {% style %}
             a#hero-button-{{ section.id }} {
               font-weight: {{ block.settings.subheader_desktop_weight }};
-              color: {{ block.settings.button_color }};
-              background-color: {{ block.settings.button_background_color }};
-              border-color: {{ block.settings.button_background_color }};
+              {%- if block.settings.button_color.size > 0 and block.settings.button_color != 'rgba(0,0,0,0)' -%}color: {{ block.settings.button_color }};{%- endif -%}
+              {%- if block.settings.button_background_color.size > 0 and block.settings.button_background_color != 'rgba(0,0,0,0)' -%}background-color: {{ block.settings.button_background_color }};{%- endif -%}
+              {%- if block.settings.button_background_color.size > 0 and block.settings.button_background_color != 'rgba(0,0,0,0)' -%}border-color: {{ block.settings.button_background_color }};{%- endif -%}
               margin: {{ block.settings.button_top_margin }}px {{ block.settings.button_side_margin }}px 0;
               padding: {{ block.settings.button_top_padding }}px {{ block.settings.button_side_padding }}px;
+            }
+
+            a#hero-button-{{ section.id }}:hover {
+              {%- if block.settings.button_hover_color.size > 0 and block.settings.button_hover_color != 'rgba(0,0,0,0)' -%}color: {{ block.settings.button_hover_color }};{%- endif -%}
+              {%- if block.settings.button_hover_background_color.size > 0 and block.settings.button_hover_background_color != 'rgba(0,0,0,0)' -%}background-color: {{ block.settings.button_hover_background_color }};{%- endif -%}
+              {%- if block.settings.button_hover_background_color.size > 0 and block.settings.button_hover_background_color != 'rgba(0,0,0,0)' -%}border-color: {{ block.settings.button_hover_background_color }};{%- endif -%}
             }
 
             @media(max-width: 767px) {
@@ -163,6 +169,7 @@
     height: 100vh;
     height: {{ section.settings.desktop_height }}vw; /*override with settings*/
     max-height: 100vh;
+    max-height: calc(100vh - 90px);
     overflow: hidden;
   }
 
@@ -191,14 +198,14 @@
   }
 
   {% if section.settings.max_width > 0 %}
-    div#hero-text {
+    div#hero-text-{{ section.id }} {
       max-width: {{ section.settings.max_width }}px;
     }
   {% endif %}
 
   {% if section.settings.mobile_max_width > 0 %}
     @media(max-width: 767px) {
-      div#hero-text {
+      div#hero-text-{{ section.id }} {
         max-width: {{ section.settings.mobile_max_width }}px;
       }
     }
@@ -449,6 +456,16 @@
       "step": 16,
       "unit": "px",
       "label": "Constrain Text (max-width)",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "mobile_max_width",
+      "min": 0,
+      "max": 1200,
+      "step": 16,
+      "unit": "px",
+      "label": "Constrain Mobile Text (max-width)",
       "default": 0
     }
   ],
@@ -747,6 +764,16 @@
           "type": "color",
           "id": "button_background_color",
           "label": "Button Background Color"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_color",
+          "label": "Button Hover Text Color"
+        },
+        {
+          "type": "color",
+          "id": "button_hover_background_color",
+          "label": "Button Hover Background Color"
         },
         {
           "type": "checkbox",

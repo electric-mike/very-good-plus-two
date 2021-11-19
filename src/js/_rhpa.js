@@ -179,6 +179,10 @@ export default function rhpa() {
         computedProductOriginalPriceFormatted() {
           return this.formatMoney(this.computedProductOriginalPrice * this.formQuantity)
         },
+
+        computedPaymentsPrice() {
+          return this.formatMoney((this.productPrice * this.formQuantity) / 4).replace('.00', '')
+        },
       },
 
       watch: {

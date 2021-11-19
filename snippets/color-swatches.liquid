@@ -35,13 +35,15 @@
               {% assign how_many_options = current_options | size %}
 
               {% assign img_url = variant.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+              {% assign fallback_img = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
 
               <li
-                class="swatch swatch-{{ current_option | handleize }} {{ current_option | replace: ' ', '-' | handleize }}"
+                class="swatch inline-swatch swatch-{{ current_option | handleize }} {{ current_option | replace: ' ', '-' | handleize }}"
                 data-image-id="{{ variant.featured_image.id }}"
-                data-color-name="{{ current_option }}"
+                data-material-name="{{ current_option }}"
+                data-image-src="{{ img_url }}"
                 v-bind:class="{ 'active': activeSwatches['{{ product.id }}'] === '{{ variant.id }}' || defaultSwatchSelected('{{ product.id }}', {{ forloop.index | minus: 1 }}) }"
-                v-on:click="changeSwatch('{{ variant.id }}', '{{ img_url }}', '{{ variant.featured_image.aspect_ratio }}', '{{ product.id }}', '{{ product.url | within: collection }}?variant={{ variant.id }}')"
+                v-on:click="changeSwatch('{{ variant.id }}', '{{ img_url }}', '{{ variant.featured_image.aspect_ratio }}', '{{ product.id }}', '{{ product.url | within: collection | split:'?' | first }}?variant={{ variant.id }}', {{ forloop.index | minus: 1 }}, '{{ fallback_img }}')"
               ></li>
               {% assign swatches_size = swatches_size | plus: 1 %}
             {% endunless %}

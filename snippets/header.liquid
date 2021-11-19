@@ -127,7 +127,7 @@
 
       <div id="cart">
         <div class="cart" v-on:click="openCart($event)" v-bind:class="{ 'active': isCartPage }">
-          <div class="cart-icon"></div>
+          <div class="cart-icon hide-desktop"></div>
           <a href="/cart" class="cart-text link search-link right-link" aria-label="Cart">Cart <span style="color: inherit;" class="v-hide" v-cloak v-if="cartSize > 0">&nbsp;(${ cartSize })</span></a>
         </div>
         <side-cart v-bind:show-side-cart="showSideCart"></side-cart>

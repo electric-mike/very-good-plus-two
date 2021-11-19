@@ -1,10 +1,8 @@
 // product page
-import Vue from 'vue'
-import Siema from 'siema'
+import SiemaCustom from './helpers/_siema-custom'
 
 import rhpa from './_rhpa'
 import productDescription from './_product-description'
-import swatches from './helpers/_swatches'
 
 export default function product() {
   // run RHPA
@@ -50,6 +48,7 @@ export default function product() {
 
         currentImageSrc = image.dataset.src
         mainImage.dataset.src = currentImageSrc
+        mainImage.dataset.index = sentIndex
 
         if (window.isFirstTime) {
           mainImage.classList.add('lazyload')
@@ -114,7 +113,7 @@ export default function product() {
   window.mobileSlider = false
   const mobileImages = document.querySelector('.mobile-images')
   if (mobileImages) {
-    window.mobileSlider = new Siema({
+    window.mobileSlider = new SiemaCustom({
       selector  : mobileImages,
       perPage   : 1,
       draggable : true,
@@ -127,7 +126,7 @@ export default function product() {
 
           this.innerElements.forEach((el, i) => {
             const dot = document.createElement('span')
-            dot.classList.add('dot', 'invert')
+            dot.classList.add('dot')
 
             if (self.currentSlide === i) {
               dot.classList.add('active')
@@ -184,14 +183,50 @@ export default function product() {
     })
   }
 
-  const recommendations = document.getElementById('recommendations')
-  if (recommendations) {
-    window.addEventListener('doRecommendationSwatches', () => {
-      new Vue({
-        el         : recommendations,
-        delimiters : ['${', '}'],
-        mixins     : [swatches],
+  const lightbox = document.getElementById('product-lightbox')
+  function closeLightbox() {
+    document.body.classList.remove('no-scroll')
+    lightbox.style.display = 'none'
+  }
+
+  if (lightbox) {
+    const lightboxImageWrap = lightbox.querySelector('.lightbox-images')
+    const lightboxClosers = document.querySelectorAll('[data-lightbox-close]')
+    const lightboxTriggers = document.querySelectorAll('[data-lightbox-trigger]')
+
+    if (lightbox && lightboxTriggers.length > 0) {
+      lightboxTriggers.forEach((trigger) => {
+      // special variable for siema
+        let currentOffset = 0
+        trigger.addEventListener('mousedown', () => {
+          currentOffset = document.querySelector('.mobile-images > div').style.transform
+        })
+
+        trigger.addEventListener('mouseup', (e) => {
+        // check special variable to not run this if we've swiped
+          if (currentOffset === document.querySelector('.mobile-images > div').style.transform) {
+            document.body.classList.add('no-scroll')
+            lightbox.style.display = 'block'
+
+            const scrollToImage = lightbox.querySelector(`.lightbox-image[data-index="${e.target.dataset.index}"]`)
+            if (scrollToImage) {
+              lightboxImageWrap.scrollTop = (
+                scrollToImage.offsetTop - parseInt(getComputedStyle(lightboxImageWrap).paddingLeft.replace('px', ''), 10)
+              )
+            }
+          }
+
+          e.target.classList.remove('swiping')
+        })
       })
-    })
+
+      document.addEventListener('keyup', (e) => {
+        if (e.key === 'Escape' && lightbox.style.display !== 'none') {
+          closeLightbox()
+        }
+      })
+
+      lightboxClosers.forEach((closer) => { closer.addEventListener('click', closeLightbox) })
+    }
   }
 }

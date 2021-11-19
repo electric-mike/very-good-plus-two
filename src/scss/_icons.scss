@@ -1,0 +1,225 @@
+@keyframes blowUp {
+  0% {
+    transform: scale(1) translateZ(0);
+  }
+
+  50% {
+    transform: scale(1.15) translateZ(0);
+  }
+
+  100% {
+    transform: scale(1) translateZ(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0) translateZ(0);
+  }
+
+  100% {
+    transform: scale(1) translateZ(0);
+  }
+}
+
+//------------------
+// CART ICON (IN HEADER)
+//------------------
+.cart {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem 0.75em 0.75em;
+  cursor: pointer;
+  z-index: 3;
+  text-decoration: none;
+
+  @media(min-width: $desktop) {
+    padding: 0;
+    margin-right: 0.75em;
+  }
+
+  .cart-icon {
+    @media(max-width: $desktop - 1) {
+      position: relative;
+      width: 1.25rem;
+      height: 1.25rem;
+      background: url('~Src/assets/cart-icon.svg') no-repeat;
+      background-position: center;
+      background-size: contain;
+      pointer-events: none;
+      transition: filter 0.25s;
+
+      &.cart-filled {
+        transition: all 0.25s;
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          background: var(--shop-red);
+          border-radius: 50%;
+          bottom: -4px;
+          right: -2px;
+          transition: all 0.25s;
+          animation-duration: 0.3s;
+          animation-name: scaleUp;
+          animation-direction: alternate;
+          backface-visibility: hidden;
+        }
+
+        &.cart-change {
+          transition: all 0.25s;
+          animation-duration: 0.3s;
+          animation-name: blowUp;
+          animation-direction: alternate;
+        }
+      }
+
+      .cart-text {
+        display: none;
+      }
+
+      &.active {
+        .cart-icon {
+          filter: var(--shop-gray)-filter;
+        }
+      }
+    }
+  }
+}
+
+
+.cart-icon,
+.search-icon,
+.account-icon,
+.filter-icon,
+.arrow-icon, .next-icon,
+.previous-icon, .back-icon,
+.star-icon
+{
+  position: relative;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url('~Src/assets/cart-icon.svg') no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+  transition: opacity 0.25s;
+
+  &.active {
+    transition: all 0.25s;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--shop-header-background-color);
+      border-radius: 50%;
+      bottom: -2px;
+      right: -2px;
+      transition: all 0.25s;
+      animation-duration: 0.3s;
+      animation-name: scaleUp;
+      animation-direction: alternate;
+      backface-visibility: hidden;
+      z-index: 0;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--shop-light-blue);
+      border-radius: 50%;
+      bottom: -1px;
+      right: -1px;
+      transition: all 0.25s;
+      animation-duration: 0.3s;
+      animation-name: scaleUp;
+      animation-direction: alternate;
+      backface-visibility: hidden;
+      z-index: 1;
+    }
+
+    &.cart-change {
+      transition: all 0.25s;
+      animation-duration: 0.3s;
+      animation-name: blowUp;
+      animation-direction: alternate;
+    }
+  }
+}
+
+.cart-icon {
+  width: 2rem;
+
+  &.active {
+    &:after, &:before {
+      display: none;
+    }
+  }
+}
+
+.search-icon {
+  background: url('~Src/assets/search.svg') no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.account-icon {
+  background: url('~Src/assets/account.svg') no-repeat;
+  background-position: 50%;
+  background-size: contain;
+}
+
+.arrow-icon, .next-icon,
+.previous-icon, .back-icon {
+  display: inline-block;
+  background: url('~Src/assets/arrow.svg') no-repeat;
+  background-position: 50%;
+  background-size: contain;
+  height: 1rem;
+  vertical-align: middle;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.previous-icon, .back-icon {
+  transform: rotate(180deg);
+}
+
+.star-icon {
+  display: inline-block;
+  background: url('~Src/assets/star.svg') no-repeat;
+  background-size: contain;
+  height: 19px;
+  vertical-align: middle;
+}
+
+.afterpay-icon {
+  display: inline-block;
+  background: url('~Src/assets/afterpay.svg') no-repeat;
+  background-size: contain;
+  width: 71px;
+  height: 13px;
+  margin-bottom: -2px;
+
+  @-moz-document url-prefix() {
+    .afterpay-icon {
+      margin-bottom: 2px;
+    }
+  }
+}
+
+.klarna-icon {
+  display: inline-block;
+  background: url('~Src/assets/klarna.svg') no-repeat;
+  background-size: contain;
+  width: 49px;
+  height: 11px;
+}
+

@@ -203,23 +203,38 @@
 // hide image wrap overflow
 .image-wrap {
   overflow: hidden;
+
+  &.square-image {
+    display: block;
+    height: 0;
+    padding-bottom: 74%;
+    position: relative;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
 }
 
 // Lazysizes blur styles
+// NOTE: slower perceived load if enabled
 .blur-up {
-  // lol - due to global change, but still needing this style for stuff (product page, maybe additional image hover)
-  &.blur-up-actually {
-    -webkit-filter: blur(5px);
-    filter: blur(5px);
-    transition: filter .15s, -webkit-filter .15s;
-    overflow: hidden;
-    background: var(--shop-white);
+  // &.blur-up-actually {
+  //   -webkit-filter: blur(5px);
+  //   filter: blur(5px);
+  //   transition: filter .15s, -webkit-filter .15s;
+  //   overflow: hidden;
+  //   background: $white;
 
-    &.lazyloaded {
-      -webkit-filter: blur(0);
-      filter: blur(0);
-    }
-  }
+  //   &.lazyloaded {
+  //     -webkit-filter: blur(0);
+  //     filter: blur(0);
+  //   }
+  // }
 }
 
 .blur {

@@ -2,11 +2,11 @@
   button#checkout-button(
     @click="goToCartOrCheckout()"
     :class="{ 'loading': loading, 'disabled': cartData.item_count <= 0 }"
-  ) Checkout#[span(v-if="showPrice") &nbsp;- {{ cartData.total_price | currency }}]
+  ) Checkout#[span(v-if="showPrice") &nbsp;- {{ computedCartTotal | currency }}]
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import currency from '../helpers/_currency'
 
 export default {
@@ -30,6 +30,10 @@ export default {
   computed: {
     ...mapState('cart', [
       'cartData',
+    ]),
+
+    ...mapGetters('cart', [
+      'computedCartTotal',
     ]),
   },
 

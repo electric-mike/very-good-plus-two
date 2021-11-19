@@ -81,20 +81,25 @@ export default {
   actions: {
     async fetchCart(store) {
       await fetch('/cart.js').then(res => res.json()).then((res) => {
-        store.commit('setCartData', res)
+        if (window.bbProcessCart) {
+          store.commit('setCartData', window.bbProcessCart(res))
+        } else {
+          store.commit('setCartData', res)
+        }
+
         store.commit('setfetchingCart', false)
       })
     },
 
-    async addToCart(store, {
+    addToCart(store, {
       quantity,
       id,
-      dontOpenDrawer,
+      upsell,
       selling_plan, //eslint-disable-line
     }) {
       store.commit('toggleAddingToCart')
 
-      return fetch('/cart/add.js', {
+      fetch('/cart/add.js', {
         method  : 'POST',
         headers : {
           'Content-Type'     : 'application/json',
@@ -113,7 +118,7 @@ export default {
             await store.dispatch('fetchCart')
             store.commit('setPdpError')
 
-            if (!dontOpenDrawer) {
+            if (!upsell) {
               store.commit('toggleSideCart')
             }
           } else {
@@ -121,8 +126,6 @@ export default {
           }
 
           store.commit('toggleAddingToCart')
-
-          return res
         })
     },
 
@@ -143,7 +146,12 @@ export default {
         }),
       }).then(res => res.json()).then(async (res) => {
         if (!res.message) {
-          store.commit('setCartData', res)
+          if (window.bbProcessCart) {
+            store.commit('setCartData', window.bbProcessCart(res))
+          } else {
+            store.commit('setCartData', res)
+          }
+
           store.commit('setCartError')
         } else {
           store.commit('setCartError', res)
@@ -171,7 +179,12 @@ export default {
         }),
       }).then(res => res.json()).then((res) => {
         if (!res.message) {
-          store.commit('setCartData', res)
+          if (window.bbProcessCart) {
+            store.commit('setCartData', window.bbProcessCart(res))
+          } else {
+            store.commit('setCartData', res)
+          }
+
           store.commit('setCartError')
         } else {
           store.commit('setCartError', res)
@@ -188,7 +201,12 @@ export default {
         method: 'POST',
       }).then(res => res.json()).then((res) => {
         if (!res.message) {
-          store.commit('setCartData', res)
+          if (window.bbProcessCart) {
+            store.commit('setCartData', window.bbProcessCart(res))
+          } else {
+            store.commit('setCartData', res)
+          }
+
           store.commit('setCartError')
         } else {
           store.commit('setCartError', res)
@@ -210,7 +228,12 @@ export default {
         body: JSON.stringify({ note: store.state.orderNote }),
       }).then(res => res.json()).then((res) => {
         if (!res.message) {
-          store.commit('setCartData', res)
+          if (window.bbProcessCart) {
+            store.commit('setCartData', window.bbProcessCart(res))
+          } else {
+            store.commit('setCartData', res)
+          }
+
           store.commit('setCartError')
         } else {
           store.commit('setCartError', res)
@@ -218,6 +241,60 @@ export default {
 
         store.commit('toggleUpdatingCart')
       })
+    },
+
+    applyPromoCode(store) {
+      store.commit('toggleUpdatingCart')
+
+      fetch('/cart/update.js', {
+        method  : 'POST',
+        headers : {
+          'Content-Type'     : 'application/json',
+          'X-Requested-With' : 'XMLHttpRequest',
+        },
+        body: JSON.stringify({ discount: store.state.appliedPromoCode }),
+      }).then(res => res.json()).then((res) => {
+        if (!res.message) {
+          if (window.bbProcessCart) {
+            store.commit('setCartData', window.bbProcessCart(res))
+          } else {
+            store.commit('setCartData', res)
+          }
+
+          store.commit('setCartError')
+        } else {
+          store.commit('setCartError', res)
+        }
+
+        store.commit('toggleUpdatingCart')
+      })
+    },
+  },
+
+  getters: {
+    hasBundleProduct(state) {
+      return state.cartData
+      && state.cartData.items
+      && state.cartData.items.length > 0 ? !!state.cartData.items.find(
+          item => item.properties && Object.prototype.hasOwnProperty.call(item.properties, '_bundle_price')
+        ) : false
+    },
+
+    computedCartTotal(state, getters) {
+      if (getters.hasBundleProduct) {
+        let iteratedTotal = 0
+        state.cartData.items.forEach((item) => {
+          if (item.properties && Object.prototype.hasOwnProperty.call(item.properties, '_bundle_price')) {
+            iteratedTotal += item.properties._bundle_price * item.quantity
+          } else {
+            iteratedTotal += item.price * item.quantity
+          }
+        })
+
+        return iteratedTotal
+      }
+
+      return state.cartData && state.cartData.total_price
     },
   },
 }

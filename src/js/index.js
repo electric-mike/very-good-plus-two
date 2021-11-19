@@ -1,6 +1,8 @@
 // Imports
+import Vue from 'vue'
 import Siema from 'siema'
 import SimpleBar from 'simplebar'
+import swatches from './helpers/_swatches'
 import SiemaOverflow from './helpers/_siema-overflow'
 import cart from './cart'
 import product from './product'
@@ -48,4 +50,31 @@ document.addEventListener('DOMContentLoaded', () => {
   cart()
   product()
   bundle()
+
+  // global product swatches
+  // requires `data-swatches-wrapper`
+  // and product class `product-{{ prod.id }}`
+  // if AJAX, use `data-swatches-ajax="true"` attribute
+  // & doSwatchesFromAjax window event
+  // @TODO support multiple AJAX elements
+  const swatchesWrappers = document.querySelectorAll('[data-swatches-wrapper]')
+  if (swatchesWrappers.length > 0) {
+    swatchesWrappers.forEach((wrapperEl) => {
+      if (wrapperEl.dataset.swatchesAjax) {
+        window.addEventListener('doSwatchesFromAjax', () => {
+          new Vue({
+            el         : wrapperEl,
+            delimiters : ['${', '}'],
+            mixins     : [swatches],
+          })
+        })
+      } else {
+        new Vue({
+          el         : wrapperEl,
+          delimiters : ['${', '}'],
+          mixins     : [swatches],
+        })
+      }
+    })
+  }
 })

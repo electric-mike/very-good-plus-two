@@ -4,7 +4,7 @@
       h4(v-if="isCart") Order Summary
       .subtotal
         h5.subtotal-text Subtotal:
-        h5 &nbsp;{{ cartData.total_price | currency }}
+        h5 &nbsp;{{ computedCartTotal | currency }}
       .promo-code(v-if="appliedPromoCode !== ''")
         h5.promo-text
           | Promo Code:
@@ -18,6 +18,7 @@
       novalidate=''
       @submit="goingToCheckout = true"
     )
+      subtotal-payments(:is-cart="isCart")
       promo-code(v-if="isCart" :is-cart="isCart")
       button(
         type='submit'
@@ -25,6 +26,7 @@
         :class="{ 'loading': goingToCheckout, 'disabled': cartData.item_count <= 0 }"
       ) Checkout
     div(v-else)
+      subtotal-payments(:is-cart="isCart")
       promo-code(v-if="isCart" :is-cart="isCart")
       cart-button
     .continue-shopping.center-text(v-if="isCart")
@@ -32,14 +34,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import cartButton from './cart-button'
+import subtotalPayments from './subtotal-payments'
 import promoCode from './promo-code'
 import currency from '../helpers/_currency'
 
 export default {
   components: {
     cartButton,
+    subtotalPayments,
     promoCode,
   },
 
@@ -65,6 +69,11 @@ export default {
     ...mapState('cart', [
       'cartData',
       'appliedPromoCode',
+    ]),
+
+    ...mapGetters('cart', [
+      'hasBundleProduct',
+      'computedCartTotal',
     ]),
 
     hasSubscriptionProduct() {
@@ -161,7 +170,7 @@ export default {
     }
 
     button {
-      margin: 1em 0 0;
+      margin: 1.25em 0 0;
       width: 100%;
     }
   }

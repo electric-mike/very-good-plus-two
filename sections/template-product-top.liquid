@@ -7,6 +7,7 @@
     </div>
 
     {% render 'product-images' %}
+    {% render 'product-images-lightbox' %}
 
     <div class="rhpa-wrapper">
       <!-- {% if current_variant.sku.size > 0 %}<p class="sku">{{ current_variant.sku }}</p>{% endif %} -->
@@ -80,6 +81,10 @@
               <input v-if="selectedOptionVariant && selectedOptionVariant.available" type="hidden" class="rc-widget-variant" name="id" data-productid="{{ product.id }}" v-bind:value="selectedOptionVariant ? selectedOptionVariant.id : ''" />
               <input v-else-if="InvalidVariantSelections" type="hidden" class="rc-widget-variant" name="id" data-productid="{{ product.id }}" value="{{product.selected_or_first_available_variant.id}}" />
             {% endif %}
+
+            <div class="klarna-afterpay center-text" v-cloak>
+              <h6>or 4 payments of ${ computedPaymentsPrice } with <i class="icon afterpay-icon" aria-label="Afterpay"></i> or <i class="icon klarna-icon" aria-label="Klarna"></i></h6>
+            </div>
           </div>
         </form>
       </div>

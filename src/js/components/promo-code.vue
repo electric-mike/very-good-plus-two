@@ -58,7 +58,7 @@ export default {
   margin: 1em 1em 0;
 
   &.is-cart {
-    margin: 1em 0 0;
+    margin: 1.25em 0 0;
   }
 
   &-button {

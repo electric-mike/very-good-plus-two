@@ -5,17 +5,17 @@
   )
     .free-shipping-progress
       h6(
-        v-if="freeShippingMinimum <= cartTotal"
+        v-if="freeShippingMinimum <= computedCartTotal"
       ) You qualify for free shipping!
       h6(v-else)
         | You are&nbsp;
         strong {{ priceUntilFreeShipping | currency }}&nbsp;
         | away from free shipping.
-      progress(:value="cartTotal" :max="freeShippingMinimum")
+      progress(:value="computedCartTotal" :max="freeShippingMinimum")
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import currency from '../helpers/_currency'
 import geolocate from '../helpers/_geolocate'
 
@@ -44,12 +44,12 @@ export default {
       'cartData',
     ]),
 
-    cartTotal() {
-      return this.cartData.total_price
-    },
+    ...mapGetters('cart', [
+      'computedCartTotal',
+    ]),
 
     priceUntilFreeShipping() {
-      return this.freeShippingMinimum - this.cartTotal
+      return this.freeShippingMinimum - this.computedCartTotal
     },
 
     freeShippingMinimum() {

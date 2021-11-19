@@ -14,8 +14,8 @@
   {% endif %}
 
   {% if section.settings.text_color != 'rgba(0,0,0,0)' %}
-  #shopify-section-{{ section.id }} * {
-    color: {{ section.settings.text_color }};
+  #shopify-section-{{ section.id }} .title * {
+    color: {{ section.settings.text_color }} !important;
   }
   {% endif %}
 </style>
@@ -23,11 +23,12 @@
 <div class="product-list-wrapper featured-collection">
   <div class="max-width">
     <div class="title center-text">
-      <h3>{{ section.settings.title }}</h3>
+      <h2>{{ section.settings.title }}</h2>
       <br>
     </div>
     <div
       id="simplebar-{{ section.id }}"
+      data-swatches-wrapper
       {% if section.settings.enable_scrollbar %}
         class="product-list"
         data-simplebar
@@ -38,33 +39,38 @@
       {% endif %}
     >
       {% for prod in collection.products limit: limit %}
-        <div class="product column-6-tablet-vert-{{ 12 | divided_by: limit }}">
-          <a class="product-image-wrapper image-wrap" href="{{ prod.url | within: collection }}">
-            {% include 'flair-product-badges', product: prod %}
-            {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-            <img
-              class="product-image lazyload blur-up"
-              src="{{ settings.placeholder_image | img_url }}"
-              alt="{{ prod.title | escape }}"
-              data-src="{{ img_url }}"
-              data-widths="[360, 540, 720, 900, 1080, 1600]"
-              data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
-              data-sizes="auto"
-              width="{{ prod.featured_image.width }}"
-              height="{{ prod.featured_image.height }}"
-            />
-            <noscript>
-              <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
-            </noscript>
+        <div class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
+          <a class="product-image-wrapper" href="{{ prod.url | within: collection }}">
+            <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: prod.featured_image.aspect_ratio }}%;">
+              {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {%- assign secondary_img_url = prod.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              <img
+                class="product-image lazyload blur-up"
+                src="{{ settings.placeholder_image | img_url }}"
+                alt="{{ prod.title | escape }}"
+                data-src="{{ img_url }}"
+                data-widths="[360, 540, 720, 900, 1080, 1600]"
+                data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
+                data-secondary-aspectratio="{{ prod.images[1].aspect_ratio }}"
+                data-sizes="auto"
+                data-first-src="{{ img_url }}"
+                data-additional-image="{{ secondary_img_url }}"
+                v-on:mouseover="changeImage('in', $event)"
+                v-on:mouseleave="changeImage('out', $event)"
+                width="{{ prod.featured_image.width }}"
+                height="{{ prod.featured_image.height }}"
+              />
+            </div>
           </a>
           <div class="product-info">
-            <h5 class="vendor">{{ prod.vendor }}</h5>
+            <p class="vendor">{{ prod.vendor }}</p>
             <a href="{{ prod.url | within: collection }}">
-              <h5>{{ prod.title }}</h5>
+              <p>{{ prod.title }}</p>
             </a>
-            {% if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
-            <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
+            {% if prod.compare_at_price > prod.price %}<p class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</p>{% endif %}
+            <p class="price">{{ prod.price | money_without_trailing_zeros }}</p>
           </div>
+          {% render 'color-swatches', product: prod %}
         </div>
       {% endfor %}
     </div>
