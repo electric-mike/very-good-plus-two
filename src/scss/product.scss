@@ -278,6 +278,10 @@
         margin-top: 0;
       }
 
+      @media(min-width: $desktop) {
+        padding-left: 2.5em;
+      }
+
       .product-vendor {
         text-decoration: none;
 
@@ -439,15 +443,18 @@
         }
 
         // description accordions
+        .description-accordions {
+          margin: 0 0 1.25em;
+        }
+
         .description-accordion {
           border-bottom: 1px solid var(--shop-medium-gray);
           margin: 0;
 
-          h5 {
-            padding: 1em 0;
+          .accordion-header {
+            padding: 1.25em 0;
             position: relative;
             margin-bottom: 0;
-            text-transform: capitalize;
             cursor: pointer;
 
             &:after, &:before {
@@ -466,7 +473,9 @@
             }
           }
 
-          &.active h5 {
+          &.active .accordion-header {
+            text-decoration: underline;
+
             &:before {
               transform: translate3d(-55%,-55%,0) rotate(45deg);
             }
@@ -477,7 +486,11 @@
           }
 
           .description-text {
-            padding-top: 0;
+            padding: 0;
+
+            ul, ol, p {
+              margin-bottom: 1.25rem;
+            }
           }
         }
 

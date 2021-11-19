@@ -53,7 +53,14 @@ export default {
     },
 
     freeShippingMinimum() {
-      return parseFloat(this.freeShippingThresholds[this.geocode]) * 100 || false
+      let threshold = this.freeShippingThresholds[this.geocode]
+      if (!threshold && this.freeShippingThresholds.EU) {
+        threshold = this.freeShippingThresholds.EU
+      }
+
+      if (threshold) return parseFloat(threshold) * 100 || false
+
+      return ''
     },
   },
 

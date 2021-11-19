@@ -22,7 +22,12 @@ export default function cart() {
 
       computed: {
         announcement() {
-          if (this.announcements[this.geocode]) return this.announcements[this.geocode].message
+          let threshold = this.announcements[this.geocode]
+          if (!threshold && this.announcements.EU) {
+            threshold = this.announcements.EU
+          }
+
+          if (threshold) return threshold.message
 
           return ''
         },

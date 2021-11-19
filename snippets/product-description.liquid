@@ -1,25 +1,36 @@
 <div id="product-description" class="description-wrapper">
-  {% if product.metafields.tab.size > 0 %}
+  {% if product.metafields.tab.size > 0 or shop.metafields.global.shipping_tab %}
     <div class="description-accordions">
       <div
         class="description-accordion"
         v-bind:class="{ 'active' : descriptionToggles['description'] }"
-        v-on:click.prevent="toggleDescriptionAccordion('description')"
       >
-        <h5>Description</h5>
+        <h5 class="accordion-header" v-on:click.prevent="toggleDescriptionAccordion('description')">Description & Details</h5>
         <div class="description-text" v-show="descriptionToggles['description']">
           {{ product.description }}
         </div>
       </div>
 
+      {% if shop.metafields.global.shipping_tab %}
+        <div
+          class="description-accordion"
+          v-bind:class="{ 'active' : descriptionToggles['shipping_tab'] }"
+          v-cloak
+        >
+          <h5 class="accordion-header" v-on:click.prevent="toggleDescriptionAccordion('shipping_tab')">Shipping & Delivery</h5>
+          <div class="description-text" v-show="descriptionToggles['shipping_tab']">
+            {{ shop.metafields.global.shipping_tab }}
+          </div>
+        </div>
+      {% endif %}
+
       {% for tab in product.metafields.tab %}
         <div
           class="description-accordion"
           v-bind:class="{ 'active' : descriptionToggles['{{ tab | first }}'] }"
-          v-on:click.prevent="toggleDescriptionAccordion('{{ tab | first }}')"
           v-cloak
         >
-          <h5>{{ tab | first | capitalize }}</h5>
+          <h5 class="accordion-header" v-on:click.prevent="toggleDescriptionAccordion('{{ tab | first }}')">{{ tab | first | capitalize }}</h5>
           <div class="description-text" v-show="descriptionToggles['{{ tab | first }}']">
             {{ tab | last }}
           </div>

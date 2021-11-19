@@ -59,7 +59,11 @@ export default {
         window.themeSettings.sideCartAnnouncement
         && window.themeSettings.sideCartAnnouncement.text
         && window.themeSettings.sideCartAnnouncement.text[this.geocode]
-      ) return window.themeSettings.sideCartAnnouncement.text[this.geocode]
+      ) {
+        return window.themeSettings.sideCartAnnouncement.text[this.geocode]
+      } if (window.themeSettings.sideCartAnnouncement.text.EU) {
+        return window.themeSettings.sideCartAnnouncement.text.EU
+      }
 
       return ''
     },

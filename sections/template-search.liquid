@@ -7,7 +7,7 @@
             <div class="category-hero-inner category-hero-no-image">
               <div class="hero">
                 <p>Search results for:</p>
-                <h1><span>{{ search.terms | escape }}</span></h1>
+                <h1 class="hero"><span>{{ search.terms | escape }}</span></h1>
                 <div class="tab-buttons">
                   <button v-bind:class="{ 'secondary': activeTab === 'products' }" v-on:click="activateTab('products')">Product Results</button>
                   <button v-bind:class="{ 'secondary': activeTab === 'articles' }" v-on:click="activateTab('articles')">Article Results</button>
@@ -436,7 +436,7 @@
       <div class="category-hero tablet-constrain-items">
         <div class="category-hero-inner category-hero-no-image search-no-results">
           <div class="inner-wrapper">
-            <h1>Search</h1>
+            <h1 class="hero">Search</h1>
             <form
               class="search-input-form"
               action="/search"
