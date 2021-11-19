@@ -2,7 +2,28 @@
   "wrapper": "div.page.bundle",
   "sections": {
     "main": {
-      "type": "template-bundle"
+      "type": "template-bundle",
+      "blocks": {
+        "068550d9-5211-4665-a1e4-0b711ee14384": {
+          "type": "collection",
+          "settings": {
+            "collection": "best-sellers",
+            "collection_limit": 20
+          }
+        },
+        "e564ed79-210d-4fa9-879e-d99ab6541c64": {
+          "type": "collection",
+          "settings": {
+            "collection": "vinyl",
+            "collection_limit": 20
+          }
+        }
+      },
+      "block_order": [
+        "068550d9-5211-4665-a1e4-0b711ee14384",
+        "e564ed79-210d-4fa9-879e-d99ab6541c64"
+      ],
+      "settings": {}
     }
   },
   "order": [

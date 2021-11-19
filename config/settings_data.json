@@ -1,5 +1,12 @@
 {
   "current": {
+    "primary_color": "rgba(0,0,0,0)",
+    "secondary_color": "rgba(0,0,0,0)",
+    "white": "rgba(0,0,0,0)",
+    "black": "rgba(0,0,0,0)",
+    "header_background_color": "rgba(0,0,0,0)",
+    "header_link_color": "rgba(0,0,0,0)",
+    "footer_background_color": "rgba(0,0,0,0)",
     "show_search": true,
     "max_width_nav": false,
     "header_linklist": "main-menu",
@@ -19,11 +26,13 @@
     "secondary_upsell_product": "t-shirt",
     "side_cart_announcement_show_the_bar": true,
     "side_cart_announcement_us": "Free shipping over $100! <a style=\"color: white\" href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>",
-    "side_cart_announcement_ca": "Free shipping over $200! <a style=\"color: white\" href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>",
+    "side_cart_announcement_ca": "Free shipping over $125! <a style=\"color: white\" href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>",
+    "side_cart_announcement_eu": "Free shipping over $250! <a style=\"color: white\" href=\"https:\/\/very-good-plus.myshopify.com\/collections\/lps\">Shop now<\/a>",
     "side_cart_announcement_color": "#9b9b9b",
     "enable_promo_code": true,
     "free_shipping_threshold_us": 100,
-    "free_shipping_threshold_ca": 200,
+    "free_shipping_threshold_ca": 125,
+    "free_shipping_threshold_eu": 250,
     "facebook_link": "#",
     "instagram_link": "#",
     "twitter_link": "#",
@@ -35,7 +44,7 @@
     "enable_product_image_hover": true,
     "placeholder_image": "shopify:\/\/shop_images\/placeholder-image_1.png",
     "placeholder_aspect_ratio": "4:5",
-    "product_colors": "black: #000000,\nblue: #0000FF,\nBright Blue: #87ceeb,\nbrown: #7B3F00,\nCarolina Blue: #7BAFD4,\nCharcoal: #616A6B,\ncoat: #ff0000,\nDark Grey: #707B7C,\nDark Gray: #707B7C,\ndark-turquoise: #23cddc,\nDeep Heather: #C0C0C0,\nDynamic Yellow: #FFFF33,\nEagle White: #fcfcfc,\nGloss Black: #000000,\nGloss Red: #ff0000,\nGloss White: #fafafa,\nGold: #FFD700,\nGray: #C0C0C0,\ngreen: #58D68D,\ngrey: #808080,\nHeather blue: #0000FF,\nHeather blue: #0000FF,\nHeather green: #58D68D,\nHeather Red: #ff0000,\nHeather Slate: #34495E,\nHeather Gray: #9c9ca6,\nHeather Grey: #9c9ca6,\nLeaf Green: #2d572c,\nlight blue: #add8e6,\nlight-brown: #feb035,\nMaroon: #800000,\nMint Green: #98ff98,\nNavy Blue: #000080,\nOlive Drab: #6b8e23,\nOlive: #6b8e23,\norange: #fe9001,\npink: #FFC0CB,\npurple: #800080,\nRed: #ff0000,\nRiver Red: #FF0000,\nRoyal Blue: #3498DB,\nSandstone: #FDEBD0,\nSignal Orange: #ff6700,\nSignal Yellow: #e5be01,\nsilver: #c0c0c0,\ntan: #eacea7,\nviolet: #EE82EE,\nwhite: #ffffff,\nYellow Green: #9acd32,\nyellow: #ffff00,\nKhaki: #c3b091,\nFatigue Green: #7c8a6f,\nRed\/Grey\/Black: #CC3300,\nBlack\/Grey: #0d0d0d,\nCamouflage: #78866B,\nOlive Drab Green: #6B8E23,\nBlack Camo: #000000,\nSlate:  #34495E",
+    "product_colors": "black: #000000,\nblue: #0000FF,\nBright Blue: #87ceeb,\nbrown: #7B3F00,\nCarolina Blue: #7BAFD4,\nCharcoal: #616A6B,\ncoat: #ff0000,\nDark Grey: #707B7C,\nDark Gray: #707B7C,\ndark-turquoise: #23cddc,\nDeep Heather: #C0C0C0,\nDynamic Yellow: #FFFF33,\nEagle White: #fcfcfc,\nGloss Black: #000000,\nGloss Red: #ff0000,\nGloss White: #fafafa,\nGold: #FFD700,\nGray: #C0C0C0,\ngreen: #58D68D,\ngrey: #808080,\nHeather blue: #0000FF,\nHeather blue: #0000FF,\nHeather green: #58D68D,\nHeather Red: #ff0000,\nHeather Slate: #34495E,\nHeather Gray: #9c9ca6,\nHeather Grey: #9c9ca6,\nLeaf Green: #2d572c,\nlight blue: #add8e6,\nlight-brown: #feb035,\nMaroon: #800000,\nMint Green: #98ff98,\nNavy Blue: #000080,\nOlive Drab: #6b8e23,\nOlive: #6b8e23,\norange: #fe9001,\npink: #FFC0CB,\npurple: #800080,\nRed: #ff0000,\nRiver Red: #FF0000,\nRoyal Blue: #3498DB,\nSandstone: #FDEBD0,\nSignal Orange: #ff6700,\nSignal Yellow: #e5be01,\nsilver: #c0c0c0,\ntan: #eacea7,\nviolet: #EE82EE,\nwhite: #ffffff,\nYellow Green: #9acd32,\nYellow: #ffff00,\nKhaki: #c3b091,\nFatigue Green: #7c8a6f,\nRed\/Grey\/Black: #CC3300,\nBlack\/Grey: #0d0d0d,\nCamouflage: #78866B,\nOlive Drab Green: #6B8E23,\nBlack Camo: #000000,\nSlate:  #34495E,\nRed: #ea0000",
     "footer_linklist": "footer",
     "footer_logo": "shopify:\/\/shop_images\/vg_2.png",
     "klaviyo_desktop_form_id": "",
@@ -500,7 +509,6 @@
           "b97a6f65-c4f0-4e23-bdbd-e5f470a1aeec": {
             "type": "block",
             "settings": {
-              "background_color": "rgba(0,0,0,0)",
               "align_text": "left",
               "testimonial": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pulvinar venenatis quam, in sodales lectus pellentesque tristique. Curabitur viverra tellus eget arcu feugiat porttitor non sed magna. Vivamus scelerisque a est quis sodales. Praesent vitae finibus quam. In turpis neque, feugiat sit amet enim eu, sollicitudin lobortis tortor. Fusce porta ac purus et mattis.",
               "author": "Shawn K"
@@ -509,7 +517,6 @@
           "f9f8c74c-3987-4afe-a487-a33ab00ceb13": {
             "type": "block",
             "settings": {
-              "background_color": "rgba(0,0,0,0)",
               "align_text": "left",
               "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
               "author": "Chase C."
@@ -518,7 +525,6 @@
           "fa43f61f-8747-4423-9a09-ab69c2e5b4a8": {
             "type": "block",
             "settings": {
-              "background_color": "rgba(0,0,0,0)",
               "align_text": "left",
               "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
               "author": "Dominique S."
@@ -531,9 +537,9 @@
           "fa43f61f-8747-4423-9a09-ab69c2e5b4a8"
         ],
         "settings": {
-          "enable_scrollbar": true,
           "background_color": "rgba(0,0,0,0)",
-          "text_color": "rgba(0,0,0,0)"
+          "text_color": "rgba(0,0,0,0)",
+          "enable_scrollbar": true
         }
       },
       "checkout-announcement": {

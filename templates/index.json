@@ -37,6 +37,8 @@
             "button_mobile_weight": "400",
             "button_color": "#ffffff",
             "button_background_color": "#000000",
+            "button_hover_color": "",
+            "button_hover_background_color": "",
             "is_button": true,
             "secondary_button": false,
             "button_top_margin": 20,
@@ -63,7 +65,8 @@
         "mobile_text_align": "center",
         "desktop_text_position": "center flex-start",
         "mobile_text_position": "flex-end",
-        "max_width": 0
+        "max_width": 0,
+        "mobile_max_width": 0
       }
     },
     "1629837382a8d747c2": {
@@ -193,6 +196,8 @@
             "button_mobile_weight": "400",
             "button_color": "#000000",
             "button_background_color": "#ffffff",
+            "button_hover_color": "",
+            "button_hover_background_color": "",
             "is_button": true,
             "secondary_button": false,
             "button_top_margin": 20,
@@ -218,7 +223,8 @@
         "mobile_text_align": "center",
         "desktop_text_position": "center center",
         "mobile_text_position": "center",
-        "max_width": 0
+        "max_width": 0,
+        "mobile_max_width": 0
       }
     },
     "1625084351df5f2b26": {
@@ -239,17 +245,26 @@
           "type": "left-image-callout",
           "settings": {
             "image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
+            "image_link": "",
             "textarea": "<h2>Lorem Ipsum<\/h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
             "background_color": "#e5e5e5",
             "button_text": "",
-            "button_link": ""
+            "button_link": "",
+            "forward_button": false,
+            "wider_button": false
           }
         }
       },
       "block_order": [
         "c15b2d29-9c99-41f8-b120-caf9e16a09f7"
       ],
-      "settings": {}
+      "settings": {
+        "blocks_vertical_align": "top",
+        "max_width": false,
+        "only_bottom_padding": false,
+        "no_padding": true,
+        "background_color": "#ffffff"
+      }
     },
     "162519659079c84fcc": {
       "type": "featured-quotes",
@@ -257,28 +272,31 @@
         "fdf027ec-20da-442e-92c3-bfb7b4cb7a73": {
           "type": "block",
           "settings": {
-            "background_color": "#ffffff",
             "align_text": "left",
             "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
-            "author": "Author's name"
+            "star_rating": 5,
+            "author": "Author's name",
+            "product_link": "currents-lp"
           }
         },
         "b9c66ab1-875c-4976-987e-1a8cac7692af": {
           "type": "block",
           "settings": {
-            "background_color": "#ffffff",
             "align_text": "left",
             "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
-            "author": "Author's name"
+            "star_rating": 5,
+            "author": "Author's name",
+            "product_link": "electric-ladyland-lp"
           }
         },
         "bd9aec60-9a00-4031-87de-e5c310892fb7": {
           "type": "block",
           "settings": {
-            "background_color": "#ffffff",
             "align_text": "left",
             "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
-            "author": "Author's name"
+            "star_rating": 5,
+            "author": "Author's name",
+            "product_link": "nevermind-vinyl-lp"
           }
         }
       },
@@ -288,9 +306,10 @@
         "bd9aec60-9a00-4031-87de-e5c310892fb7"
       ],
       "settings": {
-        "enable_scrollbar": true,
-        "background_color": "",
-        "text_color": ""
+        "title": "Reviews",
+        "background_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)",
+        "enable_scrollbar": true
       }
     },
     "16298361178c877bef": {
