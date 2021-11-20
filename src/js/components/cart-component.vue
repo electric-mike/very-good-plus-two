@@ -185,7 +185,6 @@ export default {
         .product-variant {
           color: var(--shop-dark-gray);
           margin: 0 0 0.5rem;
-          margin-bottom: 0;
         }
 
         .discount-text {

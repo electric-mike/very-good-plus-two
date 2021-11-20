@@ -32,7 +32,7 @@ export default {
     ]),
 
     computedPaymentsPrice() {
-      return parseFloat(this.$options.filters.currency(this.computedCartTotal).replace('$', '') / 4).toFixed(2)
+      return parseFloat(this.$options.filters.currency(this.computedCartTotal).replace('$', '').replace(/,/g, '') / 4).toFixed(2)
     },
   },
 }
