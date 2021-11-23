@@ -86,7 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
           },
 
           filteredProducts() {
-            let filteredProducts = this.products.filter((product) => {
+            let prods = this.products
+            if (this.sort === 'best-selling') {
+              prods = this.bestSellingProducts
+            }
+
+            let filteredProducts = prods.filter((product) => {
               const actualCheckedOptionsKeys = Object.keys(this.actualCheckedOptions)
               const foundMatches = {}
 
@@ -287,6 +292,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return `mobile-grid-${this.mobileGridSize}`
           },
+
+          isBestSellerCollection() {
+            return window.location.pathname.includes('best-sell')
+          },
         },
 
         watch: {
@@ -319,6 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sort: {
             handler(after, before) {
               if (after || before) {
+                this.currentPage = 1
                 this.updateURL()
                 this.triggerLazyload()
               }

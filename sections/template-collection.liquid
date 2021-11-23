@@ -128,6 +128,12 @@
                   </div>
                 </li>
                 <li>
+                  <div class="radio" v-if="!isBestSellerCollection">
+                    <input id="sort-best-selling" type="radio" v-model="sort" value="best-selling" name="sort">
+                    <label for="sort-best-selling">Best Selling</label>
+                  </div>
+                </li>
+                <li>
                   <div class="radio">
                     <input id="sort-pricea" type="radio" v-model="sort" value="pricea" name="sort">
                     <label for="sort-pricea">Highest Price</label>

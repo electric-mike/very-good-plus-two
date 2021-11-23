@@ -16,7 +16,7 @@
     {% assign limit = block.settings.collection_limit %}
     {% assign collection = collections[block.settings.collection] %}
 
-    <h2 class="collection-title center-text">{{ collection.title }}</h2>
+    <!-- <h2 class="collection-title center-text">{{ collection.title }}</h2> -->
 
     <div class="product-list-wrapper">
       <div class="product-list row">
@@ -62,26 +62,25 @@
               {% endif %}
               {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '.00', '' }}</h5>{% endif %}
               <h5 class="price">{{ product.price | money_without_trailing_zeros | replace: '.00', '' }}</h5>
-              {% include 'color-swatches' %}
+              {% assign id = product.variants[0].id %}
+              {% assign avail = product.variants[0].available %}
+              {% if avail %}
+                <button
+                  class="add-to-cart full-width"
+                  v-on:click="addBundleProductToCart({{ id }}, '{{ collection.handle }}')"
+                  v-bind:class="{ 'active': productIdsInCart.includes({{ id }}), 'loading': addingId === {{ id }} }"
+                >
+                  <span v-cloak class="v-hide" v-if="productIdsInCart.includes({{ id }})">Added &check;</span>
+                  <span v-else>Add To Cart</span>
+                </button>
+                <div v-if="errors[{{ id }}]" v-cloak class="v-hide invalid"><p class="field-message">${ errors[{{ id }}] }</p></div>
+              {% else %}
+                <button
+                  class="active full-width"
+                  disabled
+                >Sold Out</button>
+              {% endif %}
             </div>
-            {% assign id = product.variants[0].id %}
-            {% assign avail = product.variants[0].available %}
-            {% if avail %}
-              <button
-                class="add-to-cart full-width"
-                v-on:click="addBundleProductToCart({{ id }}, '{{ collection.handle }}')"
-                v-bind:class="{ 'active': productIdsInCart.includes({{ id }}), 'loading': addingId === {{ id }} }"
-              >
-                <span v-cloak class="v-hide" v-if="productIdsInCart.includes({{ id }})">Added &check;</span>
-                <span v-else>Add To Cart</span>
-              </button>
-              <div v-if="errors[{{ id }}]" v-cloak class="v-hide invalid"><p class="field-message">${ errors[{{ id }}] }</p></div>
-            {% else %}
-              <button
-                class="active full-width"
-                disabled
-              >Sold Out</button>
-            {% endif %}
           </div>
         {% endfor %}
       </div>

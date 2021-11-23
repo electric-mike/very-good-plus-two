@@ -15,6 +15,7 @@ Please do not edit
   {% paginate collection.products by 9999 %}
     "page": {{ paginate.current_page }},
     "totalPages": {{ paginate.pages }},
+    "sortBy": "{{ collection.sort_by | default: collection.default_sort_by }}",
     "products": [
       {% for product in collection.products %}
         {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}

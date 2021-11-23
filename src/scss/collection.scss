@@ -48,7 +48,7 @@
     }
 
     .mobile-collection-options {
-      padding: 0 0 1em 0;
+      padding: 0 0 1.25em 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -147,11 +147,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.75em 0 0.75em 1.25em;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1;
+      background: var(--shop-light-gray);
 
       * {
         margin-bottom: 0;
@@ -186,7 +182,7 @@
         overflow-x: auto;
         z-index: 9999;
         max-width: $mobile - 200;
-        padding: 1.25em 0;
+        padding: 0;
 
         &.active, &.was-opened {
           transition: transform .25s;
@@ -198,11 +194,15 @@
           overflow: hidden;
 
           .filters-inner {
-            overflow: auto;
-            margin-top: 32px;
-            padding: 2.5em 1.25em 1.25em;
-            max-height: calc(100% - 12px);
-            background: var(--shop-light-gray);
+            overflow: hidden;
+            padding: 1.25em 1.25em 0;
+            position: absolute;
+            height: auto;
+            top: 48px;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            overflow-y: scroll;
           }
         }
       }
@@ -220,7 +220,17 @@
         }
       }
 
+      .product-count {
+        padding: 1.25em 0;
+        margin: 0;
+        border-top: 1px solid var(--shop-medium-gray);
+      }
+
       .filter {
+        &:last-of-type {
+          margin-bottom: 1.25em;
+        }
+
         .filter-name {
           position: relative;
           border-bottom: 1px solid var(--shop-medium-gray);
@@ -266,11 +276,12 @@
         ul {
           display: block;
           width: 100%;
-          max-height: 225px;
+          max-height: 255px;
           overflow-y: auto;
           overflow-x: hidden;
           border-bottom: 1px solid var(--shop-medium-gray);
           margin-left: 0;
+          margin-bottom: 0;
 
           &.swatches {
             white-space: initial !important;

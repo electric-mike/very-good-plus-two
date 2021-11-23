@@ -1,39 +1,57 @@
 export default {
   beforeMount() {
     this.fetchCollectionData(1)
+    this.fetchCollectionData(1, 'best-selling')
   },
 
   data() {
     return {
-      loading       : true,
-      localProducts : [],
+      bestSellingProducts : [],
+      error               : false,
+      // products stored in collection.js
     }
   },
 
+  computed: {
+    loading() {
+      if (
+        (this.products.length > 0 && this.bestSellingProducts.length > 0
+        ) || this.error === true
+      ) {
+        return false
+      }
+
+      return true
+    },
+  },
+
   methods: {
-    fetchCollectionData(sentPage) {
+    fetchCollectionData(sentPage, sentFilter) {
+      let localProducts = []
       let url = `${window.location.pathname}?view=products-endpoint&page=${sentPage}`
       if (window.location.search.includes('?q=') || window.location.search.includes('&q=')) {
         url += window.location.search.replace('?', '&').replace('&type=article', '')
       }
 
-      fetch(url)
+      if (sentFilter === 'best-selling') {
+        url += `${url.includes('?') ? '&' : '?'}sort_by=best-selling`
+      }
+
+      return fetch(url)
         .then(response => response.json())
         .then((data) => {
-          this.localProducts = this.localProducts.concat(data.products)
+          localProducts = localProducts.concat(data.products)
 
           if (data.page < data.totalPages) {
             this.fetchCollectionData(data.page + 1)
           } else {
-            this.formatData(this.localProducts)
+            this.formatData(localProducts, sentFilter)
           }
         })
-        .catch(() => { this.loading = false })
+        .catch(() => { this.error = true })
     },
 
-    formatData(sentData) {
-      this.totalProducts = sentData.length
-
+    formatData(sentData, sentFilter) {
       // format data
       // doing this first prevents a shit ton of re-paints
       const localProducts = []
@@ -53,17 +71,22 @@ export default {
       })
 
       // set data
-      this.products = localProducts
-      this.vendors = localVendors
-      this.prices = localPrices
-      this.tags = localTags
-      this.types = localTypes
-      this.sizes = localSizes.filter(size => size !== '')
+      if (sentFilter === 'best-selling') {
+        this.bestSellingProducts = localProducts
+      } else {
+        this.products = localProducts
+        this.vendors = localVendors
+        this.prices = localPrices
+        this.tags = localTags
+        this.types = localTypes
+        this.sizes = localSizes.filter(size => size !== '')
 
-      this.generateFilters()
-      this.loading = false
-      this.checkURL()
-      this.sortFilterOptions()
+        this.totalProducts = sentData.length
+
+        this.generateFilters()
+        this.checkURL()
+        this.sortFilterOptions()
+      }
     },
   },
 }

@@ -226,7 +226,8 @@
         klaviyo.init({
           account: "{{ settings.klaviyo_api_key }}",
           {% if settings.klaviyo_bis_list.size > 0 %}list: '{{ settings.klaviyo_bis_list }}',{% endif %}
-          platform: "shopify"
+          platform: "shopify",
+          exclude_on_tags: "no_bis"
         });
         {% if settings.klaviyo_bis_list.size > 0 %}
           klaviyo.enable("backinstock", {
