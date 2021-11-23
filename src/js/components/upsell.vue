@@ -10,8 +10,8 @@
       )
   .upsell-info
     .upsell-text
-      h6.upsell-deal(v-if="computedUpsellProduct === upsellProduct") Deal of the Day
-      h6.upsell-deal(v-else) Complete Your Cart
+      h6.upsell-deal(v-if="computedUpsellProduct === upsellProduct") {{ upsellProductHeader }}
+      h6.upsell-deal(v-else) {{ secondaryUpsellProductHeader }}
       h6.upsell-title #[a(:href='"/products/" + computedUpsellProduct.handle') {{ computedUpsellProduct.title }}]
       h6.price {{ formatMoney(selectedVariant.price) }}
         //- span(v-if='selectedVariant.title')&nbsp;({{ selectedVariant.title }})&nbsp;
@@ -54,11 +54,21 @@ export default {
         && window.themeSettings.upsellProduct
         && !Object.prototype.hasOwnProperty.call(window.themeSettings.upsellProduct, 'error')
       ) ? window.themeSettings.upsellProduct : false,
+      upsellProductHeader: (
+        window.themeSettings
+        && window.themeSettings.upsellProduct
+        && window.themeSettings.upsellProductHeader
+      ) ? window.themeSettings.upsellProductHeader : 'Complete Your Cart',
       secondaryUpsellProduct: (
         window.themeSettings
         && window.themeSettings.secondaryUpsellProduct
         && !Object.prototype.hasOwnProperty.call(window.themeSettings.secondaryUpsellProduct, 'error')
       ) ? window.themeSettings.secondaryUpsellProduct : false,
+      secondaryUpsellProductHeader: (
+        window.themeSettings
+        && window.themeSettings.secondaryUpsellProduct
+        && window.themeSettings.secondaryUpsellProductHeader
+      ) ? window.themeSettings.secondaryUpsellProductHeader : 'Deal Of The Day',
       upsellProductInCart          : false,
       secondaryUpsellProductInCart : false,
       selectedVariant              : false,

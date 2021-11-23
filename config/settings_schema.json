@@ -222,9 +222,21 @@
         "label": "Upsell Product"
       },
       {
+        "type": "text",
+        "id": "upsell_product_header",
+        "label": "Upsell Product Header",
+        "default": "Complete Your Cart"
+      },
+      {
         "type": "product",
         "id": "secondary_upsell_product",
         "label": "Secondary Upsell Product"
+      },
+      {
+        "type": "text",
+        "id": "secondary_upsell_product_header",
+        "label": "Secondary Upsell Product Header",
+        "default": "Deal of the Day"
       },
       {
         "type": "checkbox",
