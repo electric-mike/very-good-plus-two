@@ -1,3 +1,4 @@
+import Vue from 'vue'
 // import responsiveYoutube from './helpers/_responsive-youtube'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,6 +45,24 @@ document.addEventListener('DOMContentLoaded', () => {
         top      : document.getElementById('comments').offsetTop - (document.querySelector('header nav').getBoundingClientRect().height + 20),
         behavior : 'smooth',
       })
+    })
+  }
+
+  // blog landing right area
+  const blogRightArea = document.getElementById('blog-right-area')
+  if (blogRightArea) {
+    new Vue({
+      el: blogRightArea,
+      data() {
+        return {
+          toggles: [],
+        }
+      },
+      methods: {
+        toggleAccordion(accordionName) {
+          this.$set(this.toggles, accordionName, !this.toggles[accordionName])
+        },
+      },
     })
   }
 })

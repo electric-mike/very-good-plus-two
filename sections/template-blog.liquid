@@ -1,49 +1,146 @@
 <div class="blog">
   {% include 'hero' %}
 
-  {% paginate blog.articles by 5 %}
-    <div class="max-width">
-      {% if settings.blog_show_tag_filter and blog.tags.size > 0 %}
-      <div class="blog-tag-filter" id="BlogTagFilter">
-        <select>
-          <option value="/blogs/{{ blog.handle }}">All Articles</option>
-          {% for tag in blog.all_tags %}
-            {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
-            <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
-          {% endfor %}
-        </select>
-      </div>
-      {% endif %}
-    </div>
-
+  {% paginate blog.articles by 20 %}
     <div class="posts max-width">
-      {% for article in blog.articles %}
-        <div class="post">
-          <a href="{{ article.url }}">
-            {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-            <img
-              class="post-hero lazyload blur-up"
-              src="{{ settings.placeholder_image | img_url }}"
-              alt="{{ article.title | escape }}"
-              data-src="{{ base_url }}"
-              data-widths="[360, 540, 720, 900, 1080, 1600]"
-              data-aspectratio="{{ collection.image.aspect_ratio }}"
-              data-sizes="auto"
-            />
-            <noscript>
-              <img class="lazyloaded" src="{{ article.image| img_url: '800x' }}" alt="{{ article.title | escape }}">
-            </noscript>
-          </a>
-          <div class="post-text">
-            <a href="{{ article.url }}">
-              <h5 class="post-title no-margin">{{ article.title }}</h5>
-            </a>
-            <h5 class="author">
-              <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
-            </h5>
+      <div class="row">
+        <div class="column-12-tablet-vert-8">
+          <div class="row">
+            <div class="column-12">
+              <h5 class="blog-col-header">Featured Posts</h5>
+            </div>
+            {% for article in blog.articles %}
+              <div class="post no-padding{% if forloop.index == 1 %} column-12{% else %} column-12-tablet-vert-6{% endif %}">
+                <a href="{{ article.url }}">
+                  {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img
+                    class="post-hero lazyload blur-up"
+                    src="{{ settings.placeholder_image | img_url }}"
+                    alt="{{ article.title | escape }}"
+                    data-src="{{ base_url }}"
+                    data-widths="[360, 540, 720, 900, 1080, 1600]"
+                    data-aspectratio="{{ collection.image.aspect_ratio }}"
+                    data-sizes="auto"
+                  />
+                  <noscript>
+                    <img class="lazyloaded" src="{{ article.image| img_url: '800x' }}" alt="{{ article.title | escape }}">
+                  </noscript>
+                </a>
+                <div class="post-text">
+                  <h5 class="author">
+                    <span>{{ article.author }}</span>
+                  </h5>
+                  <a href="{{ article.url }}">
+                    <h5 class="post-title no-margin">{{ article.title }}</h5>
+                  </a>
+                  {% if article.excerpt.size > 0 %}
+                    <div class="excerpt author">{{ article.excerpt }}</div>
+                  {% else %}
+                    <h5 class="excerpt author">{{ article.content | strip_html | truncatewords: 15 }}</h5>
+                  {% endif %}
+                  <h5 class="author">
+                    <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
+                  </h5>
+                </div>
+              </div>
+            {% endfor %}
           </div>
         </div>
-      {% endfor %}
+        <div id="blog-right-area" class="column-12-tablet-vert-4">
+          <div class="row">
+            <div class="column-12">
+              <h5 class="blog-col-header">Search The Blog</h5>
+              <form
+                class="search-input-form"
+                action="/search"
+                method="get"
+                role="search"
+              >
+                <button
+                  type="submit"
+                  class="secondary"
+                  aria-label="Search"
+                >
+                  <div class="icon search-icon" />
+                </button>
+                <input
+                  class="search-input"
+                  type="search"
+                  name="q"
+                  placeholder="Search for products, brands..."
+                  autocomplete="off"
+                  required
+                >
+                <input type="hidden" name="tab" value="articles" />
+              </form>
+            </div>
+
+            {% if settings.blog_featured_tag != '' and settings.blog_featued_products_limit != '' %}
+            {% capture featuredArticles %}
+              {% assign count = 0 %}
+                {% for article in blog.articles %}
+                  {% if article.tags contains settings.blog_featured_tag and count < settings.blog_featued_products_limit %}
+                    {% assign count = count | plus: 1 %}
+                    <div class="featured-post">
+                      <a href="{{ article.url }}">
+                        {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                        <img
+                          class="post-hero lazyload blur-up"
+                          src="{{ settings.placeholder_image | img_url }}"
+                          alt="{{ article.title | escape }}"
+                          data-src="{{ base_url }}"
+                          data-widths="[360, 540, 720, 900, 1080, 1600]"
+                          data-aspectratio="{{ collection.image.aspect_ratio }}"
+                          data-sizes="auto"
+                        />
+                        <noscript>
+                          <img class="lazyloaded" src="{{ article.image| img_url: '800x' }}" alt="{{ article.title | escape }}">
+                        </noscript>
+                      </a>
+                      <div class="post-text">
+                        <h5 class="author">
+                          <span>{{ article.author }}</span>
+                        </h5>
+                        <a href="{{ article.url }}">
+                          <h5 class="post-title no-margin">{{ article.title }}</h5>
+                        </a>
+                        <h5 class="author">
+                          <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
+                        </h5>
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endcapture %}
+            {% endif %}
+
+            {% if featuredArticles != '' and featuredArticles.size > 0 %}
+              <div class="column-12">
+                <h5 class="blog-col-header">Popular Posts</h5>
+                {{ featuredArticles }}
+              </div>
+            {% endif %}
+
+            <div class="column-12">
+              <h5 class="blog-col-header">Blog Categories</h5>
+              {% assign blogCategories = settings.blog_categories | split: ', ' %}
+              {% for category in blogCategories %}
+                <a class="blog-link" href="/{{ category }}">{{ category }}</a>
+              {% endfor %}
+            </div>
+
+            <div class="column-12">
+              <h5 class="blog-col-header">Popular Tags</h5>
+              <div class="blog-tags">
+                {% assign blogTags = settings.blog_tags | split: ', ' %}
+                {% for tag in blogTags %}
+                  <a class="blog-tag" href="/{{ tag }}">{{ tag }}</a>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     {% if paginate.pages > 1 %}

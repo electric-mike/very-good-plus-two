@@ -470,9 +470,41 @@
     "name": "Blog",
     "settings": [
       {
-        "type": "checkbox",
-        "id": "blog_show_tag_filter",
-        "label": "Show tag filter"
+        "type": "image_picker",
+        "id": "blog_image",
+        "label": "Blog Header Image"
+      },
+      {
+        "type": "textarea",
+        "id": "blog_description",
+        "label": "Blog Description"
+      },
+      {
+        "type": "text",
+        "id": "blog_featured_tag",
+        "label": "Featured tag for Featured PRoducts",
+        "info": "Pulls based on tag above, limit below"
+      },
+      {
+        "type": "range",
+        "id": "blog_featued_products_limit",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "label": "Blog Featured Products Limit",
+        "default": 3
+      },
+      {
+        "type": "textarea",
+        "id": "blog_categories",
+        "label": "Blog Categories",
+        "info": "Comma separated"
+      },
+      {
+        "type": "textarea",
+        "id": "blog_tags",
+        "label": "Blog Tags",
+        "info": "Comma separated"
       }
     ]
   },
