@@ -196,6 +196,15 @@
       };
     </script>
 
+    <!-- Loop -->
+    <script src="https://unpkg.com/@loophq/onstore-sdk@latest/dist/loop-onstore-sdk.js"></script>
+    <script>
+      LoopOnstore.init({
+        key: "892ec0ef05f6cc1e48b3df4e2c8dfbbd333c3aea",
+        attach: "#checkout-button"
+      });
+    </script>
+
     {% comment %}
     <!-- Smile -->
     {% include 'smile-initializer' %}
