@@ -482,16 +482,16 @@
       {
         "type": "text",
         "id": "blog_featured_tag",
-        "label": "Featured tag for Featured PRoducts",
-        "info": "Pulls based on tag above, limit below"
+        "label": "Featured Tag for \"Popular Posts\"",
+        "info": "Pulls based on tag set here, limit below"
       },
       {
         "type": "range",
-        "id": "blog_featued_products_limit",
+        "id": "blog_featured_posts_limit",
         "min": 0,
         "max": 5,
         "step": 1,
-        "label": "Blog Featured Products Limit",
+        "label": "Blog Featured Posts Limit",
         "default": 3
       },
       {
@@ -505,6 +505,37 @@
         "id": "blog_tags",
         "label": "Blog Tags",
         "info": "Comma separated"
+      },
+      {
+        "type": "image_picker",
+        "id": "blog_featured_block_image",
+        "label": "Featured Block Background Image"
+      },
+      {
+        "type": "text",
+        "id": "blog_featured_block_header",
+        "label": "Featured Block Header"
+      },
+      {
+        "type": "text",
+        "id": "blog_featured_block_description",
+        "label": "Featured Block Description"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_featured_block_invert",
+        "label": "Invert Text Color?",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "blog_featured_block_link",
+        "label": "Featured Block Link"
+      },
+      {
+        "type": "text",
+        "id": "blog_featured_block_link_text",
+        "label": "Featured Block Link Text"
       }
     ]
   },

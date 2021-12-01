@@ -54,8 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
     new Vue({
       el: blogRightArea,
       data() {
+        const togglesOn = {
+          search     : true,
+          newsletter : true,
+          posts      : true,
+          categories : true,
+          tags       : true,
+        }
+
         return {
-          toggles: [],
+          toggles: window.innerWidth > 767 ? togglesOn : {
+            search     : true,
+            newsletter : true,
+          },
         }
       },
       methods: {

@@ -416,7 +416,11 @@ h1 + .accordion {
     .category-hero-image {
       min-height: 250px;
       max-height: 400px;
-      height: 40vw;
+      height: auto;
+
+      @media(min-width: $tablet) {
+        height: 40vw;
+      }
 
       h1 {
         margin-bottom: 0;
@@ -551,6 +555,11 @@ h1 + .accordion {
 //smile & gorgias z-index
 #smile-ui-container, #gorgias-web-messenger-container {
   z-index: 2 !important;
+}
+
+// loop
+#loop-onstore {
+  z-index: 9 !important;
 }
 
 //pagination

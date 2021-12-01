@@ -20,7 +20,7 @@
     )
       subtotal-payments(:is-cart="isCart")
       promo-code(v-if="isCart" :is-cart="isCart")
-      button(
+      button#checkout-button(
         type='submit'
         name='checkout'
         :class="{ 'loading': goingToCheckout, 'disabled': cartData.item_count <= 0 }"
