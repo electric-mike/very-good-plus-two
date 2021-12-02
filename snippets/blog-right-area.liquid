@@ -8,8 +8,13 @@
             v-bind:class="{ 'active' : toggles['newsletter'] }"
             v-on:click.prevent="toggleAccordion('newsletter')"
           >Like What Your Reading?</h5>
-          <div class="answer" v-show="toggles['newsletter']">
-            Sign up for newsletter
+          <div class="answer klaviyo-wrapper" v-show="toggles['newsletter']">
+            {% if settings.klaviyo_desktop_form_id.size > 0 or settings.klaviyo_mobile_form_id.size > 0 %}
+              <p class="small">{{ settings.klaviyo_signup_text }}</p>
+              <div class="klaviyo-form-{{ settings.klaviyo_desktop_form_id }} klaviyo-desktop"></div>
+            {% else %}
+              Sign up for our newsletter <a href="#">here</a>
+            {% endif %}
           </div>
         </div>
       {% else %}

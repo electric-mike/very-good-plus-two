@@ -588,6 +588,13 @@
         "type": "text",
         "id": "klaviyo_bis_list",
         "label": "Klaviyo BIS List"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_signup_text",
+        "label": "Klaviyo BIS List",
+        "info": "This shows on the article page, and in the footer",
+        "default": "Sign up to get the latest on sales, new releases and more. We promise not to spam your inbox!"
       }
     ]
   },

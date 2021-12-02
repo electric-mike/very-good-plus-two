@@ -148,65 +148,7 @@ body > footer {
         }
 
         form {
-          padding: 0;
-          margin-left: auto;
-          margin-right: auto;
           max-width: $klaviyo-max-width;
-
-          > div {
-            margin-left: -0.35em;
-            width: calc(100% + 1.2em);
-            margin-right: -0.35em;
-          }
-        }
-
-        label {
-          padding-bottom: 0 !important;
-        }
-
-        // button {
-        //   background: var(--shop-primary-color) !important;
-        // }
-
-        * {
-          font-family: inherit !important;
-        }
-
-        ::-webkit-input-placeholder {
-          font-family: inherit !important;
-        }
-
-        ::-moz-placeholder {
-          font-family: inherit !important;
-        }
-
-        :-ms-input-placeholder {
-          font-family: inherit !important;
-        }
-
-        :-moz-placeholder {
-          font-family: inherit !important;
-        }
-
-        .klaviyo-mobile {
-          form {
-            margin-bottom: -0.5em;
-            margin-top: -0.5em;
-          }
-        }
-
-        .klaviyo-desktop {
-          display: none;
-        }
-
-        @media(min-width: $tablet) {
-          .klaviyo-mobile {
-            display: none;
-          }
-
-          .klaviyo-desktop {
-            display: block;
-          }
         }
       }
     }

@@ -227,7 +227,6 @@
     <!--Gorgias Chat Widget End-->
     {% endcomment %}
 
-    {% comment %}
     <!-- Klaviyo global JS and CSS Overrides -->
     <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
     {% if settings.klaviyo_api_key.size > 0 %}
@@ -248,9 +247,9 @@
               email_field_label: "Email",
               button_label: "Notify me when available",
               subscription_success_label: "You're in! We'll let you know when it's back.",
-              font_family: '"neue-haas-grotesk-text", Helvetica, sans-serif',
-              headers_font_family: '"neue-haas-grotesk-text", Helvetica, sans-serif',
-              additional_styles: "@font-face { font-family: 'neue-haas-grotesk-text'; src: url('https://use.typekit.net/axa2zac.css') format('opentype'); font-display: optional; font-weight: 400; } body, p, .btn, select, input { font-family: 'neue-haas-grotesk-text', Helvetica, sans-serif; font-size: 16px !important; } h3 { font-weight: bold !important; } button { font-weight: normal !important; text-transform: capitalize; }",
+              font_family: 'Helvetica, sans-serif',
+              headers_font_family: 'Helvetica, sans-serif',
+              additional_styles: "body, p, .btn, select, input { font-family: Helvetica, sans-serif; font-size: 16px !important; } h3 { font-weight: bold !important; } button { font-weight: normal !important; text-transform: capitalize; }",
               drop_background_color: "#060606",
               background_color: "#fff",
               text_color: "#060606",
@@ -267,6 +266,5 @@
         {% endif %}
       </script>
     {% endif %}
-    {% endcomment %}
   </body>
 </html>
