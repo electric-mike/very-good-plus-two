@@ -68,6 +68,12 @@
 
   // blog rh
   #blog-right-area {
+    @media(min-width: $tablet) {
+      &.article-right-area {
+        padding-top: 0.625em;
+      }
+    }
+
     @media(min-width: $desktop) {
       padding-left: 1.875em;
     }
