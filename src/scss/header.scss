@@ -32,6 +32,50 @@ body > header {
   }
 
   @media(min-width: $desktop) {
+    &.desktop-logo-left {
+      .logo-link {
+        margin-left: 2.5em;
+        order: -1;
+      }
+
+      .left-links {
+        width: 100%;
+        flex-grow: 1;
+
+        .top-level-links {
+          position: unset;
+          justify-content: center;
+        }
+      }
+
+      .action-links {
+        width: auto;
+      }
+    }
+  }
+
+  @media(max-width: $desktop - 1) {
+    &.mobile-logo-left {
+      .logo-link {
+        margin-left: 2.5em;
+        order: -1;
+      }
+
+      .logo-link {
+        margin-left: 1.25em;
+      }
+
+      #mobile-nav {
+        max-width: none;
+
+        .hamburger {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  @media(min-width: $desktop) {
     #desktop-top-level-links, .left-links, .right-link {
       display: flex !important;
     }

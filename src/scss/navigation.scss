@@ -147,6 +147,7 @@ body > header nav {
   //override all link colors
   .link, .link * {
     text-decoration: none;
+    white-space: nowrap;
 
     &, &:hover {
       cursor: pointer;

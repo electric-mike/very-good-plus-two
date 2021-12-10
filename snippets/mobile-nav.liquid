@@ -108,7 +108,7 @@
   <transition-group
     tag="div"
     name="slide"
-    class="drawer-wrapper left-drawer mobile-nav-wrapper v-hide paginate-mobile-nav-wrapper"
+    class="drawer-wrapper{% if settings.mobile_nav_order == 'mobile-center-center' %} left-drawer{% endif %} mobile-nav-wrapper v-hide paginate-mobile-nav-wrapper"
     v-bind:class="{ 'open': navOpen, 'was-opened': wasOpened }"
     v-bind:style="{ 'top': `${stickyHeights.headerTop()}px` }"
     v-else-if="mobileNavType === 'paginate'"
