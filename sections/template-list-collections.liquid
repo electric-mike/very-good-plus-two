@@ -29,7 +29,7 @@
                 </a>
                 <div class="product-info">
                   <h5 class="vendor">{{ product.vendor }}</h5>
-                  <a href="{{ prod.url | within: collection }}">
+                  <a href="{{ prod.url | within: collection }}" title="{{ product.title }}">
                     <h5>{{ prod.title }}</h5>
                   </a>
                   {% if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
@@ -39,7 +39,7 @@
             {% endfor %}
           </div>
           <div class="product-list-collection-link center-text">
-            <a href="{{ collection.url }}" class="button secondary mobile-featured-collection-link">View All</a>
+            <a href="{{ collection.url }}" title="{{ collection.title }}" class="button secondary mobile-featured-collection-link">View All</a>
           </div>
         </div>
       {% endunless %}

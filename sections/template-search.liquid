@@ -205,7 +205,7 @@
                       data-price="{{ product_price }}"
                       key="{{ forloop.index }}"
                     >
-                      <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
+                      <a class="product-image-wrapper" href="{{ product.url | within: collection }}" title="{{ product.title }}">
                         <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
                           {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                           {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
@@ -232,7 +232,7 @@
                       </a>
                       <div class="product-info">
                         <h5 class="vendor">{{ product.vendor }}</h5>
-                        <a href="{{ product.url | within: collection }}">
+                        <a href="{{ product.url | within: collection }}" title="{{ product.title }}">
                           <h5>{{ product.title }}</h5>
                         </a>
                         {% if settings.review_type == 'judgeme' %}
@@ -258,7 +258,7 @@
                   v-for="product in paginatedProducts"
                   v-bind:key="product.id"
                 >
-                  <a class="product-image-wrapper" v-bind:href="generateProductUrl(product.handle)">
+                  <a class="product-image-wrapper" v-bind:href="generateProductUrl(product.handle)" v-bind:title="product.title">
                     <div class="image-wrap" style="height: 0;" v-bind:style="{ 'padding-bottom': (100 / product.featured_image_aspectratio) + '%' }">
                       <img
                         class="product-image lazyload blur-up"
@@ -280,7 +280,7 @@
                   </a>
                   <div class="product-info">
                     <h5 class="vendor">${ product.vendor }</h5>
-                    <a v-bind:href="generateProductUrl(product.handle)">
+                    <a v-bind:href="generateProductUrl(product.handle)" v-bind:title="product.title">
                       <h5 v-html="product.title"></h5>
                     </a>
                     <div
@@ -402,7 +402,7 @@
                   <h5 class="posted-by">
                     By {{ article.user.first_name }}
                   </h5>
-                  <a href="{{ article.url }}">
+                  <a href="{{ article.url }}" title="{{ article.title }}">
                     <h5>
                       {{ article.title }}
                     <h5>
@@ -447,6 +447,7 @@
                 class="search-input"
                 type="search"
                 name="q"
+                aria-label="Search for products, brands..."
                 placeholder="Search for products, brands..."
                 autocomplete="off"
                 required
@@ -493,7 +494,7 @@
             </a>
             <div class="product-info">
               <h5 class="vendor">{{ prod.vendor }}</h5>
-              <a href="{{ prod.url | within: collection }}">
+              <a href="{{ prod.url | within: collection }}" title="{{ prod.title }}">
                 <h5>{{ prod.title }}</h5>
               </a>
               {% if settings.review_type == 'judgeme' %}

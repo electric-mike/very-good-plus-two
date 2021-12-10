@@ -36,7 +36,7 @@
       {% for block in section.blocks %}
       {% assign collection = collections[block.settings.collection] %}
         <div class="product column-6-tablet-vert-{{ 12 | divided_by: section.blocks.size }}">
-          <a class="product-image-wrapper image-wrap" href="{{ collection.url }}">
+          <a class="product-image-wrapper image-wrap" href="{{ collection.url }}" title="{{ collection.title | escape }}">
             {% if block.settings.image %}
               {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
             {% else %}
@@ -56,7 +56,7 @@
             </noscript>
           </a>
           <div class="product-info">
-            <a href="{{ collection.url }}">
+            <a href="{{ collection.url }}" title="{{ collection.title }}">
               <h5>{{ collection.title }}</h5>
             </a>
           </div>

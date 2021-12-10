@@ -35,7 +35,7 @@
                     {% assign topLevelSize = 5 | minus: childLinkSize %}
                     {% for product in childLinkProducts | limit: topLevelSize %}
                       <div class="product parent-link-product">
-                        <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}">
+                        <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}" title="{{ product.title }}">
                           {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                           <img
                             class="product-image lazyload blur-up"
@@ -52,7 +52,7 @@
                         </a>
                         <div class="product-info">
                           {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}
-                          <a href="{{ product.url | within: collection }}">
+                          <a href="{{ product.url | within: collection }}" title="{{ product.title }}">
                             <h5>{{ product.title }}</h5>
                           </a>
                           {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}

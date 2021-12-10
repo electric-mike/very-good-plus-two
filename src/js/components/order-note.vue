@@ -4,6 +4,7 @@
     input#enableOrder(type="checkbox" v-model="enableOrderNote")
     label(for="enableOrder" @click="userInteracted = true") Order or gift note
   textarea.order-note(
+    aria-label="Order or gift note"
     placeholder="Add any special notes here"
     name="order-note"
     v-model="localOrderNote"

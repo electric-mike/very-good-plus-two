@@ -40,14 +40,14 @@
     >
       {% for prod in collection.products limit: limit %}
         <div class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
-          <a class="product-image-wrapper" href="{{ prod.url | within: collection }}">
+          <a class="product-image-wrapper" href="{{ prod.url | within: collection }}" title="{{ prod.title | escape }}">
             <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: prod.featured_image.aspect_ratio }}%;">
               {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
               {%- assign secondary_img_url = prod.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
               <img
                 class="product-image lazyload blur-up"
                 src="{{ settings.placeholder_image | img_url }}"
-                alt="{{ prod.title | escape }}"
+                alt="{{ prod.title }}"
                 data-src="{{ img_url }}"
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
                 data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
@@ -64,7 +64,7 @@
           </a>
           <div class="product-info">
             <p class="vendor">{{ prod.vendor }}</p>
-            <a href="{{ prod.url | within: collection }}">
+            <a href="{{ prod.url | within: collection }}" title="{{ prod.title | escape }}">
               <p>{{ prod.title }}</p>
             </a>
             {% if prod.compare_at_price > prod.price %}<p class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</p>{% endif %}
@@ -75,7 +75,7 @@
       {% endfor %}
     </div>
     <div class="product-list-collection-link">
-      <a href="{{ collection.url }}" class="button">{{ section.settings.shop_link_text }}</a>
+      <a href="{{ collection.url }}" class="button" title="{{ section.settings.shop_link_text }}">{{ section.settings.shop_link_text }}</a>
     </div>
   </div>
 </div>

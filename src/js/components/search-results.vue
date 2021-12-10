@@ -22,7 +22,10 @@
               :key="result.id"
               class="alt-result"
             >
-              <a :href="result.url">{{ result.title }}</a>
+              <a
+                :href="result.url"
+                :title="result.title"
+              >{{ result.title }}</a>
             </div>
           </div>
         </div>
@@ -37,6 +40,7 @@
           >
             <a
               href="#"
+              :title="`Search all ${ term }`"
               @click.prevent="setSearchQuery(term)"
             >
               {{ term }}
@@ -68,6 +72,7 @@
             <a
               class="product-image-wrapper"
               :href="product.url"
+              :title="product.title"
               @click="(e) => { e.preventDefault(); e.stopPropagation(); }"
             >
               <div class="image-wrap">
@@ -90,6 +95,7 @@
               </h5>
               <a
                 :href="product.url"
+                :title="product.title"
                 @click="(e) => { e.preventDefault(); e.stopPropagation(); }"
               >
                 <h5>{{ product.title }}</h5>
@@ -113,6 +119,7 @@
         >
           <a
             href="#"
+            title="View All Search Products"
             @click.prevent="submitForm()"
           >View All</a>
         </div>
@@ -168,6 +175,7 @@
             <a
               class="product-image-wrapper"
               :href="product.url"
+              :title="product.title"
             >
               <div
                 class="image-wrap"
@@ -178,7 +186,7 @@
                   :width="293"
                   :height="placeholderHeight"
                   :source="product.featured_image.url"
-                  :alt="product.featured_image.alt"
+                  :alt="product.title"
                 />
               </div>
             </a>
@@ -186,7 +194,10 @@
               <h5 class="vendor">
                 {{ product.vendor }}
               </h5>
-              <a :href="product.url">
+              <a
+                :href="product.url"
+                :title="product.title"
+              >
                 <h5>{{ product.title }}</h5>
               </a>
               <h5
@@ -216,6 +227,7 @@
         >
           <a
             href="#"
+            title="View All Search Products"
             @click.prevent="submitForm()"
           >View All</a>
         </div>

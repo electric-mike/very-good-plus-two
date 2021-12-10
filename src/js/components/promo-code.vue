@@ -4,6 +4,7 @@
     autocomplete="off"
     type="text"
     name="discount"
+    aria-label="Promo code"
     placeholder="Promo code"
     v-model="promoCode"
     @keydown.enter.stop.prevent="applyPromoCode"

@@ -18,6 +18,7 @@
       class="search-input"
       type="search"
       name="q"
+      aria-label="Search for products, brands..."
       placeholder="Search for products, brands..."
       autocomplete="off"
       required

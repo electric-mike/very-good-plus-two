@@ -52,7 +52,7 @@
             </a>
             <div class="product-info">
               <h5 class="vendor">{{ product.vendor }}</h5>
-              <a href="{{ product.url | within: collection }}">
+              <a href="{{ product.url | within: collection }}" alt="{{ product.title | escape }}">
                 <h5>{{ product.title }}</h5>
               </a>
               {% if settings.review_type == 'judgeme' %}

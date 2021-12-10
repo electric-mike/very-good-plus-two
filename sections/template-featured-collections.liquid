@@ -47,7 +47,7 @@
             </a>
             <div class="product-info">
               <p class="vendor">{{ prod.vendor }}</p>
-              <a href="{{ prod.url | within: collection }}">
+              <a href="{{ prod.url | within: collection }}" title="{{ collection.title }}">
                 <p>{{ prod.title }}</p>
               </a>
               {% if prod.compare_at_price > prod.price %}<p class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</p>{% endif %}
@@ -57,7 +57,7 @@
           </div>
         {%- endfor -%}
         <div class="column-6 fc-view-all hide-md">
-          <a href="{{ collection.url }}" class="btn">View More</a>
+          <a href="{{ collection.url }}" class="btn" title="{{ collection.title }}">View More</a>
         </div>
       </div>
       {% unless forloop.index == section.blocks.size %}<hr>{% endunless %}

@@ -90,10 +90,10 @@
             <h5 class="posted-by">
               By {{ article.user.first_name }}
             </h5>
-            <a href="{{ article.url }}">
+            <a href="{{ article.url }}" title="{{ article.title }}">
               <h5>
                 {{ article.title }}
-              <h5>
+              </h5>
             </a>
             <h5 class="article-description">
               {% if article.excerpt != blank %}
@@ -109,7 +109,7 @@
       {% endfor %}
     </div>
     <div class="product-list-collection-link center-text">
-      <a href="{{ blog.url }}" class="button">View All</a>
+      <a href="{{ blog.url }}" title="View All Blog Posts" class="button">View All</a>
     </div>
   </div>
 </section>

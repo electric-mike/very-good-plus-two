@@ -186,12 +186,12 @@
               >
                 {% for product in linkProducts | limit: 4 %}
                   <div class="product column-6">
-                    <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}">
+                    <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}" title="{{ product.title }}">
                       {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                       <img
                         class="product-image lazyload blur-up"
                         src="{{ settings.placeholder_image | img_url }}"
-                        alt="{{ prod.title | escape }}"
+                        alt="{{ product.title | escape }}"
                         data-src="{{ img_url }}"
                         data-widths="[360, 540, 720, 900, 1080, 1600]"
                         data-aspectratio="{{ product.featured_image.aspect_ratio }}"
@@ -200,7 +200,7 @@
                     </a>
                     <div class="product-info">
                       {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}
-                      <a href="{{ product.url | within: collection }}">
+                      <a href="{{ product.url | within: collection }}" title="{{ product.title }}">
                         <h5>{{ product.title }}</h5>
                       </a>
                       {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}
