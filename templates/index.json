@@ -6,7 +6,7 @@
         "ce0c3698-0220-49cd-962f-92e55b9ce8f8": {
           "type": "header",
           "settings": {
-            "header_desktop_text": "Header Text",
+            "header_desktop_text": "Vinyl Never Sounded <br> This Perfect.",
             "header_color": "",
             "header_desktop_size": 64,
             "header_tablet_size": 48,
@@ -19,7 +19,7 @@
         "26b65ba0-2bad-4a0d-a2f8-5dae4cc84a33": {
           "type": "subheader",
           "settings": {
-            "subheader_text": "Some subheader text",
+            "subheader_text": "VG+ brings your favorite record store online with an <br> unmatchable selection of new and used vinyl.",
             "subheader_color": "",
             "subheader_desktop_size": 20,
             "subheader_tablet_size": 16,
@@ -31,8 +31,8 @@
         "740af4ec-42f4-41e1-a4e7-59b24ba47a3a": {
           "type": "button",
           "settings": {
-            "button_text": "Shop Now",
-            "button_link": "shopify:\/\/collections\/vinyl",
+            "button_text": "New Arrivals",
+            "button_link": "shopify:\/\/collections\/new-arrivals",
             "button_desktop_weight": "400",
             "button_mobile_weight": "400",
             "button_color": "#ffffff",
@@ -41,10 +41,10 @@
             "button_hover_background_color": "",
             "is_button": true,
             "secondary_button": false,
-            "button_top_margin": 20,
+            "button_top_margin": 10,
             "button_side_margin": 0,
-            "button_top_padding": 16,
-            "button_side_padding": 48
+            "button_top_padding": 14,
+            "button_side_padding": 28
           }
         }
       },
@@ -58,7 +58,7 @@
         "hero_image_desktop": "shopify:\/\/shop_images\/Group_92.jpg",
         "desktop_height": 92,
         "hero_image_mobile": "shopify:\/\/shop_images\/mobile-hero.jpg",
-        "mobile_height": 112,
+        "mobile_height": 164,
         "desktop_image_position": "center",
         "desktop_text_align": "left",
         "mobile_image_position": "center",
@@ -165,7 +165,7 @@
         "title": "Featured Products",
         "collection": "new-arrivals",
         "product_limit": 4,
-        "shop_link_text": "Shop All Products",
+        "shop_link_text": "Shop Featured",
         "enable_scrollbar": true,
         "background_color": "",
         "text_color": ""
@@ -177,7 +177,7 @@
         "84d96ccc-5e68-437e-98a6-dfbea246e5f8": {
           "type": "header",
           "settings": {
-            "header_desktop_text": "New Arrival Stack",
+            "header_desktop_text": "Browse the stacks.",
             "header_color": "#ffffff",
             "header_desktop_size": 64,
             "header_tablet_size": 48,
@@ -190,7 +190,7 @@
         "0322fbbf-4120-4ae9-9e9c-c61776576278": {
           "type": "button",
           "settings": {
-            "button_text": "Shop Now",
+            "button_text": "Shop Used Vinyl",
             "button_link": "",
             "button_desktop_weight": "400",
             "button_mobile_weight": "400",
@@ -213,10 +213,10 @@
       ],
       "settings": {
         "background_color": "",
-        "hero_image_desktop": "shopify:\/\/shop_images\/404.jpg",
+        "hero_image_desktop": "shopify:\/\/shop_images\/new-arrivals.jpg",
         "desktop_height": 50,
-        "hero_image_mobile": "shopify:\/\/shop_images\/404.jpg",
-        "mobile_height": 50,
+        "hero_image_mobile": "shopify:\/\/shop_images\/new-arrivals_d49c1d84-ae11-4d25-aeec-5324f1c2116a.jpg",
+        "mobile_height": 108,
         "desktop_image_position": "center",
         "desktop_text_align": "center",
         "mobile_image_position": "center",
@@ -230,11 +230,11 @@
     "1625084351df5f2b26": {
       "type": "featured-blog",
       "settings": {
-        "heading": "Featured Articles",
+        "heading": "Blog Posts",
         "blog": "news",
         "post_limit": 4,
         "enable_scrollbar": true,
-        "background_color": "#f8f7f2",
+        "background_color": "#ffffff",
         "text_color": ""
       }
     },
@@ -247,7 +247,7 @@
             "image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
             "image_link": "",
             "textarea": "<h2>Lorem Ipsum<\/h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
-            "background_color": "#e5e5e5",
+            "background_color": "#f8f7f2",
             "button_text": "",
             "button_link": "",
             "forward_button": false,
@@ -263,7 +263,7 @@
         "max_width": false,
         "only_bottom_padding": false,
         "no_padding": true,
-        "background_color": "#ffffff"
+        "background_color": "#f8f7f2"
       }
     },
     "162519659079c84fcc": {
@@ -306,7 +306,7 @@
         "bd9aec60-9a00-4031-87de-e5c310892fb7"
       ],
       "settings": {
-        "title": "Reviews",
+        "title": "Customer Reviews",
         "background_color": "rgba(0,0,0,0)",
         "text_color": "rgba(0,0,0,0)",
         "enable_scrollbar": true
