@@ -11,6 +11,8 @@
       data-aspectratio="{{ collection.image.aspect_ratio }}"
       data-sizes="auto"
       style="position: absolute; width: 100%; height: 100%; object-fit: cover;"
+      width="{{ collection.image.width }}"
+      height="{{ collection.image.height }}"
     />
     <noscript>
       <img class="lazyloaded" src="{{ collection.image.src | img_url: '800x' }}" alt="{{ collection.title | escape }}">
@@ -95,7 +97,7 @@
             </span>
           </div>
 
-          <p class="product-count left-padding hide-tablet" v-if="!loading" v-cloak>
+          <p class="product-count left-padding hide-tablet v-hide" v-if="!loading" v-cloak>
             <span v-if="paginatedProductsPages > 1">
               ${ pageRangeStart + 1 }-${ pageRangeEnd }
               <span v-if="paginatedProducts.length < filteredProducts.length">
@@ -194,7 +196,6 @@
       </div>
 
       <div
-        v-cloak
         class="column-12 column-12-tablet-vert-9 max-width-no-padding collection-right"
         v-bind:class="{ 'full-width-grid-override': !showFilters || filterOptionsAvailable.length <= 0, 'filters-hidden': !showFilters || filterOptionsAvailable.length <= 0 }"
       >
@@ -205,8 +206,8 @@
               class="toggle-filters show-tablet"
               v-on:click.prevent="toggleFilters()"
               v-if="filterOptionsAvailable.length > 0"
-            ><span class="v-cloak" v-cloak>${ showFilters ? 'Hide' : 'Show' }</span> Filter & Sort</a>
-            <span class="product-count left-padding show-tablet" v-if="!loading">
+            ><span class="v-hide" v-cloak>${ showFilters ? 'Hide' : 'Show' }</span> Filter & Sort</a>
+            <span class="product-count left-padding show-tablet" v-if="!loading" v-cloak>
               <span v-if="paginatedProductsPages > 1">
                 ${ pageRangeStart + 1 }-${ pageRangeEnd }
                 <span v-if="paginatedProducts.length < filteredProducts.length">
@@ -279,6 +280,7 @@
                       v-on:mouseleave="changeImage('out', $event)"
                       width="{{ product.featured_image.width }}"
                       height="{{ product.featured_image.height }}"
+                      loading="lazy"
                     />
                     <noscript>
                       <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">

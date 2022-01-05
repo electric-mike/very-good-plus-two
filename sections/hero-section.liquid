@@ -14,6 +14,8 @@
     data-sizes="auto"
     alt="{{ section.settings.hero_image_desktop.title }}"
     style="width: 100%; height: 100%; height: calc(100% + 5px); object-fit: cover; object-position: top;"
+    width="{{ section.settings.hero_image_desktop.width }}"
+    height="{{ section.settings.hero_image_desktop.height }}"
   />
   <noscript>
     <img class="lazyloaded" src="{{ section.settings.hero_image_desktop.src | img_url: '800x' }}" alt="{{ section.settings.hero_image_desktop.alt }}">
@@ -31,6 +33,8 @@
     data-sizes="auto"
     alt="{{ section.settings.hero_image_mobile.title }}"
     style="width: 100%; height: 100%; object-fit: cover; object-position: top;"
+    width="{{ section.settings.hero_image_mobile.width }}"
+    height="{{ section.settings.hero_image_mobile.height }}"
   />
   <noscript>
     <img class="lazyloaded" src="{{ section.settings.hero_image_mobile.src | img_url: '800x' }}" alt="{{ section.settings.hero_image_mobile.alt }}">

@@ -196,6 +196,9 @@
                         data-widths="[360, 540, 720, 900, 1080, 1600]"
                         data-aspectratio="{{ product.featured_image.aspect_ratio }}"
                         data-sizes="auto"
+                        width="{{ product.featured_image.width }}"
+                        height="{{ product.featured_image.height }}"
+                        loading="lazy"
                       />
                     </a>
                     <div class="product-info">

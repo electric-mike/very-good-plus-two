@@ -44,6 +44,7 @@
                   v-on:mouseleave="changeImage('out', $event)"
                   width="{{ product.featured_image.width }}"
                   height="{{ product.featured_image.height }}"
+                  loading="lazy"
                 />
                 <noscript>
                   <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">

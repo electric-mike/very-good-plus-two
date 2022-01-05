@@ -43,6 +43,9 @@
               data-aspectratio="{{ block.settings.image.aspect_ratio }}"
               data-sizes="auto"
               alt="{{ block.settings.image.title }}"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+              loading="lazy"
             />
             <noscript>
               <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
@@ -104,6 +107,7 @@
 .logo-bar--{{ section.id }} .logo-bar__item img, .logo-bar--{{ section.id }} .logo-bar__item svg {
   padding: 2em 0.625em;
   width: 100%;
+  height: auto;
   max-width: 150px;
 }
 </style>

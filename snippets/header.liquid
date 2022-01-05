@@ -40,11 +40,14 @@
                           <img
                             class="product-image lazyload blur-up"
                             src="{{ settings.placeholder_image | img_url }}"
-                            alt="{{ prod.title | escape }}"
+                            alt="{{ product.title | escape }}"
                             data-src="{{ img_url }}"
                             data-widths="[360, 540, 720, 900, 1080, 1600]"
                             data-aspectratio="{{ product.featured_image.aspect_ratio }}"
                             data-sizes="auto"
+                            width="{{ product.featured_image.width }}"
+                            height="{{ product.featured_image.height }}"
+                            loading="lazy"
                           />
                           <noscript>
                             <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">

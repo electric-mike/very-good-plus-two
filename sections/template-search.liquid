@@ -225,6 +225,7 @@
                             v-on:mouseleave="changeImage('out', $event)"
                             width="{{ prod.featured_image.width }}"
                             height="{{ prod.featured_image.height }}"
+                            loading="lazy"
                           />
                           <noscript>
                             <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
@@ -357,6 +358,9 @@
                         data-widths="[360, 540, 720, 900, 1080, 1600]"
                         data-aspectratio="{{ article.image.aspect_ratio }}"
                         data-sizes="auto"
+                        width="{{ article.image.width }}"
+                        height="{{ article.image.height }}"
+                        loading="lazy"
                       />
                       <noscript>
                         <img class="lazyloaded" src="{{ article.image.src | img_url: '800x' }}" alt="{{ article.title | escape }}">
@@ -487,6 +491,9 @@
                   data-additional-image="{{ secondary_img_url }}"
                   v-on:mouseover="changeImage('in', $event)"
                   v-on:mouseleave="changeImage('out', $event)"
+                  width="{{ prod.featured_image.width }}"
+                  height="{{ prod.featured_image.height }}"
+                  loading="lazy"
                 />
                 <noscript>
                   <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">

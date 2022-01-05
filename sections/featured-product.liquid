@@ -21,6 +21,9 @@
                 data-sizes="auto"
                 data-aspectratio="{{ block_image.aspect_ratio }}"
                 style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                width="{{ block_image.width }}"
+                height="{{ block_image.height }}"
+                loading="lazy"
               />
               <noscript>
                 <img class="lazyloaded" src="{{ block_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
@@ -119,6 +122,9 @@
                 data-sizes="auto"
                 data-aspectratio="{{ block_image.aspect_ratio }}"
                 style="width: 100%; height: 100%; object-fit: cover; object-position: center;"
+                width="{{ block_image.width }}"
+                height="{{ block_image.height }}"
+                loading="lazy"
               />
               <noscript>
                 <img class="lazyloaded" src="{{ block_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">

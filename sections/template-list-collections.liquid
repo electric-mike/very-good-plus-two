@@ -22,6 +22,7 @@
                     data-sizes="auto"
                     width="{{ prod.featured_image.width }}"
                     height="{{ prod.featured_image.height }}"
+                    loading="lazy"
                   />
                   <noscript>
                     <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">

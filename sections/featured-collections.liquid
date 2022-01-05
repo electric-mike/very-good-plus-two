@@ -39,8 +39,12 @@
           <a class="product-image-wrapper image-wrap" href="{{ collection.url }}" title="{{ collection.title | escape }}">
             {% if block.settings.image %}
               {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {%- assign img_width = block.settings.image.width -%}
+              {%- assign img_height = block.settings.image.height -%}
             {% else %}
               {%- assign img_url = collection.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {%- assign img_width = collection.image.width -%}
+              {%- assign img_height = collection.image.height -%}
             {% endif %}
             <img
               class="product-image lazyload blur-up"
@@ -50,6 +54,9 @@
               data-widths="[360, 540, 720, 900, 1080, 1600]"
               data-aspectratio="{{ collection.image.aspect_ratio }}"
               data-sizes="auto"
+              width="{{ img_width }}"
+              height="{{ img_height }}"
+              loading="lazy"
             />
             <noscript>
               <img class="lazyloaded" src="{{ collection.image.src | img_url: '800x' }}" alt="{{ collection.title | escape }}">

@@ -33,6 +33,7 @@
           data-sizes="auto"
           data-aspectratio="{{ section.settings.background_image.aspect_ratio }}"
           style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute;"
+          loading="lazy"
         />
         <noscript>
           <img class="lazyloaded" src="{{ section.settings.background_image.src | img_url: '800x' }}" alt="Mobile block image">
@@ -112,6 +113,9 @@
                   data-widths="[360, 540, 720, 900, 1080, 1600]"
                   data-sizes="auto"
                   data-aspectratio="{{ block_image.aspect_ratio }}"
+                  width="{{ section.settings.mobile_background_image.width }}"
+                  height="{{ section.settings.mobile_background_image.height }}"
+                  loading="lazy"
                 />
                 <noscript>
                   <img class="lazyloaded" src="{{ block.settings.mobile_background_image.src | img_url: '800x' }}" alt="Mobile block image {{ section.id }}">
@@ -135,6 +139,7 @@
                   data-widths="[360, 540, 720, 900, 1080, 1600]"
                   data-sizes="auto"
                   data-aspectratio="{{ block_image.aspect_ratio }}"
+                  loading="lazy"
                 />
                 <noscript>
                   <img class="lazyloaded" src="{{ block.settings.desktop_background_image.src | img_url: '800x' }}" alt="Desktop block image {{ section.id }}">

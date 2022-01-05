@@ -18,8 +18,9 @@
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                 data-sizes="auto"
-                width="1600"
-                height="1600"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                loading="lazy"
               />
               <noscript>
                 <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
@@ -65,8 +66,9 @@
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
                 data-sizes="auto"
-                width="1600"
-                height="1600"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+                loading="lazy"
               />
               <noscript>
                 <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">

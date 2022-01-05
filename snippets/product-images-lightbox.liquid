@@ -26,6 +26,7 @@
           data-variantid="{{ image.id }}"
           width="{{ image.width }}"
           height="{{ image.height }}"
+          loading="lazy"
         />
         <noscript>
           <img class="lazyloaded" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt }}">

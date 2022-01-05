@@ -13,6 +13,9 @@
             data-widths="[360, 540, 720, 900, 1080, 1600]"
             data-sizes="auto"
             data-aspectratio="{{ section.settings.page_image_url.aspect_ratio }}"
+            width="{{ section.settings.page_image_url.width }}"
+            height="{{ section.settings.page_image_url.height }}"
+            loading="lazy"
           />
           <noscript>
             <img class="lazyloaded" src="{{ section.settings.page_image_url.src | img_url: '800x' }}" alt="{{section.settings.page_image_url.alt }}">

@@ -51,6 +51,8 @@
                     data-widths="[360, 540, 720, 900, 1080, 1600]"
                     data-aspectratio="{{ article.image.aspect_ratio }}"
                     data-sizes="auto"
+                    width="{{ article.image.width }}"
+                    height="{{ article.image.height }}"
                   />
                   <noscript>
                     <img class="lazyloaded" src="{{ article.image.src | img_url: '800x' }}" alt="{{ article.title | escape }}">

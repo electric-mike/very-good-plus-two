@@ -14,8 +14,11 @@
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
               data-sizes="auto"
-              data-aspectratio="{{ block_image.aspect_ratio }}"
+              data-aspectratio="{{ block.settings.image.aspect_ratio }}"
               style="width: 100%;"
+              width="{{ block.settings.image.width }}"
+              height="{{ block.settings.image.height }}"
+              loading="lazy"
             />
             <noscript>
               <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.description | escape }}">
