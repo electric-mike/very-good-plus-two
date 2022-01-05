@@ -75,22 +75,22 @@
         "fbcbe747-be21-41fb-95ab-fbc6048b0334": {
           "type": "collection",
           "settings": {
-            "collection": "vinyl",
-            "image": "shopify:\/\/shop_images\/Group_60.png"
+            "collection": "lps",
+            "image": "shopify:\/\/shop_images\/tame-impala-front_1600x_5b019a7f-5c80-4e49-bb28-f866e562879d.jpg"
           }
         },
         "9ff12be0-44ad-45b3-9c76-e0f978f74c56": {
           "type": "collection",
           "settings": {
             "collection": "new-arrivals",
-            "image": "shopify:\/\/shop_images\/miles-davis-kind-of-blue-vinyl_1.png"
+            "image": "shopify:\/\/shop_images\/iron-maiden-number-of-the-beast-vinyl-1_900x_a48bfed0-4248-47cf-9324-ccb437efd9f8.jpg"
           }
         },
         "f5e2dc67-c960-4ada-b3b6-34e7c4dfe6be": {
           "type": "collection",
           "settings": {
             "collection": "best-sellers",
-            "image": "shopify:\/\/shop_images\/gangstarr-hard-to-earn_1.png"
+            "image": "shopify:\/\/shop_images\/gangstarr-hard-to-earn_1600x_0642bd54-a4f9-4bad-b337-97014ef3348c.jpg"
           }
         }
       },
@@ -112,14 +112,14 @@
         "1625196787a3c87ff0-0": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/GQ_Logo_1.png",
+            "image": "shopify:\/\/shop_images\/GQ_Logo.svg_e33aab95-97ab-4b30-b9e9-a3ce241f98b7.png",
             "link": ""
           }
         },
         "1625196787a3c87ff0-1": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Vector_1.png",
+            "image": "shopify:\/\/shop_images\/spin_30601bde-43ee-4e50-b68f-4e622c615dd4.png",
             "link": ""
           }
         },
@@ -213,9 +213,9 @@
       ],
       "settings": {
         "background_color": "",
-        "hero_image_desktop": "shopify:\/\/shop_images\/Text_Overlay.png",
+        "hero_image_desktop": "shopify:\/\/shop_images\/404.jpg",
         "desktop_height": 50,
-        "hero_image_mobile": "shopify:\/\/shop_images\/Text_Overlay.png",
+        "hero_image_mobile": "shopify:\/\/shop_images\/404.jpg",
         "mobile_height": 50,
         "desktop_image_position": "center",
         "desktop_text_align": "center",
@@ -231,7 +231,7 @@
       "type": "featured-blog",
       "settings": {
         "heading": "Featured Articles",
-        "blog": "blog",
+        "blog": "news",
         "post_limit": 4,
         "enable_scrollbar": true,
         "background_color": "#f8f7f2",
