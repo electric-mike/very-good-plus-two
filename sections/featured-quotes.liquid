@@ -18,7 +18,13 @@
   {% endif %}
 
   #shopify-section-{{ section.id }} .product {
-    margin: 0 2.5em 1.25em 0;
+    margin: 0 1.25em 1.25em 0;
+  }
+
+  @media(min-width: 1025px) {
+    #shopify-section-{{ section.id }} .product {
+      margin: 0 2.5em 1.25em 0;
+    }
   }
 
   #shopify-section-{{ section.id }} .product:last-of-type {
