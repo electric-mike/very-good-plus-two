@@ -50,14 +50,14 @@
                 </div>
               </div>
             {% endfor %}
+          </div>
 
-            {% if paginate.pages > 1 %}
-              <div class="blog-pagination constrain-items">
-                {% render 'pagination', paginate: paginate %}
-              </div>
-            {% endif %}
-          {% endpaginate %}
-        </div>
+          {% if paginate.pages > 1 %}
+            <div class="blog-pagination constrain-items">
+              {% render 'pagination', paginate: paginate %}
+            </div>
+          {% endif %}
+        {% endpaginate %}
       </div>
 
       {% render 'blog-right-area' %}
