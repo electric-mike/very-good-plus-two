@@ -321,6 +321,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 this.checkForRelatedColorSwatch()
                 this.triggerLazyload()
+
+                if (this.filteredProducts.length <= 6) {
+                  const filterWrapper = document.querySelector('.filters-products-wrapper')
+                  const header = document.querySelector('header nav')
+
+                  if (filterWrapper && header) {
+                    window.scrollTo({
+                      top: filterWrapper.getBoundingClientRect().top + (
+                        window.scrollY - header.getBoundingClientRect().height
+                      ),
+                      behavior: 'smooth',
+                    })
+                  }
+                }
               }
             },
           },
