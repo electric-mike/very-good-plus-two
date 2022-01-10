@@ -46,7 +46,9 @@ Please do not edit
             "vendor": "{{ product.vendor | escape }}",
             "type": "{{ product.type | escape }}",
             "id": {{ product.id }},
-            "position": {{ forloop.index }}
+            "position": {{ forloop.index }},
+            "position": {{ forloop.index }},
+            "date": "{{ product.created_at }}"
           }
           {% assign loopIndex = loopIndex | plus: 1 %}
         {% endif %}

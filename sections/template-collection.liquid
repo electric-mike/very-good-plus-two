@@ -137,34 +137,46 @@
                 </li>
                 <li>
                   <div class="radio">
-                    <input id="sort-pricea" type="radio" v-model="sort" value="pricea" name="sort">
-                    <label for="sort-pricea">Highest Price</label>
-                  </div>
-                </li>
-                <li>
-                  <div class="radio">
-                    <input id="sort-priced" type="radio" v-model="sort" value="priced" name="sort">
-                    <label for="sort-priced">Lowest Price</label>
-                  </div>
-                </li>
-                <li>
-                  <div class="radio">
                     <input id="sort-atoz" type="radio" v-model="sort" value="atoz" name="sort">
-                    <label for="sort-atoz">A to Z</label>
+                    <label for="sort-atoz">Alphabetically, A-Z</label>
                   </div>
                 </li>
                 <li>
                   <div class="radio">
                     <input id="sort-ztoa" type="radio" v-model="sort" value="ztoa" name="sort">
-                    <label for="sort-ztoa">Z to A</label>
+                    <label for="sort-ztoa">Alphabetically, Z-A</label>
                   </div>
                 </li>
                 <li>
                   <div class="radio">
+                    <input id="sort-priced" type="radio" v-model="sort" value="priced" name="sort">
+                    <label for="sort-priced">Price, low to high</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-pricea" type="radio" v-model="sort" value="pricea" name="sort">
+                    <label for="sort-pricea">Price, high to low</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-dated" type="radio" v-model="sort" value="dated" name="sort">
+                    <label for="sort-dated">Date, new to old</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input id="sort-datea" type="radio" v-model="sort" value="datea" name="sort">
+                    <label for="sort-datea">Date, old to new</label>
+                  </div>
+                </li>
+                <!-- <li>
+                  <div class="radio">
                     <input id="sort-vendor" type="radio" v-model="sort" value="vendor" name="sort">
                     <label for="sort-vendor">Product Brand</label>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
 

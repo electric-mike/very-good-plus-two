@@ -223,6 +223,19 @@ document.addEventListener('DOMContentLoaded', () => {
               filteredProducts = filteredProducts.sort((a, b) => (a.price !== b.price ? a.price > b.price ? -1 : 1 : 0)) //eslint-disable-line
             } else if (this.sort === 'priced') {
               filteredProducts = filteredProducts.sort((a, b) => (a.price !== b.price ? a.price < b.price ? -1 : 1 : 0)) //eslint-disable-line
+            } else if (this.sort === 'datea') {
+              filteredProducts = filteredProducts.sort((a, b) => {
+                const aDate = new Date(a.date)
+                const bDate = new Date(b.date)
+                return aDate !== bDate ? aDate > bDate ? -1 : 1 : 0 //eslint-disable-line
+              })
+            } else if (this.sort === 'dated') {
+              filteredProducts = filteredProducts.sort((a, b) => {
+                const aDate = new Date(a.date)
+                const bDate = new Date(b.date)
+
+                return aDate !== bDate ? aDate < bDate ? -1 : 1 : 0 //eslint-disable-line
+              })
             } else {
               filteredProducts = filteredProducts.sort((a, b) => (a.position !== b.position ? a.position < b.position ? -1 : 1 : 0)) //eslint-disable-line
             }
