@@ -299,6 +299,18 @@
       },
       {
         "type": "checkbox",
+        "id": "show_promo_code",
+        "label": "Show Promo Code",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_order_gift_note",
+        "label": "Show Order/Gift Note",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "enable_promo_code",
         "label": "Enable Promo Code Input",
         "default": false
@@ -323,6 +335,25 @@
         "type": "number",
         "id": "free_shipping_threshold_eu",
         "label": "International Free Shipping Bar Threshold"
+      }
+    ]
+  },
+  {
+    "name": "Payment Options",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_payment_options",
+        "label": "Show Payment Options",
+        "info": "Applies to side cart, cart, and product pages",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_shop_pay",
+        "label": "Show Shop Pay",
+        "info": "Applies to products only",
+        "default": false
       }
     ]
   },

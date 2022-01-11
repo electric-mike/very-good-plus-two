@@ -41,7 +41,7 @@
             h6.price {{ item.line_price | currency }}
           .remove.hamburger.open.hover(@click='removeFromCart(index + 1)') #[.lines]
       upsell
-      order-note(:is-cart="isCart")
+      order-note(:is-cart="isCart" v-if="themeSettings.showOrderGiftNote")
   .fill-up(v-else)
     h3(v-if="isCart") {{ themeSettings.sideCartEmptyText }}
     h2(v-else) {{ themeSettings.sideCartEmptyText }}

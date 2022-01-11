@@ -223,3 +223,19 @@
   height: 11px;
 }
 
+.shop-pay-icon {
+  display: inline-block;
+  background: url('~Src/assets/shop-pay.svg') no-repeat;
+  background-size: contain;
+  width: 105px;
+  height: 25px;
+}
+
+.affirm-icon {
+  display: inline-block;
+  background: url('~Src/assets/affirm.svg') no-repeat;
+  background-size: contain;
+  width: 45px;
+  height: 20px;
+  margin-bottom: -0.5px;
+}

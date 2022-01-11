@@ -39,6 +39,7 @@ export default function rhpa() {
           productPrice                  : window.productPrice,
           productVariantOptions         : window.productData.options,
           productVariants               : window.productData.variants,
+          variantQty                    : window.variantQty,
           customerTags                  : window.themeSettings.customerTags,
           enableDefaultProductSelection : window.themeSettings.enableDefaultProductSelection || false,
           optionSelections              : {

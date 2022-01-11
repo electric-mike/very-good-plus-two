@@ -1,6 +1,6 @@
 <template lang="pug">
-  .klarna-afterpay(:class="{ 'side-cart-payments': !isCart }")
-    h6
+  .klarna-afterpay(:class="{ 'side-cart-payments': !isCart }" v-if="themeSettings.showPaymentOptions")
+    h6(v-if="themeSettings.showPaymentOptions")
       | or 4 payments of {{ computedPaymentsPrice | currency }} with
       | <i class="icon afterpay-icon" aria-label="Afterpay"></i>
       | or <i class="icon klarna-icon" aria-label="Klarna"></i>
@@ -20,6 +20,12 @@ export default {
       type    : Boolean,
       default : false,
     },
+  },
+
+  data() {
+    return {
+      themeSettings: window.themeSettings,
+    }
   },
 
   computed: {

@@ -188,6 +188,10 @@
         customerTags: '{{ customer.tags }}'.split(', '),
         paginationLimit: {{ settings.pagination_limit }},
         enableFreeShippingBar: {{ settings.enable_free_shipping_threshold }},
+        showPromoCode: {{ settings.show_promo_code }},
+        showOrderGiftNote: {{ settings.show_order_gift_note }},
+        showPaymentOptions: {{ settings.show_payment_options }},
+        showShopPay: {{ settings.show_shop_pay }},
         freeShippingThresholds: {
           US: {{ settings.free_shipping_threshold_us | default: 0 }},
           CA: {{ settings.free_shipping_threshold_ca | default: 0 }},

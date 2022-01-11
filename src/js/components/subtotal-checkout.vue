@@ -5,7 +5,7 @@
       .subtotal
         h5.subtotal-text Subtotal:
         h5 &nbsp;{{ computedCartTotal | currency }}
-      .promo-code(v-if="appliedPromoCode !== ''")
+      .promo-code(v-if="appliedPromoCode !== '' && themeSettings.showPromoCode")
         h5.promo-text
           | Promo Code:
           | #[br]
@@ -30,7 +30,7 @@
       promo-code(v-if="isCart" :is-cart="isCart")
       cart-button
     .continue-shopping.center-text(v-if="isCart")
-      a(v-if="isCart" href="/") Continue Shopping
+      a(href="/") Continue Shopping
 </template>
 
 <script>

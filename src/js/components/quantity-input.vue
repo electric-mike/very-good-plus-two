@@ -30,7 +30,8 @@ export default {
       type    : [String, Number],
       default : 1,
     },
-    isCart: {
+    max    : Number,
+    isCart : {
       type    : Boolean,
       default : false,
     },
@@ -50,7 +51,9 @@ export default {
 
   methods: {
     changeValue(newVal) {
-      if ((!this.isCart && newVal === 0) || newVal === '') {
+      if (newVal > this.max) {
+        newVal = this.max
+      } else if ((!this.isCart && newVal === 0) || newVal === '') {
         newVal = 1
       }
 
