@@ -111,6 +111,7 @@ body > header nav {
         display: block;
         max-width: 12em;
         max-height: 2.25em;
+        width: auto;
         height: auto;
         // https://stackoverflow.com/questions/37906602/blurry-downscaled-images-in-chrome
         image-rendering: -webkit-optimize-contrast;
