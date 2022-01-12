@@ -1,5 +1,8 @@
 <template lang="pug">
-.upsell(v-if='computedUpsellProduct')
+.upsell(
+  v-if='computedUpsellProduct'
+  :class="{ 'is-cart' : isCart }"
+)
   .upsell-image
     a(:href='"/products/" + computedUpsellProduct.handle')
       vue-image.upsell-image(
@@ -26,7 +29,7 @@
             :value='variant'
             :disabled="!variant.available"
           ) {{ variant.title }}
-        button.secondary(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") ADD +
+        button(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") ADD +
 </template>
 
 <script>
@@ -37,6 +40,13 @@ import formatMoney from '../helpers/_format-money'
 export default {
   components: {
     vueImage,
+  },
+
+  props: {
+    isCart: {
+      type    : Boolean,
+      default : false,
+    },
   },
 
   data() {
@@ -179,11 +189,16 @@ export default {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  width: 100%;
+  width: calc(100% + 2.5em);
   border-top: 0 !important;
   padding: 1.25em;
-  margin: -1px 0 1.25em;
+  margin: -1px -1.25em 1.25em;
   background: var(--shop-light-gray);
+
+  &.is-cart {
+    width: 100%;
+    margin: -1px 0 1.25em;
+  }
 
   &:first-of-type {
     padding-top: 0;

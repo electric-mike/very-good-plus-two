@@ -67,10 +67,7 @@
     background-position: center;
     text-align: center;
     position: relative;
-
-    @media(min-width: $tablet) {
-      min-height: 75vh;
-    }
+    min-height: 100vh;
 
     .overlay {
       position: absolute;
