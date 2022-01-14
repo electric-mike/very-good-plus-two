@@ -456,6 +456,13 @@
         "id": "enable_vendor_filter",
         "label": "Enable Vendor (Brand) Filter",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_ratings_filter",
+        "label": "Enable Ratings Filter",
+        "info": "Must have a review widget enabled",
+        "default": false
       }
     ]
   },

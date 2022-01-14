@@ -341,6 +341,10 @@
           }
         }
 
+        .color-swatch {
+          margin-top: 0;
+        }
+
         .size-swatch {
           margin-bottom: 0.75em;
 
@@ -439,18 +443,6 @@
 
         &:not(.no-results) {
           overflow: hidden;
-        }
-
-        .jdgm-widget * {
-          pointer-events: none;
-        }
-
-        .jdgm-prev-badge__text {
-          display: none;
-        }
-
-        .okeReviews-reviewsSummary-ratingCount {
-          display: none;
         }
       }
 

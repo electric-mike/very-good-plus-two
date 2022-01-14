@@ -1,0 +1,120 @@
+{% comment %}
+  Parent wrapper differs in templates, so this is just contents
+  must wrap this in a div of some sort,
+  ideally .product
+{% endcomment %}
+
+{% if is_vue %}
+  <a class="product-image-wrapper" v-bind:href="generateProductUrl(product.handle)" v-bind:title="product.title">
+    <div class="image-wrap" style="height: 0;" v-bind:style="{ 'padding-bottom': (100 / product.featured_image_aspectratio) + '%' }">
+      <img
+        class="product-image lazyload"
+        data-sizes="auto"
+        data-widths="[360, 540, 720, 900, 1080, 1600]"
+        src="{{ settings.placeholder_image | img_url }}"
+        v-bind:data-src="product.featured_image"
+        v-bind:data-aspectratio="product.featured_image_aspectratio"
+        v-bind:alt="product.title"
+        v-bind:width="product.featured_image.width"
+        v-bind:height="product.featured_image.height"
+        loading="lazy"
+      />
+      <img
+        style="opacity: 0;"
+        class="product-image lazyload"
+        data-sizes="auto"
+        data-widths="[360, 540, 720, 900, 1080, 1600]"
+        src="{{ settings.placeholder_image | img_url }}"
+        v-bind:data-src="product.secondary_image"
+        v-bind:data-aspectratio="product.secondary_image_aspectratio"
+        v-bind:alt="product.title"
+        v-bind:width="product.secondary_image.width"
+        v-bind:height="product.secondary_image.height"
+        loading="lazy"
+      />
+    </div>
+  </a>
+  <div class="product-info">
+    <h5 class="vendor">${ product.vendor }</h5>
+    <a v-bind:href="generateProductUrl(product.handle)" v-bind:title="product.title">
+      <h5 v-html="product.title"></h5>
+    </a>
+    <div
+      v-bind:data-id='product.id'
+      class="jdgm-widget jdgm-preview-badge"
+      v-html="product.reviews"
+    ></div>
+    <h5 class="original-price" v-if="product.compare_at_price > product.price">${ product.compare_at_price | currency }</h5>
+    <h5 class="price">${ product.price | currency }</h5>
+    <v-runtime-template v-if="product.swatches" :template="product.swatches"></v-runtime-template>
+  </div>
+{% else %}
+  <a class="product-image-wrapper" href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+    <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
+      {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      <img
+        class="product-image lazyload blur-up"
+        src="{{ settings.placeholder_image | img_url }}"
+        alt="{{ product.title | escape }}"
+        data-src="{{ img_url }}"
+        data-widths="[360, 540, 720, 900, 1080, 1600]"
+        data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+        data-sizes="auto"
+        width="{{ product.featured_image.width }}"
+        height="{{ product.featured_image.height }}"
+        loading="lazy"
+      />
+      {% if product.images[1].src.size > 0 %}
+        {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        <img
+          style="opacity: 0;"
+          class="product-image secondary-image lazyload blur-up"
+          src="{{ settings.placeholder_image | img_url }}"
+          alt="{{ product.title | escape }}"
+          data-src="{{ secondary_img_url }}"
+          data-widths="[360, 540, 720, 900, 1080, 1600]"
+          data-aspectratio="{{ product.images[1].aspect_ratio }}"
+          data-sizes="auto"
+          width="{{ product.images[1].width }}"
+          height="{{ product.images[1].height }}"
+          loading="lazy"
+        />
+      {% endif %}
+    </div>
+  </a>
+  <div class="product-info">
+    <h5 class="vendor">{{ product.vendor }}</h5>
+    <a href="{{ product.url | within: collection }}" title="{{ product.title | escape }}">
+      <h5>{{ product.title }}</h5>
+    </a>
+    {% if settings.review_type == 'judgeme' %}
+      {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+    {% elsif settings.review_type == 'okendo' %}
+      {% render 'okendo-summary-widget', product: product %}
+    {% endif %}
+    {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '.00', '' }}</h5>{% endif %}
+    <h5 class="price">{{ product.price | money_without_trailing_zeros | replace: '.00', '' }}</h5>
+    {% if is_bundle %}
+      {% assign id = product.variants[0].id %}
+      {% assign avail = product.variants[0].available %}
+      {% if avail %}
+        <button
+          class="add-to-cart full-width"
+          v-on:click="addBundleProductToCart({{ id }}, '{{ collection.handle }}')"
+          v-bind:class="{ 'active': productIdsInCart.includes({{ id }}), 'loading': addingId === {{ id }} }"
+        >
+          <span v-cloak class="v-hide" v-if="productIdsInCart.includes({{ id }})">Added &check;</span>
+          <span v-else>Add To Cart</span>
+        </button>
+        <div v-if="errors[{{ id }}]" v-cloak class="v-hide invalid"><p class="field-message">${ errors[{{ id }}] }</p></div>
+      {% else %}
+        <button
+          class="active full-width"
+          disabled
+        >Sold Out</button>
+      {% endif %}
+    {% else %}
+      {% render 'color-swatches', product: product %}
+    {% endif %}
+  </div>
+{% endif %}

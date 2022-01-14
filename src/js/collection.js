@@ -26,27 +26,33 @@ document.addEventListener('DOMContentLoaded', () => {
             additionalFilterOptions,
           } = window
 
-          const { paginationLimit, enableVendorFilter } = window.themeSettings
+          const {
+            paginationLimit,
+            enableVendorFilter,
+            enableRatingsFilter,
+          } = window.themeSettings
 
           return {
-            products           : [],
-            tags               : [],
-            prices             : [],
-            types              : [],
-            vendors            : [],
-            sizes              : [],
-            filterOptions      : additionalFilterOptions.concat(baseFilterOptions),
-            filterToggles      : {},
-            checkedOptions     : {},
+            products            : [],
+            tags                : [],
+            prices              : [],
+            ratings             : [],
+            types               : [],
+            vendors             : [],
+            sizes               : [],
+            filterOptions       : additionalFilterOptions.concat(baseFilterOptions),
+            filterToggles       : {},
+            checkedOptions      : {},
             totalProducts,
-            currentPage        : 1,
-            sort               : '',
-            setPageFromURL     : false,
-            enableVendorFilter : enableVendorFilter || false,
-            activeTab          : 'products',
-            showFilters        : window.localStorage.getItem('showCategoryFilters') ? window.localStorage.getItem('showCategoryFilters') === 'true' : true,
-            mobileGridSize     : parseFloat(window.localStorage.getItem('mobileGridSize') || 2),
-            paginationLimit    : paginationLimit || 40,
+            currentPage         : 1,
+            sort                : '',
+            setPageFromURL      : false,
+            enableVendorFilter  : enableVendorFilter || false,
+            enableRatingsFilter : enableRatingsFilter || false,
+            activeTab           : 'products',
+            showFilters         : window.localStorage.getItem('showCategoryFilters') ? window.localStorage.getItem('showCategoryFilters') === 'true' : true,
+            mobileGridSize      : parseFloat(window.localStorage.getItem('mobileGridSize') || 2),
+            paginationLimit     : paginationLimit || 40,
           }
         },
 
@@ -112,6 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         product.price >= 500
                       && checkedOption.value.max === null
                       && checkedOption.value.min <= product.price
+                      )
+                    ) {
+                      foundMatches[key] = true
+                    }
+                  } else if (checkedOption.name.indexOf('Star') > -1) {
+                    if (
+                      (
+                        checkedOption.value.min <= product.reviews_integer
+                        && checkedOption.value.max >= product.reviews_integer
+                      ) || (
+                        product.reviews_integer >= 4
+                      && checkedOption.value.max === null
+                      && checkedOption.value.min <= product.reviews_integer
                       )
                     ) {
                       foundMatches[key] = true
@@ -477,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
               // match to existing NORMAL options normal tags (no ranges)
               this.filterOptions.filter(option => (
                 option.name !== 'Price'
+                && option.name !== 'Rating'
               )).forEach((option, index) => {
                 option.strings.forEach((optionString) => {
                   optionString = optionString.toLowerCase()
@@ -651,6 +671,42 @@ document.addEventListener('DOMContentLoaded', () => {
                   }
                 })
               })
+            }
+
+            if (this.enableRatingsFilter) {
+              // rating option
+              const ratingOption = this.filterOptions.find(option => option.name === 'Rating')
+              if (ratingOption) {
+                ratingOption.ranges.forEach((range) => {
+                  this.ratings.forEach((rating) => {
+                    if (
+                      (
+                        rating >= range.min
+                      && rating <= range.max
+                      && !ratingOption.options.find(option => option.name === range.name)
+                      )
+                    || (
+                      rating >= 4
+                      && range.max === null
+                      && rating >= range.min
+                      && !ratingOption.options.find(option => option.name === range.name)
+                    )
+                    ) {
+                    // push key to checkedOptions for v-model
+                      this.$set(this.checkedOptions, ratingOption.name, [])
+
+                      // push to available options
+                      ratingOption.options.push({
+                        name  : range.name,
+                        value : {
+                          min : range.min,
+                          max : range.max,
+                        },
+                      })
+                    }
+                  })
+                })
+              }
             }
 
             // open sort by default on mobile

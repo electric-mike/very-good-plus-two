@@ -25,63 +25,7 @@
             class="product product-{{ prod.id }} column-6-tablet-vert-3"
             key="{{ forloop.index }}"
           >
-            <a class="product-image-wrapper" href="{{ product.url | within: collection }}">
-              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: product.featured_image.aspect_ratio }}%;">
-                {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                <img
-                  class="product-image lazyload blur-up"
-                  src="{{ settings.placeholder_image | img_url }}"
-                  alt="{{ product.title | escape }}"
-                  data-src="{{ img_url }}"
-                  data-widths="[360, 540, 720, 900, 1080, 1600]"
-                  data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-                  data-secondary-aspectratio="{{ product.images[1].aspect_ratio }}"
-                  data-sizes="auto"
-                  data-first-src="{{ img_url }}"
-                  data-additional-image="{{ secondary_img_url }}"
-                  v-on:mouseover="changeImage('in', $event)"
-                  v-on:mouseleave="changeImage('out', $event)"
-                  width="{{ product.featured_image.width }}"
-                  height="{{ product.featured_image.height }}"
-                  loading="lazy"
-                />
-                <noscript>
-                  <img class="lazyloaded" src="{{ product.featured_image.src | img_url: '800x' }}" alt="{{ product.title | escape }}">
-                </noscript>
-              </div>
-            </a>
-            <div class="product-info">
-              <h5 class="vendor">{{ product.vendor }}</h5>
-              <a href="{{ product.url | within: collection }}" alt="{{ product.title | escape }}">
-                <h5>{{ product.title }}</h5>
-              </a>
-              {% if settings.review_type == 'judgeme' %}
-                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
-              {% elsif settings.review_type == 'okendo' %}
-                {% render 'okendo-summary-widget', product: product %}
-              {% endif %}
-              {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '.00', '' }}</h5>{% endif %}
-              <h5 class="price">{{ product.price | money_without_trailing_zeros | replace: '.00', '' }}</h5>
-              {% assign id = product.variants[0].id %}
-              {% assign avail = product.variants[0].available %}
-              {% if avail %}
-                <button
-                  class="add-to-cart full-width"
-                  v-on:click="addBundleProductToCart({{ id }}, '{{ collection.handle }}')"
-                  v-bind:class="{ 'active': productIdsInCart.includes({{ id }}), 'loading': addingId === {{ id }} }"
-                >
-                  <span v-cloak class="v-hide" v-if="productIdsInCart.includes({{ id }})">Added &check;</span>
-                  <span v-else>Add To Cart</span>
-                </button>
-                <div v-if="errors[{{ id }}]" v-cloak class="v-hide invalid"><p class="field-message">${ errors[{{ id }}] }</p></div>
-              {% else %}
-                <button
-                  class="active full-width"
-                  disabled
-                >Sold Out</button>
-              {% endif %}
-            </div>
+            {% render 'product-list-item', product: product, is_bundle: true %}
           </div>
         {% endfor %}
       </div>

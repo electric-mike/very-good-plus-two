@@ -57,6 +57,7 @@ export default {
       const localProducts = []
       const localVendors = []
       const localPrices = []
+      const localRatings = []
       const localTypes = []
       let localSizes = []
       let localTags = []
@@ -65,6 +66,7 @@ export default {
         localProducts.push(product)
         localVendors.push(product.vendor)
         localPrices.push(product.price)
+        localRatings.push(product.reviews_integer)
         localTypes.push(product.type)
         localTags = localTags.concat(product.tags.split(','))
         if (product.sizes) localSizes = localSizes.concat(product.sizes.split(','))
@@ -77,6 +79,7 @@ export default {
         this.products = localProducts
         this.vendors = localVendors
         this.prices = localPrices
+        this.ratings = localRatings
         this.tags = localTags
         this.types = localTypes
         this.sizes = localSizes.filter(size => size !== '')

@@ -24,33 +24,6 @@ export default {
       return false
     },
 
-    changeImage(inOrOut, $event) {
-      if (this.enableProductImageHover) {
-        const image = $event.target
-
-        if (
-          Object.prototype.hasOwnProperty.call(image.dataset, 'additionalImage')
-          && !('ontouchstart' in window || navigator.msMaxTouchPoints) // touch check
-          && image.dataset.additionalImage !== image.dataset.firstSrc
-          && (image.dataset.swatchIndex <= 0 || !image.dataset.swatchIndex)
-        ) {
-          if (inOrOut === 'in' && !image.dataset.additionalImage.includes('no-image')) {
-            image.dataset.src = image.dataset.additionalImage
-            image.src = image.dataset.additionalImage
-            image.parentElement.style.paddingBottom = `${100 / image.dataset.secondaryAspectratio}%`
-            image.classList.add('blur-up', 'blur-up-actually')
-          } else if (!image.dataset.firstSrc.includes('no-image')) {
-            image.dataset.src = image.dataset.firstSrc
-            image.src = image.dataset.firstSrc
-            image.parentElement.style.paddingBottom = `${100 / image.dataset.aspectratio}%`
-          }
-
-          image.classList.remove('lazyload', 'lazyloaded')
-          image.classList.add('lazyload')
-        }
-      }
-    },
-
     changeSwatch(sentImageVariant, imgUrl, aspectRatio, productId, productUrl, swatchIndex, fallbackImage) {
       // if (this.activeSwatches[productId] === sentImageVariant) return
 

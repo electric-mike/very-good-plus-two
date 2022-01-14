@@ -44,46 +44,7 @@
       <div class="products row">
         {% for prod in collections[settings.four_oh_four_collection].products limit: 40 %}
           <div class="product product-{{ prod.id }} column-6-tablet-vert-3">
-            <a class="product-image-wrapper" href="{{ prod.url | within: collection }}" title="{{ prod.title | escape }}">
-              <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: prod.featured_image.aspect_ratio }}%;">
-                {%- assign img_url = prod.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                {%- assign secondary_img_url = prod.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                <img
-                  class="product-image lazyload blur-up"
-                  src="{{ settings.placeholder_image | img_url }}"
-                  alt="{{ prod.title | escape }}"
-                  data-src="{{ img_url }}"
-                  data-widths="[360, 540, 720, 900, 1080, 1600]"
-                  data-aspectratio="{{ prod.featured_image.aspect_ratio }}"
-                  data-secondary-aspectratio="{{ prod.images[1].aspect_ratio }}"
-                  data-sizes="auto"
-                  data-first-src="{{ img_url }}"
-                  data-additional-image="{{ secondary_img_url }}"
-                  v-on:mouseover="changeImage('in', $event)"
-                  v-on:mouseleave="changeImage('out', $event)"
-                  width="{{ prod.featured_image.width }}"
-                  height="{{ prod.featured_image.height }}"
-                  loading="lazy"
-                />
-                <noscript>
-                  <img class="lazyloaded" src="{{ prod.featured_image.src | img_url: '800x' }}" alt="{{ prod.title | escape }}">
-                </noscript>
-              </div>
-            </a>
-            <div class="product-info">
-              <h5 class="vendor">{{ prod.vendor }}</h5>
-              <a href="{{ prod.url | within: collection }}" title="{{ prod.title }}">
-                <h5>{{ prod.title }}</h5>
-              </a>
-              {% if settings.review_type == 'judgeme' %}
-                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: prod %}
-              {% elsif settings.review_type == 'okendo' %}
-                {% render 'okendo-summary-widget', product: prod %}
-              {% endif %}
-              {% if prod.compare_at_price > prod.price %}<h5 class="original-price">{{ prod.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
-              <h5 class="price">{{ prod.price | money_without_trailing_zeros }}</h5>
-              {% include 'color-swatches' %}
-            </div>
+            {% render 'product-list-item', product: prod %}
           </div>
         {% endfor %}
       </div>

@@ -26,6 +26,7 @@
   }
 
   .product-image-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     background: var(--shop-white);
@@ -44,6 +45,20 @@
 
     img {
       height: auto;
+    }
+
+    img + img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.15s;
+    }
+
+    &:hover img + img {
+      opacity: 1 !important;
+      z-index: 1;
     }
   }
 
@@ -84,6 +99,18 @@
 
     a {
       text-decoration: none;
+    }
+
+    .jdgm-widget * {
+      pointer-events: none;
+    }
+
+    .jdgm-prev-badge__text {
+      display: none;
+    }
+
+    .okeReviews-reviewsSummary-ratingCount {
+      display: none;
     }
 
     .swatches + button {
