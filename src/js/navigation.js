@@ -143,11 +143,13 @@ document.addEventListener('DOMContentLoaded', () => {
       },
 
       mounted() {
-        window.addEventListener('resize', () => {
+        let currentWidth = window.outerWidth
+        window.addEventListener('resize', ({ target }) => {
           // will need to change in header.scss as well
-          if (window.innerWidth >= 1024) {
+          if (target.outerWidth !== currentWidth) {
             this.toggleNav(true)
           }
+          currentWidth = target.outerWidth
         }, { passive: true })
 
         window.addEventListener('hideMobileNav', () => { this.navOpen = false })

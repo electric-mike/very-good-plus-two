@@ -7,8 +7,13 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('resize', () => {
-      this.toggleMobileCollectionNav(false)
+    let currentWidth = window.outerWidth
+
+    window.addEventListener('resize', ({ target }) => {
+      if (target.outerWidth !== currentWidth) {
+        this.toggleMobileCollectionNav(false)
+      }
+      currentWidth = target.outerWidth
     }, { passive: true })
   },
 
