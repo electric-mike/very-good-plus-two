@@ -726,7 +726,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
           sortFilterOptions() {
             this.filterOptions.forEach((option) => {
-              option.options = option.options.sort((a, b) => a.value.localeCompare(b.value))
+              option.options = option.options.sort((a, b) => {
+                if (a.value.match('.*\\d.*') || b.value.match('.*\\d.*')) {
+                  return a.value.replace(/\D/g, '').localeCompare(b.value.replace(/\D/g, ''), 'en', { numeric: true })
+                }
+
+                return a.value.localeCompare(b.value)
+              })
             })
           },
 
