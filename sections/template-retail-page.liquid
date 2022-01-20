@@ -1,0 +1,46 @@
+{% if section.settings.page_map_enable %}
+  <section class="max-width split-page">
+    <h1 class="hero-text mobile-page-header">{{ page_title }}</h1>
+    <div class="page-image-content-wrapper row-align-middle">
+      <div class="page-image column-12-tablet-vert-6">
+        <div class="video-responsive" style="padding-bottom: 100%;">
+          <iframe
+            width="500"
+            height="500"
+            style="border:0;"
+            loading="lazy"
+            allowfullscreen
+            src="{{ section.settings.map_url }}">
+          </iframe>
+        </div>
+      </div>
+      <div class="page-content column-12-tablet-vert-6">
+        <h1 class="hero-text tablet-vert-page-header">{{ page_title }}</h1>
+        {{ page.content }}
+      </div>
+    </div>
+  </section>
+{% else %}
+  {% include 'hero' %}
+  <section class="custom-constrain-items">
+    {{ page.content }}
+  </section>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Page Settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "page_map_enable",
+        "label": "Enable Map?"
+      },
+      {
+        "type": "textarea",
+        "id": "map_url",
+        "label": "Map URL"
+      }
+    ]
+  }
+{% endschema %}

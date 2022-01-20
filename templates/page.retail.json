@@ -1,0 +1,15 @@
+{
+  "wrapper": "div.page.cms-page.retail-page",
+  "sections": {
+    "main": {
+      "type": "template-retail-page",
+      "settings": {
+        "page_map_enable": true,
+        "map_url": "https:\/\/www.google.com\/maps\/embed\/v1\/place?key=AIzaSyDqtc_iTzTzgC-8qf5_I2VjqvkyzIe0x7I&q=Embassy+Boardshop"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
