@@ -189,6 +189,8 @@
         customerTags: '{{ customer.tags }}'.split(', '),
         paginationLimit: {{ settings.pagination_limit }},
         enableFreeShippingBar: {{ settings.enable_free_shipping_threshold }},
+        enableFreeProduct: {{ settings.enable_free_product }},
+        freeProduct: {{ all_products[settings.free_product] | json }},
         showPromoCode: {{ settings.show_promo_code }},
         showOrderGiftNote: {{ settings.show_order_gift_note }},
         showPaymentOptions: {{ settings.show_payment_options }},
@@ -197,7 +199,8 @@
           US: {{ settings.free_shipping_threshold_us | default: 0 }},
           CA: {{ settings.free_shipping_threshold_ca | default: 0 }},
           EU: {{ settings.free_shipping_threshold_eu | default: 0 }}
-        }
+        },
+        freeProductThreshold: {{ settings.free_product_threshold | default: 0 }}
       };
     </script>
 

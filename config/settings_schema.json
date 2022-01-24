@@ -335,6 +335,22 @@
         "type": "number",
         "id": "free_shipping_threshold_eu",
         "label": "International Free Shipping Bar Threshold"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_free_product",
+        "label": "Enable Free Product",
+        "default": true
+      },
+      {
+        "type": "product",
+        "id": "free_product",
+        "label": "Free Product"
+      },
+      {
+        "type": "number",
+        "id": "free_product_threshold",
+        "label": "Free Product Threshold"
       }
     ]
   },

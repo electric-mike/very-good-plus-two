@@ -41,6 +41,7 @@
             h6.price {{ item.line_price | currency }}
           .remove.hamburger.open.hover(@click='removeFromCart(index + 1)') #[.lines]
       upsell(:is-cart="isCart")
+      free-product(:is-cart="isCart")
       order-note(:is-cart="isCart" v-if="themeSettings.showOrderGiftNote")
   .fill-up(v-else)
     h3(v-if="isCart") {{ themeSettings.sideCartEmptyText }}
@@ -58,6 +59,7 @@ import vueImage from './vue-image'
 import upsell from './upsell'
 import orderNote from './order-note'
 import currency from '../helpers/_currency'
+import freeProduct from './free-product'
 
 export default {
   components: {
@@ -65,6 +67,7 @@ export default {
     vueImage,
     upsell,
     orderNote,
+    freeProduct,
   },
 
   filters: {
