@@ -1,0 +1,119 @@
+<!-- Done With Custom Elements -->
+<recently-viewed class="product-list-wrapper product-recently-viewed">
+  <div class="max-width">
+    <div class="title center-text">
+      <h3>{{ section.settings.heading | escape }}</h3>
+      <br>
+    </div>
+    <div
+      id="recently-viewed-products-wrapper"
+      class="recently-viewed product-list row"
+      data-swatches-wrapper
+      data-swatches-ajax="true"
+    >
+    </div>
+  </div>
+</recently-viewed>
+
+<script>
+class RecentlyViewed extends HTMLElement {
+  constructor() {
+    super()
+
+    this.generateMarkup()
+  }
+
+  async generateMarkup() {
+    this.currentProductHandle = window.location.pathname.split('/products/')[1].split('/')[0]
+    this.recentlyViewedHandles = Array.from(
+      window.localStorage.getItem('recently-viewed') ?
+        window.localStorage.getItem('recently-viewed').split(',')
+        : false
+    )
+    this.productsWrapper = document.getElementById('recently-viewed-products-wrapper')
+    this.recentlyViewedMarkup = ''
+    this.recentlyViewedMarkupHandles = []
+
+    for(let i = 0; i < this.recentlyViewedHandles.length; i += 1) {
+      if(
+        this.recentlyViewedMarkupHandles.length < parseInt('{{ section.settings.product_limit }}')
+        && this.recentlyViewedMarkupHandles.indexOf(this.recentlyViewedHandles[i]) <= -1
+        && this.currentProductHandle != this.recentlyViewedHandles[i]
+      ) {
+        await fetch(`${this.recentlyViewedHandles[i]}/?view=product-card`)
+          .then(res => res.text())
+          .then(res => {
+            this.recentlyViewedMarkupHandles.push(this.recentlyViewedHandles[i])
+            this.recentlyViewedMarkup += `
+              <div
+              class="product product-${this.recentlyViewedHandles[i]} column-6-tablet-vert-{{ 12 | divided_by: section.settings.product_limit }}"
+              >${res}</div>
+            `
+          })
+      }
+    }
+
+    this.recentlyViewedHandles.unshift(this.currentProductHandle)
+
+    if(this.recentlyViewedMarkup != '') {
+      this.productsWrapper.innerHTML = this.recentlyViewedMarkup
+
+      {% if section.settings.enable_scrollbar %}
+      if(window.SimpleBar) {
+        new SimpleBar(this.productsWrapper);
+
+        var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recently-viewed-products-wrapper');
+        window.dispatchEvent(doRecSwatchEvent);
+      } else {
+        window.addEventListener('load', function() {
+          new SimpleBar(this.productsWrapper);
+
+          var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recently-viewed-products-wrapper');
+          window.dispatchEvent(doRecSwatchEvent);
+        });
+      }
+      {% else %}
+      var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax');
+      window.dispatchEvent(doRecSwatchEvent);
+      {% endif %}
+    } else {
+      document.querySelector('recently-viewed').style.display = 'none'
+    }
+
+    window.localStorage.setItem('recently-viewed', this.recentlyViewedHandles)
+  }
+}
+
+customElements.define('recently-viewed', RecentlyViewed)
+</script>
+
+{% schema %}
+{
+  "name": "Recently Viewed",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Recently viewed",
+      "label": "Heading Title"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Product Limit",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_scrollbar",
+      "label": "Enable Scrollbar",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (swatchesWrappers.length > 0) {
     swatchesWrappers.forEach((wrapperEl) => {
       if (wrapperEl.dataset.swatchesAjax) {
-        window.addEventListener('doSwatchesFromAjax', () => {
+        window.addEventListener(`doSwatchesFromAjax-${wrapperEl.id}`, () => {
           new Vue({
             el         : wrapperEl,
             delimiters : ['${', '}'],

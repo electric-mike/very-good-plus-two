@@ -30,6 +30,10 @@
       "type": "template-product-reviews",
       "settings": {}
     },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {}
+    },
     "klaviyo": {
       "type": "template-product-klaviyo",
       "settings": {}
@@ -41,6 +45,7 @@
     "main",
     "recommendations",
     "reviews",
+    "recently-viewed",
     "klaviyo"
   ]
 }

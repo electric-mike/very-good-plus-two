@@ -55,16 +55,19 @@
           if(window.SimpleBar) {
             new SimpleBar(recommendationsWrapper);
 
-            var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax');
+            var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recommendations');
             window.dispatchEvent(doRecSwatchEvent);
           } else {
             window.addEventListener('load', function() {
               new SimpleBar(recommendationsWrapper);
 
-              var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax');
+              var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recommendations');
               window.dispatchEvent(doRecSwatchEvent);
             });
           }
+          {% else %}
+          var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recommendations');
+          window.dispatchEvent(doRecSwatchEvent);
           {% endif %}
         } else {
           productRecommendationsWrapper.style.display = 'none';
