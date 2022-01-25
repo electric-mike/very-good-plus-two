@@ -78,12 +78,12 @@ export default {
 
     return {
       placeholderHeight,
-      selectedVariant       : false,
-      freeProductInCart     : false,
-      enableFreeProduct     : window.themeSettings.enableFreeProduct,
-      freeProduct           : window.themeSettings.freeProduct,
-      freeProductThresholds : window.themeSettings.freeProductThresholds,
-      geocode               : '',
+      selectedVariant      : false,
+      freeProductInCart    : false,
+      enableFreeProduct    : window.themeSettings.enableFreeProduct,
+      freeProduct          : window.themeSettings.freeProduct,
+      freeProductThreshold : window.themeSettings.freeProductThreshold,
+      geocode              : '',
     }
   },
 
@@ -195,16 +195,22 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/variables.scss';
 
+.upsell + .free-product {
+  padding-top: 0 !important;
+}
+
 .free-product {
   width: calc(100% + 2.5em);
+  max-width: none !important;
   border-top: 0 !important;
   padding: 1.25em;
   margin: -1px -1.25em 1.25em;
 
-  // &.is-cart {
-  //   width: 100%;
-  //   margin: -1px 0 1.25em;
-  // }
+  &.is-cart {
+    width: 100%;
+    padding: 1.25em 0;
+    margin: -1px 0 1.25em;
+  }
 
   p strong {
     display: inline;
