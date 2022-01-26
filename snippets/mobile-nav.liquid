@@ -157,9 +157,9 @@
         v-show="currentPaginatePage == '{{ child_list_handle }}-{{ loop_index }}'"
       >
         <div class="paginate-header mobile-link mobile-top-level-link">
-          <a v-on:click.prevent="currentPaginatePage = 'home'">
+          <span v-on:click.prevent="currentPaginatePage = 'home'">
             <i class="chevron left"></i>
-          </a>
+          </span>
           <a href="{{ link.url }}">{{ link.title | escape }}</a>
         </div>
         {% for childlink in linklists[child_list_handle].links %}
@@ -180,35 +180,15 @@
             <div class="mobile-nav-products">
               <div
                 data-simplebar
-                data-auto-hide="true"
-                data-force-visible="false"
-                class="product-list-wrapper product-list row"
+                data-simplebar-auto-hide="true"
+                data-force-visible="true"
+                data-swatches-wrapper
+                class="product-list row"
+                id="mobile-top-products-{{ childlink.title | handelize }}"
               >
                 {% for product in linkProducts | limit: 4 %}
                   <div class="product column-6">
-                    <a class="product-image-wrapper image-wrap" href="{{ product.url | within: collection }}" title="{{ product.title }}">
-                      {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                      <img
-                        class="product-image lazyload blur-up"
-                        src="{{ settings.placeholder_image | img_url }}"
-                        alt="{{ product.title | escape }}"
-                        data-src="{{ img_url }}"
-                        data-widths="[360, 540, 720, 900, 1080, 1600]"
-                        data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-                        data-sizes="auto"
-                        width="{{ product.featured_image.width }}"
-                        height="{{ product.featured_image.height }}"
-                        loading="lazy"
-                      />
-                    </a>
-                    <div class="product-info">
-                      {% if product.vendor %}<h5 class="vendor">{{ product.vendor }}</h5>{% endif %}
-                      <a href="{{ product.url | within: collection }}" title="{{ product.title }}">
-                        <h5>{{ product.title }}</h5>
-                      </a>
-                      {% if product.compare_at_price > product.price %}<div class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</div>{% endif %}
-                      <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
-                    </div>
+                    {% render 'product-list-item', product: product %}
                   </div>
                 {% endfor %}
               </div>
@@ -230,9 +210,9 @@
             v-show="currentPaginatePage === '{{ childlink.title | handleize }}-{{ loop_index }}'"
           >
             <div class="paginate-header mobile-link mobile-top-level-link">
-              <a v-on:click.prevent="currentPaginatePage = '{{ child_list_handle }}-{{ loop_index }}'">
+              <span v-on:click.prevent="currentPaginatePage = '{{ child_list_handle }}-{{ loop_index }}'">
                 <i class="chevron left"></i>
-              </a>
+              </span>
               <a href="{{ childlink.url }}">{{ childlink.title }}</a>
             </div>
             {% for grandchild in childlink.links %}
