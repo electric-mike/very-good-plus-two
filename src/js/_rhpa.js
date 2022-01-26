@@ -416,7 +416,8 @@ export default function rhpa() {
 
           // recharge
           let sellingPlan = document.querySelector('[data-plans-dropdown]') || false
-          if (sellingPlan) {
+          const selectedSubscription = document.querySelector('[data-selector-subsave] input:checked') || false
+          if (sellingPlan && selectedSubscription) {
             sellingPlan = parseInt(sellingPlan.value, 10)
             payload.selling_plan = sellingPlan
           }

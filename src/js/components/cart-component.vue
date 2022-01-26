@@ -4,7 +4,7 @@
     p(:class="{ 'fetching-cart' : !isCart }") Getting your cart..
   .products-wrapper(v-else-if='cartData.item_count && cartData.item_count >= 0')
     .products
-      .product(v-for='(item, index) in cartData.items' :key='item.id')
+      .product(v-for='(item, index) in cartData.items' :key='`${index}-${item.id}`')
         .product-image
           a(:href='productLink(item)' :aria-label='item.title')
             vue-image.product-image(
