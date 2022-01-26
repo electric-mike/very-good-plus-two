@@ -196,20 +196,20 @@ export default {
 @import '../../scss/variables.scss';
 
 .upsell + .free-product {
-  padding-top: 0 !important;
+  margin-top: calc(-1.25em + 1px) !important
 }
 
 .free-product {
   width: calc(100% + 2.5em);
   max-width: none !important;
   border-top: 0 !important;
-  padding: 1.25em;
+  padding: 1.25em 1.25em 0;
   margin: -1px -1.25em 1.25em;
+  background: var(--shop-light-gray);
 
   &.is-cart {
     width: 100%;
-    padding: 1.25em 0;
-    margin: -1px 0 1.25em;
+    margin: -1px 0 0;
   }
 
   p strong {
