@@ -2,7 +2,7 @@
 <br><br>
 {% endif %}
 
-{% if article.comments_enabled? %}
+{% if blog.comments_enabled? %}
   <h3>Leave A Comment</h3>
   {% form article, class: 'vue-form' %}
     {% if form.posted_successfully? %}

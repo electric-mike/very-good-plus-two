@@ -13,7 +13,7 @@
             <strong>{{ article.author }}</strong>
             <br>
             <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
-            {% if article.comments_enabled? and article.comments_count > 0 %}
+            {% if blog.comments_enabled? and article.comments_count > 0 %}
               <br>
               <span>
                 <a id="comments-count" href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
