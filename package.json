@@ -2,7 +2,7 @@
   "name": "vg-plus",
   "version": "2.0.0",
   "description": "Very Good Plus Custom Shopify Theme v2",
-  "repository": "https://bitbucket.org/vg-plus/src/master/",
+  "repository": "https://bitbucket.org/electriceyeagency/vg-2.0/src/master/",
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
