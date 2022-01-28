@@ -23,25 +23,25 @@
           strong {{ priceUntilFreeProduct | currency }}&nbsp;
           | away from a free product.
         .product-text
-            h6.product-title #[a(:href='"/products/" + computedFreeProduct.handle') {{ computedFreeProduct.title }}]
-            //- h6.price {{ formatMoney(selectedVariant.price) }}
-            //-   span(v-if='selectedVariant.title') &nbsp;({{ selectedVariant.title }})&nbsp;
-            .product-modify
-              select.hover(
-                v-model='selectedVariant'
-                v-if='computedFreeProduct.variants && computedFreeProduct.variants.length > 1'
-              )
-                option(
-                  v-for='(variant, i) in computedFreeProduct.variants'
-                  :key='variant.id'
-                  :value='variant'
-                  :disabled="!variant.available"
-                ) {{ variant.title }}
-              button(
-                @click='addToCart'
-                v-bind:class="{ 'loading': addingToCart }"
-                v-if='freeProductMinimum <= computedCartTotal'
-              ) ADD +
+          h6.product-title #[a(:href='"/products/" + computedFreeProduct.handle') {{ computedFreeProduct.title }}]
+          //- h6.price {{ formatMoney(selectedVariant.price) }}
+          //-   span(v-if='selectedVariant.title') &nbsp;({{ selectedVariant.title }})&nbsp;
+          .product-modify
+            select.hover(
+              v-model='selectedVariant'
+              v-if='computedFreeProduct.variants && computedFreeProduct.variants.length > 1'
+            )
+              option(
+                v-for='(variant, i) in computedFreeProduct.variants'
+                :key='variant.id'
+                :value='variant'
+                :disabled="!variant.available"
+              ) {{ variant.title }}
+            button(
+              @click='addToCart'
+              v-bind:class="{ 'loading': addingToCart }"
+              v-if='freeProductMinimum <= computedCartTotal'
+            ) ADD +
 
 </template>
 
