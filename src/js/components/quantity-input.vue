@@ -1,6 +1,6 @@
 <template lang="pug">
   .quantity-input(:class="{ 'is-cart': isCart, 'updating-cart': updatingCart }")
-    button.secondary(v-if="isCart" @click.prevent="changeValue(internalValue - 1)") -
+    button.secondary(@click.prevent="changeValue(internalValue - computedStep)") -
     .required
       label(
         for="quantity"
@@ -12,13 +12,12 @@
         v-model.number="internalValue"
         type="number"
         name="quantity"
-        min=`${ isCart ? 0 : 1 }`
+        min="computedMin"
+        step="computedStep"
         required
         label="Quantity Input"
       )
-    .button-wrapper
-      button.secondary(@click.prevent="changeValue(internalValue + 1)") +
-      button.secondary(v-if="!isCart" @click.prevent="changeValue(internalValue - 1)") -
+    button.secondary(@click.prevent="changeValue(internalValue + computedStep)") +
 </template>
 
 <script>
@@ -47,6 +46,14 @@ export default {
     ...mapState('cart', [
       'updatingCart',
     ]),
+
+    computedStep() {
+      return 1
+    },
+
+    computedMin() {
+      return this.isCart ? 0 : 1
+    },
   },
 
   methods: {
@@ -54,7 +61,7 @@ export default {
       if (newVal > this.max) {
         newVal = this.max
       } else if ((!this.isCart && newVal === 0) || newVal === '') {
-        newVal = 1
+        newVal = this.computedMin
       }
 
       this.$emit('input', newVal)
@@ -85,19 +92,28 @@ export default {
   }
 
   button {
-    padding: 0 !important;
+    padding: 0.9375em 0.5em !important;
     width: 30px;
-    height: 100%;
-    height: 21px;
     line-height: 1;
     color: var(--shop-gray);
     background: var(--shop-white);
     border-radius: 0;
-    border: none;
+    border: 1px solid var(--shop-gray);
+    flex-shrink: 0;
+
+    &:first-of-type {
+      border-bottom: 1px solid var(--shop-gray);
+    }
+
+    &:last-of-type {
+      border-top: 1px solid var(--shop-gray);
+    }
 
     &:hover {
       color: var(--shop-black);
       background: var(--shop-white);
+      border: 1px solid var(--shop-black);
+      color: var(--shop-black);
     }
   }
 
@@ -106,18 +122,21 @@ export default {
 
     input {
       width: 100% !important;
+      height: 100%;
       margin: 0 !important;
       font-size: 1em !important;
-      height: 100%;
       padding-right: .5em;
       padding-left: .5em;
       text-align: center;
       border: 1px solid var(--shop-gray);
-      border-radius: 3px;
+      border-left: 0 !important;
+      border-right: 0 !important;
+      border-radius: 0 !important;
+      border-color: var(--shop-gray);
       color: var(--shop-black);
 
-      &:hover {
-        border-color: var(--shop-black);
+      &:hover, &:active, &:focus {
+        border: 1px solid var(--shop-black) !important;
       }
     }
 
@@ -152,35 +171,10 @@ export default {
       width: auto!important;
       padding: 6px !important;
       max-width: 50px;
-      border-left: 0 !important;
-      border-right: 0 !important;
-      border-radius: 0 !important;
-      border-color: var(--shop-gray);
-      font-family: var(--shop-primary-font);
-
-      &:hover {
-        border: 1px solid var(--shop-black) !important;
-      }
     }
 
     button {
-      padding: 4px 7.5px !important;
-      line-height: 1.6 !important;
-      width: 30px !important;
-      border: 1px solid var(--shop-gray);
-
-      &:first-of-type {
-        border-bottom: 1px solid var(--shop-gray);
-      }
-
-      &:last-of-type {
-        border-top: 1px solid var(--shop-gray);
-      }
-
-      &:hover {
-        border: 1px solid var(--shop-black);
-        color: var(--shop-black);
-      }
+      padding: 3.5px 7.5px 4.5px !important;
     }
 
     input, button {

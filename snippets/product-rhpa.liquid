@@ -165,7 +165,7 @@
 <div class="quantity-atc-wrapper">
   {% if section.settings.show_quantity_selector %}
     <div class="quantity-input-wrapper required" v-cloak>
-      <quantity-input v-bind:is-cart="true" v-bind:max="variantQty[selectedOptionVariant.id]" v-model.number="formQuantity"></quantity-input>
+      <quantity-input v-bind:max="selectedOptionVariant ? variantQty[selectedOptionVariant.id] : 1" v-model.number="formQuantity"></quantity-input>
     </div>
   {% endif %}
   <div class="add-to-cart-wrapper required">

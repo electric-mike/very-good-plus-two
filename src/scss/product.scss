@@ -329,14 +329,6 @@
             .price-wrapper {
               justify-content: flex-end;
               margin-top: 0;
-
-              span {
-                margin-right: 0.25em;
-
-                &:last-of-type {
-                  margin-right: 0;
-                }
-              }
             }
           }
         }
@@ -383,7 +375,6 @@
       .at-price {
         margin: 0;
         font-family: var(--shop-font-family) !important;
-        font-size: 0.75em;
       }
 
       .original-price {
@@ -743,7 +734,7 @@
       margin-bottom: 1.25em;
 
       .quantity-input-wrapper {
-        width: 100px;
+        width: 150px;
         margin-right: 1em;
       }
 
