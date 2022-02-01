@@ -125,7 +125,7 @@ export default function rhpa() {
         },
 
         hasDiscount() {
-          return parseFloat(this.computedProductOriginalPrice) > parseFloat(this.productPrice)
+          return parseFloat(this.computedProductOriginalPrice) > parseFloat(this.productPrice / this.formQuantity)
         },
 
         InvalidVariantSelections() {
@@ -430,7 +430,19 @@ export default function rhpa() {
             this.productPrice = this.productInitialPrice * this.formQuantity
             this.productOriginalPrice = this.formatMoney(this.productOriginalPrice)
           } else {
-            this.productPrice = this.selectedOptionVariant.price * this.formQuantity
+            // recharge
+            const sellingPlan = document.querySelector('[data-plans-dropdown]') || false
+            const selectedSubscriptionPrice = document.querySelector('[data-selector-subsave] input:checked + label .rc-option__price') || false
+            if (
+              sellingPlan
+              && selectedSubscriptionPrice
+            ) {
+              const formattedPrice = parseFloat(selectedSubscriptionPrice.innerHTML.replace('$', '')) * 100
+              this.productPrice = formattedPrice * this.formQuantity
+            } else {
+              this.productPrice = this.selectedOptionVariant.price * this.formQuantity
+            }
+
             this.productOriginalPrice = this.selectedOptionVariant.price
           }
         },
