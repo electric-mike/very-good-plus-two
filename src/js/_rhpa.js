@@ -49,6 +49,7 @@ export default function rhpa() {
           },
           showSizeChart : false,
           isRecharge    : window.productData.selling_plan_groups && window.productData.selling_plan_groups.length > 0,
+          reviewType    : window.themeSettings.reviewType,
         }
       },
 
@@ -448,7 +449,7 @@ export default function rhpa() {
         },
 
         reinitializeJudgeMe() {
-          if (window.judgeme) {
+          if (window.judgeme && this.reviewType === 'judgeme') {
             window.judgeme.caches = {
               $revWidgets : document.querySelector('.jdgm-review-widget'),
               $prevBadges : document.querySelectorAll('.jdgm-preview-badge'),
