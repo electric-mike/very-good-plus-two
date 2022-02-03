@@ -12,7 +12,6 @@
           | #[span.applied-text Applied at checkout]
         strong &nbsp;{{ appliedPromoCode }}
     form.checkout-form(
-      v-if="!hasSubscriptionProduct"
       action='/cart'
       method='post'
       novalidate=''
@@ -25,10 +24,6 @@
         name='checkout'
         :class="{ 'loading': goingToCheckout, 'disabled': cartData.item_count <= 0 }"
       ) Checkout
-    div(v-else)
-      subtotal-payments(:is-cart="isCart")
-      promo-code(v-if="isCart" :is-cart="isCart")
-      cart-button
     .continue-shopping.center-text(v-if="isCart")
       a(href="/") Continue Shopping
 </template>

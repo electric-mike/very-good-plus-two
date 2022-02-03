@@ -58,7 +58,7 @@ export default {
 
   methods: {
     changeValue(newVal) {
-      if (newVal > this.max) {
+      if (this.max >= 1 && newVal > this.max) {
         newVal = this.max
       } else if ((!this.isCart && newVal === 0) || newVal === '') {
         newVal = this.computedMin

@@ -449,20 +449,24 @@ export default function rhpa() {
         },
 
         reinitializeJudgeMe() {
-          if (window.judgeme && this.reviewType === 'judgeme') {
-            window.judgeme.caches = {
-              $revWidgets : document.querySelector('.jdgm-review-widget'),
-              $prevBadges : document.querySelectorAll('.jdgm-preview-badge'),
+          if (
+            window.jdgm
+            && window.jdgm.caches
+            && this.reviewType === 'judgeme'
+          ) {
+            window.jdgm.caches = {
+              $revWidgets : document.querySelector('main .jdgm-review-widget'),
+              $prevBadges : document.querySelectorAll('main .jdgm-preview-badge'),
             }
 
-            window.judgeme.customizeBadges()
-            window.judgeme.initializeWidgets()
+            // window.jdgm.customizeBadges()
+            window.jdgm.initializeWidgets()
 
             // force scroll watcher
-            window.judgeme.caches.$prevBadges.forEach((badge) => {
+            window.jdgm.caches.$prevBadges.forEach((badge) => {
               badge.addEventListener('click', () => {
                 window.scrollTo({
-                  top      : window.judgeme.caches.$revWidgets.offsetTop - (document.querySelector('header nav').getBoundingClientRect().height + 20),
+                  top      : window.jdgm.caches.$revWidgets.offsetTop - (document.querySelector('header nav').getBoundingClientRect().height + 20),
                   behavior : 'smooth',
                 })
               })
