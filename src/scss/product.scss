@@ -55,8 +55,59 @@
       width: 100%;
     }
 
+    // simplebar mobile images
     //mobile images
-    .mobile-images-wrapper {
+    .mobile-images-wrapper.simplebar-mobile-images {
+      width: 100%;
+      padding: 1.25em;
+      overflow: hidden;
+
+      .simplebar-wrapper {
+        width: 100%;
+      }
+
+      .mobile-images {
+        flex-wrap: nowrap;
+        margin-left: -1.25em!important;
+        margin-right: -1.25em!important;
+
+        &.simplebar-loaded {
+          flex-wrap: wrap;
+          flex-flow: column;
+          margin: 0;
+        }
+      }
+
+      @media(min-width: $tablet) {
+        display: none;
+      }
+
+      .flair-badge-wrapper {
+        top: 1.75em;
+      }
+
+      .image-wrap {
+        width: 100%;
+        max-width: calc(100% - 2.5em);
+        padding: 0;
+        margin: 0 0 1.25em 1.25em;
+
+        &:last-of-type {
+          margin-right: 1.25em;
+          padding-right: 1.25em;
+          width: calc(100% - 1.25em);
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    //siema mobile images
+    //mobile images
+    .mobile-images-wrapper.siema-mobile-images {
       width: 100%;
       padding: 1.25em 1.25em 0;
       overflow: hidden;
@@ -398,26 +449,250 @@
       }
 
       // recharge
-      .rc_widget__option, .rc_popup {
+      .rc_widget__option__selector {
+        margin-bottom: 0.75em;
+        cursor: pointer;
+        // https://stackoverflow.com/questions/24077725/mobile-safari-sometimes-does-not-trigger-the-click-event
+        -webkit-tap-highlight-color: transparent;
+
+        label {
+          position: relative;
+          font-size: 1em;
+          text-transform: capitalize;
+          padding-left: 1.75em;
+          cursor: pointer;
+          color: var(--shop-black);
+          line-height: 1.45;
+          z-index: 1;
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--shop-dark-gray);
+            background-color: var(--shop-white);
+            border-radius: 50%;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 10px;
+            height: 10px;
+            transition: all .1s ease;
+            transform: scale(0);
+            border-radius: 50%;
+            background-color: var(--shop-primary-color);
+            background-image: none;
+            filter: none;
+          }
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: 10px;
+            height: 10px;
+            transition: all .1s ease;
+            transform: scale(0);
+            border-radius: 50%;
+            background-color: var(--shop-black);
+            background-image: none;
+            filter: none;
+          }
+        }
+
+        input {
+          position: absolute;
+          left: -9999px;
+          appearance: none;
+
+          @media (hover) {
+            &:hover,
+            &.hover,
+            &:checked {
+              &:not(:disabled) + label {
+                &:before {
+                  border-color: var(--shop-primary-color);
+                }
+              }
+            }
+          }
+
+          &:checked {
+            border-color: var(--shop-primary-color);
+
+            +label {
+              &:before {
+                background-color: var(--shop-primary-color);
+              }
+
+              &:after {
+                transform: scale(1);
+              }
+            }
+          }
+
+          &:disabled,
+          &.disabled {
+            cursor: default;
+
+            & + label {
+              &:before {
+                border-color: var(--shop-light-gray);
+                background-color: var(--shop-light-gray);
+              }
+            }
+          }
+        }
+      }
+
+      .rc-radio__label {
+        width: 100%;
+        display: flex;
+
+        span {
+          line-height: 1.4;
+        }
+
+        .rc-option__price {
+          order: 99999!important;
+          color: var(--shop-primary-color);
+          font-weight: 800;
+
+          &:first-of-type {
+            margin-left: auto;
+          }
+
+          &.rc_widget__price {
+            &--subsave {
+              color: var(--shop-red);
+              margin-left: auto;
+            }
+
+            &--onetime {
+              margin-left: auto;
+            }
+
+            &--strikethrough {
+              color: var(--shop-black);
+              text-decoration: line-through;
+              margin-left: auto;
+              margin-right: 0.5rem;
+
+              & ~ .rc_widget__price--subsave {
+                margin-left: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &.rc_widget__option--active {
+        background: none;
+      }
+
+      .recharge-plan__label {
+        margin-bottom: 0.5em;
+      }
+
+      .recharge-radio-buttons {
+        display: flex;
+        width: 100%;
+
+        .radio-button {
+          flex: 1;
+          margin-left: 0.5rem;
+
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+      }
+
+      // recharge
+      .rc_widget__option,
+      .rc_popup {
         padding-left: 0;
         padding-right: 0;
 
         label {
           padding-left: 2em;
-          line-height: 0.5em !important;
           margin-left: 0;
         }
 
         .rc_widget__option__plans {
-          padding-left: 2em !important;
+          padding-left: 0 !important;
+          padding-top: 0.5em;
         }
 
-        .rc-selling-plans__label {
-          padding-left: 0 !important;
+        .rc-radio__label {
+          width: 100%;
+          display: flex;
+
+          .rc-option__price {
+            order: 99999!important;
+            color: var(--shop-primary-color);
+            font-weight: 800;
+
+            &:first-of-type {
+              margin-left: auto;
+            }
+
+            &.rc_widget__price {
+              &--subsave {
+                color: var(--shop-red);
+                margin-left: auto;
+              }
+
+              &--onetime {
+                margin-left: auto;
+              }
+
+              &--strikethrough {
+                color: var(--shop-black);
+                text-decoration: line-through;
+                margin-left: auto;
+                margin-right: 0.5rem;
+
+                & ~ .rc_widget__price--subsave {
+                  margin-left: 0;
+                }
+              }
+            }
+          }
         }
 
         &.rc_widget__option--active {
           background: none;
+        }
+
+        .recharge-radio-buttons {
+          display: flex;
+          width: 100%;
+
+          .radio-button {
+            flex: 1;
+            margin-left: 0.5rem;
+
+            &:first-of-type {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+
+      .rc_popup__block {
+        background: var(--shop-white) !important;
+
+        &:before {
+          border-bottom-color: var(--shop-white) !important;
         }
       }
 

@@ -284,6 +284,11 @@ export default function rhpa() {
             this.updateConfig()
           })
         }
+
+        const cartForm = document.querySelector('form[action="/cart/add"]')
+        if (cartForm) {
+          this.watchCartForm(cartForm)
+        }
       },
 
       methods: {
@@ -433,13 +438,19 @@ export default function rhpa() {
           } else {
             // recharge
             const sellingPlan = document.querySelector('[data-plans-dropdown]') || false
-            const selectedSubscriptionPrice = document.querySelector('[data-selector-subsave] input:checked + label .rc-option__price') || false
+            const selectedSubscriptionPrice = document.querySelector('[data-selector-subsave] input:checked + label .rc_widget__price--subsave') || false
             if (
               sellingPlan
               && selectedSubscriptionPrice
             ) {
-              const formattedPrice = parseFloat(selectedSubscriptionPrice.innerHTML.replace('$', '')) * 100
-              this.productPrice = formattedPrice * this.formQuantity
+              // have to wait two ticks for
+              // everything to update from recharge in the DOM
+              this.$nextTick(() => {
+                this.$nextTick(() => {
+                  const formattedPrice = parseFloat(selectedSubscriptionPrice.innerHTML.replace('$', '')) * 100
+                  this.productPrice = formattedPrice * this.formQuantity
+                })
+              })
             } else {
               this.productPrice = this.selectedOptionVariant.price * this.formQuantity
             }
@@ -471,6 +482,99 @@ export default function rhpa() {
                 })
               })
             })
+          }
+        },
+
+        watchCartForm(cartForm) {
+          const self = this
+          const config = {
+            childList : true,
+            subtree   : true,
+          }
+
+          // Callback function to execute when mutations are observed
+          const callback = function (mutationsList) {
+            // Use traditional 'for loops' for IE 11
+            mutationsList.forEach((mutation) => {
+              if (mutation.type === 'childList') {
+                if (
+                  mutation.addedNodes[0]
+                  && mutation.addedNodes[0].classList
+                  && mutation.addedNodes[0].classList.contains('rc-container-wrapper')
+                ) {
+                  self.rearrangeRechargeWidget()
+                }
+              }
+            })
+          }
+
+          // Create an observer instance linked to the callback function
+          const observer = new MutationObserver(callback)
+
+          // Start observing the target node for configured mutations
+          observer.observe(cartForm, config)
+        },
+
+        rearrangeRechargeWidget() {
+          const discount = document.querySelector('.rc-option__discount')
+          const hasDiscount = discount.innerHTML.length > 0
+
+          // Strikethrough Price
+          if (hasDiscount) {
+            const onetime = document.querySelector('.rc_widget__price--onetime')
+            const subsave = document.querySelector('.rc_widget__price--subsave')
+            const strikethrough = onetime.cloneNode()
+            strikethrough.classList.remove('rc_widget__price--onetime')
+            strikethrough.classList.add('rc_widget__price--strikethrough')
+
+            subsave.parentNode.insertBefore(strikethrough, subsave)
+          }
+
+          const termSelect = document.querySelector('select[name="selling_plan"]')
+          if (termSelect) {
+            const termOptions = termSelect.querySelectorAll('option')
+            const termRadios = document.createElement('div')
+            termRadios.className = 'recharge-radio-buttons'
+
+            termOptions.forEach((option, i) => {
+              const radioWrapper = document.createElement('div')
+              radioWrapper.className = 'radio-button'
+
+              const radioID = `radio-${i}`
+
+              const radio = document.createElement('input')
+              radio.id = radioID
+              radio.value = option.value
+              radio.setAttribute('type', 'radio')
+              radio.setAttribute('name', 'plan_select_buttons')
+
+              if (i === 0) {
+                radio.setAttribute('checked', true)
+              }
+
+              radio.onclick = (e) => {
+                const {
+                  value,
+                } = e.target
+                const selectedOption = document.querySelector('select[name="selling_plan"]')
+                selectedOption.value = value
+              }
+              radioWrapper.append(radio)
+
+              const radioLabel = document.createElement('label')
+              radioLabel.setAttribute('for', radioID)
+              radioLabel.innerHTML = option.innerHTML
+              radioWrapper.append(radioLabel)
+
+              termRadios.append(radioWrapper)
+            })
+
+            const label = document.createElement('h6')
+            label.className = 'recharge-plan__label'
+            label.innerHTML = 'Ship Every'
+            termSelect.parentNode.insertBefore(label, termSelect)
+            termSelect.parentNode.insertBefore(termRadios, termSelect)
+            termSelect.style.display = 'none'
           }
         },
 

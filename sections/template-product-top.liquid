@@ -32,8 +32,8 @@
               <div class="price-wrapper v-hide" v-cloak v-else>
                 <h5 style="display: none" id="product-price" class="price">${ formatMoney(productPrice) }</h5>
                 <h5 id="product-visible-price">
-                  <span :class="{ 'sale-price': hasDiscount }">${ formatMoney(productPrice) }</span>
-                  <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted }</span>
+                  <span v-if="hasDiscount" class="original-price">${ computedProductOriginalPriceFormatted.replace('.00', '') }</span>
+                  <span :class="{ 'sale-price': hasDiscount }">${ formatMoney(productPrice).replace('.00', '') }</span>
                 </h5>
                 <h5 class="at-price" v-if="formQuantity > 1">(${ formQuantity } @ ${ formatMoney(productPrice / formQuantity).replace('.00', '') })</h5>
               </div>
@@ -110,6 +110,22 @@
   {
     "name": "Product Images / RHPA",
     "settings": [
+      {
+        "type": "select",
+        "id": "mobile_image_style",
+        "label": "Mobile Images Style",
+        "options": [
+          {
+            "value": "scrollbar",
+            "label": "Scrollbar"
+          },
+          {
+            "value": "carousel",
+            "label": "Carousel"
+          }
+        ],
+        "default": "scrollbar"
+      },
       {
         "type": "select",
         "id": "desktop_images_type",

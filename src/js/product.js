@@ -1,6 +1,6 @@
 // product page
+import SimpleBar from 'simplebar'
 import SiemaCustom from './helpers/_siema-custom'
-
 import rhpa from './_rhpa'
 import productDescription from './_product-description'
 
@@ -111,10 +111,15 @@ export default function product() {
 
   // do mobile slider
   window.mobileSlider = false
-  const mobileImages = document.querySelector('.mobile-images')
-  if (mobileImages) {
+  const simplebarMobileSlider = document.querySelector('.simplebar-mobile-images .mobile-images')
+  const siemaMobileSlider = document.querySelector('.siema-mobile-images .mobile-images')
+
+  if (simplebarMobileSlider) {
+    new SimpleBar(simplebarMobileSlider)
+    simplebarMobileSlider.classList.add('simplebar-loaded')
+  } else if (siemaMobileSlider) {
     window.mobileSlider = new SiemaCustom({
-      selector  : mobileImages,
+      selector  : siemaMobileSlider,
       perPage   : 1,
       draggable : true,
       loop      : true,
