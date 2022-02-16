@@ -204,7 +204,7 @@ export default {
   max-width: none !important;
   border-top: 0 !important;
   padding: 1.25em 1.25em 0;
-  margin: -1px -1.25em 1.25em;
+  margin: -1.25em -1.25em 0;
   background: var(--shop-light-gray);
 
   &.is-cart {

@@ -4,6 +4,7 @@
     p(:class="{ 'fetching-cart' : !isCart }") Getting your cart..
   .products-wrapper(v-else-if='cartData.item_count && cartData.item_count >= 0')
     .products
+      free-product(:is-cart="isCart")
       .product(v-for='(item, index) in cartData.items' :key='`${index}-${item.id}`')
         .product-image
           a(:href='productLink(item)' :aria-label='item.title')
@@ -41,7 +42,6 @@
             h6.price {{ item.line_price | currency }}
           .remove.hamburger.open.hover(@click='removeFromCart(index + 1)') #[.lines]
       upsell(:is-cart="isCart")
-      free-product(:is-cart="isCart")
       order-note(:is-cart="isCart" v-if="themeSettings.showOrderGiftNote")
   .fill-up(v-else)
     h3(v-if="isCart") {{ themeSettings.sideCartEmptyText }}

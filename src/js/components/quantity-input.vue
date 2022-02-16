@@ -100,6 +100,7 @@ export default {
     border-radius: 0;
     border: 1px solid var(--shop-gray);
     flex-shrink: 0;
+    align-self: stretch;
 
     &:first-of-type {
       border-bottom: 1px solid var(--shop-gray);
