@@ -31,83 +31,13 @@
         class="product-list"
         data-simplebar
         data-simplebar-auto-hide="true"
-        data-force-visible="true"
+        data-force-visible="false"
       {% else %}
         class="product-list row"
       {% endif %}
       >
-      {% for article in blog.articles limit: post_limit %}
-        <div class="product article column-6-tablet-vert-{{ 12 | divided_by: post_limit }}">
-          <div class="article-image">
-            {% if article.image != blank %}
-              <a class="product-image-wrapper" href="{{ article.url }}">
-                <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: article.image.aspect_ratio }}%;">
-                  {%- assign img_url = article.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                  <img
-                    class="product-image lazyload blur-up"
-                    src="{{ settings.placeholder_image | img_url }}"
-                    alt="{{ article.title }}"
-                    data-src="{{ img_url }}"
-                    data-widths="[360, 540, 720, 900, 1080, 1600]"
-                    data-aspectratio="{{ article.image.aspect_ratio }}"
-                    data-sizes="auto"
-                    width="{{ article.image.width }}"
-                    height="{{ article.image.height }}"
-                  />
-                  <noscript>
-                    <img class="lazyloaded" src="{{ article.image.src | img_url: '800x' }}" alt="{{ article.title | escape }}">
-                  </noscript>
-                </div>
-              </a>
-            {% else %}
-              {% if article.content contains "<img" and ".jpg" %}
-                {% assign src = article.content | split: 'src="' | last %}
-                {% assign src = src | split: '.jpg' | first | append: '.jpg' %}
-                <img
-                  src="{{ src }}"
-                  width="100%"
-                  class="lazyload"
-                  data-src="{{ src }}"
-                  src="{{ settings.placeholder_image | img_url }}"
-                />
-              {% elsif article.content contains "<img" and ".png" %}
-                {% assign src = article.content | split: 'src="' | last %}
-                {% assign src = src | split: '.png' | first | append: '.png' %}
-                <img
-                  src="{{ src }}"
-                  width="100%"
-                  class="lazyload"
-                  data-src="{{ src }}"
-                  src="{{ settings.placeholder_image | img_url }}"
-                />
-              {% else %}
-                <img
-                  src="{{ settings.placeholder_image | img_url }}"
-                  width="100%"
-                />
-              {% endif %}
-            {% endif %}
-          </div>
-          <div class="product-info">
-            <h5 class="posted-by">
-              By {{ article.user.first_name }}
-            </h5>
-            <a href="{{ article.url }}" title="{{ article.title }}">
-              <h5>
-                {{ article.title }}
-              </h5>
-            </a>
-            <h5 class="article-description">
-              {% if article.excerpt != blank %}
-                {{ article.excerpt | truncatewords: 5 }}
-              {% else %}
-                {{ article.content | strip_html | truncatewords: 5 }} <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
-              {% endif %}
-            </h5>
-            {% assign published_at = article.published_at | date: "%b %d, %Y" %}
-            <h5>{{ published_at }}</h5>
-          </div>
-        </div>
+      {% for article in blog.articles limit: limit %}
+        {% render 'blog-single', article: article, limit: limit %}
       {% endfor %}
     </div>
     <div class="product-list-collection-link center-text">

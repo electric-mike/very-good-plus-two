@@ -1,18 +1,24 @@
 <!-- Done With Custom Elements -->
-<recently-viewed class="product-list-wrapper product-recently-viewed">
-  <div class="max-width">
-    <div class="title center-text">
-      <h3>{{ section.settings.heading | escape }}</h3>
-      <br>
+<recently-viewed>
+  <section class="product-list-wrapper product-recommendations product-recently-viewed">
+    <div class="max-width product-list-wrapper">
+      <div class="title center-text">
+        <h3>{{ section.settings.heading | escape }}</h3>
+        <br>
+      </div>
+      <div
+        id="recently-viewed-products-wrapper"
+        {% if section.settings.enable_scrollbar %}
+          class="recently-viewed product-list row"
+          data-swatches-wrapper
+          data-swatches-ajax="true"
+        {% else %}
+          class="recently-viewed product-list"
+        {% endif %}
+      >
+      </div>
     </div>
-    <div
-      id="recently-viewed-products-wrapper"
-      class="recently-viewed product-list row"
-      data-swatches-wrapper
-      data-swatches-ajax="true"
-    >
-    </div>
-  </div>
+  </section>
 </recently-viewed>
 
 <script>

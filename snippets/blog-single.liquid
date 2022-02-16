@@ -1,0 +1,67 @@
+{% assign limit = limit | default: 4 %}
+<div class="product product-{{ article.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
+  <div class="article-image">
+    {% if article.image != blank %}
+      <a class="product-image-wrapper" href="{{ article.url }}">
+        <div class="image-wrap" style="height: 0; padding-bottom: {{ 100 | divided_by: article.image.aspect_ratio }}%;">
+          {%- assign img_url = article.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          {% assign placeholder = article.image.src | img_url: '200x' %}
+          <img
+            class="product-image lazyload blur-up"
+            src="{{ placeholder }}"
+            alt="{{ article.title }}"
+            data-src="{{ img_url }}"
+            data-widths="[360, 540, 720, 900, 1080, 1600]"
+            data-aspectratio="{{ article.image.aspect_ratio }}"
+            data-sizes="auto"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
+          />
+          <noscript>
+            <img class="lazyloaded" src="{{ article.image.src | img_url: '800x' }}" alt="{{ article.title | escape }}">
+          </noscript>
+        </div>
+      </a>
+    {% else %}
+      {% if article.content contains "<img" and ".jpg" %}
+        {% assign src = article.content | split: 'src="' | last %}
+        {% assign src = src | split: '.jpg' | first | append: '.jpg' %}
+        <img
+          src="{{ src }}"
+          width="100%"
+        />
+      {% elsif article.content contains "<img" and ".png" %}
+        {% assign src = article.content | split: 'src="' | last %}
+        {% assign src = src | split: '.png' | first | append: '.png' %}
+        <img
+          src="{{ src }}"
+          width="100%"
+        />
+      {% else %}
+        <img
+          src="{{ settings.placeholder_image | img_url }}"
+          width="100%"
+        />
+      {% endif %}
+    {% endif %}
+  </div>
+  <div class="product-info">
+    <!-- <h5 class="posted-by">
+      By {{ article.user.first_name }}
+    </h5> -->
+    <a href="{{ article.url }}" title="{{ article.title }}">
+      <p>
+        {{ article.title }}
+      </p>
+    </a>
+    <p class="article-description">
+      {% if article.excerpt != blank %}
+        {{ article.excerpt | truncatewords: 5 }}
+      {% else %}
+        {{ article.content | strip_html | truncatewords: 10 }} <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+      {% endif %}
+    </p>
+    {% assign published_at = article.published_at | date: "%b %d, %Y" %}
+    <p>{{ published_at }}</p>
+  </div>
+</div>

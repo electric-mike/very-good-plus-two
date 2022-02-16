@@ -566,19 +566,19 @@
         "label": "Blog Description"
       },
       {
-        "type": "text",
-        "id": "blog_featured_tag",
-        "label": "Featured Tag for \"Popular Posts\"",
-        "info": "Pulls based on tag set here, limit below"
+        "type": "article",
+        "id": "popular_post_1",
+        "label": "Popular Post 1"
       },
       {
-        "type": "range",
-        "id": "blog_featured_posts_limit",
-        "min": 0,
-        "max": 5,
-        "step": 1,
-        "label": "Blog Featured Posts Limit",
-        "default": 3
+        "type": "article",
+        "id": "popular_post_2",
+        "label": "Popular Post 2"
+      },
+      {
+        "type": "article",
+        "id": "popular_post_3",
+        "label": "Popular Post 3"
       },
       {
         "type": "textarea",

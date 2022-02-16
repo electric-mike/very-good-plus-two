@@ -46,7 +46,7 @@
   .fill-up(v-else)
     h3(v-if="isCart") {{ themeSettings.sideCartEmptyText }}
     h2(v-else) {{ themeSettings.sideCartEmptyText }}
-    a.button(
+    a.button.secondary(
       v-if="themeSettings.sideCartLinkCollection"
       :href="`/collections/${themeSettings.sideCartLinkCollection}`"
     ) {{ themeSettings.sideCartLinkText }}

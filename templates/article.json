@@ -4,9 +4,21 @@
       "type": "template-article",
       "settings": {
       }
+    },
+    "recommendations": {
+      "type": "blog-recommendations",
+      "settings": {
+      }
+    },
+    "related": {
+      "type": "blog-related",
+      "settings": {
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "recommendations",
+    "related"
   ]
 }

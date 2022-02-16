@@ -4,30 +4,40 @@
 {% comment %} Shopify generated dynamic recommendations, falling back to default related products (based on parent collection) {% endcomment %}
 {% assign products = recommendations.products %}
 
-<div class="product-list-wrapper product-recommendations" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
+{% comment %} Right now we only support articles, but this can be expanded upon{% endcomment %}
+{% assign recProd = 5746496176278 %}
+{% if article.metafields.global.productId %}
+{% assign recProd = article.metafields.global.productId %}
+{% elsif section.settings.product.size > 0 %}
+{% assign recProd = section.settings.product.id %}
+{% endif %}
+
+<div class="product-list-wrapper featured-collection product-recommendations" data-product-id="{{ product.id }}" data-limit="{{ limit }}">
   <div class="max-width">
     <div class="title center-text">
-      <h3>{{ section.settings.header_text }}</h3>
+      <h2>{{ section.settings.header_text }}</h2>
       <br>
     </div>
     <div
-      id="recommendations"
+      id="blog-recommendations"
       class="recommendations product-list row"
       data-swatches-wrapper
       data-swatches-ajax="true"
     >
       {% assign count = 0 %}
       {%- for prod in products -%}
-        {%- if prod.vendor != 'Route' and count < 4 -%}
+        {%- if prod.vendor != 'Route' and count < limit -%}
           {%- assign count = count | plus: 1 -%}
           <div class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
-            {% render 'product-list-item', product: prod %}
+            {% render 'product-list-item', product: prod, limit: limit %}
           </div>
         {%- endif -%}
       {%- endfor -%}
     </div>
 
-    <div class="product-list-collection-link center-text"><br><br></div>
+    <div class="product-list-collection-link center-text">
+      <a href="/collections/all-products" title="View All Products" class="button">View All</a>
+    </div>
   </div>
 </div>
 
@@ -41,7 +51,7 @@
     var limit = dynamicProductRecommendationSection.dataset.limit;
 
     var request = new XMLHttpRequest();
-    request.open('GET', '{{ routes.product_recommendations_url }}?section_id={{ section.id }}&limit='+(limit+1)+'&product_id='+productId, true);
+    request.open('GET', '/recommendations/products?section_id=template-product-recommendations&limit='+limit+'&product_id='+productId, true);
 
     request.onload = function() {
       if (this.status >= 200 && this.status < 400) {
@@ -50,25 +60,25 @@
         var recommendedProductsResponseInner = dataHTML.querySelector('.product-recommendations .recommendations');
 
         if(recommendedProductsResponseInner.querySelectorAll('.product').length > 0) {
-          var recommendationsWrapper = document.getElementById('recommendations');
+          var recommendationsWrapper = document.getElementById('blog-recommendations');
           recommendationsWrapper.innerHTML = recommendedProductsResponseInner.innerHTML;
 
           {% if section.settings.enable_scrollbar %}
           if(window.SimpleBar) {
             new SimpleBar(recommendationsWrapper);
 
-            var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recommendations');
+            var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-blog-recommendations');
             window.dispatchEvent(doRecSwatchEvent);
           } else {
             window.addEventListener('load', function() {
               new SimpleBar(recommendationsWrapper);
 
-              var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recommendations');
+              var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-blog-recommendations');
               window.dispatchEvent(doRecSwatchEvent);
             });
           }
           {% else %}
-          var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-recommendations');
+          var doRecSwatchEvent = new CustomEvent('doSwatchesFromAjax-blog-recommendations');
           window.dispatchEvent(doRecSwatchEvent);
           {% endif %}
         } else {
@@ -90,23 +100,82 @@
   loadProductRecommendations();
 </script>
 
-<!-- <style>
-  #recommendations .simplebar-scrollbar {
-    background-color: var(--shop-primary-color);
+<style>
+.product-recommendations {
+  padding-top: 0;
+  padding-bottom: 1em !important;
+}
+
+@media(min-width: 1024px) {
+  .product-recommendations {
+    padding-bottom: 3em !important;
   }
-</style> -->
+}
+
+#recommendations[data-simplebar="init"] .simplebar-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+#recommendations[data-simplebar="init"] .simplebar-content .product {
+  flex-basis: 65%;
+  margin-bottom: 1em;
+  align-self: flex-start;
+}
+
+#recommendations[data-simplebar="init"] .simplebar-content .product:first-of-type {
+  padding-left: 0;
+}
+
+#recommendations[data-simplebar="init"] .simplebar-content .product:last-of-type {
+  padding-right: 0;
+}
+
+@media(min-width: 769px) {
+  #recommendations[data-simplebar="init"] .simplebar-content .product {
+    flex-basis: 25%;
+  }
+}
+
+/* @media(max-width: 768px) { */
+  #recommendations[data-simplebar="init"] {
+    margin: 0;
+  }
+
+  #recommendations[data-simplebar="init"] .simplebar-scrollbar::before {
+    opacity: 1 !important;
+    background-color: #306cf4;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  #recommendations[data-simplebar="init"] .simplebar-track.simplebar-horizontal {
+    background: transparent;
+    border-radius: 5px;
+  }
+/* } */
+</style>
 
 {% schema %}
 {
-  "name": "Product Recommendations",
+  "name": "Blog Recommendations",
   "class": "product-recommendations-wrapper",
   "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Default Product For Rec's",
+      "info": "If product is set on the article level (article.metafields.global.productId), it will override this"
+    },
     {
       "type": "range",
       "id": "product_limit",
       "label": "Product Limit",
       "min": 1,
-      "max": 12,
+      "max": 20,
       "step": 1,
       "default": 4
     },
@@ -121,6 +190,13 @@
       "id": "enable_scrollbar",
       "label": "Enable Scrollbar",
       "default": false
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Custom Recommendations",
+      "category": "Products"
     }
   ]
 }

@@ -1,0 +1,29 @@
+<div class="featured-post">
+  <a href="{{ article.url }}">
+    {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    {% assign placeholder = article.image | img_url: '200x' %}
+    <img
+      class="post-hero lazyload blur-up"
+      src="{{ placeholder }}"
+      alt="{{ article.title | escape }}"
+      data-src="{{ base_url }}"
+      data-widths="[360, 540, 720, 900, 1080, 1600]"
+      data-aspectratio="{{ collection.image.aspect_ratio }}"
+      data-sizes="auto"
+    />
+    <noscript>
+      <img class="lazyloaded" src="{{ article.image| img_url: '800x' }}" alt="{{ article.title | escape }}">
+    </noscript>
+  </a>
+  <div class="post-text">
+    <!-- <p class="author">
+      <span>{{ article.author }}</span>
+    </p> -->
+    <a href="{{ article.url }}">
+      <p class="post-title no-margin">{{ article.title }}</p>
+    </a>
+    <p class="author">
+      <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
+    </p>
+  </div>
+</div>

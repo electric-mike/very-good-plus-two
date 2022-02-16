@@ -55,44 +55,22 @@
       {% endif %}
     </div>
 
-    {% if settings.blog_featured_tag != '' and settings.blog_featured_posts_limit != '' %}
     {% capture featuredArticles %}
-      {% assign count = 0 %}
-        {% for article in blog.articles %}
-          {% if article.tags contains settings.blog_featured_tag and count < settings.blog_featured_posts_limit %}
-            {% assign count = count | plus: 1 %}
-            <div class="featured-post">
-              <a href="{{ article.url }}">
-                {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                <img
-                  class="post-hero lazyload blur-up"
-                  src="{{ settings.placeholder_image | img_url }}"
-                  alt="{{ article.title | escape }}"
-                  data-src="{{ base_url }}"
-                  data-widths="[360, 540, 720, 900, 1080, 1600]"
-                  data-aspectratio="{{ collection.image.aspect_ratio }}"
-                  data-sizes="auto"
-                />
-                <noscript>
-                  <img class="lazyloaded" src="{{ article.image| img_url: '800x' }}" alt="{{ article.title | escape }}">
-                </noscript>
-              </a>
-              <div class="post-text">
-                <h5 class="author">
-                  <span>{{ article.author }}</span>
-                </h5>
-                <a href="{{ article.url }}">
-                  <h5 class="post-title no-margin">{{ article.title }}</h5>
-                </a>
-                <h5 class="author">
-                  <span>{{ article.published_at | date: '%a %b %d, %Y' }}</span>
-                </h5>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      {% endcapture %}
-    {% endif %}
+      {% if settings.popular_post_1 != blank %}
+        {% assign popularPost = articles[settings.popular_post_1] %}
+        {% render 'blog-single-popular-article', article: popularPost %}
+      {% endif %}
+
+      {% if settings.popular_post_2 != blank %}
+        {% assign popularPost = articles[settings.popular_post_2] %}
+        {% render 'blog-single-popular-article', article: popularPost %}
+      {% endif %}
+
+      {% if settings.popular_post_3 != blank %}
+        {% assign popularPost = articles[settings.popular_post_3] %}
+        {% render 'blog-single-popular-article', article: popularPost %}
+      {% endif %}
+    {% endcapture %}
 
     {% if featuredArticles != '' and featuredArticles.size > 0 %}
       <div class="column-12 right-section">
