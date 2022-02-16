@@ -8,12 +8,10 @@
       </div>
       <div
         id="recently-viewed-products-wrapper"
+        class="recently-viewed product-list row"
         {% if section.settings.enable_scrollbar %}
-          class="recently-viewed product-list row"
           data-swatches-wrapper
           data-swatches-ajax="true"
-        {% else %}
-          class="recently-viewed product-list"
         {% endif %}
       >
       </div>
