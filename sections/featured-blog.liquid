@@ -36,8 +36,8 @@
         class="product-list row"
       {% endif %}
       >
-      {% for article in blog.articles limit: limit %}
-        {% render 'blog-single', article: article, limit: limit %}
+      {% for article in blog.articles limit: post_limit %}
+        {% render 'blog-single', article: article, limit: post_limit %}
       {% endfor %}
     </div>
     <div class="product-list-collection-link center-text">
@@ -68,7 +68,7 @@
         "max": 10,
         "step": 1,
         "label": "Posts shown",
-        "default": 2
+        "default": 4
       },
       {
         "type": "checkbox",

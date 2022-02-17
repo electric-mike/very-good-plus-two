@@ -73,8 +73,9 @@ export default {
 <style lang="scss" scoped>
 .quantity-input {
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
   max-width: 250px;
+  height: 100%;
 
   &.updating-cart {
     pointer-events: none;
@@ -120,6 +121,7 @@ export default {
 
   .required {
     align-self: flex-start;
+    height: 100%;
 
     input {
       width: 100% !important;

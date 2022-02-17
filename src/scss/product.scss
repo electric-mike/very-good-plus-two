@@ -1019,6 +1019,7 @@
 
     .quantity-atc-wrapper {
       display: flex;
+      align-items: flex-start;
       margin-bottom: 1.25em;
 
       .quantity-input-wrapper {
@@ -1037,6 +1038,10 @@
         }
       }
     }
+  }
+
+  .stock-status .field-message {
+    text-align: left !important;
   }
 
   .swatch-size-link-wrapper {

@@ -166,6 +166,12 @@
   {% if section.settings.show_quantity_selector %}
     <div class="quantity-input-wrapper required" v-cloak>
       <quantity-input v-bind:max="selectedOptionVariant ? variantQty[selectedOptionVariant.id] : 1" v-model.number="formQuantity"></quantity-input>
+      <div
+        class="pdp-error invalid black stock-status"
+        v-if="selectedOptionVariant && variantQty[selectedOptionVariant.id] && variantQty[selectedOptionVariant.id] < 5"
+      >
+        <p class="field-message">Only ${ variantQty[selectedOptionVariant.id] } in stock</p>
+      </div>
     </div>
   {% endif %}
   <div class="add-to-cart-wrapper required">
