@@ -19,7 +19,7 @@
         </div>
       {% elsif block.type == 'header' %}
         {% if forloop.index > 1 %}<br><br>{% endif %}
-        <h1>{{ block.settings.header_text }}</h1>
+        <h1 class="accordion-header">{{ block.settings.header_text }}</h1>
         {% endif %}
     {% endfor %}
   </div>

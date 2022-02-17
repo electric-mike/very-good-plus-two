@@ -326,7 +326,7 @@ body {
 }
 
 // border override for FAQ page when headers present
-h1 + .accordion {
+h1 + .accordion, .accordion-header + .accordion {
   border-top: 1px solid var(--shop-light-gray);
 }
 
