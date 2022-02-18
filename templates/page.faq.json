@@ -1,89 +1,38 @@
 {
-  "wrapper": "div.page.cms-page",
+  "wrapper": "#faq.page.cms-page",
   "sections": {
     "main": {
       "type": "template-faq",
+      "settings": {}
+    },
+    "faq-1": {
+      "type": "faq-block",
       "blocks": {
         "1a8f6098-6bbf-462e-ab82-a0c03b2b7cc1": {
           "type": "header",
           "settings": {
-            "header_text": "Vinyl Care"
+            "header_text": "Accounts"
           }
         },
         "28fcdc83-83b6-47ef-a191-b0c900fdefa7": {
           "type": "question",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            "question": "How do I create an account?",
+            "answer": "To create a customer account, click <a href=\"\/account\/register\">here<\/a>."
           }
         },
         "c79fc638-0a72-48d7-bde1-7c767519fd20": {
           "type": "question",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            "question": "How do I reset my password?",
+            "answer": "To reset your customer account password, click <a href=\"\/account\/login?return_url=%2Faccount%3Foseid%3DQTeNHqWXmUfvCqWCpqpoFuqd&ose=false#recover\"> here<\/a>."
           }
         },
         "d20af548-7f79-416b-baa2-704b51404927": {
           "type": "question",
           "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "d1941eeb-7ec5-44c3-8cc0-348f35d92d56": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "f18b6006-305e-4245-8474-d0e8e9d65e4f": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "75109b99-e9ea-47f0-9a33-5df76cf75630": {
-          "type": "header",
-          "settings": {
-            "header_text": "Returns"
-          }
-        },
-        "475b81ba-12c5-4611-94ec-a34f8cf06f4c": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "0b626776-6e82-4a9c-93fc-d05277e5c821": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "1ea377e1-3985-45f5-a0b9-488dd1ff632b": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "b266202f-3fa4-44d8-9217-327c5938ff11": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
-          }
-        },
-        "2ba148cc-4422-4dc0-b011-43526731b133": {
-          "type": "question",
-          "settings": {
-            "question": "Frequently asked question",
-            "answer": "Use this text to answer questions in as much detail as possible for your customers."
+            "question": "How do I update my account details?",
+            "answer": "Once you are logged into your customer account, select \"Addresses to update your address information or \"Order Details\" to see your order history."
           }
         }
       },
@@ -91,20 +40,133 @@
         "1a8f6098-6bbf-462e-ab82-a0c03b2b7cc1",
         "28fcdc83-83b6-47ef-a191-b0c900fdefa7",
         "c79fc638-0a72-48d7-bde1-7c767519fd20",
-        "d20af548-7f79-416b-baa2-704b51404927",
-        "d1941eeb-7ec5-44c3-8cc0-348f35d92d56",
-        "f18b6006-305e-4245-8474-d0e8e9d65e4f",
+        "d20af548-7f79-416b-baa2-704b51404927"
+      ],
+      "settings": {}
+    },
+    "faq-2": {
+      "type": "faq-block",
+      "blocks": {
+        "75109b99-e9ea-47f0-9a33-5df76cf75630": {
+          "type": "header",
+          "settings": {
+            "header_text": "Orders"
+          }
+        },
+        "475b81ba-12c5-4611-94ec-a34f8cf06f4c": {
+          "type": "question",
+          "settings": {
+            "question": "I have a question about my order",
+            "answer": "If you have a question about your order, please fill out the online contact form <a href=\"\/pages\/contact-us\">here<\/a> or call our customer support team at 614-863-3004."
+          }
+        },
+        "0b626776-6e82-4a9c-93fc-d05277e5c821": {
+          "type": "question",
+          "settings": {
+            "question": "When will I receive my order?",
+            "answer": "Orders are processed Monday - Friday with standard shipping. If your order is placed between Friday 3pm EST and Sunday 11:59pm EST, it will ship Monday or the next business day if a holiday."
+          }
+        },
+        "1ea377e1-3985-45f5-a0b9-488dd1ff632b": {
+          "type": "question",
+          "settings": {
+            "question": "Can I cancel my order?",
+            "answer": "We are only able to cancel your order if it has not been shipped yet. To cancel your order, fill out the contact form <a href=\"\/pages\/contact-us\">here<\/a> and a team member will reply via email. Our team is only available Monday-Friday, 9am-5pm EST. If your order has already been shipping, you will have to process a return."
+          }
+        }
+      },
+      "block_order": [
         "75109b99-e9ea-47f0-9a33-5df76cf75630",
         "475b81ba-12c5-4611-94ec-a34f8cf06f4c",
         "0b626776-6e82-4a9c-93fc-d05277e5c821",
-        "1ea377e1-3985-45f5-a0b9-488dd1ff632b",
-        "b266202f-3fa4-44d8-9217-327c5938ff11",
-        "2ba148cc-4422-4dc0-b011-43526731b133"
+        "1ea377e1-3985-45f5-a0b9-488dd1ff632b"
+      ],
+      "settings": {}
+    },
+    "1645132699b8ff2af8": {
+      "type": "faq-block",
+      "blocks": {
+        "21baefb9-67de-4ea1-bd07-d55e2cae01c3": {
+          "type": "header",
+          "settings": {
+            "header_text": "Shipping and Returns"
+          }
+        },
+        "46968c7e-79b2-47ce-956d-c513c58314b4": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "There is free shipping on orders over $100, or on all subscription orders. All subscriptions receive free shipping and a 10% discount; this cannot be combined with other discounts."
+          }
+        },
+        "7cf53767-23c9-4742-bf2e-95593b64f70a": {
+          "type": "question",
+          "settings": {
+            "question": "What are shipping costs?",
+            "answer": "U.S. domestic orders are $3.90 for standard shipping. Free shipping is available for orders over $100 or on subscription orders."
+          }
+        },
+        "17eed200-6bdb-46ea-87b2-2c990b519a1a": {
+          "type": "question",
+          "settings": {
+            "question": "Can I return my order?",
+            "answer": "Returns are only accepted for unopened products. If you have questions, please contact our customer support team <a href=\"\/pages\/contact-us\">here<\/a>."
+          }
+        },
+        "2ba148cc-4422-4dc0-b011-43526731b133": {
+          "type": "question",
+          "settings": {
+            "question": "How do I return my order?",
+            "answer": "If you would like to return your order, please fill out the online contact form <a href=\"\/pages\/contact-us\">here<\/a> and include the order number. A customer support representative will reach out to you to process the return."
+          }
+        },
+        "b266202f-3fa4-44d8-9217-327c5938ff11": {
+          "type": "question",
+          "settings": {
+            "question": "My product is damaged\/the bottle is open.",
+            "answer": "If your product arrives damaged or the seal is broken, please fill out our online contact form <a href=\"\/pages\/contact-us\">here<\/a> and a member of our customer support team will assist you."
+          }
+        }
+      },
+      "block_order": [
+        "21baefb9-67de-4ea1-bd07-d55e2cae01c3",
+        "46968c7e-79b2-47ce-956d-c513c58314b4",
+        "7cf53767-23c9-4742-bf2e-95593b64f70a",
+        "17eed200-6bdb-46ea-87b2-2c990b519a1a",
+        "2ba148cc-4422-4dc0-b011-43526731b133",
+        "b266202f-3fa4-44d8-9217-327c5938ff11"
+      ],
+      "settings": {}
+    },
+    "1645132702c615224a": {
+      "type": "faq-block",
+      "blocks": {
+        "89929d20-d49c-42c0-a7de-0de957743a99": {
+          "type": "header",
+          "settings": {
+            "header_text": "Customer Support"
+          }
+        },
+        "5b105c66-9f16-400b-8f1c-04c3216b8316": {
+          "type": "question",
+          "settings": {
+            "question": "How do I reach a customer support representative?",
+            "answer": "To contact customer support, fill our out online contact form <a href=\"\/pages\/contact-us\">here<\/a> and a representative will reply to you via email, or you may call our team at 614-863-3004. Our office hours are M-F, 9am-5pm."
+          }
+        }
+      },
+      "block_order": [
+        "89929d20-d49c-42c0-a7de-0de957743a99",
+        "5b105c66-9f16-400b-8f1c-04c3216b8316"
       ],
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "faq-1",
+    "faq-2",
+    "1645132699b8ff2af8",
+    "1645132702c615224a"
   ]
 }

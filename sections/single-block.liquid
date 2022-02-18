@@ -1,0 +1,59 @@
+<section id="section-{{ section.id }}" class="max-width">
+  {% if section.settings.title != blank %}
+    <div class="section-header center-text">
+      <div><h3 class="section-header__title">{{ section.settings.title | escape }}</h3></div>
+    </div>
+  {% endif %}
+
+  <div class="content-wrapper row">
+    <div class="column-12">
+      {{ section.settings.content }}
+    </div>
+  </div>
+</section>
+
+<style>
+#section-{{ section.id }} {
+  margin: 3em auto;
+}
+
+#section-{{ section.id }} .content-margin {
+  margin: 3em auto 0;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "Single Block",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color"
+      },
+      {
+        "type": "textarea",
+        "id": "content",
+        "label": "Content (Markup)",
+        "info": "Use class content-margin to space markup evenly"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Single Block",
+        "category": "Grid"
+      }
+    ]
+  }
+{% endschema %}

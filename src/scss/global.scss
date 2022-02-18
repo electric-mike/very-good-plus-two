@@ -164,7 +164,7 @@ body {
     }
 
     .product, .block {
-      margin: 0 0 2.5em 1.25em !important;
+      margin: 0 0 1.25em 1.25em !important;
 
       &:last-of-type {
         flex-basis: calc(65% + 1.25em) !important;
@@ -187,7 +187,7 @@ body {
   }
 
   .simplebar-track {
-    background: var(--shop-gray);
+    background: var(--shop-medium-gray);
     border-radius: 0;
 
     &.simplebar-horizontal {
@@ -328,6 +328,10 @@ body {
 // border override for FAQ page when headers present
 h1 + .accordion, .accordion-header + .accordion {
   border-top: 1px solid var(--shop-light-gray);
+}
+
+.faq-section + .faq-section section {
+  padding-top: 0 !important;
 }
 
 //category hero

@@ -415,7 +415,6 @@ export default {
 
   .top-products-header {
     margin-top: 1.5rem;
-    margin-bottom: 0;
 
     @media(min-width: $desktop) {
       margin-top: 2rem;

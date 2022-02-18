@@ -1,9 +1,13 @@
+{% if section.settings.is_section %}
+<section data-section-id="{{ section.id }}" data-section-type="page-section" style="background-color: {{ section.settings.background_color }};">
+{% else %}
 <div data-section-id="{{ section.id }}" data-section-type="page-section" style="background-color: {{ section.settings.background_color }};">
+{% endif %}
   <div class="image-callout-sections image-callout-sections-{{ section.id }}">
     {% for block in section.blocks %}
       <div class="image-callout-wrapper" style="background-color: {{ block.settings.background_color }};">
         {% if block.type == 'left-image-callout' %}
-          <div class="text-row row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}">
+          <div class="left-image-callout text-row row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}">
             {% if block.settings.image_link %}
             <a href="{{ block.settings.image_link }}" class="column-12-tablet-vert-6 image-row">
             {% else %}
@@ -34,62 +38,66 @@
               {{ block.settings.textarea }}
               {% if block.settings.button_text.size > 0 %}
                 <a
-                  class="button{% if block.settings.forward_button %} forward-button{% endif %}{% if block.settings.wider_button %} wider{% endif %}"
+                  class="button{% if block.settings.secondary_button %} secondary{% endif %}{% if block.settings.forward_button %} forward-button{% endif %}{% if block.settings.wider_button %} wider{% endif %}"
                   href="{{ block.settings.button_link }}"
                 >{{ block.settings.button_text }}</a>
               {% endif %}
             </div>
           </div>
         {% elsif block.type == 'right-image-callout' %}
-          <div class="row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}" style="background-color: {{ block.settings.background_color }};">
+          <div class="right-image-callout text-row row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}">
             <div class="column-12-tablet-vert-6 callout-text">
-              {{ block.settings.textarea }}
-              {% if block.settings.button_text.size > 0 %}
-                <a
-                  class="button{% if block.settings.forward_button %} forward-button{% endif %}{% if block.settings.wider_button %} wider{% endif %}"
-                  href="{{ block.settings.button_link }}"
-                >{{ block.settings.button_text }}</a>
+                {{ block.settings.textarea }}
+                {% if block.settings.button_text.size > 0 %}
+                  <a
+                    class="button{% if block.settings.secondary_button %} secondary{% endif %}{% if block.settings.forward_button %} forward-button{% endif %}{% if block.settings.wider_button %} wider{% endif %}"
+                    href="{{ block.settings.button_link }}"
+                  >{{ block.settings.button_text }}</a>
+                {% endif %}
+              </div>
+              {% if block.settings.image_link %}
+              <a href="{{ block.settings.image_link }}" class="column-12-tablet-vert-6 image-row">
+              {% else %}
+              <div class="column-12-tablet-vert-6 image-row">
+              {% endif %}
+                {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img
+                  class="lazyload blur-up"
+                  src="{{ block.settings.image.src | img_url: '360x' }}"
+                  alt="{{ block.settings.image.alt | escape }}"
+                  data-src="{{ img_url }}"
+                  data-widths="[360, 540, 720, 900, 1080, 1600]"
+                  data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                  data-sizes="auto"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                  loading="lazy"
+                />
+                <noscript>
+                  <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
+                </noscript>
+              {% if block.settings.image_link %}
+              </a>
+              {% else %}
+              </div>
               {% endif %}
             </div>
-            <div class="text-row row-{{ section.settings.blocks_vertical_align }} row-middle{% if section.settings.max_width %} max-width{% endif %}">
-            {% if block.settings.image_link %}
-            <a href="{{ block.settings.image_link }}" class="column-12-tablet-vert-6 image-row">
-            {% else %}
-            <div class="column-12-tablet-vert-6 image-row">
-            {% endif %}
-              {%- assign img_url = block.settings.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              <img
-                class="lazyload blur-up"
-                src="{{ block.settings.image.src | img_url: '360x' }}"
-                alt="{{ block.settings.image.alt | escape }}"
-                data-src="{{ img_url }}"
-                data-widths="[360, 540, 720, 900, 1080, 1600]"
-                data-aspectratio="{{ block.settings.image.aspect_ratio }}"
-                data-sizes="auto"
-                width="{{ block.settings.image.width }}"
-                height="{{ block.settings.image.height }}"
-                loading="lazy"
-              />
-              <noscript>
-                <img class="lazyloaded" src="{{ block.settings.image.src | img_url: '800x' }}" alt="{{ block.settings.image.alt }}">
-              </noscript>
-            {% if block.settings.image_link %}
-            </a>
-            {% else %}
-            </div>
-            {% endif %}
-          </div>
-        {% endif %}
+          {% endif %}
+        </div>
       </div>
     {% endfor %}
   </div>
+{% if section.settings.is_section %}
+</section>
+{% else %}
 </div>
+{% endif %}
 
 <style>
 .image-callout-sections-{{ section.id }},
 .image-callout-sections-{{ section.id }} .text-row {
   overflow: hidden;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .image-callout-sections-{{ section.id }} .image-row {
@@ -155,6 +163,24 @@
     padding: 1.25em 5em !important;
   }
 }
+
+section[data-section-id="{{ section.id }}"] .image-callout-sections-{{ section.id }} .text-row {
+  margin: 0 auto;
+}
+
+section .image-callout-sections-{{ section.id }} .callout-text {
+  margin-top: 0 !important;
+}
+
+@media(min-width: 768px) {
+  section .image-callout-sections-{{ section.id }} .right-image-callout .callout-text {
+    padding-left: 0 !important;
+  }
+
+  section .image-callout-sections-{{ section.id }} .left-image-callout .callout-text {
+    padding-right: 0 !important;
+  }
+}
 </style>
 
 {% schema %}
@@ -198,6 +224,12 @@
       "type": "checkbox",
       "id": "no_padding",
       "label": "No Padding?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "is_section",
+      "label": "Are Blocks Sections?",
       "default": false
     },
     {
@@ -255,6 +287,12 @@
           "id": "wider_button",
           "label": "Wider Button",
           "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "secondary_button",
+          "label": "Secondary Button",
+          "default": false
         }
       ]
     },
@@ -304,6 +342,12 @@
           "type": "checkbox",
           "id": "wider_button",
           "label": "Wider Button",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "secondary_button",
+          "label": "Secondary Button",
           "default": false
         }
       ]

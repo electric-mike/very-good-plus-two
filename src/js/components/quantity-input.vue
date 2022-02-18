@@ -93,7 +93,7 @@ export default {
   }
 
   button {
-    padding: 0.95em 0.5em !important;
+    padding: 0.5em !important;
     width: 30px;
     line-height: 1;
     color: var(--shop-gray);

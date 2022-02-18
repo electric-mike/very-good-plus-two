@@ -1,5 +1,5 @@
 <div id="product-description" class="description-wrapper">
-  {% if product.metafields.tab.size > 0 or shop.metafields.global.shipping_tab %}
+  {% if product.metafields.tab.size > 0 or shop.metafields.global.shipping_tab or section.settings.enable_product_accordions %}
     <div class="description-accordions">
       <div
         class="description-accordion"

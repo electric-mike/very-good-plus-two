@@ -25,6 +25,7 @@
         data-sizes="auto"
         data-widths="[360, 540, 720, 900, 1080, 1600]"
         src="{{ settings.placeholder_image | img_url }}"
+        v-if="product.secondary_image && !product.secondary_image.includes('no-image')"
         v-bind:data-src="product.secondary_image"
         v-bind:data-aspectratio="product.secondary_image_aspectratio"
         v-bind:alt="product.title"

@@ -1,7 +1,7 @@
 <template lang="pug">
 .cart-content(:class="{ 'cart-page-content' : isCart }")
   div(v-if='fetchingCart')
-    p(:class="{ 'fetching-cart' : !isCart }") Getting your cart..
+    h4(:class="{ 'fetching-cart' : !isCart }") Getting your cart..
   .products-wrapper(v-else-if='cartData.item_count && cartData.item_count >= 0')
     .products
       free-product(:is-cart="isCart")
@@ -44,8 +44,8 @@
       upsell(:is-cart="isCart")
       order-note(:is-cart="isCart" v-if="themeSettings.showOrderGiftNote")
   .fill-up(v-else)
-    h3(v-if="isCart") {{ themeSettings.sideCartEmptyText }}
-    h2(v-else) {{ themeSettings.sideCartEmptyText }}
+    h4(v-if="isCart") {{ themeSettings.sideCartEmptyText }}
+    h4(v-else) {{ themeSettings.sideCartEmptyText }}
     a.button.secondary(
       v-if="themeSettings.sideCartLinkCollection"
       :href="`/collections/${themeSettings.sideCartLinkCollection}`"

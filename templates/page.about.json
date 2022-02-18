@@ -5,11 +5,337 @@
       "type": "template-about",
       "settings": {
         "page_image_enable": true,
-        "page_image_url": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png"
+        "page_image_url": "shopify:\/\/shop_images\/Rectangle_18_2.png"
+      }
+    },
+    "1645068774ceb400cb": {
+      "type": "image-callout",
+      "blocks": {
+        "ae7519e6-be05-403e-9542-b9511c0d7e8e": {
+          "type": "right-image-callout",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Group_111_3.png",
+            "image_link": "",
+            "textarea": "<h2>Smart. Simple. Custom.<\/h2><p>Since our beginning, every action that is executed at Basic Brands is focused on providing the best products to help people live a strong, healthy, best life. Our deep-rooted knowledge in the vitamin and supplement space has allowed us to launch products that are unique and meet the needs of our customers. For example, at a time when very few people knew the power of zinc in warding off the common cold, we developed and launched our top-performing Zinc Defend Lozenges, which are still on the market today over 30 years later. Other original products include our Aller-Vite nasal support tablets, providing natural relief from allergies, and our cult-favorite Vitamin E Ointment, which has recently been featured in this celebrity's skincare routine! <\/p>",
+            "background_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "forward_button": false,
+            "wider_button": false,
+            "secondary_button": false
+          }
+        }
+      },
+      "block_order": [
+        "ae7519e6-be05-403e-9542-b9511c0d7e8e"
+      ],
+      "settings": {
+        "blocks_vertical_align": "middle",
+        "max_width": true,
+        "only_bottom_padding": false,
+        "no_padding": true,
+        "is_section": true,
+        "background_color": "#ffffff"
+      }
+    },
+    "1643911087f7461903": {
+      "type": "custom-html-grid",
+      "disabled": true,
+      "blocks": {
+        "062fd4f2-256f-4cbe-a38a-635d755a702e": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Logo.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Logo.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>For over 35 years, Basic Brands® has focused on growing its innovative supplements to support your health and wellness goals.  We take a more holistic approach to nutrition by offering you a customized regimen that supports your health journey and pushes you to achieve your goals.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>For over 35 years, Basic Brands® has focused on growing its innovative supplements to support your health and wellness goals.  We take a more holistic approach to nutrition by offering you a customized regimen that supports your health journey and pushes you to achieve your goals.<\/center>",
+            "mobile_styles": ""
+          }
+        },
+        "4d3b157d-0a11-4215-a93b-18eb12c46a2f": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_19-20-07_Our_Brands_1.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_19-20-07_Our_Brands_1.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>The Basic Organics® Brand is focused on providing everyday solutions for your personal health needs, goals and lifestyle using the highest quality, USDA Certified Organic ingredients.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>The Basic Organics® Brand is focused on providing everyday solutions for your personal health needs, goals and lifestyle using the highest quality, USDA Certified Organic ingredients.<\/center>",
+            "mobile_styles": ""
+          }
+        },
+        "a08aa8e7-485f-4abf-8bc3-b0d365b5de60": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-01_Our_Brands.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-01_Our_Brands.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>EyeScience is a U.S. based ocular nutrition company focused on eye health and education. This line of products incorporates more than two decades of ocular research, resulting in nutritional supplements which benefit those with macular degeneration, as well as individuals taking proactive measures to protect their eyes from the impact of oxidative stress.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>EyeScience is a U.S. based ocular nutrition company focused on eye health and education. This line of products incorporates more than two decades of ocular research, resulting in nutritional supplements which benefit those with macular degeneration, as well as individuals taking proactive measures to protect their eyes from the impact of oxidative stress.<\/center>",
+            "mobile_styles": ""
+          }
+        },
+        "be519e96-8adc-4bb8-a530-4758fdb12c90": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-44-57_Our_Brands.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-44-57_Our_Brands.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>Our Harvest of Nature® products provide your body with the nutritional support it craves from a multitude of complex, clean food supplements sourced from Mother Nature.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>Our Harvest of Nature® products provide your body with the nutritional support it craves from a multitude of complex, clean food supplements sourced from Mother Nature.<\/center>",
+            "mobile_styles": ""
+          }
+        }
+      },
+      "block_order": [
+        "062fd4f2-256f-4cbe-a38a-635d755a702e",
+        "4d3b157d-0a11-4215-a93b-18eb12c46a2f",
+        "a08aa8e7-485f-4abf-8bc3-b0d365b5de60",
+        "be519e96-8adc-4bb8-a530-4758fdb12c90"
+      ],
+      "settings": {
+        "heading": "",
+        "max_width": false,
+        "min_height": false,
+        "enable_scrollbar": false,
+        "constrain_items": false,
+        "tablet_constrain_items": false,
+        "reverse_mobile_order": false,
+        "background_color": "rgba(0,0,0,0)",
+        "block_as_background_image": false,
+        "shop_link_text": "",
+        "shop_link": ""
+      }
+    },
+    "1643911156da714edc": {
+      "type": "custom-html-grid",
+      "disabled": true,
+      "blocks": {
+        "42d982e9-17af-4b32-8b2f-57b63b730ed0": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-36_Our_Brands.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-36_Our_Brands.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>The Achieve® Brand is focused on providing a complete solution system of high quality, vitamins, minerals and supplements specifically designed for Diabetic Support.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>The Achieve® Brand is focused on providing a complete solution system of high quality, vitamins, minerals and supplements specifically designed for Diabetic Support.<\/center>",
+            "mobile_styles": ""
+          }
+        },
+        "a8da65cc-e1bc-4ebc-9f78-f045366c0690": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-24_Our_Brands.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-24_Our_Brands.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>Pura Salud® is focused on developing and delivering the highest quality vitamins, minerals and supplements, uniquely formulated for Hispanic men and women seeking customized solutions for their lifestyle and health goals.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>Pura Salud® is focused on developing and delivering the highest quality vitamins, minerals and supplements, uniquely formulated for Hispanic men and women seeking customized solutions for their lifestyle and health goals.<\/center>",
+            "mobile_styles": ""
+          }
+        },
+        "42304f08-055f-45b6-8317-503f0b1a2e27": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-27_Our_Brands.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-27_Our_Brands.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>Our Cleanz Blendz® products provide you with solutions for your most pressing skin, body, and lifestyle concerns.  Each of our Cleanz Blendz® supplements enhance your everyday routine by eliminating nasty toxins from your body to ease your overall toxic burden and enhance your whole body health and well-being.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>Our Cleanz Blendz® products provide you with solutions for your most pressing skin, body, and lifestyle concerns.  Each of our Cleanz Blendz® supplements enhance your everyday routine by eliminating nasty toxins from your body to ease your overall toxic burden and enhance your whole body health and well-being.<\/center>",
+            "mobile_styles": ""
+          }
+        },
+        "12c50fcb-f0d0-413e-a4cd-f8d3dc7e8cb5": {
+          "type": "block",
+          "settings": {
+            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-33_Our_Brands.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-33_Our_Brands.png",
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>Since 1934, POWERALL® has been a leading, go-to multivitamin for people looking for a maximum strength vitamin and mineral supplement. POWERALL® is a unique, revolutionary multivitamin that is fortified with essential vitamin K and antioxidant rich lutein and L-glutathione.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>Since 1934, POWERALL® has been a leading, go-to multivitamin for people looking for a maximum strength vitamin and mineral supplement. POWERALL® is a unique, revolutionary multivitamin that is fortified with essential vitamin K and antioxidant rich lutein and L-glutathione.<\/center>",
+            "mobile_styles": ""
+          }
+        }
+      },
+      "block_order": [
+        "42d982e9-17af-4b32-8b2f-57b63b730ed0",
+        "a8da65cc-e1bc-4ebc-9f78-f045366c0690",
+        "42304f08-055f-45b6-8317-503f0b1a2e27",
+        "12c50fcb-f0d0-413e-a4cd-f8d3dc7e8cb5"
+      ],
+      "settings": {
+        "heading": "",
+        "max_width": false,
+        "min_height": false,
+        "enable_scrollbar": false,
+        "constrain_items": false,
+        "tablet_constrain_items": false,
+        "reverse_mobile_order": false,
+        "background_color": "rgba(0,0,0,0)",
+        "block_as_background_image": false,
+        "shop_link_text": "",
+        "shop_link": ""
+      }
+    },
+    "1645068252b8a70626": {
+      "type": "brands-list",
+      "blocks": {
+        "1645068252723e323a-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Logo.png",
+            "link": "",
+            "text": "For over 35 years, Basic Brands® has focused on growing its innovative supplements to support your health and wellness goals. We take a more holistic approach to nutrition by offering you a customized regimen that supports your health journey and pushes you to achieve your goals."
+          }
+        },
+        "1645068252723e323a-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_19-20-07_Our_Brands_1.png",
+            "link": "",
+            "text": "The Basic Organics® Brand is focused on providing everyday solutions for your personal health needs, goals and lifestyle using the highest quality, USDA Certified Organic ingredients."
+          }
+        },
+        "1645068252723e323a-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-01_Our_Brands.png",
+            "link": "",
+            "text": "EyeScience is a U.S. based ocular nutrition company focused on eye health and education. This line of products incorporates more than two decades of ocular research, resulting in nutritional supplements which benefit those with macular degeneration, as well as individuals taking proactive measures to protect their eyes from the impact of oxidative stress."
+          }
+        },
+        "1645068252723e323a-3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-44-57_Our_Brands.png",
+            "link": "",
+            "text": "Our Harvest of Nature® products provide your body with the nutritional support it craves from a multitude of complex, clean food supplements sourced from Mother Nature."
+          }
+        },
+        "14c36015-6467-4f4e-b592-f1dcc61145b0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-36_Our_Brands.png",
+            "link": "",
+            "text": "The Achieve® Brand is focused on providing a complete solution system of high quality, vitamins, minerals and supplements specifically designed for Diabetic Support."
+          }
+        },
+        "e97a4a29-58a9-4dd7-9b42-e565dc4d61bc": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-24_Our_Brands.png",
+            "link": "",
+            "text": "Pura Salud® is focused on developing and delivering the highest quality vitamins, minerals and supplements, uniquely formulated for Hispanic men and women seeking customized solutions for their lifestyle and health goals."
+          }
+        },
+        "88f55638-0cbb-4a55-b2ce-6e666a6a930e": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-27_Our_Brands.png",
+            "link": "",
+            "text": "Our Cleanz Blendz® products provide you with solutions for your most pressing skin, body, and lifestyle concerns. Each of our Cleanz Blendz® supplements enhance your everyday routine by eliminating nasty toxins from your body to ease your overall toxic burden and enhance your whole body health and well-being."
+          }
+        },
+        "c2d046fd-3c2e-41ca-8975-8c6e0135f08a": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-33_Our_Brands.png",
+            "link": "",
+            "text": "Since 1934, POWERALL® has been a leading, go-to multivitamin for people looking for a maximum strength vitamin and mineral supplement. POWERALL® is a unique, revolutionary multivitamin that is fortified with essential vitamin K and antioxidant rich lutein and L-glutathione."
+          }
+        }
+      },
+      "block_order": [
+        "1645068252723e323a-0",
+        "1645068252723e323a-1",
+        "1645068252723e323a-2",
+        "1645068252723e323a-3",
+        "14c36015-6467-4f4e-b592-f1dcc61145b0",
+        "e97a4a29-58a9-4dd7-9b42-e565dc4d61bc",
+        "88f55638-0cbb-4a55-b2ce-6e666a6a930e",
+        "c2d046fd-3c2e-41ca-8975-8c6e0135f08a"
+      ],
+      "settings": {
+        "title": "",
+        "logo_opacity": 76,
+        "background_color": "",
+        "text_color": ""
+      }
+    },
+    "1644335646fbb3d1cc": {
+      "type": "custom-html-grid",
+      "disabled": true,
+      "blocks": {
+        "e199a91b-771b-47ce-b47d-0581f0be5520": {
+          "type": "block",
+          "settings": {
+            "overlay": false,
+            "invert_text": false,
+            "no_side_padding": false,
+            "desktop_html": "<p><\/p><center>Through our robust portfolio of health & wellness Brands, we offer you customized, nutrition solutions for your current lifestyle goals. Simply stated, we want to interrupt the status quo and provide you with a refreshing alternative to what is currently available to you, also known as the BASICS. We want to provide you with a personalized vitamin and mineral supplement regimen to support your healthy lifestyle, taking you to the next level to achieve optimal health through our nutritional family of brands: Basic Brands®, Basic Organics®, Achieve®, Pura Salud®, Powerall®, Cleanz Blendz®, and Harvest of Nature®.<\/center>",
+            "desktop_styles": "",
+            "mobile_html": "<p><\/p><center>Through our robust portfolio of health & wellness Brands, we offer you customized, nutrition solutions for your current lifestyle goals. Simply stated, we want to interrupt the status quo and provide you with a refreshing alternative to what is currently available to you, also known as the BASICS. We want to provide you with a personalized vitamin and mineral supplement regimen to support your healthy lifestyle, taking you to the next level to achieve optimal health through our nutritional family of brands: Basic Brands®, Basic Organics®, Achieve®, Pura Salud®, Powerall®, Cleanz Blendz®, and Harvest of Nature®.<\/center>",
+            "mobile_styles": ""
+          }
+        }
+      },
+      "block_order": [
+        "e199a91b-771b-47ce-b47d-0581f0be5520"
+      ],
+      "settings": {
+        "heading": "",
+        "max_width": true,
+        "min_height": false,
+        "enable_scrollbar": false,
+        "constrain_items": false,
+        "tablet_constrain_items": false,
+        "reverse_mobile_order": false,
+        "background_color": "#ffffff",
+        "block_as_background_image": false,
+        "shop_link_text": "",
+        "shop_link": ""
+      }
+    },
+    "1645123017c4d3d00f": {
+      "type": "single-block",
+      "settings": {
+        "title": "",
+        "background_color": "#f8f7f2",
+        "text_color": "#000000",
+        "content": "<hr>\n<p class=\"content-margin center-text\">Through our robust portfolio of health & wellness Brands, we offer you customized, nutrition solutions for your current lifestyle goals. Simply stated, we want to interrupt the status quo and provide you with a refreshing alternative to what is currently available to you, also known as the BASICS. We want to provide you with a personalized vitamin and mineral supplement regimen to support your healthy lifestyle, taking you to the next level to achieve optimal health through our nutritional family of brands: Basic Brands®, Basic Organics®, Achieve®, Pura Salud®, Powerall®, Cleanz Blendz®, and Harvest of Nature®.<\/p>"
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "1645068774ceb400cb",
+    "1643911087f7461903",
+    "1643911156da714edc",
+    "1645068252b8a70626",
+    "1644335646fbb3d1cc",
+    "1645123017c4d3d00f"
   ]
 }

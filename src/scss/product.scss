@@ -59,7 +59,7 @@
     //mobile images
     .mobile-images-wrapper.simplebar-mobile-images {
       width: 100%;
-      padding: 1.25em;
+      padding: 1.25em 1.25em 0;
       overflow: hidden;
 
       .simplebar-wrapper {
@@ -106,6 +106,7 @@
         img {
           width: 100%;
           height: auto;
+          display: block;
         }
       }
     }
@@ -327,7 +328,7 @@
       position: relative;
       width: 100%;
       padding: 0 1.25em;
-      margin-top: 1em;
+      margin-top: 1.25em;
 
       @media(min-width: $tablet) {
         padding-right: 0;
@@ -455,7 +456,7 @@
 
       // recharge
       .rc_widget__option__selector {
-        margin-bottom: 0.75em;
+        margin-bottom: 1.25em;
         cursor: pointer;
         // https://stackoverflow.com/questions/24077725/mobile-safari-sometimes-does-not-trigger-the-click-event
         -webkit-tap-highlight-color: transparent;
@@ -468,7 +469,7 @@
           cursor: pointer;
           color: var(--shop-black);
           line-height: 1.45;
-          z-index: 1;
+          z-index: 2;
 
           &:before {
             content: '';
@@ -589,7 +590,7 @@
               color: var(--shop-black);
               text-decoration: line-through;
               margin-left: auto;
-              margin-right: 0.5rem;
+              margin-left: 0.75rem;
 
               & ~ .rc_widget__price--subsave {
                 margin-left: 0;
@@ -617,7 +618,7 @@
 
         .radio-button {
           flex: 1;
-          margin-left: 0.5rem;
+          margin-left: 0.75rem;
 
           &:first-of-type {
             margin-left: 0;
