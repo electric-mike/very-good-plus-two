@@ -24,7 +24,7 @@
               {% if settings.blog_description != '' %}
                 <br>
                 <p>{{ settings.blog_description }}</p>
-              {% elsif blog.description %}
+              {% elsif blog.description != '' %}
                 <br>
                 <p>{{ blog.description }}</p>
               {% endif %}
