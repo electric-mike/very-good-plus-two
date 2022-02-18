@@ -21,6 +21,13 @@
           <div class="category-hero-inner category-hero-no-image">
             <div class="hero">
               <h1 class="hero"><span>{{ blog.title }}</span></h1>
+              {% if settings.blog_description != '' %}
+                <br>
+                <p>{{ settings.blog_description }}</p>
+              {% elsif blog.description %}
+                <br>
+                <p>{{ blog.description }}</p>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -46,8 +53,13 @@
       <div class="category-hero-inner category-hero-image max-width custom-constrain-items">
         <div class="hero">
           <h1 class="hero"><span>{{ blog.title }}</span></h1>
-          <br>
-          {% if settings.blog_description != '' %}<p class="white">{{ settings.blog_description }}</p>{% endif %}
+          {% if settings.blog_description != '' %}
+            <br>
+            <p class="white">{{ settings.blog_description }}</p>
+          {% elsif blog.description != '' %}
+            <br>
+            <p class="white">{{ blog.description }}</p>
+          {% endif %}
         </div>
       </div>
     </div>
