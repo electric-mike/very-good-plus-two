@@ -173,11 +173,11 @@ section .image-callout-sections-{{ section.id }} .callout-text {
 }
 
 @media(min-width: 768px) {
-  section .image-callout-sections-{{ section.id }} .right-image-callout .callout-text {
+  .image-callout-sections-{{ section.id }} .right-image-callout[class*="row"] .callout-text {
     padding-left: 0 !important;
   }
 
-  section .image-callout-sections-{{ section.id }} .left-image-callout .callout-text {
+  .image-callout-sections-{{ section.id }} .left-image-callout[class*="row"] .callout-text {
     padding-right: 0 !important;
   }
 }

@@ -154,6 +154,12 @@
           </div>
         {% endfor %}
       </div>
+
+      {% if section.settings.shop_link_text != '' %}
+      <div class="product-list-collection-link">
+        <a href="{{ collection.shop_link }}" class="button" title="{{ section.settings.shop_link_text }}">{{ section.settings.shop_link_text }}</a>
+      </div>
+      {% endif %}
     </div>
   </section>
 {% endif %}
@@ -217,7 +223,7 @@
     display: block;
     width: 100%;
     height: auto;
-    margin-bottom: 0.75em;
+    /* margin-bottom: 0.75em; */
   }
   {% endif %}
 
@@ -259,6 +265,18 @@
     section.custom-html-grid .block .mobile-block {
       display: block !important;
       {% if section.settings.min_height %}min-height: 350px;{% endif %}
+    }
+  }
+
+  .product-list-collection-link {
+    margin-top: 2.5em;
+    text-align: center;
+  }
+
+  @media(min-width: 1024px) {
+    .product-list-collection-link {
+      margin-top: 1.25em;
+      text-align: center;
     }
   }
 {% endstyle %}
@@ -326,6 +344,17 @@
       "id": "block_as_background_image",
       "label": "Blocks use image as backgrounds?",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "shop_link_text",
+      "label": "Bottom Button Text (if empty doesnt show)",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "Bottom Button Link"
     }
   ],
   "blocks": [
