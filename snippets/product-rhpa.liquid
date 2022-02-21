@@ -73,7 +73,9 @@
     {% if section.settings.rhpa_color_swatch_type == 'image' %}
       <div class="swatches image-swatches" v-if="productVariantOptions[i] === 'Color'" v-cloak>
         <div
-          class="swatch color-image-swatch" v-for="(option, j) in options"
+          class="swatch color-image-swatch"
+          v-for="(option, j) in options"
+          v-if="!limitFromSelectedRechargePlan(productVariants[j].id)"
           v-bind:class="{ 'oos': outOfStock(option, i + 1) }"
         >
           <input
@@ -83,7 +85,7 @@
             v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
             autocomplete="off"
           />
-          <label v-bind:class="[ option.replace(/ /g, '-').toLowerCase() ]" v-bind:for="option">
+          <label v-bind:class="[ option.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '') ]" v-bind:for="option">
             <img
               class="lazyload"
               src="{{ settings.placeholder_image | img_url }}"
@@ -95,7 +97,9 @@
       </div>
       <div class="swatches" v-else v-cloak>
         <div
-          class="swatch" v-for="option in options"
+          class="swatch"
+          v-for="(option, j) in options"
+          v-if="!limitFromSelectedRechargePlan(productVariants[j].id)"
           v-bind:class="{ 'oos': outOfStock(option, i + 1) }"
         >
           <input
@@ -105,13 +109,15 @@
             v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
             autocomplete="off"
           />
-          <label v-bind:class="[ option.replace(/ /g, '-').toLowerCase() ]" v-bind:for="option">${ option }</label>
+          <label v-bind:class="[ option.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '') ]" v-bind:for="option">${ option }</label>
         </div>
       </div>
     {% else %}
       <div class="swatches" v-bind:class="{ 'color-swatches': productVariantOptions[i] === 'Color' }" v-cloak>
         <div
-          class="swatch" v-for="option in options"
+          class="swatch"
+          v-for="(option, j) in options"
+          v-if="!limitFromSelectedRechargePlan(productVariants[j].id)"
           v-bind:class="{ 'color-swatch': productVariantOptions[i] === 'Color', 'oos': outOfStock(option, i + 1) }"
         >
           <input
@@ -121,14 +127,19 @@
             v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"
             autocomplete="off"
           />
-          <label v-bind:class="[ option.replace(/ /g, '-').toLowerCase() ]" v-bind:for="option">${ option }</label>
+          <label v-bind:class="[ option.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '') ]" v-bind:for="option">${ option }</label>
         </div>
       </div>
     {% endif %}
   {% elsif section.settings.rhpa_type == 'radio' %}
     <h6 class="radio-title" v-cloak><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
     <div class="radio-wrapper" v-cloak>
-      <div class="radio" v-for="option in options" v-bind:class="{ 'half-width': options.length > 10 }">
+      <div
+        class="radio"
+        v-for="(option, j) in options"
+        v-if="!limitFromSelectedRechargePlan(productVariants[j].id)"
+        v-bind:class="{ 'half-width': options.length > 10 }"
+      >
         <input
           type="radio"
           v-bind:id="option"
@@ -146,7 +157,8 @@
       <h6 class="select-title"><span class="uppercase">${ productVariantOptions[i] }</span>: ${ optionSelections[i + 1] }</h6>
       <select v-model="optionSelections[i + 1]">
         <option
-          v-for="option in options"
+          v-for="(option, j) in options"
+          v-if="!limitFromSelectedRechargePlan(productVariants[j].id)"
           v-bind:id="option"
           v-bind:value="option" type="radio"
           v-bind:class="{ 'disabled': outOfStock(option, i + 1) }"

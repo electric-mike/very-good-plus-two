@@ -8,8 +8,21 @@
   }
 {% endcapture %}
 
+{% capture variantMetadata %}
+  {
+    {% for variant in product.variants %}
+
+        "{{variant.id}}": {
+          'subscription_frequencies': '{{variant.metafields.my_fields.subscription_frequencies }}'
+        }
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  }
+{% endcapture %}
+
 <script>
   window.productData = {{ product | json }};
+  window.variantMetadata  = {{variantMetadata}};
   window.variantQty = {{variantQty}};
   window.productPrice = '{{ product.price }}';
   window.productOriginalPrice = '{{ product.compare_at_price_max }}';

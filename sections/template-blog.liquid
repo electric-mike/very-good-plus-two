@@ -19,9 +19,10 @@
               <div class="post no-padding{% if forloop.index == 1 %} column-12{% else %} column-12-tablet-vert-6{% endif %}">
                 <a href="{{ article.url }}">
                   {%- assign base_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {% assign placeholder = article.image.src | img_url: '360x' %}
                   <img
-                    class="post-hero lazyload blur-up"
-                    src="{{ settings.placeholder_image | img_url }}"
+                    class="product-image lazyload blur-up"
+                    src="{{ placeholder }}"
                     alt="{{ article.title | escape }}"
                     data-src="{{ base_url }}"
                     data-widths="[360, 540, 720, 900, 1080, 1600]"

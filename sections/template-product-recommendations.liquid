@@ -18,7 +18,7 @@
     >
       {% assign count = 0 %}
       {%- for prod in products -%}
-        {%- if prod.vendor != 'Route' and count < 4 -%}
+        {%- if prod.vendor != 'Route' and count < limit -%}
           {%- assign count = count | plus: 1 -%}
           <div class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
             {% render 'product-list-item', product: prod %}

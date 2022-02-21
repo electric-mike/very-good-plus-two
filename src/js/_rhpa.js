@@ -48,8 +48,13 @@ export default function rhpa() {
             3 : null,
           },
           showSizeChart : false,
-          isRecharge    : window.productData.selling_plan_groups && window.productData.selling_plan_groups.length > 0,
-          reviewType    : window.themeSettings.reviewType,
+          isRecharge    : window.productData.selling_plan_groups
+                                  && window.productData.selling_plan_groups.length > 0,
+          variantMetadata      : window.variantMetadata,
+          reviewType           : window.themeSettings.reviewType,
+          rechargePlan         : false,
+          rechargePlanSelected : false,
+          customerIsWholesale  : window.themeSettings.customerIsWholesale || false,
         }
       },
 
@@ -412,6 +417,41 @@ export default function rhpa() {
           return false
         },
 
+        limitFromSelectedRechargePlan(sentVariantId) {
+          if (
+            this.rechargePlanSelected
+            && sentVariantId
+            && this.variantMetadata
+            && this.variantMetadata[sentVariantId]
+            && this.variantMetadata[sentVariantId]?.subscription_frequencies
+            && this.variantMetadata[sentVariantId]?.subscription_frequencies !== ''
+            && this.variantMetadata[sentVariantId].subscription_frequencies.indexOf(this.rechargePlan) <= -1
+          ) {
+            // have to try to select first available variant included if we have limits with metadata
+            Object.keys(this.variantMetadata).forEach((id) => {
+              let foundVariant = false
+              if (
+                this.rechargePlanSelected
+                && this.variantMetadata[id]
+                && this.variantMetadata[id]?.subscription_frequencies
+                && this.variantMetadata[id].subscription_frequencies.includes(this.rechargePlan)
+                && this.productVariants.find(variant => variant.id == id) //eslint-disable-line
+              ) {
+                foundVariant = this.productVariants.find(variant => variant.id == id) //eslint-disable-line
+                this.optionSelections[1] = foundVariant.option1
+                this.optionSelections[2] = foundVariant.option2
+                this.optionSelections[3] = foundVariant.option3
+              }
+
+              return foundVariant
+            })
+
+            return true
+          }
+
+          return false
+        },
+
         addToCart(e) {
           e.preventDefault()
 
@@ -449,10 +489,12 @@ export default function rhpa() {
                 this.$nextTick(() => {
                   const formattedPrice = parseFloat(selectedSubscriptionPrice.innerHTML.replace('$', '')) * 100
                   this.productPrice = formattedPrice * this.formQuantity
+                  this.rechargePlanSelected = true
                 })
               })
             } else {
               this.productPrice = this.selectedOptionVariant.price * this.formQuantity
+              this.rechargePlanSelected = false
             }
 
             this.productOriginalPrice = this.selectedOptionVariant.price
@@ -527,7 +569,7 @@ export default function rhpa() {
             strikethrough.classList.remove('rc_widget__price--onetime')
             strikethrough.classList.add('rc_widget__price--strikethrough')
 
-            subsave.parentNode.insertBefore(strikethrough, subsave)
+            subsave.after(strikethrough)
           }
 
           const termSelect = document.querySelector('select[name="selling_plan"]')
@@ -550,6 +592,7 @@ export default function rhpa() {
 
               if (i === 0) {
                 radio.setAttribute('checked', true)
+                this.rechargePlan = option.value
               }
 
               radio.onclick = (e) => {
@@ -558,6 +601,7 @@ export default function rhpa() {
                 } = e.target
                 const selectedOption = document.querySelector('select[name="selling_plan"]')
                 selectedOption.value = value
+                this.rechargePlan = value
               }
               radioWrapper.append(radio)
 

@@ -1,18 +1,24 @@
-{% comment %} Max amount of products visible {% endcomment %}
-{% assign limit = section.settings.product_limit %}
+{% comment %}
+Max amount of products visible
+NOTE: different from product recommendations because
+apparently you cannot pass the limit variable to the section;
+has to be set here
+{% endcomment %}
+{% assign limit = 4 %}
+{% assign loopLimit = limit | minus: 1 %}
 
 {% comment %} Shopify generated dynamic recommendations, falling back to default related products (based on parent collection) {% endcomment %}
 {% assign products = recommendations.products %}
 
 {% comment %} Right now we only support articles, but this can be expanded upon{% endcomment %}
-{% assign recProd = 5746496176278 %}
-{% if article.metafields.global.productId %}
-{% assign recProd = article.metafields.global.productId %}
+{% assign recProd = all_products['very-good-plus-slipmat'] %}
+{% if article.metafields.global.productHandle %}
+{% assign recProd = all_products[article.metafields.global.productHandle] %}
 {% elsif section.settings.product.size > 0 %}
-{% assign recProd = section.settings.product.id %}
+{% assign recProd = section.settings.product %}
 {% endif %}
 
-<div class="product-list-wrapper featured-collection product-recommendations" data-product-id="{{ recProd }}" data-limit="{{ limit }}">
+<div class="product-list-wrapper featured-collection product-recommendations" data-product-id="{{ recProd.id }}" data-limit="{{ loopLimit }}">
   <div class="max-width">
     <div class="title center-text">
       <h3>{{ section.settings.header_text }}</h3>
@@ -24,12 +30,17 @@
       data-swatches-wrapper
       data-swatches-ajax="true"
     >
+      <!-- Put recProd in recommendations -->
+      <div id="initial-rec-prod" style="display: none" class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
+        {% render 'product-list-item', product: recProd %}
+      </div>
+
       {% assign count = 0 %}
       {%- for prod in products -%}
-        {%- if prod.vendor != 'Route' and count < limit -%}
+        {%- if prod.vendor != 'Route' and count < loopLimit -%}
           {%- assign count = count | plus: 1 -%}
           <div class="product product-{{ prod.id }} column-6-tablet-vert-{{ 12 | divided_by: limit }}">
-            {% render 'product-list-item', product: prod, limit: limit %}
+            {% render 'product-list-item', product: prod %}
           </div>
         {%- endif -%}
       {%- endfor -%}
@@ -51,7 +62,7 @@
     var limit = dynamicProductRecommendationSection.dataset.limit;
 
     var request = new XMLHttpRequest();
-    request.open('GET', '/recommendations/products?section_id=template-product-recommendations&limit='+limit+'&product_id='+productId, true);
+    request.open('GET', '/recommendations/products?section_id=blog-recommendations&limit='+limit+'&product_id='+productId, true);
 
     request.onload = function() {
       if (this.status >= 200 && this.status < 400) {
@@ -61,7 +72,8 @@
 
         if(recommendedProductsResponseInner.querySelectorAll('.product').length > 0) {
           var recommendationsWrapper = document.getElementById('blog-recommendations');
-          recommendationsWrapper.innerHTML = recommendedProductsResponseInner.innerHTML;
+          recommendationsWrapper.innerHTML += recommendedProductsResponseInner.innerHTML;
+          document.getElementById('initial-rec-prod').style.display = 'block';
 
           {% if section.settings.enable_scrollbar %}
           if(window.SimpleBar) {
@@ -169,15 +181,6 @@
       "id": "product",
       "label": "Default Product For Rec's",
       "info": "If product is set on the article level (article.metafields.global.productId), it will override this"
-    },
-    {
-      "type": "range",
-      "id": "product_limit",
-      "label": "Product Limit",
-      "min": 1,
-      "max": 20,
-      "step": 1,
-      "default": 4
     },
     {
       "type": "text",
