@@ -7,7 +7,7 @@
             class="blog-col-header question"
             v-bind:class="{ 'active' : toggles['newsletter'] }"
             v-on:click.prevent="toggleAccordion('newsletter')"
-          >Like What Your Reading?</h5>
+          >{{ settings.newsletter_header }}</h5>
           <div class="answer klaviyo-wrapper" v-show="toggles['newsletter']">
             {% if settings.klaviyo_desktop_form_id.size > 0 or settings.klaviyo_mobile_form_id.size > 0 %}
               <p class="small">{{ settings.klaviyo_signup_text }}</p>

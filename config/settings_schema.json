@@ -566,6 +566,12 @@
         "label": "Blog Description"
       },
       {
+        "type": "text",
+        "id": "newsletter_header",
+        "label": "Newsletter Header",
+        "default": "Like What You're Reading?"
+      },
+      {
         "type": "article",
         "id": "popular_post_1",
         "label": "Popular Post 1"
