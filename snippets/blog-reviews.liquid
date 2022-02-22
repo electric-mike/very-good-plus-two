@@ -1,7 +1,7 @@
 <div id="comments"></div>
 {% if blog.comments_enabled? and article.comments_count > 0 %}
   <div class="one-whole column">
-    <h3>{{ 'blogs.comments.response_count' | t: count: article.comments.size }}</h3>
+    <h3>{{ 'blogs.comments.comment_count' | t: count: article.comments.size }}</h3>
   </div>
 
   {% for comment in article.comments %}

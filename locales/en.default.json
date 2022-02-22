@@ -75,10 +75,10 @@
     },
     "comments": {
       "comment": "Comment",
-      "response_count": {
-        "zero": "Responses",
-        "one": "{{ count }} Response",
-        "other": "{{ count }} Responses"
+      "comment_count": {
+        "zero": "Comments",
+        "one": "{{ count }} Comment",
+        "other": "{{ count }} Comments"
       },
       "title": "Leave a comment",
       "name": "Name",
