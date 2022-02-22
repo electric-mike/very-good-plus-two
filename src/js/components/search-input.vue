@@ -25,6 +25,14 @@
       @focus="emitFocused()"
       @keyup.esc="emitClose()"
     >
+    <a
+      v-if="localSearchQuery.length > 0 && !isMobile"
+      class="link clear-link"
+      aria-label="Clear"
+      @click="localSearchQuery = ''"
+    >
+      <p>Clear</p>
+    </a>
   </form>
 </template>
 
@@ -93,6 +101,7 @@ export default {
 <style lang="scss" scoped>
 .search-input-form {
   display: flex;
+  align-items: center;
   width: 100%;
   margin: 0;
 
@@ -114,6 +123,15 @@ export default {
     background: url('~Src/assets/search.svg') no-repeat;
     background-size: contain;
     border: none;
+  }
+
+  .clear-link {
+    position: absolute;
+    right: 5em;
+
+    p {
+      margin: 0;
+    }
   }
 
   &.desktop-search-input-form {
