@@ -7,7 +7,7 @@
           {%- assign img_url = section.settings.page_image_url.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
           <img
             class="lazyload blur-up full-width"
-            src="{{ settings.placeholder_image | img_url }}"
+            src="{{ section.settings.page_image_url.src | img_url: '360x' }}"
             alt="{{ section.settings.page_image_url.alt | escape }}"
             data-src="{{ img_url }}"
             data-widths="[360, 540, 720, 900, 1080, 1600]"

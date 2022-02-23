@@ -181,6 +181,7 @@
         upsellProductHeader: '{{ settings.upsell_product_header }}',
         secondaryUpsellProduct: {{ all_products[settings.secondary_upsell_product] | json }},
         secondaryUpsellProductHeader: '{{ settings.secondary_upsell_product_header }}',
+        enablePlaceholderImage: {{ settings.enable_placeholder_image }},
         placeholderImageUrl: '{{ settings.placeholder_image | img_url }}',
         placeholderImageAspectRatio: '{{ settings.placeholder_aspect_ratio }}',
         searchTerms: '{{ settings.header_search_terms }}'.split(', '),

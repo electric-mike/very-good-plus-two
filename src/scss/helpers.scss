@@ -203,6 +203,7 @@
 // hide image wrap overflow
 .image-wrap {
   overflow: hidden;
+  background: var(--shop-product-image-background);
 
   &.square-image {
     display: block;

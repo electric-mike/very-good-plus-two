@@ -23,6 +23,14 @@
   .product-recently-viewed .product {
     flex-grow: 0 !important;
   }
+
+  {% if section.settings.product_limit < 4 %}
+  @media(min-width: 768px) {
+    .product-recently-viewed .product {
+      flex-basis: calc({{ 100 | divided_by: section.settings.product_limit }}% - 0.675em) !important;
+    }
+  }
+  {% endif %}
 </style>
 
 <script>

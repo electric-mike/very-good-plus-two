@@ -483,8 +483,21 @@
     ]
   },
   {
-    "name": "Placeholder",
+    "name": "Image / Placeholder",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_placeholder_image",
+        "label": "Enable Placeholder Image",
+        "info": "Used on product images; if turned off, we just use a smaller version of the product image",
+        "default": false
+      },
+      {
+        "type": "color",
+        "id": "image_background",
+        "label": "Image Background",
+        "info": "Regardless of placeholder being on or off, this is the background of product images while they load; defaults to white"
+      },
       {
         "type": "image_picker",
         "id": "placeholder_image",

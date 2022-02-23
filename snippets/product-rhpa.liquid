@@ -88,7 +88,11 @@
           <label v-bind:class="[ option.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '').replace(/^-/, '') ]" v-bind:for="option">
             <img
               class="lazyload"
+              {% if settings.enable_placeholder_image %}
               src="{{ settings.placeholder_image | img_url }}"
+              {% else %}
+              v-bind:src="productVariants[j].featured_image.src"
+              {% endif %}
               v-bind:data-src="productVariants[j].featured_image.src"
               v-bind:data-variantid="productVariants[j].id"
             />

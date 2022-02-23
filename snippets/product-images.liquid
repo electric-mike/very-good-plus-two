@@ -14,7 +14,11 @@
               data-index="{{ forloop.index | minus: 1 }}"
               id="{{ image.id }}"
               class="lazyload blur-up"
-              src="{{ settings.placeholder_image | img_url: 'large' }}"
+              {% if settings.enable_placeholder_image %}
+              src="{{ settings.placeholder_image | img_url }}"
+              {% else %}
+              src="{{ image.src | img_url: '360x' }}"
+              {% endif %}
               alt="{{ image.alt | escape }}"
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
@@ -41,7 +45,11 @@
               data-index="{{ forloop.index | minus: 1 }}"
               id="{{ image.id }}"
               class="lazyload blur-up"
-              src="{{ settings.placeholder_image | img_url: 'large' }}"
+              {% if settings.enable_placeholder_image %}
+              src="{{ settings.placeholder_image | img_url }}"
+              {% else %}
+              src="{{ image.src | img_url: '360x' }}"
+              {% endif %}
               alt="{{ image.alt | escape }}"
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
@@ -72,7 +80,11 @@
               alt="{{ image.alt | escape }}"
               data-src="{{ img_url }}"
               data-master-src="{{ image.src | img_url: '1600x' }}"
+              {% if settings.enable_placeholder_image %}
               data-small-src="{{ settings.placeholder_image | img_url }}"
+              {% else %}
+              data-small-src="{{ image.src | img_url: '360x' }}"
+              {% endif %}
               data-aspectratio="{{ image.aspect_ratio }}"
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"
@@ -90,12 +102,16 @@
               data-index="0"
               id="ProductPhotoImg"
               class="main-image lazyload blur-up"
-              src="{{ settings.placeholder_image | img_url: 'large' }}"
+              {% if settings.enable_placeholder_image %}
+              src="{{ settings.placeholder_image | img_url }}"
+              data-placeholder="{{ settings.placeholder_image | img_url: 'large' }}"
+              {% else %}
+              src="{{ product.featured_image.src | img_url: '360x' }}"
+              {% endif %}
               alt="{{ product.featured_image.alt | escape }}"
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
-              data-placeholder="{{ settings.placeholder_image | img_url: 'large' }}"
               data-sizes="auto"
               width="{{ product.featured_image.width }}"
               height="{{ product.featured_image.height }}"
@@ -117,12 +133,16 @@
               data-lightbox-trigger
               data-index="{{ forloop.index | minus: 1 }}"
               class="main-image lazyload blur-up"
-              src="{{ settings.placeholder_image | img_url: 'large' }}"
+              {% if settings.enable_placeholder_image %}
+              src="{{ settings.placeholder_image | img_url }}"
+              data-placeholder="{{ settings.placeholder_image | img_url: 'large' }}"
+              {% else %}
+              src="{{ image.src | img_url: '360x' }}"
+              {% endif %}
               alt="{{ image.alt | escape }}"
               data-src="{{ img_url }}"
               data-widths="[360, 540, 720, 900, 1080, 1600]"
               data-aspectratio="{{ image.aspect_ratio }}"
-              data-placeholder="{{ settings.placeholder_image | img_url: 'large' }}"
               data-sizes="auto"
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"

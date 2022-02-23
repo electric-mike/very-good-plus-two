@@ -18,7 +18,11 @@
           id="lightbox-image-{{ image.id }}"
           data-index="{{ forloop.index | minus: 1 }}"
           class="lightbox-image lazyload blur-up"
-          src="{{ settings.placeholder_image | img_url: 'large' }}"
+          {% if settings.enable_placeholder_image %}
+          src="{{ settings.placeholder_image | img_url }}"
+          {% else %}
+          src="{{ image.src | img_url: '360x' }}"
+          {% endif %}
           alt="{{ image.alt | escape }}"
           data-src="{{ img_url }}"
           data-widths="[360, 540, 720, 900, 1080, 1600]"

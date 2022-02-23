@@ -14,7 +14,11 @@
               {%- assign img_url = block_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
               <img
                 class="lazyload blur-up"
+                {% if settings.enable_placeholder_image %}
                 src="{{ settings.placeholder_image | img_url }}"
+                {% else %}
+                src="{{  block_image.src | img_url: '360x' }}"
+                {% endif %}
                 alt="{{ prod.title | escape }}"
                 data-src="{{ img_url }}"
                 data-widths="[360, 540, 720, 900, 1080, 1600]"
@@ -115,7 +119,11 @@
               {%- assign img_url = block_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
               <img
                 class="lazyload blur-up"
+                {% if settings.enable_placeholder_image %}
                 src="{{ settings.placeholder_image | img_url }}"
+                {% else %}
+                src="{{  block_image.src | img_url: '360x' }}"
+                {% endif %}
                 alt="{{ prod.title | escape }}"
                 data-src="{{ img_url }}"
                 data-widths="[360, 540, 720, 900, 1080, 1600]"

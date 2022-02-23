@@ -292,7 +292,11 @@
                       {%- assign img_url = article.image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
                       <img
                         class="product-image lazyload"
+                        {% if settings.enable_placeholder_image %}
                         src="{{ settings.placeholder_image | img_url }}"
+                        {% else %}
+                        src="{{ article.image.src | img_url: '360x' }}"
+                        {% endif %}
                         alt="{{ article.title }}"
                         data-src="{{ img_url }}"
                         data-widths="[360, 540, 720, 900, 1080, 1600]"
@@ -313,8 +317,12 @@
                       <img
                         width="100%"
                         class="lazyload"
+                        {% if settings.enable_placeholder_image %}
                         data-src="{{ src }}"
                         src="{{ settings.placeholder_image | img_url }}"
+                        {% else %}
+                        src="{{ src }}"
+                        {% endif %}
                       />
                     {% elsif article.content contains "<img" and ".png" %}
                       {% assign src = article.content | split: 'src="' | last %}
@@ -322,13 +330,11 @@
                       <img
                         width="100%"
                         class="lazyload"
+                        {% if settings.enable_placeholder_image %}
                         data-src="{{ src }}"
                         src="{{ settings.placeholder_image | img_url }}"
-                      />
-                    {% else %}
-                      <img
-                        src="{{ settings.placeholder_image | img_url }}"
-                        width="100%"
+                        {% else %}
+                        src="{{ src }}"
                       />
                     {% endif %}
                   {% endif %}

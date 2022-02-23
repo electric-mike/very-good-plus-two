@@ -62,6 +62,7 @@ Overridden below using Theme Customize
   /*------------------
   ADVANCED CUSTOMIZATION DECLARATIONS
   ------------------*/
+  --shop-product-image-background: var(--shop-white);
   --shop-header-background-color: var(--shop-white);
   --shop-header-link-color: var(--shop-black);
   --shop-footer-background-color: var(--shop-light-gray);
@@ -74,6 +75,7 @@ Theme CSS Variables
 Override variables above
 ------------------*/
 :root {
+  {%- if settings.image_background != '' and settings.image_background != 'rgba(0,0,0,0)' -%}--shop-product-image-background: {{ settings.image_background }};{%- endif -%}
   {%- if settings.white != '' and settings.white != 'rgba(0,0,0,0)' -%}--shop-white: {{ settings.white }};{%- endif -%}
   {%- if settings.black != '' and settings.black != 'rgba(0,0,0,0)' -%}--shop-black: {{ settings.black }};{%- endif -%}
   {%- if settings.dark_gray != '' and settings.dark_gray != 'rgba(0,0,0,0)' -%}--shop-dark-gray: {{ settings.dark_gray }};{%- endif -%}
