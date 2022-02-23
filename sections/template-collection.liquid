@@ -242,7 +242,7 @@
               <div><span class="small">View</span></div>
               <div class="grid-swatch" v-for="i in 2">
                 <input v-bind:id="i + '-grid-size'" type="radio" v-model="mobileGridSize" v-bind:value="i">
-                <label v-bind:for="i + '-grid-size'">${i}</label>
+                <label v-bind:for="i + '-grid-size'" v-cloak>${i}</label>
               </div>
             </div>
           </div>

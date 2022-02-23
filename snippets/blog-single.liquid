@@ -16,6 +16,7 @@
             data-sizes="auto"
             width="{{ article.image.width }}"
             height="{{ article.image.height }}"
+            loading="lazy"
           />
           <noscript>
             <img class="lazyloaded" src="{{ article.image.src | img_url: '800x' }}" alt="{{ article.title | escape }}">

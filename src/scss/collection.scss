@@ -417,6 +417,7 @@
       align-items: flex-start;
       padding-right: 0;
       margin-top: 0;
+      grid-template-columns: repeat(2, 1fr);
 
       @media(max-width: $tablet - 1) {
         flex-basis: 100%;
@@ -424,11 +425,11 @@
         padding: 0 !important;
 
         &.mobile-grid-1 {
-          grid-template-columns: 1fr;
+          grid-template-columns: 1fr !important;
         }
 
         &.mobile-grid-2 {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, 1fr) !important;
         }
       }
 
