@@ -1,7 +1,7 @@
 <template>
   <img
     :srcset="computedSrcSet"
-    :src="placeholderImageUrl"
+    :src="enablePlaceholderImage ? placeholderImageUrl : sizeImageOrReturn(source, '200x')"
     sizes="`
       (min-width: 0px) 200px,
       (min-width: 500px) 500px,
@@ -49,9 +49,10 @@ export default {
   },
   data() {
     return {
-      placeholderImageUrl : (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
-      loaded              : false,
-      observer            : null,
+      enablePlaceholderImage : (window.themeSettings && window.themeSettings.enablePlaceholderImage) || false,
+      placeholderImageUrl    : (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
+      loaded                 : false,
+      observer               : null,
     }
   },
 

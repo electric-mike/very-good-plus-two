@@ -78,11 +78,12 @@
               <div class="image-wrap">
                 <img
                   class="product-image"
-                  :src="placeholderImageUrl"
+                  :src="enablePlaceholderImage ? placeholderImageUrl : product.featured_image.url"
                   :source="product.featured_image.url"
                   :alt="product.featured_image.alt"
                   :width="product.featured_image.width"
                   :height="product.featured_image.height"
+                  :style="{ 'visibility': !enablePlaceholderImage ? 'hidden' : 'visible' }"
                 >
               </div>
             </a>
@@ -179,7 +180,10 @@
             >
               <div
                 class="image-wrap"
-                :style="{ 'background': `url(${placeholderImageUrl})` }"
+                :style="{ 'background': `url(${
+                  enablePlaceholderImage ? placeholderImageUrl : product.featured_image.url
+                })`
+                }"
               >
                 <vue-image
                   class="product-image"
@@ -274,8 +278,9 @@ export default {
 
     return {
       placeholderHeight,
-      placeholderImageUrl : (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
-      searchTerms         : (window.themeSettings && window.themeSettings.searchTerms) || '',
+      enablePlaceholderImage : (window.themeSettings && window.themeSettings.enablePlaceholderImage) || false,
+      placeholderImageUrl    : (window.themeSettings && window.themeSettings.placeholderImageUrl) || '',
+      searchTerms            : (window.themeSettings && window.themeSettings.searchTerms) || '',
     }
   },
 
