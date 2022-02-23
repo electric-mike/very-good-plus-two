@@ -25,7 +25,7 @@
             class="product product-{{ prod.id }} column-6-tablet-vert-3"
             key="{{ forloop.index }}"
           >
-            {% render 'product-list-item', product: product, is_bundle: true %}
+            {% render 'product-list-item', product: product, is_bundle: true, index: forloop.index %}
           </div>
         {% endfor %}
       </div>

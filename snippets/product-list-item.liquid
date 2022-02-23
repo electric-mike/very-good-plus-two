@@ -75,7 +75,9 @@
         data-sizes="auto"
         width="{{ product.featured_image.width }}"
         height="{{ product.featured_image.height }}"
+        {% unless index < 6 %}
         loading="lazy"
+        {% endunless %}
       />
       {% if product.images[1].src.size > 0 %}
         {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}

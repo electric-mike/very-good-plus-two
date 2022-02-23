@@ -26,6 +26,9 @@
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"
               height="{{ image.height }}"
+              {% if forloop.index > 1 %}
+              loading="lazy"
+              {% endif %}
             />
             <noscript>
               <img class="lazyloaded" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt }}">
@@ -57,6 +60,9 @@
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"
               height="{{ image.height }}"
+              {% if forloop.index > 1 %}
+              loading="lazy"
+              {% endif %}
             />
             <noscript>
               <img class="lazyloaded" src="{{ image.src | img_url: '800x' }}" alt="{{ image.alt }}">
@@ -89,6 +95,9 @@
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"
               height="{{ image.height }}"
+              {% if forloop.index > 4 %}
+              loading="lazy"
+              {% endif %}
             ></div>
           {% endfor %}
         </div>
@@ -147,6 +156,9 @@
               data-variantid="{{ image.id }}"
               width="{{ image.width }}"
               height="{{ image.height }}"
+              {% if forloop.index > 4 %}
+              loading="lazy"
+              {% endif %}
             />
           </figure>
           <noscript>

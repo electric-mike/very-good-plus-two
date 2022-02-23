@@ -273,7 +273,7 @@
                 data-price="{{ product_price }}"
                 key="{{ forloop.index }}"
               >
-                {% render 'product-list-item', product: product %}
+                {% render 'product-list-item', product: product, index: forloop.index %}
               </div>
             {% endfor %}
             {% endpaginate %}

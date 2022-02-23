@@ -218,7 +218,7 @@
                       data-price="{{ product_price }}"
                       key="{{ forloop.index }}"
                     >
-                      {% render 'product-list-item', product: product %}
+                      {% render 'product-list-item', product: product, index: forloop.index %}
                     </div>
                   {% endif %}
                   {% if found_products == limit %}{% break %}{% endif %}
@@ -420,7 +420,7 @@
       <div class="products row">
         {% for prod in collections[settings.four_oh_four_collection].products limit: 40 %}
           <div class="product product-{{ prod.id }} column-6-tablet-vert-3">
-            {% render 'product-list-item', product: prod %}
+            {% render 'product-list-item', product: prod, index: forloop.index %}
           </div>
         {% endfor %}
       </div>

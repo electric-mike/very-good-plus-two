@@ -35,7 +35,7 @@
                     {% assign topLevelSize = 5 | minus: childLinkSize %}
                     {% for product in childLinkProducts | limit: topLevelSize %}
                       <div class="product parent-link-product">
-                        {% render 'product-list-item', product: product %}
+                        {% render 'product-list-item', product: product, index: 0 %}
                       </div>
                     {% endfor %}
                   {% endif %}

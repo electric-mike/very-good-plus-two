@@ -15,6 +15,7 @@
         min="computedMin"
         step="computedStep"
         required
+        aria-label="Quantity Input"
         label="Quantity Input"
       )
     button.secondary(@click.prevent="changeValue(internalValue + computedStep)") +
