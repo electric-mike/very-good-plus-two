@@ -69,7 +69,9 @@ export default {
         localRatings.push(product.reviews_integer)
         localTypes.push(product.type)
         localTags = localTags.concat(product.tags.split(','))
-        if (product.sizes) localSizes = localSizes.concat(product.sizes.split(','))
+        if (product.sizes) {
+          localSizes = localSizes.concat(product.sizes.split(',')).map(item => item.trim())
+        }
       })
 
       // set data

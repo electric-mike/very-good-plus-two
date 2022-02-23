@@ -56,9 +56,11 @@
       transition: opacity 0.15s;
     }
 
-    &:hover img + img {
-      opacity: 1 !important;
-      z-index: 1;
+    @media (hover) {
+      &:hover img + img {
+        opacity: 1 !important;
+        z-index: 1;
+      }
     }
   }
 

@@ -166,9 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
                       key === 'Size'
                       && Object.prototype.hasOwnProperty.call(product, 'sizes')
                     ) {
-                      localSentOptions = product.sizes.split(',')
+                      localSentOptions = product.sizes.split(',').map(item => item.trim())
                     } else {
-                      localSentOptions = product.tags.split(',')
+                      localSentOptions = product.tags.split(',').map(item => item.trim())
                     }
 
                     localSentOptions.forEach((option) => {

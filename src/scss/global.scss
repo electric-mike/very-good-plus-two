@@ -373,7 +373,7 @@ h1 + .accordion, .accordion-header + .accordion {
       }
 
       .description {
-        margin-bottom: 0.625em;
+        margin: 0.625em 0;
       }
 
       @media(min-width: $tablet) {
