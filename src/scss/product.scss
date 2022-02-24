@@ -409,15 +409,15 @@
         }
 
         .price-wrapper {
-          margin: 1em 0 0;
           display: flex;
+          margin: 1em 0 0;
 
           span {
             display: inline-block;
             font-family: inherit;
 
             &:last-of-type {
-              margin-right: 0;
+              margin-right: 0.25em;
             }
           }
         }
@@ -597,13 +597,14 @@
         }
 
         .rc_widget__option__plans {
-          padding-left: 0 !important;
-          padding-top: 0.5em;
+          padding: 0 !important;
         }
 
         .rc-radio__label {
-          width: 100%;
           display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          width: 100%;
 
           span {
             line-height: 1.4;
