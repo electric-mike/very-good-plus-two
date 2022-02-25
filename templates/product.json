@@ -12,10 +12,12 @@
     "main": {
       "type": "template-product-top",
       "settings": {
+        "mobile_image_style": "scrollbar",
         "desktop_images_type": "tiles",
         "rhpa_type": "swatch",
         "rhpa_color_swatch_type": "swatch",
-        "show_quantity_selector": false
+        "show_quantity_selector": true,
+        "enable_product_accordions": true
       }
     },
     "recommendations": {
@@ -32,7 +34,11 @@
     },
     "recently-viewed": {
       "type": "recently-viewed",
-      "settings": {}
+      "settings": {
+        "heading": "Recently viewed",
+        "product_limit": 3,
+        "enable_scrollbar": true
+      }
     },
     "klaviyo": {
       "type": "template-product-klaviyo",

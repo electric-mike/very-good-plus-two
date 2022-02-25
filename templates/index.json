@@ -55,7 +55,7 @@
       ],
       "settings": {
         "background_color": "",
-        "hero_image_desktop": "shopify:\/\/shop_images\/Group_92.jpg",
+        "hero_image_desktop": "shopify:\/\/shop_images\/vg-plus-hero-2.jpg",
         "desktop_height": 92,
         "hero_image_mobile": "shopify:\/\/shop_images\/mobile-hero.jpg",
         "mobile_height": 164,
@@ -75,22 +75,22 @@
         "fbcbe747-be21-41fb-95ab-fbc6048b0334": {
           "type": "collection",
           "settings": {
-            "collection": "lps",
-            "image": "shopify:\/\/shop_images\/tame-impala-front_1600x_5b019a7f-5c80-4e49-bb28-f866e562879d.jpg"
+            "collection": "vinyl",
+            "image": "shopify:\/\/shop_images\/gangstarr-hard-to-earn_1600x_0642bd54-a4f9-4bad-b337-97014ef3348c.jpg"
           }
         },
         "9ff12be0-44ad-45b3-9c76-e0f978f74c56": {
           "type": "collection",
           "settings": {
             "collection": "new-arrivals",
-            "image": "shopify:\/\/shop_images\/iron-maiden-number-of-the-beast-vinyl-1_900x_a48bfed0-4248-47cf-9324-ccb437efd9f8.jpg"
+            "image": "shopify:\/\/shop_images\/tame-impala-front_1600x_900x_64f8e204-d679-487c-b4f4-6819630071bc.jpg"
           }
         },
         "f5e2dc67-c960-4ada-b3b6-34e7c4dfe6be": {
           "type": "collection",
           "settings": {
             "collection": "best-sellers",
-            "image": "shopify:\/\/shop_images\/gangstarr-hard-to-earn_1600x_0642bd54-a4f9-4bad-b337-97014ef3348c.jpg"
+            "image": "shopify:\/\/shop_images\/iron-maiden-number-of-the-beast-vinyl-1_900x_a48bfed0-4248-47cf-9324-ccb437efd9f8.jpg"
           }
         }
       },
@@ -126,14 +126,14 @@
         "1625196787a3c87ff0-2": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/5852df80394e280271f3b492_1.png",
+            "image": "shopify:\/\/shop_images\/1280px-Fast_Company_logo_1.png",
             "link": ""
           }
         },
         "1625196787a3c87ff0-3": {
           "type": "logo_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/1280px-Fast_Company_logo_1.png",
+            "image": "shopify:\/\/shop_images\/5852df80394e280271f3b492_1.png",
             "link": ""
           }
         },
@@ -163,7 +163,7 @@
       "type": "featured-collection",
       "settings": {
         "title": "Featured Products",
-        "collection": "new-arrivals",
+        "collection": "best-sellers",
         "product_limit": 4,
         "shop_link_text": "Shop Featured",
         "enable_scrollbar": true,
@@ -179,7 +179,7 @@
           "settings": {
             "header_desktop_text": "Browse the stacks.",
             "header_color": "#ffffff",
-            "header_desktop_size": 64,
+            "header_desktop_size": 48,
             "header_tablet_size": 48,
             "header_desktop_weight": "900",
             "header_mobile_text": "",
@@ -191,7 +191,7 @@
           "type": "button",
           "settings": {
             "button_text": "Shop Used Vinyl",
-            "button_link": "",
+            "button_link": "shopify:\/\/collections\/best-sellers",
             "button_desktop_weight": "400",
             "button_mobile_weight": "400",
             "button_color": "#000000",
@@ -213,7 +213,7 @@
       ],
       "settings": {
         "background_color": "",
-        "hero_image_desktop": "shopify:\/\/shop_images\/new-arrivals.jpg",
+        "hero_image_desktop": "shopify:\/\/shop_images\/new-arrivals_d49c1d84-ae11-4d25-aeec-5324f1c2116a.jpg",
         "desktop_height": 50,
         "hero_image_mobile": "shopify:\/\/shop_images\/new-arrivals_d49c1d84-ae11-4d25-aeec-5324f1c2116a.jpg",
         "mobile_height": 108,
@@ -227,12 +227,77 @@
         "mobile_max_width": 0
       }
     },
+    "1645719922d8d867bd": {
+      "type": "button-link-grid",
+      "disabled": true,
+      "blocks": {
+        "376c31eb-dd7f-4192-90eb-7eab141dce56": {
+          "type": "block",
+          "settings": {
+            "text": "Rap",
+            "link": "shopify:\/\/collections\/rap",
+            "secondary_button": true
+          }
+        },
+        "2bfb2e2b-e2f3-4ae9-83e4-466f8aa8e932": {
+          "type": "block",
+          "settings": {
+            "text": "Rock",
+            "link": "shopify:\/\/collections\/rock",
+            "secondary_button": true
+          }
+        },
+        "ed6fe062-848e-44ec-b78c-c15fb321f60b": {
+          "type": "block",
+          "settings": {
+            "text": "Country",
+            "link": "shopify:\/\/collections\/country",
+            "secondary_button": true
+          }
+        },
+        "e1f67dca-dc2e-41eb-99f7-513fe2c39751": {
+          "type": "block",
+          "settings": {
+            "text": "Alternative",
+            "link": "shopify:\/\/collections\/alternative",
+            "secondary_button": true
+          }
+        },
+        "872cee07-da03-4ac4-a273-b66e6f93fb8b": {
+          "type": "block",
+          "settings": {
+            "text": "Metal",
+            "link": "shopify:\/\/collections\/metal",
+            "secondary_button": true
+          }
+        },
+        "7c99a89d-25ef-423c-9d13-b9ecb5196dee": {
+          "type": "block",
+          "settings": {
+            "text": "All Vinyl",
+            "link": "shopify:\/\/collections\/vinyl",
+            "secondary_button": true
+          }
+        }
+      },
+      "block_order": [
+        "376c31eb-dd7f-4192-90eb-7eab141dce56",
+        "2bfb2e2b-e2f3-4ae9-83e4-466f8aa8e932",
+        "ed6fe062-848e-44ec-b78c-c15fb321f60b",
+        "e1f67dca-dc2e-41eb-99f7-513fe2c39751",
+        "872cee07-da03-4ac4-a273-b66e6f93fb8b",
+        "7c99a89d-25ef-423c-9d13-b9ecb5196dee"
+      ],
+      "settings": {
+        "title": "Shop By Genre"
+      }
+    },
     "1625084351df5f2b26": {
       "type": "featured-blog",
       "settings": {
         "heading": "Blog Posts",
-        "blog": "news",
-        "post_limit": 4,
+        "blog": "blog",
+        "post_limit": 3,
         "enable_scrollbar": true,
         "background_color": "#ffffff",
         "text_color": ""
@@ -244,14 +309,15 @@
         "c15b2d29-9c99-41f8-b120-caf9e16a09f7": {
           "type": "left-image-callout",
           "settings": {
-            "image": "shopify:\/\/shop_images\/umberto-cofini-lEOogB2xh1M-unsplash_1.png",
+            "image": "shopify:\/\/shop_images\/about-us_35056c09-d9d2-4ebd-a37e-f5af62277139.jpg",
             "image_link": "",
-            "textarea": "<h2>Lorem Ipsum<\/h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>",
+            "textarea": "<h2>About VG+<\/h2><p>The VG+ Design System is Electric Eye’s proprietary process that produces user-friendly, performance-optimized, and custom-tailored Shopify themes for our clients. Our process allows us to design a custom theme without compromising budget, timeline, or performance.<\/p>",
             "background_color": "#f8f7f2",
-            "button_text": "",
-            "button_link": "",
+            "button_text": "Learn More",
+            "button_link": "shopify:\/\/pages\/about",
             "forward_button": false,
-            "wider_button": false
+            "wider_button": false,
+            "secondary_button": false
           }
         }
       },
@@ -263,6 +329,7 @@
         "max_width": false,
         "only_bottom_padding": false,
         "no_padding": true,
+        "is_section": false,
         "background_color": "#f8f7f2"
       }
     },
@@ -273,9 +340,9 @@
           "type": "block",
           "settings": {
             "align_text": "left",
-            "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "testimonial": "Love this record, contemporary and cool.",
             "star_rating": 5,
-            "author": "Author's name",
+            "author": "Annette G.",
             "product_link": "currents-lp"
           }
         },
@@ -283,9 +350,9 @@
           "type": "block",
           "settings": {
             "align_text": "left",
-            "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "testimonial": "\"Absolute classic, can't be beat.\"",
             "star_rating": 5,
-            "author": "Author's name",
+            "author": "Mike W.",
             "product_link": "electric-ladyland-lp"
           }
         },
@@ -293,9 +360,9 @@
           "type": "block",
           "settings": {
             "align_text": "left",
-            "testimonial": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "testimonial": "\"Kurt was a god.\"",
             "star_rating": 5,
-            "author": "Author's name",
+            "author": "Shawn K.",
             "product_link": "nevermind-vinyl-lp"
           }
         }
@@ -318,56 +385,56 @@
         "915e822b-de46-4c86-8622-0ff7d0ea7977": {
           "type": "block",
           "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/steve-harvey-LUMT0EeNnjE-unsplash_1.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/steve-harvey-LUMT0EeNnjE-unsplash_1.png",
+            "mobile_background_image": "shopify:\/\/shop_images\/blocks-T3mKJXfdims-unsplash_1_720x_52092823-5727-4129-9a81-e75a2db75146.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/blocks-T3mKJXfdims-unsplash_1_720x_52092823-5727-4129-9a81-e75a2db75146.png",
             "overlay": false,
             "invert_text": false,
             "no_side_padding": false,
-            "desktop_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "desktop_html": "",
             "desktop_styles": "",
-            "mobile_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "mobile_html": "",
             "mobile_styles": ""
           }
         },
         "ef5824ed-8caa-4136-952f-52d2565696c6": {
           "type": "block",
           "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/clay-banks-fEVaiLwWvlU-unsplash_1_2.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/clay-banks-fEVaiLwWvlU-unsplash_1_2.png",
+            "mobile_background_image": "shopify:\/\/shop_images\/steve-harvey-LUMT0EeNnjE-unsplash_1_1.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/steve-harvey-LUMT0EeNnjE-unsplash_1_1.png",
             "overlay": false,
             "invert_text": false,
             "no_side_padding": false,
-            "desktop_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "desktop_html": "",
             "desktop_styles": "",
-            "mobile_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "mobile_html": "",
             "mobile_styles": ""
           }
         },
         "fba6e158-5435-4025-af22-7da6419f9389": {
           "type": "block",
           "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/blocks-T3mKJXfdims-unsplash_1.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/blocks-T3mKJXfdims-unsplash_1.png",
+            "mobile_background_image": "shopify:\/\/shop_images\/markus-spiske-8etPyxrbliQ-unsplash_1_720x_662e29d5-f821-4709-a9cb-b6db37d07b88.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/markus-spiske-8etPyxrbliQ-unsplash_1_720x_662e29d5-f821-4709-a9cb-b6db37d07b88.png",
             "overlay": false,
             "invert_text": false,
             "no_side_padding": false,
-            "desktop_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "desktop_html": "",
             "desktop_styles": "",
-            "mobile_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "mobile_html": "",
             "mobile_styles": ""
           }
         },
         "60fb4c83-58f0-4871-9a0f-7975cbd8b2b0": {
           "type": "block",
           "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/markus-spiske-8etPyxrbliQ-unsplash_1.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/markus-spiske-8etPyxrbliQ-unsplash_1.png",
+            "mobile_background_image": "shopify:\/\/shop_images\/clay-banks-fEVaiLwWvlU-unsplash_1_2_720x_b11d49d1-d9f1-45b1-b634-68b002190b56.png",
+            "desktop_background_image": "shopify:\/\/shop_images\/clay-banks-fEVaiLwWvlU-unsplash_1_2_720x_b11d49d1-d9f1-45b1-b634-68b002190b56.png",
             "overlay": false,
             "invert_text": false,
             "no_side_padding": false,
-            "desktop_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "desktop_html": "",
             "desktop_styles": "",
-            "mobile_html": "<h5>Date XX\/XX\/XX<br>\nCaption<br>\nLikes <br>\nComments<br>\n<\/h5>",
+            "mobile_html": "",
             "mobile_styles": ""
           }
         }
@@ -379,7 +446,7 @@
         "60fb4c83-58f0-4871-9a0f-7975cbd8b2b0"
       ],
       "settings": {
-        "heading": "Instagram Feed",
+        "heading": "@vgplus+",
         "max_width": true,
         "min_height": false,
         "enable_scrollbar": true,
@@ -387,7 +454,9 @@
         "tablet_constrain_items": false,
         "reverse_mobile_order": false,
         "background_color": "#f8f7f2",
-        "block_as_background_image": false
+        "block_as_background_image": false,
+        "shop_link_text": "Follow us",
+        "shop_link": "https:\/\/www.instagram.com\/electriceyeagency\/"
       }
     }
   },
@@ -397,6 +466,7 @@
     "1625196787a3c87ff0",
     "162983502713e3805b",
     "16298347661e307fde",
+    "1645719922d8d867bd",
     "1625084351df5f2b26",
     "1625196604757093bf",
     "162519659079c84fcc",

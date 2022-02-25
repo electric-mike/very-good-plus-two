@@ -2,17 +2,26 @@
   "sections": {
     "main": {
       "type": "template-article",
-      "settings": {
-      }
+      "settings": {}
     },
     "recommendations": {
       "type": "blog-recommendations",
       "settings": {
+        "product": "",
+        "product_limit": 4,
+        "header_text": "Related Products",
+        "enable_scrollbar": false
       }
     },
     "related": {
       "type": "blog-related",
       "settings": {
+        "heading": "Related Articles",
+        "article1": "blog\/my-top-5-of-2020",
+        "article2": "blog\/does-speaker-quality-matter",
+        "article3": "blog\/best-record-stores-in-the-midwest",
+        "article_tag": "",
+        "enable_scrollbar": true
       }
     }
   },

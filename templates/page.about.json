@@ -5,7 +5,7 @@
       "type": "template-about",
       "settings": {
         "page_image_enable": true,
-        "page_image_url": "shopify:\/\/shop_images\/Rectangle_18_2.png"
+        "page_image_url": "shopify:\/\/shop_images\/about-us_35056c09-d9d2-4ebd-a37e-f5af62277139.jpg"
       }
     },
     "1645068774ceb400cb": {
@@ -14,9 +14,9 @@
         "ae7519e6-be05-403e-9542-b9511c0d7e8e": {
           "type": "right-image-callout",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Group_111_3.png",
+            "image": "shopify:\/\/shop_images\/aff97a45511e843e6dd07d3f7c3232b71.jpg",
             "image_link": "",
-            "textarea": "<h2>Smart. Simple. Custom.<\/h2><p>Since our beginning, every action that is executed at Basic Brands is focused on providing the best products to help people live a strong, healthy, best life. Our deep-rooted knowledge in the vitamin and supplement space has allowed us to launch products that are unique and meet the needs of our customers. For example, at a time when very few people knew the power of zinc in warding off the common cold, we developed and launched our top-performing Zinc Defend Lozenges, which are still on the market today over 30 years later. Other original products include our Aller-Vite nasal support tablets, providing natural relief from allergies, and our cult-favorite Vitamin E Ointment, which has recently been featured in this celebrity's skincare routine! <\/p>",
+            "textarea": "<h2>Built For Performance<\/h2><p>What makes VG+ so special? In contrast to premium themes, VG+ was built by our team of experts with UX\/UI design best practices and on Shopify Online Store 2.0, leveraging the best technology for optimum performance. It serves as the foundation to scale with you. <\/p><p>Although premium themes may seem easier on the budget, they may cost you in the long run from drawbacks and limitations. The versatility of a premium theme might seem great at first glance, but \"under the hood\" it comes with bloated code and more things to load on your site. The more things loading on your site, the slower it performs. We circumvent those issues with VG+ serving as our starting point with performance in mind and we tailor the rest specifically for your business.<\/p>",
             "background_color": "#ffffff",
             "button_text": "",
             "button_link": "",
@@ -33,309 +33,159 @@
         "blocks_vertical_align": "middle",
         "max_width": true,
         "only_bottom_padding": false,
-        "no_padding": true,
-        "is_section": true,
+        "no_padding": false,
+        "is_section": false,
         "background_color": "#ffffff"
       }
     },
-    "1643911087f7461903": {
-      "type": "custom-html-grid",
-      "disabled": true,
+    "1645818820018b2cfd": {
+      "type": "image-callout",
       "blocks": {
-        "062fd4f2-256f-4cbe-a38a-635d755a702e": {
-          "type": "block",
+        "006a94b1-a71c-464b-8a31-aa6e798386d0": {
+          "type": "left-image-callout",
           "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Logo.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Logo.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>For over 35 years, Basic Brands® has focused on growing its innovative supplements to support your health and wellness goals.  We take a more holistic approach to nutrition by offering you a customized regimen that supports your health journey and pushes you to achieve your goals.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>For over 35 years, Basic Brands® has focused on growing its innovative supplements to support your health and wellness goals.  We take a more holistic approach to nutrition by offering you a customized regimen that supports your health journey and pushes you to achieve your goals.<\/center>",
-            "mobile_styles": ""
-          }
-        },
-        "4d3b157d-0a11-4215-a93b-18eb12c46a2f": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_19-20-07_Our_Brands_1.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_19-20-07_Our_Brands_1.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>The Basic Organics® Brand is focused on providing everyday solutions for your personal health needs, goals and lifestyle using the highest quality, USDA Certified Organic ingredients.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>The Basic Organics® Brand is focused on providing everyday solutions for your personal health needs, goals and lifestyle using the highest quality, USDA Certified Organic ingredients.<\/center>",
-            "mobile_styles": ""
-          }
-        },
-        "a08aa8e7-485f-4abf-8bc3-b0d365b5de60": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-01_Our_Brands.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-01_Our_Brands.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>EyeScience is a U.S. based ocular nutrition company focused on eye health and education. This line of products incorporates more than two decades of ocular research, resulting in nutritional supplements which benefit those with macular degeneration, as well as individuals taking proactive measures to protect their eyes from the impact of oxidative stress.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>EyeScience is a U.S. based ocular nutrition company focused on eye health and education. This line of products incorporates more than two decades of ocular research, resulting in nutritional supplements which benefit those with macular degeneration, as well as individuals taking proactive measures to protect their eyes from the impact of oxidative stress.<\/center>",
-            "mobile_styles": ""
-          }
-        },
-        "be519e96-8adc-4bb8-a530-4758fdb12c90": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-44-57_Our_Brands.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-44-57_Our_Brands.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>Our Harvest of Nature® products provide your body with the nutritional support it craves from a multitude of complex, clean food supplements sourced from Mother Nature.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>Our Harvest of Nature® products provide your body with the nutritional support it craves from a multitude of complex, clean food supplements sourced from Mother Nature.<\/center>",
-            "mobile_styles": ""
+            "image": "shopify:\/\/shop_images\/patrick-perkins-UyFISmyVSzM-unsplash-1.jpg",
+            "image_link": "",
+            "textarea": "<div class=\"max-width tablet-constrain-items\">\n<h2>Scalable Opportunity<\/h2>\n<p> Every theme build is rich with the suite of features you see directly on this demo store: mega menus, smart search, in-cart cross-sells, free shipping progress bar, customer reviews integrations, Klaviyo integration, and more.<\/p>\n<p> However, working with Electric Eye's VG+ Design System means scalability. Our approach is engineered for us to easily carry out iterations and improvements, adding new features to help your brand sustain long term growth.<\/p>\n<\/div>",
+            "background_color": "#ffffff",
+            "button_text": "",
+            "button_link": "",
+            "forward_button": false,
+            "wider_button": false,
+            "secondary_button": false
           }
         }
       },
       "block_order": [
-        "062fd4f2-256f-4cbe-a38a-635d755a702e",
-        "4d3b157d-0a11-4215-a93b-18eb12c46a2f",
-        "a08aa8e7-485f-4abf-8bc3-b0d365b5de60",
-        "be519e96-8adc-4bb8-a530-4758fdb12c90"
+        "006a94b1-a71c-464b-8a31-aa6e798386d0"
       ],
       "settings": {
-        "heading": "",
-        "max_width": false,
-        "min_height": false,
-        "enable_scrollbar": false,
-        "constrain_items": false,
-        "tablet_constrain_items": false,
-        "reverse_mobile_order": false,
-        "background_color": "rgba(0,0,0,0)",
-        "block_as_background_image": false,
-        "shop_link_text": "",
-        "shop_link": ""
-      }
-    },
-    "1643911156da714edc": {
-      "type": "custom-html-grid",
-      "disabled": true,
-      "blocks": {
-        "42d982e9-17af-4b32-8b2f-57b63b730ed0": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-36_Our_Brands.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-36_Our_Brands.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>The Achieve® Brand is focused on providing a complete solution system of high quality, vitamins, minerals and supplements specifically designed for Diabetic Support.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>The Achieve® Brand is focused on providing a complete solution system of high quality, vitamins, minerals and supplements specifically designed for Diabetic Support.<\/center>",
-            "mobile_styles": ""
-          }
-        },
-        "a8da65cc-e1bc-4ebc-9f78-f045366c0690": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-24_Our_Brands.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-24_Our_Brands.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>Pura Salud® is focused on developing and delivering the highest quality vitamins, minerals and supplements, uniquely formulated for Hispanic men and women seeking customized solutions for their lifestyle and health goals.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>Pura Salud® is focused on developing and delivering the highest quality vitamins, minerals and supplements, uniquely formulated for Hispanic men and women seeking customized solutions for their lifestyle and health goals.<\/center>",
-            "mobile_styles": ""
-          }
-        },
-        "42304f08-055f-45b6-8317-503f0b1a2e27": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-27_Our_Brands.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-27_Our_Brands.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>Our Cleanz Blendz® products provide you with solutions for your most pressing skin, body, and lifestyle concerns.  Each of our Cleanz Blendz® supplements enhance your everyday routine by eliminating nasty toxins from your body to ease your overall toxic burden and enhance your whole body health and well-being.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>Our Cleanz Blendz® products provide you with solutions for your most pressing skin, body, and lifestyle concerns.  Each of our Cleanz Blendz® supplements enhance your everyday routine by eliminating nasty toxins from your body to ease your overall toxic burden and enhance your whole body health and well-being.<\/center>",
-            "mobile_styles": ""
-          }
-        },
-        "12c50fcb-f0d0-413e-a4cd-f8d3dc7e8cb5": {
-          "type": "block",
-          "settings": {
-            "mobile_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-33_Our_Brands.png",
-            "desktop_background_image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-33_Our_Brands.png",
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>Since 1934, POWERALL® has been a leading, go-to multivitamin for people looking for a maximum strength vitamin and mineral supplement. POWERALL® is a unique, revolutionary multivitamin that is fortified with essential vitamin K and antioxidant rich lutein and L-glutathione.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>Since 1934, POWERALL® has been a leading, go-to multivitamin for people looking for a maximum strength vitamin and mineral supplement. POWERALL® is a unique, revolutionary multivitamin that is fortified with essential vitamin K and antioxidant rich lutein and L-glutathione.<\/center>",
-            "mobile_styles": ""
-          }
-        }
-      },
-      "block_order": [
-        "42d982e9-17af-4b32-8b2f-57b63b730ed0",
-        "a8da65cc-e1bc-4ebc-9f78-f045366c0690",
-        "42304f08-055f-45b6-8317-503f0b1a2e27",
-        "12c50fcb-f0d0-413e-a4cd-f8d3dc7e8cb5"
-      ],
-      "settings": {
-        "heading": "",
-        "max_width": false,
-        "min_height": false,
-        "enable_scrollbar": false,
-        "constrain_items": false,
-        "tablet_constrain_items": false,
-        "reverse_mobile_order": false,
-        "background_color": "rgba(0,0,0,0)",
-        "block_as_background_image": false,
-        "shop_link_text": "",
-        "shop_link": ""
-      }
-    },
-    "1645068252b8a70626": {
-      "type": "brands-list",
-      "blocks": {
-        "1645068252723e323a-0": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Logo.png",
-            "link": "",
-            "text": "For over 35 years, Basic Brands® has focused on growing its innovative supplements to support your health and wellness goals. We take a more holistic approach to nutrition by offering you a customized regimen that supports your health journey and pushes you to achieve your goals."
-          }
-        },
-        "1645068252723e323a-1": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_19-20-07_Our_Brands_1.png",
-            "link": "",
-            "text": "The Basic Organics® Brand is focused on providing everyday solutions for your personal health needs, goals and lifestyle using the highest quality, USDA Certified Organic ingredients."
-          }
-        },
-        "1645068252723e323a-2": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-01_Our_Brands.png",
-            "link": "",
-            "text": "EyeScience is a U.S. based ocular nutrition company focused on eye health and education. This line of products incorporates more than two decades of ocular research, resulting in nutritional supplements which benefit those with macular degeneration, as well as individuals taking proactive measures to protect their eyes from the impact of oxidative stress."
-          }
-        },
-        "1645068252723e323a-3": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-44-57_Our_Brands.png",
-            "link": "",
-            "text": "Our Harvest of Nature® products provide your body with the nutritional support it craves from a multitude of complex, clean food supplements sourced from Mother Nature."
-          }
-        },
-        "14c36015-6467-4f4e-b592-f1dcc61145b0": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-36_Our_Brands.png",
-            "link": "",
-            "text": "The Achieve® Brand is focused on providing a complete solution system of high quality, vitamins, minerals and supplements specifically designed for Diabetic Support."
-          }
-        },
-        "e97a4a29-58a9-4dd7-9b42-e565dc4d61bc": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-24_Our_Brands.png",
-            "link": "",
-            "text": "Pura Salud® is focused on developing and delivering the highest quality vitamins, minerals and supplements, uniquely formulated for Hispanic men and women seeking customized solutions for their lifestyle and health goals."
-          }
-        },
-        "88f55638-0cbb-4a55-b2ce-6e666a6a930e": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-27_Our_Brands.png",
-            "link": "",
-            "text": "Our Cleanz Blendz® products provide you with solutions for your most pressing skin, body, and lifestyle concerns. Each of our Cleanz Blendz® supplements enhance your everyday routine by eliminating nasty toxins from your body to ease your overall toxic burden and enhance your whole body health and well-being."
-          }
-        },
-        "c2d046fd-3c2e-41ca-8975-8c6e0135f08a": {
-          "type": "logo_image",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2022-01-13_at_09-45-33_Our_Brands.png",
-            "link": "",
-            "text": "Since 1934, POWERALL® has been a leading, go-to multivitamin for people looking for a maximum strength vitamin and mineral supplement. POWERALL® is a unique, revolutionary multivitamin that is fortified with essential vitamin K and antioxidant rich lutein and L-glutathione."
-          }
-        }
-      },
-      "block_order": [
-        "1645068252723e323a-0",
-        "1645068252723e323a-1",
-        "1645068252723e323a-2",
-        "1645068252723e323a-3",
-        "14c36015-6467-4f4e-b592-f1dcc61145b0",
-        "e97a4a29-58a9-4dd7-9b42-e565dc4d61bc",
-        "88f55638-0cbb-4a55-b2ce-6e666a6a930e",
-        "c2d046fd-3c2e-41ca-8975-8c6e0135f08a"
-      ],
-      "settings": {
-        "title": "",
-        "logo_opacity": 76,
-        "background_color": "",
-        "text_color": ""
-      }
-    },
-    "1644335646fbb3d1cc": {
-      "type": "custom-html-grid",
-      "disabled": true,
-      "blocks": {
-        "e199a91b-771b-47ce-b47d-0581f0be5520": {
-          "type": "block",
-          "settings": {
-            "overlay": false,
-            "invert_text": false,
-            "no_side_padding": false,
-            "desktop_html": "<p><\/p><center>Through our robust portfolio of health & wellness Brands, we offer you customized, nutrition solutions for your current lifestyle goals. Simply stated, we want to interrupt the status quo and provide you with a refreshing alternative to what is currently available to you, also known as the BASICS. We want to provide you with a personalized vitamin and mineral supplement regimen to support your healthy lifestyle, taking you to the next level to achieve optimal health through our nutritional family of brands: Basic Brands®, Basic Organics®, Achieve®, Pura Salud®, Powerall®, Cleanz Blendz®, and Harvest of Nature®.<\/center>",
-            "desktop_styles": "",
-            "mobile_html": "<p><\/p><center>Through our robust portfolio of health & wellness Brands, we offer you customized, nutrition solutions for your current lifestyle goals. Simply stated, we want to interrupt the status quo and provide you with a refreshing alternative to what is currently available to you, also known as the BASICS. We want to provide you with a personalized vitamin and mineral supplement regimen to support your healthy lifestyle, taking you to the next level to achieve optimal health through our nutritional family of brands: Basic Brands®, Basic Organics®, Achieve®, Pura Salud®, Powerall®, Cleanz Blendz®, and Harvest of Nature®.<\/center>",
-            "mobile_styles": ""
-          }
-        }
-      },
-      "block_order": [
-        "e199a91b-771b-47ce-b47d-0581f0be5520"
-      ],
-      "settings": {
-        "heading": "",
+        "blocks_vertical_align": "top",
         "max_width": true,
-        "min_height": false,
-        "enable_scrollbar": false,
-        "constrain_items": false,
-        "tablet_constrain_items": false,
-        "reverse_mobile_order": false,
-        "background_color": "#ffffff",
-        "block_as_background_image": false,
-        "shop_link_text": "",
-        "shop_link": ""
+        "only_bottom_padding": false,
+        "no_padding": false,
+        "is_section": false,
+        "background_color": "#ffffff"
       }
     },
-    "1645123017c4d3d00f": {
+    "16458188135d736b02": {
+      "type": "faq-block",
+      "blocks": {
+        "1645818813a01d7f21-0": {
+          "type": "header",
+          "settings": {
+            "header_text": "FAQ"
+          }
+        },
+        "1645818813a01d7f21-1": {
+          "type": "question",
+          "settings": {
+            "question": "What is VG+?",
+            "answer": "The VG+ Design System is Electric Eye’s proprietary process that produces user-friendly, performance-optimized, and custom-tailored Shopify themes for our clients. Our process allows us to design a custom theme without compromising budget, timeline, or performance."
+          }
+        },
+        "5b7e1437-c416-448e-bc01-955e5f5432d4": {
+          "type": "question",
+          "settings": {
+            "question": "Who is VG+ for?",
+            "answer": "A custom theme built using the VG+ Design System suits brands looking to take their customer experience to the next level. We’ve helped brands on Shopify and Shopify Plus increase their revenue by"
+          }
+        },
+        "1645818813a01d7f21-2": {
+          "type": "question",
+          "settings": {
+            "question": "What makes a VG+ theme better than an off-the-shelf theme?",
+            "answer": "A theme produced by the VG+ Design System is built specifically for you, your brand, and ultimately your customers. We believe VG+ will set itself apart from the themes available to the mass market by offering solutions tailored specifically to your needs. Here are a few things that set VG+ apart from what you’ll find in the theme store.   Faster code without the bloat Exclusive design UX friendly  Mobile-First Built-in features w\/out apps"
+          }
+        },
+        "1645818813a01d7f21-3": {
+          "type": "question",
+          "settings": {
+            "question": "How long does it take to build?",
+            "answer": "The project timeline will be determined by a multitude of factors such as level of customization or features, but we generally estimate between 2-4 months to design, develop, and launch a new site."
+          }
+        },
+        "6a24f920-6f3b-4030-856b-c431edf0f041": {
+          "type": "question",
+          "settings": {
+            "question": "What is the value of VG+ to my brand?",
+            "answer": "Your website is a primary touchpoint and can be a pillar in the customers’ overall brand experience. Think of it as an online version of a physical retail store, which would require significant build-out, staffing, rental fees, and maintenance."
+          }
+        },
+        "e61aa0f9-927f-483f-8cdd-b80882f381fe": {
+          "type": "question",
+          "settings": {
+            "question": "What do I own after launch my website?",
+            "answer": "You own the final product, which includes the Shopify theme file, Figma design files, and GitHub code repository."
+          }
+        },
+        "c8e32cbf-5da7-4141-8825-7cdf42e056d9": {
+          "type": "question",
+          "settings": {
+            "question": "Where does the theme live after launch?",
+            "answer": "The final theme file lives on your Shopify backend. The associated design in Figma and Github code repository will be shared with you to backup and maintain."
+          }
+        },
+        "4468f4c6-5db7-417a-8605-0c492da7643d": {
+          "type": "question",
+          "settings": {
+            "question": "Who can use the theme after launch?",
+            "answer": "Anyone with access to your Shopify backend."
+          }
+        },
+        "878478df-820c-4923-8384-3aa924a119c8": {
+          "type": "question",
+          "settings": {
+            "question": "Can I update the theme myself?",
+            "answer": "The final theme is a custom-built solution and it will not receive automatic updates. However, we’re happy to provide an estimate for any additional changes. Alternatively, we offer monthly support and marketing retainers to help you strategize and implement ongoing improvements to your business."
+          }
+        },
+        "586e4789-e704-413c-a5ad-dc3029c629e5": {
+          "type": "question",
+          "settings": {
+            "question": "What happens if we part ways?",
+            "answer": "Any professional developer should be able to maintain the theme code, and any professional designer should be able to use the project files to iterate upon. If you ever need our help in the future, reach out to your project manager via email for an estimate."
+          }
+        },
+        "396740f7-4b41-4a09-8e32-d3dbad9fdd33": {
+          "type": "question",
+          "settings": {
+            "question": "Is a VG+ theme compatible with Shopify Online Store 2.0?",
+            "answer": "Yes!"
+          }
+        }
+      },
+      "block_order": [
+        "1645818813a01d7f21-0",
+        "1645818813a01d7f21-1",
+        "5b7e1437-c416-448e-bc01-955e5f5432d4",
+        "1645818813a01d7f21-2",
+        "1645818813a01d7f21-3",
+        "6a24f920-6f3b-4030-856b-c431edf0f041",
+        "e61aa0f9-927f-483f-8cdd-b80882f381fe",
+        "c8e32cbf-5da7-4141-8825-7cdf42e056d9",
+        "4468f4c6-5db7-417a-8605-0c492da7643d",
+        "878478df-820c-4923-8384-3aa924a119c8",
+        "586e4789-e704-413c-a5ad-dc3029c629e5",
+        "396740f7-4b41-4a09-8e32-d3dbad9fdd33"
+      ],
+      "settings": {}
+    },
+    "16458192630acc704b": {
       "type": "single-block",
       "settings": {
         "title": "",
-        "background_color": "#f8f7f2",
-        "text_color": "#000000",
-        "content": "<hr>\n<p class=\"content-margin center-text\">Through our robust portfolio of health & wellness Brands, we offer you customized, nutrition solutions for your current lifestyle goals. Simply stated, we want to interrupt the status quo and provide you with a refreshing alternative to what is currently available to you, also known as the BASICS. We want to provide you with a personalized vitamin and mineral supplement regimen to support your healthy lifestyle, taking you to the next level to achieve optimal health through our nutritional family of brands: Basic Brands®, Basic Organics®, Achieve®, Pura Salud®, Powerall®, Cleanz Blendz®, and Harvest of Nature®.<\/p>"
+        "background_color": "",
+        "text_color": "",
+        "content": ""
       }
     }
   },
   "order": [
     "main",
     "1645068774ceb400cb",
-    "1643911087f7461903",
-    "1643911156da714edc",
-    "1645068252b8a70626",
-    "1644335646fbb3d1cc",
-    "1645123017c4d3d00f"
+    "1645818820018b2cfd",
+    "16458188135d736b02",
+    "16458192630acc704b"
   ]
 }
