@@ -92,8 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------
   // FAQ
   // --------
-  const faq = document.getElementById('faq')
-  if (faq) {
+  function doFaq(faq) {
     new Vue({
       el         : faq,
       delimiters : ['${', '}'],
@@ -113,6 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       },
     })
+  }
+  const faq = document.getElementById('faq')
+  const faqSections = document.querySelectorAll('.faq-section')
+  if (faq) {
+    doFaq(faq)
+  } else if (faqSections) {
+    faqSections.forEach(section => doFaq(section))
   }
 
   // --------
