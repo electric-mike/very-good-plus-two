@@ -9,6 +9,9 @@
 .page {
   min-height: 500px;
 
+  table {
+    width: 100%;
+  }
 
   .constrain-items {
     p:last-of-type {
@@ -197,100 +200,6 @@
 
   // about page
   &.about {
-    .record-board-wrapper,
-    .defined-by,
-    .story-of,
-    .about-header
-    {
-      position: relative;
-    }
-
-    .story-of,
-    .about-header,
-    .story-info
-    {
-      border: 5px solid var(--shop-white);
-      border-bottom: 0;
-
-      h1, h2 {
-        margin-bottom: 0;
-      }
-
-      img {
-        padding: 1em;
-      }
-    }
-
-    .record-board-wrapper {
-      margin-bottom: -5px;
-      max-height: 500px;
-      max-height: 80vh;
-      overflow: hidden;
-
-      .hero {
-        max-width: 500px;
-      }
-    }
-
-    .record-board-description,
-    .about-header-text,
-    .story-of-text,
-    .defined-by-text
-    {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-flow: column;
-      align-items: flex-start;
-      justify-content: center;
-      margin: 0 auto;
-      transform: translateX(-50%);
-
-      > * {
-        color: var(--shop-white);
-      }
-    }
-
-    // specific to this text,
-    // will need to update if this markup changes
-    .defined-by-text-wrapper h4 {
-      background: var(--shop-black);
-      display: inline-block;
-      padding: 0.25em 0.5em;
-      color: var(--shop-primary-color);
-    }
-
-    .about-header, .story-of, .record-board-wrapper {
-      @media(max-width: $tablet - 1) {
-        div {
-          position: relative;
-          padding: 1em;
-
-          &.about-header-text {
-            padding: 2em 1em;
-          }
-
-          &.record-board-description {
-            padding: 3em 1em;
-          }
-        }
-
-        img {
-          position: absolute;
-        }
-      }
-    }
-
-    .story-of-text,
-    .about-header-text {
-      align-items: center !important;
-      justify-content: center !important;
-      text-align: center;
-    }
-
     // design specific ugh
     .about-header-text h1 {
       line-height: 0.9;
@@ -305,108 +214,6 @@
 
       @media(max-width: $mobile - 1) {
         font-size: 2em;
-      }
-    }
-
-    .defined-by {
-      padding: 0 !important;
-
-      img {
-        position: absolute;
-      }
-
-      .block {
-        position: relative;
-        padding: 3em 0.5em 0;
-
-        &:last-of-type {
-          padding-bottom: 3em;
-        }
-
-        @media(min-width: $tablet) {
-          padding: 6em 0.5em 0;
-
-          &:last-of-type {
-            padding-bottom: 6em;
-          }
-        }
-
-        @media(max-width: $tablet - 1) {
-          div[class*="column"] {
-            padding-bottom: 0;
-            margin: 0;
-            max-width: 500px;
-          }
-
-          &.row-right div[class*="column"] {
-            width: auto;
-            flex-grow: 0;
-            margin-right: 0;
-            margin-left: auto;
-            flex-basis: 0;
-          }
-        }
-      }
-
-      @media(min-width: $tablet) {
-        .tablet-width {
-          min-width: $tablet;
-        }
-      }
-
-      *:not(a) {
-        color: var(--shop-light-gray);
-      }
-
-      @media(max-width: 400px) {
-        .hero {
-          font-size: 1.65em
-        }
-      }
-    }
-
-    .story-inner {
-      padding: 1em;
-
-      @media(min-width: $tablet) {
-        padding: 1em;
-      }
-    }
-
-    .story-info {
-      padding: 1em 1em 0;
-      border-bottom: 5px solid var(--shop-white);
-
-      .info-left {
-        margin-top: 3em;
-      }
-
-      @media(min-width: $tablet) {
-        .info-right {
-          margin-top: 1em;
-          margin-right: 1em;
-        }
-
-        .info-left {
-          margin-top: 1em;
-          margin-left: 1em;
-        }
-
-        .person-description {
-          padding: 2em 0px;
-        }
-      }
-
-      img {
-        padding: 0;
-      }
-
-      .secondary-featured {
-        text-transform: uppercase;
-
-        &:not(:hover) {
-          color: var(--shop-black);
-        }
       }
     }
   }
