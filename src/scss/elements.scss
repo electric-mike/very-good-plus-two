@@ -139,8 +139,11 @@ table {
   th, td {
     padding: 1rem 0;
     border: 0 solid;
-    border-bottom: 1px solid var(--shop-secondary-color);
-    font-size: 18px;
+    border-top: 1px solid var(--shop-medium-gray);
+  }
+
+  tr:last-of-type td {
+    border-bottom: 1px solid var(--shop-medium-gray);
   }
 }
 
