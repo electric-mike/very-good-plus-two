@@ -90,6 +90,7 @@ p, .p, blockquote {
 ul, ol {
   display: inline-block;
   margin-left: 1.1rem;
+  margin-bottom: 1.25em;
 
   ul, ol {
     margin-bottom: 0 !important;
@@ -121,6 +122,26 @@ li {
   line-height: 1.5;
   font-family: var(--shop-secondary-font);
   font-weight: 400; //have to explicitly define for secondary font
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1.25em;
+
+  th, td {
+    padding: 1rem 0;
+    border: 0 solid;
+    border-bottom: 1px solid var(--shop-secondary-color);
+    font-size: 18px;
+  }
 }
 
 //label
