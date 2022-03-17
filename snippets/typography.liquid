@@ -4,7 +4,7 @@
   <div class="row">
     <div class="column-6">
       <h1 v-if="variables" class="primary-font capitalize">
-        ${ variables['--shop-primary-font'].replace(/-/g, ' ') }
+        ${ variables['--shop-primary-font'].replace(/-/g, ' ').replace(/\"/g, '') }
       </h1>
     </div>
     <div class="column-6">
@@ -20,7 +20,7 @@
   <div class="row">
     <div class="column-6">
       <h1 v-if="variables" class="secondary-font capitalize">
-        ${ variables['--shop-secondary-font'].replace(/-/g, ' ') }
+        ${ variables['--shop-secondary-font'].replace(/-/g, ' ').replace(/\"/g, '') }
       </h1>
     </div>
     <div class="column-6">

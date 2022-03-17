@@ -33,7 +33,6 @@
           data-sizes="auto"
           data-aspectratio="{{ section.settings.background_image.aspect_ratio }}"
           style="width: 100%; height: 100%; object-fit: cover; object-position: center; position: absolute;"
-          loading="lazy"
         />
         <noscript>
           <img class="lazyloaded" src="{{ section.settings.background_image.src | img_url: '800x' }}" alt="Mobile block image">
@@ -115,7 +114,6 @@
                   data-aspectratio="{{ block_image.aspect_ratio }}"
                   width="{{ section.settings.mobile_background_image.width }}"
                   height="{{ section.settings.mobile_background_image.height }}"
-                  loading="lazy"
                 />
                 <noscript>
                   <img class="lazyloaded" src="{{ block.settings.mobile_background_image.src | img_url: '800x' }}" alt="Mobile block image {{ section.id }}">
@@ -139,7 +137,8 @@
                   data-widths="[360, 540, 720, 900, 1080, 1600]"
                   data-sizes="auto"
                   data-aspectratio="{{ block_image.aspect_ratio }}"
-                  loading="lazy"
+                  width="{{ section.settings.desktop_background_image.width }}"
+                  height="{{ section.settings.desktop_background_image.height }}"
                 />
                 <noscript>
                   <img class="lazyloaded" src="{{ block.settings.desktop_background_image.src | img_url: '800x' }}" alt="Desktop block image {{ section.id }}">
@@ -155,24 +154,19 @@
         {% endfor %}
       </div>
 
-      {% if section.settings.shop_link_text != '' %}
-      <div class="product-list-collection-link">
-        <a href="{{ collection.shop_link }}" class="button" title="{{ section.settings.shop_link_text }}">{{ section.settings.shop_link_text }}</a>
-      </div>
+      {% if section.settings.add_bottom_button %}
+        <div class="product-list-collection-link center-text">
+          <a class="button" href="{{ section.settings.bottom_button_link }}">{{ section.settings.bottom_button_link_text }}</a>
+        </div>
       {% endif %}
     </div>
   </section>
 {% endif %}
 
 {% style %}
-  /* section.custom-html-grid { */
-    /* padding: 3em 0 1em; */
-     /* padding: 3em 0 0; */
-   /* } */
-
   section.custom-html-grid {
     overflow: hidden;
-    padding: 3em 0.625rem;
+    padding: 3em 0;
   }
 
   {% if section.settings.block_as_background_image %}
@@ -226,11 +220,6 @@
     /* margin-bottom: 0.75em; */
   }
   {% endif %}
-
-  section.custom-html-grid .max-width {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-  }
 
   /* if they are stacked, remove top padding */
   .custom-html-grid + .custom-html-grid section,
@@ -346,15 +335,20 @@
       "default": false
     },
     {
-      "type": "text",
-      "id": "shop_link_text",
-      "label": "Bottom Button Text (if empty doesnt show)",
-      "default": "View All"
+      "type": "checkbox",
+      "id": "add_bottom_button",
+      "label": "Show Bottom Button",
+      "default": false
     },
     {
-      "type": "url",
-      "id": "shop_link",
+      "type": "text",
+      "id": "bottom_button_link",
       "label": "Bottom Button Link"
+    },
+    {
+      "type": "text",
+      "id": "bottom_button_link_text",
+      "label": "Bottom Button Link Text"
     }
   ],
   "blocks": [
