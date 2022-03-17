@@ -132,11 +132,11 @@ export default {
 
       if (this.cartData.items) {
         this.cartData.items.forEach((item) => {
-          if (this.upsellProduct.id === item.id) {
+          if (this.upsellProduct.id === item.id || !this.upsellProduct.available) {
             this.upsellProductInCart = true
           }
 
-          if (this.secondaryUpsellProduct.id === item.id) {
+          if (this.secondaryUpsellProduct.id === item.id || !this.secondaryUpsellProduct.available) {
             this.secondaryUpsellProductInCart = true
           }
 
