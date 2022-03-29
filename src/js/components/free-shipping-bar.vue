@@ -60,7 +60,7 @@ export default {
 
       if (threshold) return parseFloat(threshold) * 100 || false
 
-      return ''
+      return false
     },
   },
 
