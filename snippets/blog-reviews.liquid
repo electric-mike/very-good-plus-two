@@ -1,26 +1,33 @@
 <div id="comments"></div>
 {% if blog.comments_enabled? and article.comments_count > 0 %}
   <div class="one-whole column">
-    <h3>{{ 'blogs.comments.comment_count' | t: count: article.comments.size }}</h3>
+    <h3>{{ 'blogs.comments.comment_count' | t: count: article.comments_count }}</h3>
   </div>
+  {% paginate article.comments by 25 %}
+    {% for comment in article.comments %}
+      <div id="comment-{{ comment.id }}" class="blog__comment">
+        <div class="one-whole column is-flex is-flex-wrap">
+          <div class="blog__comment-author is-flex">
+            <div class="blog__comment-author-image">
+              <img src="//1.gravatar.com/avatar/{{ comment.email | md5 }}?s=80&r=G" alt="{{ comment.author }}" />
+            </div>
 
-  {% for comment in article.comments %}
-    <div id="comment-{{ comment.id }}" class="blog__comment">
-      <div class="one-whole column is-flex is-flex-wrap">
-        <div class="blog__comment-author is-flex">
-          <div class="blog__comment-author-image">
-            <img src="//1.gravatar.com/avatar/{{ comment.email | md5 }}?s=80&r=G" alt="{{ comment.author }}" />
+            <div class="blog__comment-author-bio">
+              <h6>{{ comment.author }}</h6>
+              <p class="meta">
+                <span class="label">{{ comment.created_at | date: format: "month_day_year" }}</span>
+              </p>
+              {{ comment.content }}
+            </div>
           </div>
-
-          <div class="blog__comment-author-bio">
-            <h6>{{ comment.author }}</h6>
-            <p class="meta">
-              <span class="label">{{ comment.created_at | date: format: "month_day_year" }}</span>
-            </p>
-            {{ comment.content }}
-          </div>
-        </div>
+      </div>
     </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
+
+    {% if paginate.pages > 1 %}
+      <div class="blog-pagination constrain-items">
+        {% render 'pagination', paginate: paginate %}
+      </div>
+    {% endif %}
+  {% endpaginate %}
 {% endif %}

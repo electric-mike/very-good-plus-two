@@ -76,4 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
       },
     })
   }
+
+  const { search } = window.location
+  if (search.includes('page')) {
+    window.scrollTo({
+      top      : document.getElementById('comments').offsetTop - (document.querySelector('header nav').getBoundingClientRect().height + 20),
+      behavior : 'smooth',
+    })
+  }
 })
