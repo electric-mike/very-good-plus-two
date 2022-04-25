@@ -68,6 +68,12 @@
 
   // blog rh
   #blog-right-area {
+    > .row {
+      background: var(--shop-light-gray);
+      padding: 0 0.625em;
+      margin: -1.25em -1.25em 0;
+    }
+
     @media(min-width: $tablet) {
       padding-left: 1.25em;
       padding-right: 1.25em;
@@ -75,11 +81,11 @@
       &.article-right-area {
         padding-top: 0.625em;
       }
-    }
 
-    > .row {
-      background: var(--shop-light-gray);
-      padding: 1.25em 0.625em 0;
+      > .row {
+        padding: 1.25em 0.625em 0;
+        margin: 0 -0.625em;
+      }
     }
 
     .right-section {
@@ -125,6 +131,10 @@
         border: none;
         background-color: transparent;
         padding: 0.75em 1em;
+
+        .search-icon {
+          width: 1.25em;
+        }
       }
     }
 
