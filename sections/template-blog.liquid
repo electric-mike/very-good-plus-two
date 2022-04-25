@@ -6,13 +6,13 @@
       <div class="column-12-tablet-vert-8 blog-left-area">
         <div class="row">
           <div class="column-12">
-            <h5 class="blog-col-header">
+            <h3 class="blog-col-header">
               {%- if current_tags.size > 0 -%}
               Articles Tagged with {{ current_tags }}
               {%- else -%}
               Featured Posts
               {%- endif -%}
-            </h5>
+            </h3>
           </div>
           {% paginate blog.articles by 20 %}
             {% for article in blog.articles %}

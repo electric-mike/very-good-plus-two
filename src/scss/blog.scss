@@ -69,13 +69,17 @@
   // blog rh
   #blog-right-area {
     @media(min-width: $tablet) {
+      padding-left: 1.25em;
+      padding-right: 1.25em;
+
       &.article-right-area {
         padding-top: 0.625em;
       }
     }
 
-    @media(min-width: $desktop) {
-      padding-left: 1.875em;
+    > .row {
+      background: var(--shop-light-gray);
+      padding: 1.25em 0.625em 0;
     }
 
     .right-section {
@@ -126,9 +130,9 @@
 
     .featured-post {
       display: grid;
-      display: grid;
       grid-template-columns: 25% auto;
       grid-gap: 1.25em;
+      align-items: center;
 
       &:not(:last-of-type) {
         margin-bottom: 1.25em;
@@ -197,8 +201,11 @@
       }
 
       img {
-        z-index: -1;
         margin: 0;
+      }
+
+      *:not(img) {
+        z-index: 1;
       }
 
       &.invert {
