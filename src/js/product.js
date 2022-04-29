@@ -173,7 +173,7 @@ export default function product() {
 
       image.addEventListener('click', () => {
         if (window.mobileSlider) window.mobileSlider.goTo(index)
-        changeMainImage.bind(this, index)
+        changeMainImage.bind(this, index)()
       })
     })
   }
@@ -183,7 +183,7 @@ export default function product() {
     COLOR_IMAGE_SWATCHES.forEach((image, index) => {
       image.addEventListener('click', () => {
         if (window.mobileSlider) window.mobileSlider.goTo(index + 1)
-        changeMainImage.bind(this, index + 1)
+        changeMainImage.bind(this, index + 1)()
       })
     })
   }
