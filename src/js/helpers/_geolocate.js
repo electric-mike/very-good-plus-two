@@ -3,8 +3,14 @@ export default async function geolocate() {
   const defaultCode = 'US'
 
   if (!geocode) {
-    const data = await fetch('https://ee-ip.netlify.app/.netlify/functions/geoip').then(res => res.json())
-    const code = data.country_code ? data.country_code : defaultCode
+    let code = defaultCode
+
+    try {
+      const data = await fetch('https://ee-ip.netlify.app/.netlify/functions/geoip').then(res => res.json())
+      code = data.country_code ? data.country_code : defaultCode
+    } catch {
+      code = defaultCode
+    }
 
     localStorage.setItem('geocode', code)
 
