@@ -29,7 +29,7 @@
             :value='variant'
             :disabled="!variant.available"
           ) {{ variant.title }}
-        button(@click='addToCart' v-bind:class="{ 'loading': addingToCart }") ADD +
+        button(@click='addToCart' v-bind:class="{ 'loading': addingToCart && localAdding }") ADD +
 </template>
 
 <script>
@@ -82,6 +82,7 @@ export default {
       upsellProductInCart          : false,
       secondaryUpsellProductInCart : false,
       selectedVariant              : false,
+      localAdding                  : false,
     }
   },
 
@@ -173,12 +174,16 @@ export default {
       }
     },
 
-    addToCart() {
-      this.$store.dispatch('cart/addToCart', {
+    async addToCart() {
+      this.localAdding = true
+
+      await this.$store.dispatch('cart/addToCart', {
         quantity       : 1,
         id             : this.selectedVariant.id,
         dontOpenDrawer : true,
       })
+
+      this.localAdding = false
     },
   },
 }
