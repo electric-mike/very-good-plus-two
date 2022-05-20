@@ -196,7 +196,7 @@
 
     <button
       v-if="selectedOptionVariant && selectedOptionVariant.available"
-      v-bind:class="{ 'loading': addingToCart, 'active': selectedOptionVariant && !selectedOptionVariant.available }"
+      v-bind:class="{ 'loading': addingToCart && localAdding, 'active': selectedOptionVariant && !selectedOptionVariant.available }"
       v-bind:disabled="selectedOptionVariant && !selectedOptionVariant.available"
       type="submit"
       name="add"

@@ -55,6 +55,7 @@ export default function rhpa() {
           rechargePlan         : false,
           rechargePlanSelected : false,
           customerIsWholesale  : window.themeSettings.customerIsWholesale || false,
+          localAdding          : false,
         }
       },
 
@@ -452,7 +453,7 @@ export default function rhpa() {
           return false
         },
 
-        addToCart(e) {
+        async addToCart(e) {
           e.preventDefault()
 
           const payload = {
@@ -468,7 +469,9 @@ export default function rhpa() {
             payload.selling_plan = sellingPlan
           }
 
-          this.$store.dispatch('cart/addToCart', payload)
+          this.localAdding = true
+          await this.$store.dispatch('cart/addToCart', payload)
+          this.localAdding = false
         },
 
         updateConfig() {
