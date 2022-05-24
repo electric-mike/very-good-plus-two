@@ -6,7 +6,7 @@ export default async function geolocate() {
     let code = defaultCode
 
     try {
-      const data = await fetch('https://ee-ip.netlify.app/.netlify/functions/geoip').then(res => res.json())
+      const data = await fetch('https://f1rb7jac1m.execute-api.us-east-2.amazonaws.com/default/geolocate').then(res => res.json())
       code = data.country_code ? data.country_code : defaultCode
     } catch {
       code = defaultCode
