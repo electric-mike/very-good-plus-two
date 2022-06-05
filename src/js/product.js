@@ -44,8 +44,8 @@ export default function product() {
     additionalImages.forEach((image, index) => {
       if (index === sentIndex) {
         image.classList.add('active')
-        // mainImage.src = image.dataset.smallSrc
-
+        mainImage.src = image.dataset.smallSrc
+        mainImage.srcset = ''
         currentImageSrc = image.dataset.src
         mainImage.dataset.src = currentImageSrc
         mainImage.dataset.index = sentIndex
