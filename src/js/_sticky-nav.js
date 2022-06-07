@@ -42,7 +42,9 @@ export default class StickyNav {
   scrollListener() {
     const CURRENT_OFFSET = window.pageYOffset
 
-    if (CURRENT_OFFSET > this.lastScrollTop) {
+    if (CURRENT_OFFSET === 0) {
+      this.toggleScrollParams()
+    } else if (CURRENT_OFFSET > this.lastScrollTop) {
       if (CURRENT_OFFSET > this.stickyHeights.elements.mainTop - this.stickyHeights.elements.headerHeight) {
         this.toggleScrollParams(true)
       }
