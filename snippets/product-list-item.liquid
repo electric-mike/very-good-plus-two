@@ -53,8 +53,14 @@
       class="jdgm-widget jdgm-preview-badge"
       v-html="product.reviews"
     ></div>
-    <h5 class="original-price" v-if="product.compare_at_price > product.price">${ product.compare_at_price | currency }</h5>
-    <h5 class="price">${ product.price | currency }</h5>
+    <div v-if="product.price_varies" class="price-wrapper">
+      <span class="starting-at">Starting at.. </span>
+      <h5 class="price">${ product.lowest_price | currency }</h5>
+    </div>
+    <div v-else class="price-wrapper">
+      <h5 class="original-price" v-if="product.compare_at_price > product.price">${ product.compare_at_price | currency }</h5>
+      <h5 class="price">${ product.price | currency }</h5>
+    </div>
     <v-runtime-template v-if="product.swatches" :template="product.swatches"></v-runtime-template>
   </div>
 {% else %}
@@ -111,8 +117,24 @@
     {% elsif settings.review_type == 'okendo' %}
       {% render 'okendo-summary-widget', product: product %}
     {% endif %}
-    {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '.00', '' }}</h5>{% endif %}
-    <h5 class="price">{{ product.price | money_without_trailing_zeros | replace: '.00', '' }}</h5>
+    <div class="price-wrapper">
+      {% assign lowest_price = product.first_available_variant.price %}
+      {% for variant in product.variants %}
+        {% if variant.available %}
+          {% if variant.price < lowest_price %}
+            {% assign lowest_price = variant.price %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if product.price_varies == true %}
+        <span class="starting-at">Starting at.. </span>
+        <h5 class="price">{{ lowest_price | money_without_trailing_zeros }}</h5>
+      {% else %}
+        {% if product.compare_at_price > product.price %}<h5 class="original-price">{{ product.compare_at_price | money_without_trailing_zeros }}</h5>{% endif %}
+        <h5 class="price">{{ product.price | money_without_trailing_zeros }}</h5>
+      {% endif %}
+    </div>
     {% if is_bundle %}
       {% assign id = product.variants[0].id %}
       {% assign avail = product.variants[0].available %}

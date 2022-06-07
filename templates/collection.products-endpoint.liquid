@@ -21,6 +21,16 @@ Please do not edit
         {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
         {%- assign secondary_img_url = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
         {% if loopIndex != 0 %},{% endif %}
+
+        {% assign lowest_price = product.first_available_variant.price %}
+        {% for variant in product.variants %}
+          {% if variant.available %}
+            {% if variant.price < lowest_price %}
+              {% assign lowest_price = variant.price %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
         {
           "title": "{{ product.title | escape }}",
           "handle": "{{ product.handle | escape }}",
@@ -43,6 +53,8 @@ Please do not edit
           {% elsif settings.review_type == 'okendo' %}
           "reviews": {{ product.metafields.okendo["ProductListingSnippet"] | json }},
           {% endif %}
+          "lowest_price": "{{ lowest_price }}",
+          "price_varies": {{ product.price_varies | default: false }},
           "tags": "{{ product.tags | join: ',' }}",
           "vendor": "{{ product.vendor | escape }}",
           "type": "{{ product.type | escape }}",

@@ -68,7 +68,11 @@
       // margin-bottom: 0.5rem;
       margin-bottom: 0;
 
-      &.price, &.original-price {
+      &.price-wrapper {
+        position: relative;
+      }
+
+      &.price, &.original-price, &.starting-at {
         display: inline-block;
         font-family: var(--shop-font-family);
       }
@@ -95,6 +99,19 @@
 
       &.original-price + .price {
         color: var(--shop-red);
+      }
+
+      &.starting-at {
+        display: block;
+        font-size: 11px;
+        white-space: nowrap;
+        position: absolute;
+        left: 0;
+        top: 1px;
+
+        + .price {
+          margin-top: 14px;
+        }
       }
     }
 
