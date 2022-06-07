@@ -148,7 +148,10 @@
   </head>
 
   <body {% if settings.add_global_gutter %}class="global-gutter"{% endif %}>
-    {% include 'announcement-bar' %}
+
+    {% unless settings.sticky_announcement_bar %}
+      {% include 'announcement-bar' %}
+    {% endunless %}
 
     {% include 'header' %}
 

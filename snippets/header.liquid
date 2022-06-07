@@ -1,4 +1,8 @@
-<header class="{{ settings.desktop_nav_order }} {{ settings.mobile_nav_order }}">
+<header class="{{ settings.desktop_nav_order }} {{ settings.mobile_nav_order }}{% if settings.sticky_announcement_bar %} has-announcement-bar{% endif %}">
+  {% if settings.sticky_announcement_bar %}
+    {% include 'announcement-bar' %}
+  {% endif %}
+
   <nav class="{% if settings.max_width_nav %}max-width-nav{% endif %}">
     {% if settings.mobile_nav_order == 'mobile-logo-center' %}{% render 'mobile-nav' %}{% endif %}
 

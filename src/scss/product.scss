@@ -323,6 +323,10 @@
       }
     }
 
+    .top-area {
+      position: relative;
+    }
+
     //top product description
     .rhpa-wrapper {
       position: relative;
@@ -331,6 +335,8 @@
       margin-top: 1.25em;
 
       @media(min-width: $tablet) {
+        position: sticky;
+        top: 82px;
         padding-right: 0;
         margin-top: 0;
       }
@@ -685,6 +691,10 @@
         // description accordions
         .description-accordions {
           margin: 0 0 1.25em;
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
         }
 
         .description-accordion {

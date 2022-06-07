@@ -225,6 +225,11 @@
         "type": "color",
         "id": "announcement_text_color",
         "label": "Text Color"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_announcement_bar",
+        "label": "Announcement Bar Sticky w/ Header"
       }
     ]
   },

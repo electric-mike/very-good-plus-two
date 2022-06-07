@@ -22,6 +22,10 @@ body > header {
     border-bottom: 0;
   }
 
+  &.has-announcement-bar {
+    display: block;
+  }
+
   &.sticky {
     position: fixed;
     top: 0;
