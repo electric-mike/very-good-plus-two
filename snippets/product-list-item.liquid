@@ -14,7 +14,7 @@
         {% if settings.enable_placeholder_image %}
         v-bind:src="{{ settings.placeholder_image | img_url }}"
         {% else %}
-        v-bind:src="product.featured_image"
+        v-bind:src="product.featured_image.replace('_{width}x.', '_360x.')"
         {% endif %}
         v-bind:data-src="product.featured_image"
         v-bind:data-aspectratio="product.featured_image_aspectratio"
@@ -31,7 +31,7 @@
         {% if settings.enable_placeholder_image %}
         v-bind:src="{{ settings.placeholder_image | img_url }}"
         {% else %}
-        v-bind:src="product.featured_image"
+        v-bind:src="product.featured_image.replace('_{width}x.', '_360x.')"
         {% endif %}
         v-if="product.secondary_image && !product.secondary_image.includes('no-image')"
         v-bind:data-src="product.secondary_image"
