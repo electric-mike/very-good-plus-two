@@ -213,12 +213,14 @@
       >
         <div class="header-wrapper row-top max-width-no-padding">
           <div class="column-12 row-top-space-between-no-padding collection-info">
-            <a
-              href="#"
-              class="toggle-filters show-tablet"
-              v-on:click.prevent="toggleFilters()"
-              v-if="filterOptionsAvailable.length > 0"
-            ><span class="v-hide" v-cloak>${ showFilters ? 'Hide' : 'Show' }</span> Filter & Sort</a>
+            <div>
+              <a
+                href="#"
+                class="toggle-filters show-tablet"
+                v-on:click.prevent="toggleFilters()"
+                v-if="filterOptionsAvailable.length > 0"
+              ><span class="v-hide" v-cloak>${ showFilters ? 'Hide' : 'Show' }</span> Filter & Sort</a>
+            </div>
             <span class="product-count left-padding show-tablet v-hide" v-if="!loading" v-cloak>
               <span v-if="paginatedProductsPages > 1">
                 ${ pageRangeStart + 1 }-${ pageRangeEnd }
@@ -232,12 +234,13 @@
             </span>
           </div>
           <div class="column-12 mobile-collection-options">
-            <a
-              href="#"
-              class="small"
-              v-if="filterOptionsAvailable.length > 0"
-              v-on:click.prevent="toggleMobileCollectionNav()"
-            >Filter & Sort</a>
+            <div>
+              <a
+                href="#"
+                v-if="filterOptionsAvailable.length > 0"
+                v-on:click.prevent="toggleMobileCollectionNav()"
+              >Filter & Sort</a>
+            </div>
             <div class="mobile-grid-swatches">
               <div><span class="small">View</span></div>
               <div class="grid-swatch" v-for="i in 2">
